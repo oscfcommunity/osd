@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: light --default, lemonade;
+}
+
+
+@theme {
+    --color-oswgreen-500: #17B268;
+}
