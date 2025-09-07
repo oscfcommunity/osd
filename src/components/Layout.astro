@@ -26,29 +26,6 @@ const {
     <title>{title}</title>
   </head>
   <body>
-    <div class="cursor-trail"></div>
     <slot />
-
-    <script>
-      // Simple cursor trail effect without GSAP
-      const cursorTrail = document.querySelector(".cursor-trail");
-      let mouseX = 0,
-        mouseY = 0;
-
-      document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-        if (cursorTrail) {
-          cursorTrail.style.left = mouseX - 10 + "px";
-          cursorTrail.style.top = mouseY - 10 + "px";
-          cursorTrail.style.opacity = "0.6";
-
-          setTimeout(() => {
-            cursorTrail.style.opacity = "0";
-          }, 100);
-        }
-      });
-    </script>
   </body>
 </html>

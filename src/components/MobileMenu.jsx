@@ -49,7 +49,7 @@ const MobileMenu = ({ isOpen, onClose }) => {
             { name: 'Venue', href: '/venue' },
             { name: 'Tickets', href: '/tickets' },
             { name: 'Past Events', href: '/past-events' }
-          ].map((item, index) => (
+          ].map((item, _index) => (
             <a
               key={item.name}
               href={item.href}
