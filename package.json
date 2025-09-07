@@ -22,9 +22,5 @@
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2",
     "wrangler": "^4.34.0"
-  },
-  "engines": {
-    "node": ">=22",
-    "npm": ">=10.9"
   }
 }
