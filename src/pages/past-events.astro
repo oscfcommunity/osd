@@ -1,7 +1,8 @@
 ---
-import Layout from '../components/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
-import '../styles/global.css';
+import Layout from "../components/Layout.astro";
+import Navigation from "../components/Navigation.jsx";
+import "../styles/global.css";
+import { BRANDING } from "@/config";
 
 const pastEvents = [
   {
@@ -14,13 +15,13 @@ const pastEvents = [
       "Launched 15 new open source projects",
       "Record-breaking hackathon participation",
       "First-ever AI/ML track",
-      "Global livestream with 10K+ viewers"
+      "Global livestream with 10K+ viewers",
     ],
     images: [
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1559223607-b4d0555ae227?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&h=400&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&h=400&fit=crop",
+    ],
   },
   {
     year: "2023",
@@ -32,13 +33,13 @@ const pastEvents = [
       "Introduction of sustainability track",
       "Youth coding bootcamp",
       "Open source security summit",
-      "Community awards ceremony"
+      "Community awards ceremony",
     ],
     images: [
       "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop"
-    ]
+      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
+    ],
   },
   {
     year: "2022",
@@ -50,31 +51,40 @@ const pastEvents = [
       "First hybrid event format",
       "Women in Open Source panel",
       "Blockchain and Web3 workshops",
-      "Mentorship program launch"
+      "Mentorship program launch",
     ],
     images: [
       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop",
       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop"
-    ]
-  }
+      "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop",
+    ],
+  },
 ];
 ---
 
 <Layout title="Past Events - OpenSource Weekend 2025">
   <Navigation client:load />
-  
+
   <!-- Hero Section -->
   <section class="pt-32 pb-20 px-4">
     <div class="max-w-6xl mx-auto text-center">
-  <div class="flex items-center justify-center gap-3 mb-4">
-    <img src="/icons/OSD Green.png" alt="OSD" class="w-12 h-12 md:w-16 md:h-16"/>
-    <h1 class="text-5xl md:text-7xl font-bold text-green-600 mb-0">Past Events</h1>
-  </div>
-  <div class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"></div>
-  <p class="text-xl text-black-300 max-w-3xl mx-auto">
-        Look back at the incredible moments, innovations, and connections made at 
-        previous OpenSource Weekend events.
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <img
+          src={BRANDING.logos.main}
+          alt="OSD"
+          class="w-12 h-12 md:w-16 md:h-16"
+        />
+        <h1 class="text-5xl md:text-7xl font-bold text-green-600 mb-0">
+          Past Events
+        </h1>
+      </div>
+      <div
+        class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"
+      >
+      </div>
+      <p class="text-xl text-black-300 max-w-3xl mx-auto">
+        Look back at the incredible moments, innovations, and connections made
+        at previous OpenSource Weekend events.
       </p>
     </div>
   </section>
@@ -82,22 +92,32 @@ const pastEvents = [
   <!-- Overall Stats -->
   <section class="py-20 px-4 bg-gradient-to-bl from-green-500 to-green-300">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-white mb-12">Our Impact Over the Years</h2>
+      <h2 class="text-4xl font-bold text-center text-white mb-12">
+        Our Impact Over the Years
+      </h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">1150+</div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            1150+
+          </div>
           <div class="text-black-300">Total Attendees</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">85+</div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            85+
+          </div>
           <div class="text-black-300">Speakers</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">195+</div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            195+
+          </div>
           <div class="text-black-300">Projects Showcased</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">50+</div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            50+
+          </div>
           <div class="text-black-300">New Projects Launched</div>
         </div>
       </div>
@@ -107,77 +127,95 @@ const pastEvents = [
   <!-- Past Events Timeline -->
   <section class="py-20 px-4">
     <div class="max-w-7xl mx-auto">
-      {pastEvents.map((event, index) => (
-        <div class="mb-20 last:mb-0">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class={index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
-              <div class="mb-6">
-                <span class="text-green-400 font-bold text-lg">{event.year}</span>
-                <h3 class="text-4xl font-bold text-black mb-4">{event.title}</h3>
-              </div>
-              
-              <div class="grid grid-cols-3 gap-4 mb-6">
-                <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
-                  <div class="text-2xl font-bold text-green-400">{event.attendees}</div>
-                  <div class="text-sm text-black-300">Attendees</div>
+      {
+        pastEvents.map((event, index) => (
+          <div class="mb-20 last:mb-0">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div class={index % 2 === 0 ? "lg:order-1" : "lg:order-2"}>
+                <div class="mb-6">
+                  <span class="text-green-400 font-bold text-lg">
+                    {event.year}
+                  </span>
+                  <h3 class="text-4xl font-bold text-black mb-4">
+                    {event.title}
+                  </h3>
                 </div>
-                <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
-                  <div class="text-2xl font-bold text-green-400">{event.speakers}</div>
-                  <div class="text-sm text-black-300">Speakers</div>
-                </div>
-                <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
-                  <div class="text-2xl font-bold text-green-400">{event.projects}</div>
-                  <div class="text-sm text-black-300">Projects</div>
-                </div>
-              </div>
-              
-              <div>
-                <h4 class="text-xl font-semibold text-black mb-4">Event Highlights</h4>
-                <ul class="space-y-2">
-                  {event.highlights.map((highlight) => (
-                    <li class="flex items-start space-x-3">
-                      <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                      <span class="text-black-300">{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            
-            <div class={index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
-              <div class="grid grid-cols-1 gap-4">
-                {event.images.map((image, imgIndex) => (
-                  <div class="aspect-video overflow-hidden rounded-lg border border-green-500/20">
-                    <img 
-                      src={image} 
-                      alt={`${event.title} - Image ${imgIndex + 1}`}
-                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                    />
+
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
+                    <div class="text-2xl font-bold text-green-400">
+                      {event.attendees}
+                    </div>
+                    <div class="text-sm text-black-300">Attendees</div>
                   </div>
-                ))}
+                  <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
+                    <div class="text-2xl font-bold text-green-400">
+                      {event.speakers}
+                    </div>
+                    <div class="text-sm text-black-300">Speakers</div>
+                  </div>
+                  <div class="text-center p-4 bg-gray-900/50 rounded-lg border border-green-500/20">
+                    <div class="text-2xl font-bold text-green-400">
+                      {event.projects}
+                    </div>
+                    <div class="text-sm text-black-300">Projects</div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 class="text-xl font-semibold text-black mb-4">
+                    Event Highlights
+                  </h4>
+                  <ul class="space-y-2">
+                    {event.highlights.map((highlight) => (
+                      <li class="flex items-start space-x-3">
+                        <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0" />
+                        <span class="text-black-300">{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div class={index % 2 === 0 ? "lg:order-2" : "lg:order-1"}>
+                <div class="grid grid-cols-1 gap-4">
+                  {event.images.map((image, imgIndex) => (
+                    <div class="aspect-video overflow-hidden rounded-lg border border-green-500/20">
+                      <img
+                        src={image}
+                        alt={`${event.title} - Image ${imgIndex + 1}`}
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+
+            {index < pastEvents.length - 1 && (
+              <div class="mt-20 flex justify-center">
+                <div class="w-px h-20 bg-gradient-to-b from-green-500 to-transparent" />
+              </div>
+            )}
           </div>
-          
-          {index < pastEvents.length - 1 && (
-            <div class="mt-20 flex justify-center">
-              <div class="w-px h-20 bg-gradient-to-b from-green-500 to-transparent"></div>
-            </div>
-          )}
-        </div>
-      ))}
+        ))
+      }
     </div>
   </section>
 
   <!-- Testimonials -->
   <section class="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-black/50">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-black mb-12">What Attendees Say</h2>
+      <h2 class="text-4xl font-bold text-center text-black mb-12">
+        What Attendees Say
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6">
+        <div
+          class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6"
+        >
           <div class="flex items-center mb-4">
-            <img 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" 
+            <img
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
               alt="Alex Chen"
               class="w-12 h-12 rounded-full mr-4"
             />
@@ -187,15 +225,17 @@ const pastEvents = [
             </div>
           </div>
           <p class="text-black-300 italic">
-            "OpenSource Weekend changed my career trajectory. The connections I made and 
-            projects I discovered opened up incredible opportunities."
+            "OpenSource Weekend changed my career trajectory. The connections I
+            made and projects I discovered opened up incredible opportunities."
           </p>
         </div>
-        
-        <div class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6">
+
+        <div
+          class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6"
+        >
           <div class="flex items-center mb-4">
-            <img 
-              src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" 
+            <img
+              src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face"
               alt="Maria Rodriguez"
               class="w-12 h-12 rounded-full mr-4"
             />
@@ -205,15 +245,17 @@ const pastEvents = [
             </div>
           </div>
           <p class="text-black-300 italic">
-            "The quality of speakers and workshops is unmatched. I learned more in two days 
-            than I had in months of self-study."
+            "The quality of speakers and workshops is unmatched. I learned more
+            in two days than I had in months of self-study."
           </p>
         </div>
-        
-        <div class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6">
+
+        <div
+          class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-6"
+        >
           <div class="flex items-center mb-4">
-            <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face" 
+            <img
+              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
               alt="David Kim"
               class="w-12 h-12 rounded-full mr-4"
             />
@@ -223,8 +265,8 @@ const pastEvents = [
             </div>
           </div>
           <p class="text-black-300 italic">
-            "The hackathon was incredible! Our team's project got picked up by a major 
-            company and we're now building it full-time."
+            "The hackathon was incredible! Our team's project got picked up by a
+            major company and we're now building it full-time."
           </p>
         </div>
       </div>
@@ -236,7 +278,8 @@ const pastEvents = [
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-black mb-6">Want to See More?</h2>
       <p class="text-xl text-black-300 mb-8">
-        Browse our complete photo galleries from past events and get inspired for 2025!
+        Browse our complete photo galleries from past events and get inspired
+        for 2025!
       </p>
       <a
         href="/gallery"

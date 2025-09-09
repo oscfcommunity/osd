@@ -1,4 +1,5 @@
-// src/config.ts
+import OSDGreen from "@/assets/icons/OSDGreen.png";
+import OSWBlack from "@/assets/icons/OSWBlack.svg";
 
 export const SITE = {
   title: "OpenSourceDay 2025",
@@ -7,7 +8,7 @@ export const SITE = {
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://opensourceweekend.org",
   ogImage: "/images/OSWBlack.png",
-  icon: "/icons/OSD Green.png",
+  icon: "@/assets/OSDGreen.png",
 };
 
 export const eventSchedule = [
@@ -115,13 +116,13 @@ export const workshopSchedule = [];
 
 export const BRANDING = {
   logos: {
-    main: "/icons/OSD Green.png",
+    main: OSDGreen.src,
     mainNoText: "/icons/OSDLogoNoText.svg",
     fullWhite: "/icons/OSWFullWhite.svg",
     fullBlack: "/icons/OSWFullBlack.svg",
     white: "/icons/OSWWhite.svg",
     black: "/icons/OSWBlack.svg",
-    green: "/icons/OSD Green.png",
+    green: OSDGreen.src,
   },
   colors: {
     primary: "#22c55e",
@@ -565,17 +566,17 @@ export const COMMUNITY_PARTNERS = [
 export const SPONSOR_TIERS = {
   gold: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
+    { name: "OSW", logo: OSWBlack.src, website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
   ],
   silver: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
+    { name: "OSW", logo: OSWBlack.src, website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
   ],
   bronze: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
+    { name: "OSW", logo: OSWBlack.src, website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
   ],
 };

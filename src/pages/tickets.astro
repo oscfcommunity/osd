@@ -2,7 +2,7 @@
 import CountdownTimer from "@components/CountdownTimer.jsx";
 import Layout from "../components/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
-import { TICKETS, CONTACT } from "../config.ts";
+import { TICKETS, CONTACT, BRANDING } from "../config.ts";
 import "../styles/global.css";
 ---
 
@@ -13,19 +13,29 @@ import "../styles/global.css";
   <section class="pt-12 pb-8 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
       <div class="mb-4 flex justify-center">
-        <img src="/icons/OSD Green.png" alt="Open Source Day Logo" class="w-12 h-12 md:w-16 md:h-16" />
+        <img
+          src={BRANDING.logos.main}
+          alt="Open Source Day Logo"
+          class="w-12 h-12 md:w-16 md:h-16"
+        />
       </div>
-      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">Get Your Tickets</h1>
-      <div class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"></div>
+      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
+        Get Your Tickets
+      </h1>
+      <div
+        class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
+      >
+      </div>
       <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4 mb-6">
-        Choose the perfect ticket for your needs. All tickets include access to sessions, workshops, and networking opportunities.
+        Choose the perfect ticket for your needs. All tickets include access to
+        sessions, workshops, and networking opportunities.
       </p>
     </div>
   </section>
 
   <!-- Pricing Cards -->
   <section class="py-20 px-4 bg-white">
-    <div class="max-w-7xl mx-auto ">
+    <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           TICKETS.map((ticket) => (
@@ -48,7 +58,9 @@ import "../styles/global.css";
                 <h3 class="text-2xl font-bold text-black mb-2">
                   {ticket.name}
                 </h3>
-                {ticket.subtitle && <h3 class="text-md text-green-500">{ticket.subtitle}</h3>}
+                {ticket.subtitle && (
+                  <h3 class="text-md text-green-500">{ticket.subtitle}</h3>
+                )}
                 <p class="text-black mb-4">{ticket.description}</p>
                 <div class="flex items-center justify-center space-x-2">
                   {ticket.originalPrice && (
@@ -83,9 +95,10 @@ import "../styles/global.css";
 
               {
                 // If this is the micro sponsor pack, show contact mailto CTA
-                ticket.name && ticket.name.toLowerCase().includes('micro sponsor') ? (
+                ticket.name &&
+                ticket.name.toLowerCase().includes("micro sponsor") ? (
                   <a
-                    href={`mailto:${CONTACT.email?.trim() ?? 'opensourceweekend@gmail.com'}`}
+                    href={`mailto:${CONTACT.email?.trim() ?? "opensourceweekend@gmail.com"}`}
                     class={`block w-full py-4 rounded-full font-bold text-lg transition-all duration-200 text-center ${
                       ticket.popular
                         ? "bg-green-500 hover:bg-green-400 text-black glow-effect"
@@ -115,7 +128,6 @@ import "../styles/global.css";
       </div>
     </div>
   </section>
-
 
   <!-- Countdown appears here -->
   <div class="mt-5 py-16 px-4 bg-gradient-to-r from-green-50 to-green-100">

@@ -1,9 +1,9 @@
 ---
-import Layout from '../components/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
-import Footer from '../components/Footer.jsx';
-import '../styles/global.css';
-import { TEAM } from '../config.ts';
+import Layout from "../components/Layout.astro";
+import Navigation from "../components/Navigation.jsx";
+import Footer from "../components/Footer.jsx";
+import "../styles/global.css";
+import { TEAM, BRANDING } from "../config.ts";
 // Helper: normalize roles to an array and safely read linkedin
 const getRoles = (m: any): string[] => {
   if (Array.isArray(m.roles)) return m.roles as string[];
@@ -22,113 +22,218 @@ const getLinkedin = (m: any): string | null => {
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <div class="mb-4 flex justify-center items-center gap-3">
-          <img src="/icons/OSD Green.png" alt="OSD" class="w-12 h-12 md:w-16 md:h-16" />
-          <h1 class="text-4xl md:text-6xl font-bold text-green-600 mb-0">Our Team</h1>
+          <img
+            src={BRANDING.logos.main}
+            alt="OSD"
+            class="w-12 h-12 md:w-16 md:h-16"
+          />
+          <h1 class="text-4xl md:text-6xl font-bold text-green-600 mb-0">
+            Our Team
+          </h1>
         </div>
-        <div class="w-32 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-green-300 to-green-500"></div>
-        <p class="text-lg text-gray-600 mt-4">Meet the people who make Open Source Day possible.</p>
+        <div
+          class="w-32 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-green-300 to-green-500"
+        >
+        </div>
+        <p class="text-lg text-gray-600 mt-4">
+          Meet the people who make Open Source Day possible.
+        </p>
       </div>
 
       <div class="space-y-12">
-        {TEAM.advisory && (
-          <div>
-            <h2 class="text-2xl font-semibold mb-6">Advisory Council</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TEAM.advisory.map((m) => (
-                getLinkedin(m) ? (
-                  <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
-                    <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                      <img src={m.image} alt={m.name} class="w-28 h-28 rounded-full mx-auto object-cover mb-4" />
+        {
+          TEAM.advisory && (
+            <div>
+              <h2 class="text-2xl font-semibold mb-6">Advisory Council</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {TEAM.advisory.map((m) =>
+                  getLinkedin(m) ? (
+                    <a
+                      href={getLinkedin(m)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block h-full"
+                    >
+                      <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                        <img
+                          src={m.image}
+                          alt={m.name}
+                          class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
+                        />
+                        <h3 class="font-semibold text-lg">{m.name}</h3>
+                        <div class="text-sm text-gray-600">
+                          {getRoles(m).map((r: string) => (
+                            <div>{r}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
+                      <img
+                        src={m.image}
+                        alt={m.name}
+                        class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
+                      />
                       <h3 class="font-semibold text-lg">{m.name}</h3>
-                      <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
+                      <div class="text-sm text-gray-600">
+                        {getRoles(m).map((r: string) => (
+                          <div>{r}</div>
+                        ))}
+                      </div>
                     </div>
-                  </a>
-                ) : (
-                  <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                    <img src={m.image} alt={m.name} class="w-28 h-28 rounded-full mx-auto object-cover mb-4" />
-                    <h3 class="font-semibold text-lg">{m.name}</h3>
-                    <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
-                  </div>
-                )
-              ))}
+                  )
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
 
-        {TEAM.mentors && (
-          <div>
-            <h2 class="text-2xl font-semibold mb-6">Mentor Board</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TEAM.mentors.filter(m => !m.hide).map((m) => (
-                getLinkedin(m) ? (
-                  <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
-                    <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                      <img src={m.image} alt={m.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" />
+        {
+          TEAM.mentors && (
+            <div>
+              <h2 class="text-2xl font-semibold mb-6">Mentor Board</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {TEAM.mentors
+                  .filter((m) => !m.hide)
+                  .map((m) =>
+                    getLinkedin(m) ? (
+                      <a
+                        href={getLinkedin(m)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="block h-full"
+                      >
+                        <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                          <img
+                            src={m.image}
+                            alt={m.name}
+                            class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                          />
+                          <h3 class="font-semibold">{m.name}</h3>
+                          <div class="text-sm text-gray-600">
+                            {getRoles(m).map((r: string) => (
+                              <div>{r}</div>
+                            ))}
+                          </div>
+                        </div>
+                      </a>
+                    ) : (
+                      <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                        <img
+                          src={m.image}
+                          alt={m.name}
+                          class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                        />
+                        <h3 class="font-semibold">{m.name}</h3>
+                        <div class="text-sm text-gray-600">
+                          {getRoles(m).map((r: string) => (
+                            <div>{r}</div>
+                          ))}
+                        </div>
+                      </div>
+                    )
+                  )}
+              </div>
+            </div>
+          )
+        }
+
+        {
+          TEAM.core && (
+            <div>
+              <h2 class="text-2xl font-semibold mb-6">Core Team</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {TEAM.core.map((m) =>
+                  getLinkedin(m) ? (
+                    <a
+                      href={getLinkedin(m)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block h-full"
+                    >
+                      <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                        <img
+                          src={m.image}
+                          alt={m.name}
+                          class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
+                        />
+                        <h3 class="font-semibold">{m.name}</h3>
+                        <div class="text-sm text-gray-600">
+                          {getRoles(m).map((r: string) => (
+                            <div>{r}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
+                      <img
+                        src={m.image}
+                        alt={m.name}
+                        class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
+                      />
                       <h3 class="font-semibold">{m.name}</h3>
-                      <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
+                      <div class="text-sm text-gray-600">
+                        {getRoles(m).map((r: string) => (
+                          <div>{r}</div>
+                        ))}
+                      </div>
                     </div>
-                  </a>
-                ) : (
-                  <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                    <img src={m.image} alt={m.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" />
-                    <h3 class="font-semibold">{m.name}</h3>
-                    <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
-                  </div>
-                )
-              ))}
+                  )
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
 
-        {TEAM.core && (
-          <div>
-            <h2 class="text-2xl font-semibold mb-6">Core Team</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TEAM.core.map((m) => (
-                getLinkedin(m) ? (
-                  <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
-                    <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                      <img src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-4" />
-                      <h3 class="font-semibold">{m.name}</h3>
-                      <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
-                    </div>
-                  </a>
-                ) : (
-                  <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                    <img src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-4" />
-                    <h3 class="font-semibold">{m.name}</h3>
-                    <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
-                  </div>
-                )
-              ))}
-            </div>
-          </div>
-        )}
-
-        {TEAM.volunteers && (
-          <div>
-            <h2 class="text-2xl font-semibold mb-6">Volunteers</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-              {TEAM.volunteers.map((m) => (
-                getLinkedin(m) ? (
-                  <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
-                    <div class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                      <img src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-3" />
+        {
+          TEAM.volunteers && (
+            <div>
+              <h2 class="text-2xl font-semibold mb-6">Volunteers</h2>
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {TEAM.volunteers.map((m) =>
+                  getLinkedin(m) ? (
+                    <a
+                      href={getLinkedin(m)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block h-full"
+                    >
+                      <div class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                        <img
+                          src={m.image}
+                          alt={m.name}
+                          class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
+                        />
+                        <div class="font-medium">{m.name}</div>
+                        <div class="text-sm text-gray-600">
+                          {getRoles(m).map((r: string) => (
+                            <div>{r}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </a>
+                  ) : (
+                    <div class="bg-white p-4 rounded-lg shadow-sm text-center h-full">
+                      <img
+                        src={m.image}
+                        alt={m.name}
+                        class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
+                      />
                       <div class="font-medium">{m.name}</div>
-                      <div class="text-sm text-gray-600">{getRoles(m).map((r: string) => <div>{r}</div>)}</div>
+                      <div class="text-sm text-gray-600">
+                        {getRoles(m).map((r) => (
+                          <div>{r}</div>
+                        ))}
+                      </div>
                     </div>
-                  </a>
-                ) : (
-                  <div class="bg-white p-4 rounded-lg shadow-sm text-center h-full">
-                    <img src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-3" />
-                    <div class="font-medium">{m.name}</div>
-                    <div class="text-sm text-gray-600">{getRoles(m).map(r => <div>{r}</div>)}</div>
-                  </div>
-                )
-              ))}
+                  )
+                )}
+              </div>
             </div>
-          </div>
-        )}
+          )
+        }
       </div>
     </div>
   </section>

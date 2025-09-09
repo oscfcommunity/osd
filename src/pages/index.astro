@@ -8,7 +8,13 @@ import Counter from "../components/Counter";
 import "../styles/global.css";
 import CountdownTimer from "../components/CountdownTimer.jsx";
 import SponsorsGrid from "../components/SponsorsGrid.jsx";
-import { SPEAKERS, VENUE, TICKETS, SPONSOR_TIERS } from "../config.ts";
+import {
+  SPEAKERS,
+  VENUE,
+  TICKETS,
+  SPONSOR_TIERS,
+  BRANDING,
+} from "../config.ts";
 import MarqueeLogos from "../components/MarqueeLogos.jsx";
 import { COMMUNITY_PARTNERS } from "../config.ts";
 import OptimizedImage from "../components/OptimizedImage.astro";
@@ -25,7 +31,7 @@ import OptimizedImage from "../components/OptimizedImage.astro";
       <div class="text-center mb-16 animate-fade-up">
         <div class="mb-8 flex justify-center">
           <OptimizedImage
-            src="/public/icons/OSD Green.png"
+            src={BRANDING.logos.main}
             alt="Open Source Day Logo"
             class="w-16 h-16 md:w-20 md:h-20"
             loading="eager"
