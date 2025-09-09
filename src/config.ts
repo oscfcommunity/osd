@@ -10,6 +10,109 @@ export const SITE = {
   icon: "/icons/OSDLogo.svg"
 };
 
+export const eventSchedule = [
+  {
+    time: "08:00 AM - 09:30 AM",
+    title: "Registration/Breakfast",
+    speaker: "",
+    type: "registration",
+    room: "Lobby/Food Court"
+  },
+  {
+    time: "09:30 AM - 10:00 AM",
+    title: "Warmup Activity",
+    speaker: "",
+    type: "activity",
+    room: "Main Auditorium"
+  },
+  {
+    time: "10:00 AM - 10:15 AM",
+    title: "Welcome Note",
+    speaker: "",
+    type: "opening",
+    room: "Main Auditorium"
+  },
+  {
+    time: "10:15 AM - 10:45 AM",
+    title: "Keynote",
+    speaker: "",
+    type: "keynote",
+    room: "Main Auditorium"
+  },
+  {
+    time: "10:45 AM - 11:30 AM",
+    title: "Speaker 1",
+    speaker: "",
+    type: "talk",
+    room: "Main Auditorium"
+  },
+  {
+    time: "11:30 AM - 12:15 PM",
+    title: "Speaker 2",
+    speaker: "",
+    type: "talk",
+    room: "Main Auditorium"
+  },
+  {
+    time: "12:15 PM - 01:00 PM",
+    title: "Panel Discussion",
+    speaker: "",
+    type: "panel",
+    room: "Main Auditorium"
+  },
+  {
+    time: "01:00 PM - 02:00 PM",
+    title: "Lunch",
+    speaker: "",
+    type: "break",
+    room: "Food Court"
+  },
+  {
+    time: "02:00 PM - 02:45 PM",
+    title: "Speaker 3",
+    speaker: "",
+    type: "talk",
+    room: "Main Auditorium"
+  },
+  {
+    time: "02:45 PM - 03:30 PM",
+    title: "Speaker 4",
+    speaker: "",
+    type: "talk",
+    room: "Main Auditorium"
+  },
+  {
+    time: "03:30 PM - 04:15 PM",
+    title: "Panel Discussion",
+    speaker: "",
+    type: "panel",
+    room: "Main Auditorium"
+  },
+  {
+    time: "04:15 PM - 04:45 PM",
+    title: "Closing Keynote",
+    speaker: "",
+    type: "keynote",
+    room: "Main Auditorium"
+  },
+  {
+    time: "04:45 PM - 05:00 PM",
+    title: "Closing Remarks",
+    speaker: "",
+    type: "closing",
+    room: "Main Auditorium"
+  },
+  {
+    time: "05:00 PM - 05:30 PM",
+    title: "Goodies Distribution",
+    speaker: "",
+    type: "social",
+    room: "Exhibition Hall"
+  }
+];
+
+export const workshopSchedule = [];
+
 export const BRANDING = {
   logos: {
     main: "/icons/OSDLogo.svg",
