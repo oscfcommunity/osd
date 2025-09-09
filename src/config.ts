@@ -7,7 +7,7 @@ export const SITE = {
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://opensourceweekend.org",
   ogImage: "/images/OSWBlack.png",
-  icon: "/icons/OSDLogo.svg"
+  icon: "/icons/OSD Green.png"
 };
 
 export const eventSchedule = [
@@ -115,7 +115,7 @@ export const workshopSchedule = [];
 
 export const BRANDING = {
   logos: {
-    main: "/icons/OSDLogo.svg",
+    main: "/icons/OSD Green.png",
     mainNoText: "/icons/OSDLogoNoText.svg",
     fullWhite: "/icons/OSWFullWhite.svg",
     fullBlack: "/icons/OSWFullBlack.svg",
@@ -388,7 +388,8 @@ export const TICKETS = [
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806"
   },
   {
-    name: "Micro Sponsor (Pack of 3 Golden Ticket)",
+    name: "Micro Sponsor",
+    subtitle: "Pack of 3 Golden Ticket",
     price: "₹29,999",
     originalPrice: null,
     description:
@@ -565,17 +566,17 @@ export const COMMUNITY_PARTNERS = [
 export const SPONSOR_TIERS = {
   gold: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSDLogo.svg", website: "#" },
+    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
   ],
   silver: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSDLogo.svg", website: "#" },
+    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
   ],
   bronze: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
-    { name: "OSW", logo: "/icons/OSDLogo.svg", website: "#" },
+    { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
     { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
   ]
 };

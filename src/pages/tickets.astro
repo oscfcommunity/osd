@@ -13,7 +13,7 @@ import "../styles/global.css";
   <section class="pt-12 pb-8 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
       <div class="mb-4 flex justify-center">
-        <img src="/icons/OSDLogo.svg" alt="Open Source Day Logo" class="w-12 h-12 md:w-16 md:h-16" />
+        <img src="/icons/OSD Green.png" alt="Open Source Day Logo" class="w-12 h-12 md:w-16 md:h-16" />
       </div>
       <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">Get Your Tickets</h1>
       <div class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"></div>
@@ -25,12 +25,12 @@ import "../styles/global.css";
 
   <!-- Pricing Cards -->
   <section class="py-20 px-4 bg-white">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto ">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         {
           TICKETS.map((ticket) => (
             <div
-              class={`relative light-card rounded-xl p-8 transition-all duration-300 hover:scale-102 ${
+              class={`relative light-card rounded-xl p-8 transition-all duration-300 hover:scale-102 flex flex-col justify-between items-center ${
                 ticket.popular
                   ? "border-green-500 ring-2 ring-green-500/20"
                   : "hover:border-green-500/40"
@@ -48,6 +48,7 @@ import "../styles/global.css";
                 <h3 class="text-2xl font-bold text-black mb-2">
                   {ticket.name}
                 </h3>
+                {ticket.subtitle && <h3 class="text-md text-green-500">{ticket.subtitle}</h3>}
                 <p class="text-black mb-4">{ticket.description}</p>
                 <div class="flex items-center justify-center space-x-2">
                   {ticket.originalPrice && (
@@ -115,77 +116,6 @@ import "../styles/global.css";
     </div>
   </section>
 
-  <!-- Group Discounts -->
-  <!-- <section class="py-20 px-4 bg-gradient-to-r from-gray-900/50 to-black/50">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-bold text-white mb-6">Group Discounts</h2>
-        <p class="text-xl text-black-300">
-          Bring your team and save! Special pricing for groups of 5 or more.
-        </p>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="text-center p-6 bg-gray-900/50 rounded-xl border border-green-500/20">
-          <h3 class="text-2xl font-bold text-green-400 mb-2">5-9 People</h3>
-          <p class="text-3xl font-bold text-white mb-2">15% Off</p>
-          <p class="text-black-300">Perfect for small teams</p>
-        </div>
-        <div class="text-center p-6 bg-gray-900/50 rounded-xl border border-green-500/20">
-          <h3 class="text-2xl font-bold text-green-400 mb-2">10-19 People</h3>
-          <p class="text-3xl font-bold text-white mb-2">25% Off</p>
-          <p class="text-black-300">Great for departments</p>
-        </div>
-        <div class="text-center p-6 bg-gray-900/50 rounded-xl border border-green-500/20">
-          <h3 class="text-2xl font-bold text-green-400 mb-2">20+ People</h3>
-          <p class="text-3xl font-bold text-white mb-2">35% Off</p>
-          <p class="text-black-300">Enterprise pricing</p>
-        </div>
-      </div>
-      
-      <div class="text-center mt-12">
-        <a
-          href="https://konfhub.com/open-source-day-2025#group"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 glow-effect hover:scale-105 transform"
-        >
-          Contact for Group Pricing
-        </a>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- Student Discount -->
-  <!-- <section class="py-20 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-white mb-6">Student Discount</h2>
-      <p class="text-xl text-black-300 mb-8">
-        Full-time students get 50% off all ticket types. Verification required.
-      </p>
-      <div class="bg-gray-900/50 rounded-xl border border-green-500/20 p-8">
-        <h3 class="text-2xl font-bold gradient-text mb-4">Student Pricing</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div>
-            <p class="text-lg text-black-300">Student Discount</p>
-            <p class="text-2xl font-bold text-green-400">₹99</p>
-          </div>
-          <div>
-            <p class="text-lg text-black-300">General (Student)</p>
-            <p class="text-2xl font-bold text-green-400">₹99</p>
-          </div>
-        </div>
-        <a
-          href="https://konfhub.com/open-source-day-2025#student"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black px-8 py-3 rounded-full font-bold transition-all duration-200"
-        >
-          Apply for Student Discount
-        </a>
-      </div>
-    </div>
-  </section> -->
 
   <!-- Countdown appears here -->
   <div class="mt-5 py-16 px-4 bg-gradient-to-r from-green-50 to-green-100">

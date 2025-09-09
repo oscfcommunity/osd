@@ -1,73 +1,111 @@
 ---
-import Layout from '../components/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
-import Hero from '../components/Hero.jsx';
-import ScrollAnimations from '../components/ScrollAnimations.jsx';
-import Footer from '../components/Footer.jsx';
-import Counter from '../components/Counter';
-import '../styles/global.css';
+import Layout from "../components/Layout.astro";
+import Navigation from "../components/Navigation.jsx";
+import Hero from "../components/Hero.jsx";
+import ScrollAnimations from "../components/ScrollAnimations.jsx";
+import Footer from "../components/Footer.jsx";
+import Counter from "../components/Counter";
+import "../styles/global.css";
 import CountdownTimer from "../components/CountdownTimer.jsx";
-import SponsorsGrid from '../components/SponsorsGrid.jsx';
-import { SPEAKERS, VENUE, TICKETS, SPONSOR_TIERS } from '../config.ts';
-import MarqueeLogos from '../components/MarqueeLogos.jsx';
-import { COMMUNITY_PARTNERS } from '../config.ts';
-import OptimizedImage from '../components/OptimizedImage.astro';
-
+import SponsorsGrid from "../components/SponsorsGrid.jsx";
+import { SPEAKERS, VENUE, TICKETS, SPONSOR_TIERS } from "../config.ts";
+import MarqueeLogos from "../components/MarqueeLogos.jsx";
+import { COMMUNITY_PARTNERS } from "../config.ts";
+import OptimizedImage from "../components/OptimizedImage.astro";
 ---
 
 <Layout title="Open Source Day 2025 - Celebrate Innovation">
   <Navigation client:load />
   <Hero client:load />
   <ScrollAnimations client:load />
-  
+
   <!-- About Section -->
   <section class="py-20 px-4 bg-gradient-to-r from-green-50 to-green-100">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 animate-fade-up">
         <div class="mb-8 flex justify-center">
-          <OptimizedImage src="/icons/OSDLogo.svg" alt="Open Source Day Logo" class="w-16 h-16 md:w-20 md:h-20" loading="eager" />
+          <OptimizedImage
+            src="/public/icons/OSD Green.png"
+            alt="Open Source Day Logo"
+            class="w-16 h-16 md:w-20 md:h-20"
+            loading="eager"
+          />
         </div>
-        <h2 class="text-4xl md:text-6xl font-bold gradient-text mb-6">About Open Source Day</h2>
+        <h2 class="text-4xl md:text-6xl font-bold gradient-text mb-6">
+          About Open Source Day
+        </h2>
         <p class="text-xl text-black max-w-3xl mx-auto">
-          Open Source Day 2025 is a community-driven event celebrating the power of open source software. 
-          Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.
+          Open Source Day 2025 is a community-driven event celebrating the power
+          of open source software. Join developers, maintainers, and enthusiasts
+          for a day of learning, collaboration, and innovation.
         </p>
       </div>
-      
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger">
-          <div class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        <div
+          class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger"
+        >
+          <div
+            class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-black mb-4">Learn & Contribute</h3>
           <p class="text-black">
-            Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.
+            Discover new technologies, learn best practices, and get hands-on
+            experience contributing to real open source projects.
           </p>
         </div>
-        
-        <div class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger">
-          <div class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+
+        <div
+          class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger"
+        >
+          <div
+            class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-black mb-4">Connect</h3>
           <p class="text-black">
-            Network with fellow developers, open source maintainers, and tech enthusiasts from the Indian tech community.
+            Network with fellow developers, open source maintainers, and tech
+            enthusiasts from the Indian tech community.
           </p>
         </div>
-        
-        <div class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger">
-          <div class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center">
-            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+
+        <div
+          class="light-card p-8 rounded-xl transition-all duration-300 animate-stagger"
+        >
+          <div
+            class="w-12 h-12 bg-green-500 rounded-lg mb-6 flex items-center justify-center"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-2xl font-bold text-black mb-4">Celebrate</h3>
           <p class="text-black">
-            Celebrate the achievements of the open source community and discover exciting new projects and opportunities.
+            Celebrate the achievements of the open source community and discover
+            exciting new projects and opportunities.
           </p>
         </div>
       </div>
@@ -76,14 +114,15 @@ import OptimizedImage from '../components/OptimizedImage.astro';
 
   <!-- Stats Section moved to bottom -->
 
-
-
   <!-- CTA Section -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto text-center animate-fade-up">
-      <h2 class="text-4xl md:text-5xl font-bold text-black mb-6">Ready to Join Us?</h2>
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-6">
+        Ready to Join Us?
+      </h2>
       <p class="text-xl text-black mb-8">
-        Don't miss out on this amazing open source community event. Register now!
+        Don't miss out on this amazing open source community event. Register
+        now!
       </p>
       <a
         href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir"
@@ -96,212 +135,293 @@ import OptimizedImage from '../components/OptimizedImage.astro';
     </div>
   </section>
 
-
   <section class="py-20 px-4 bg-gradient-to-r from-green-50 to-green-100">
-        <div class="max-w-6xl mx-auto text-center">
-          <h2 class="text-4xl md:text-5xl font-bold text-black mb-16">Impact in Progress</h2>
-          <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
-
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={600} client:visible />+
-              </div>
-              <div class="text-black">Expected Attendees</div>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={20} client:visible />+
-              </div>
-              <div class="text-black">Expert Speakers</div>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={7} client:visible />+
-              </div>
-              <div class="text-black">Technical Sessions</div>
-            </div>
-            
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={2} client:visible />+
-              </div>
-              <div class="text-black">Panel Discussion</div>
-            </div>
-           
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={1} client:visible />
-              </div>
-              <div class="text-black">Workshop</div>
-            </div>
-
-            <div class="flex flex-col items-center">
-              <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-                <Counter target={1} client:visible />
-              </div>
-              <div class="text-black">Full Day Event</div>
-            </div>
-
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-bold text-black mb-16">
+        Impact in Progress
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={600} client:visible />+
           </div>
+          <div class="text-black">Expected Attendees</div>
         </div>
-      </section>
 
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={20} client:visible />+
+          </div>
+          <div class="text-black">Expert Speakers</div>
+        </div>
 
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={7} client:visible />+
+          </div>
+          <div class="text-black">Technical Sessions</div>
+        </div>
 
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={2} client:visible />+
+          </div>
+          <div class="text-black">Panel Discussion</div>
+        </div>
 
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={1} client:visible />
+          </div>
+          <div class="text-black">Workshop</div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={1} client:visible />
+          </div>
+          <div class="text-black">Full Day Event</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Sponsors Preview -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 animate-fade-up">
-        <h2 class="text-3xl md:text-4xl font-bold">Sponsors & Community Partners</h2>
-        <p class="text-gray-600 mt-2">Thank you to our partners who make this event possible.</p>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          Sponsors & Community Partners
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Thank you to our partners who make this event possible.
+        </p>
       </div>
     </div>
 
     <!-- Sponsors preview grid (limit to 9 items -> 3 columns => 2-3 rows) -->
     <div class="w-full">
       <!-- Tiered Sponsors Preview -->
-  <div class="py-6 bg-white">
-
+      <div class="py-6 bg-white">
         <!-- Platinum / Gold -->
         <div class="max-w-6xl mx-auto px-4 mb-6">
           <div class="mb-4 text-center">
-            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">Gold Sponsors</h4>
-            <span class="inline-block align-middle bg-green-100 text-green-700 text-sm px-2 py-1 rounded-full">Top</span>
-            <div class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-green-300 to-green-500 opacity-90"></div>
+            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">
+              Gold Sponsors
+            </h4>
+            <span
+              class="inline-block align-middle bg-green-100 text-green-700 text-sm px-2 py-1 rounded-full"
+              >Top</span
+            >
+            <div
+              class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-green-300 to-green-500 opacity-90"
+            >
+            </div>
           </div>
-          <SponsorsGrid client:load sponsors={SPONSOR_TIERS.gold.slice(0,3)} columns={3} maxHeight={120} />
+          <SponsorsGrid
+            client:load
+            sponsors={SPONSOR_TIERS.gold.slice(0, 3)}
+            columns={3}
+            maxHeight={120}
+          />
         </div>
 
         <!-- Silver -->
         <div class="max-w-6xl mx-auto px-4 mb-6">
           <div class="mb-4 text-center">
-            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">Silver Sponsors</h4>
-            <span class="inline-block align-middle bg-green-50 text-green-700 text-sm px-2 py-1 rounded-full">Partner</span>
-            <div class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 opacity-80"></div>
+            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">
+              Silver Sponsors
+            </h4>
+            <span
+              class="inline-block align-middle bg-green-50 text-green-700 text-sm px-2 py-1 rounded-full"
+              >Partner</span
+            >
+            <div
+              class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-gray-300 to-gray-400 opacity-80"
+            >
+            </div>
           </div>
-          <SponsorsGrid client:load sponsors={SPONSOR_TIERS.silver.slice(0,3)} columns={3} maxHeight={110} />
+          <SponsorsGrid
+            client:load
+            sponsors={SPONSOR_TIERS.silver.slice(0, 3)}
+            columns={3}
+            maxHeight={110}
+          />
         </div>
 
         <!-- Bronze / Community -->
         <div class="max-w-6xl mx-auto px-4">
           <div class="mb-4 text-center">
-            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">Bronze Sponsors</h4>
-            <span class="inline-block align-middle bg-yellow-50 text-yellow-700 text-sm px-2 py-1 rounded-full">Support</span>
-            <div class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-yellow-200 to-yellow-400 opacity-80"></div>
+            <h4 class="text-xl font-semibold text-gray-800 inline-block mr-2">
+              Bronze Sponsors
+            </h4>
+            <span
+              class="inline-block align-middle bg-yellow-50 text-yellow-700 text-sm px-2 py-1 rounded-full"
+              >Support</span
+            >
+            <div
+              class="w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-yellow-200 to-yellow-400 opacity-80"
+            >
+            </div>
           </div>
-          <SponsorsGrid client:load sponsors={SPONSOR_TIERS.bronze.slice(0,3)} columns={3} maxHeight={100} />
+          <SponsorsGrid
+            client:load
+            sponsors={SPONSOR_TIERS.bronze.slice(0, 3)}
+            columns={3}
+            maxHeight={100}
+          />
         </div>
       </div>
 
       <div class="py-8 bg-white">
         <div class="max-w-6xl mx-auto px-4 text-center">
-          <h3 class="text-lg font-semibold mb-2 text-gray-800">Community Partners</h3>
-          <div class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-200 to-green-400"></div>
+          <h3 class="text-lg font-semibold mb-2 text-gray-800">
+            Community Partners
+          </h3>
+          <div
+            class="w-24 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-200 to-green-400"
+          >
+          </div>
         </div>
         <div class="w-full">
-          <MarqueeLogos client:load logos={COMMUNITY_PARTNERS} duration={120} height={140} itemMinWidth={260} />
+          <MarqueeLogos
+            client:load
+            logos={COMMUNITY_PARTNERS}
+            duration={120}
+            height={140}
+            itemMinWidth={260}
+          />
         </div>
       </div>
 
       <div class="text-center mt-4 py-4">
-        <a href="/sponsors" class="text-green-600 font-semibold hover:underline">See all sponsors</a>
+        <a href="/sponsors" class="text-green-600 font-semibold hover:underline"
+          >See all sponsors</a
+        >
       </div>
 
       <!-- Speakers Preview -->
       <div class="py-12 bg-green-50">
         <div class="max-w-6xl mx-auto px-4 text-center mb-6">
           <h3 class="text-2xl font-bold">Featured Speakers</h3>
-          <p class="text-gray-600 mt-2">Hear from our expert speakers — a preview of the lineup.</p>
+          <p class="text-gray-600 mt-2">
+            Hear from our expert speakers — a preview of the lineup.
+          </p>
         </div>
         <div class="max-w-6xl mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            {SPEAKERS.slice(0,3).map((sp) => (
-              <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                <OptimizedImage src={sp.image} alt={sp.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" />
-                <h4 class="font-semibold text-lg">{sp.name}</h4>
-                <div class="text-sm text-gray-600 mb-2">{sp.title}</div>
-                <p class="text-sm text-gray-700">{sp.talk}</p>
-              </div>
-            ))}
-          </div>
-
-          {SPEAKERS.length > 3 && (
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {SPEAKERS.slice(3).map((sp) => (
+            {
+              SPEAKERS.slice(0, 3).map((sp) => (
                 <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                  <OptimizedImage src={sp.image} alt={sp.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" />
+                  <OptimizedImage
+                    src={sp.image}
+                    alt={sp.name}
+                    class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                  />
                   <h4 class="font-semibold text-lg">{sp.name}</h4>
                   <div class="text-sm text-gray-600 mb-2">{sp.title}</div>
                   <p class="text-sm text-gray-700">{sp.talk}</p>
                 </div>
-              ))}
-            </div>
-          )}
+              ))
+            }
+          </div>
+
+          {
+            SPEAKERS.length > 3 && (
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {SPEAKERS.slice(3).map((sp) => (
+                  <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                    <OptimizedImage
+                      src={sp.image}
+                      alt={sp.name}
+                      class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                    />
+                    <h4 class="font-semibold text-lg">{sp.name}</h4>
+                    <div class="text-sm text-gray-600 mb-2">{sp.title}</div>
+                    <p class="text-sm text-gray-700">{sp.talk}</p>
+                  </div>
+                ))}
+              </div>
+            )
+          }
         </div>
       </div>
 
       <!-- Venue & Tickets -->
-  <div class="py-8 bg-white">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div class="py-8 bg-white">
+        <div
+          class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
+        >
           <div class="bg-green-50 p-6 rounded-lg">
             <h3 class="text-xl font-bold mb-2">Venue</h3>
             <div class="text-gray-700 mb-4">{VENUE.name}</div>
             <div class="text-gray-600">{VENUE.address}</div>
             <p class="text-gray-700 mt-4">{VENUE.description}</p>
             <div class="mt-4 text-sm text-gray-600">
-              <strong>Transport:</strong> {VENUE.transport.publicTransit}
+              <strong>Transport:</strong>
+              {VENUE.transport.publicTransit}
             </div>
           </div>
 
-          <div class="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg">
+          <div
+            class="bg-gradient-to-r from-green-50 to-green-100 p-6 rounded-lg"
+          >
             <h3 class="text-xl font-bold mb-2">Tickets</h3>
             <div class="grid grid-cols-1 gap-4">
-              {TICKETS.slice(0,2).map((t) => (
-                <div class="bg-white p-4 rounded-lg flex justify-between items-center">
-                  <div>
-                    <div class="font-semibold">{t.name}</div>
-                    <div class="text-sm text-gray-600">{t.description}</div>
+              {
+                TICKETS.slice(0, 2).map((t) => (
+                  <div class="bg-white p-4 rounded-lg flex justify-between items-center">
+                    <div>
+                      <div class="font-semibold">{t.name}</div>
+                      <div class="text-sm text-gray-600">{t.description}</div>
+                    </div>
+                    <div class="text-right">
+                      <div class="font-bold">{t.price}</div>
+                      <a
+                        class="text-sm text-green-600"
+                        href={t.konfhubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Buy
+                      </a>
+                    </div>
                   </div>
-                  <div class="text-right">
-                    <div class="font-bold">{t.price}</div>
-                    <a class="text-sm text-green-600" href={t.konfhubUrl} target="_blank" rel="noopener noreferrer">Buy</a>
-                  </div>
-                </div>
-              ))}
+                ))
+              }
 
-              {TICKETS.length > 2 && (
-                <div class="mt-2 text-center">
-                  <a href="/tickets" class="inline-block text-green-700 px-4 py-2 rounded text-sm font-medium">View more tickets</a>
-                </div>
-              )}
+              {
+                TICKETS.length > 2 && (
+                  <div class="mt-2 text-center">
+                    <a
+                      href="/tickets"
+                      class="inline-block text-green-700 px-4 py-2 rounded text-sm font-medium"
+                    >
+                      View more tickets
+                    </a>
+                  </div>
+                )
+              }
             </div>
           </div>
         </div>
       </div>
-      
     </div>
   </section>
 
-
-
   <!-- Footer -->
-      <!-- Stats Section (moved here so it animates later) -->
+  <!-- Stats Section (moved here so it animates later) -->
 
-   
-        <!-- Countdown appears here -->
-        <div class="mt-4 py-10 px-4 bg-gradient-to-r from-green-50 to-green-100">
-  <div class="max-w-5xl mx-auto text-center">
-    <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-10">
-      Countdown to the Event 🚀
-    </h3>
+  <!-- Countdown appears here -->
+  <div class="mt-4 py-10 px-4 bg-gradient-to-r from-green-50 to-green-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-10">
+        Countdown to the Event 🚀
+      </h3>
 
-    <CountdownTimer client:load />
+      <CountdownTimer client:load />
+    </div>
   </div>
-</div>
 
   <Footer client:load />
 </Layout>
