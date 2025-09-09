@@ -303,7 +303,7 @@ export const SPEAKERS = [
 
 export const TICKETS = [
   {
-    name: "Regular Ticket",
+    name: "Early Bird Ticket",
     price: "₹199",
     originalPrice: null,
     description:
@@ -317,7 +317,25 @@ export const TICKETS = [
     popular: false,
     available: true,
     konfhubUrl:
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
+  },
+  {
+    name: "Regular Ticket",
+    price: "₹499",
+    originalPrice: null,
+    description:
+      "Full-access to conference. Lunch. Keynotes, Panels. OSD Goodies.",
+    features: [
+      "Full-access to conference",
+      "Lunch",
+      "Keynotes, Panels",
+      "OSD Goodies",
+    ],
+    popular: false,
+    available: false,
+    konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
+    linkText: "Coming soon",
   },
   {
     name: "Community Fan",
