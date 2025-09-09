@@ -1,5 +1,6 @@
 ---
 import Layout from "../components/Layout.astro";
+import { Image } from "astro:assets";
 import Navigation from "../components/Navigation.jsx";
 import Footer from "../components/Footer.jsx";
 import "../styles/global.css";
@@ -55,10 +56,11 @@ const getLinkedin = (m: any): string | null => {
                       class="block h-full"
                     >
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <img
+                        <Image
                           src={m.image}
                           alt={m.name}
                           class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
+                          width={400}
                         />
                         <h3 class="font-semibold text-lg">{m.name}</h3>
                         <div class="text-sm text-gray-600">
@@ -70,10 +72,11 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                      <img
+                      <Image
                         src={m.image}
                         alt={m.name}
                         class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
+                        width={400}
                       />
                       <h3 class="font-semibold text-lg">{m.name}</h3>
                       <div class="text-sm text-gray-600">
@@ -94,36 +97,20 @@ const getLinkedin = (m: any): string | null => {
             <div>
               <h2 class="text-2xl font-semibold mb-6">Mentor Board</h2>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {TEAM.mentors
-                  .filter((m) => !m.hide)
-                  .map((m) =>
-                    getLinkedin(m) ? (
-                      <a
-                        href={getLinkedin(m)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="block h-full"
-                      >
-                        <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                          <img
-                            src={m.image}
-                            alt={m.name}
-                            class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
-                          />
-                          <h3 class="font-semibold">{m.name}</h3>
-                          <div class="text-sm text-gray-600">
-                            {getRoles(m).map((r: string) => (
-                              <div>{r}</div>
-                            ))}
-                          </div>
-                        </div>
-                      </a>
-                    ) : (
+                {TEAM.mentors.map((m) =>
+                  getLinkedin(m) ? (
+                    <a
+                      href={getLinkedin(m)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="block h-full"
+                    >
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <img
+                        <Image
                           src={m.image}
                           alt={m.name}
                           class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                          width={400}
                         />
                         <h3 class="font-semibold">{m.name}</h3>
                         <div class="text-sm text-gray-600">
@@ -132,8 +119,24 @@ const getLinkedin = (m: any): string | null => {
                           ))}
                         </div>
                       </div>
-                    )
-                  )}
+                    </a>
+                  ) : (
+                    <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
+                      <Image
+                        src={m.image}
+                        alt={m.name}
+                        class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                        width={400}
+                      />
+                      <h3 class="font-semibold">{m.name}</h3>
+                      <div class="text-sm text-gray-600">
+                        {getRoles(m).map((r: string) => (
+                          <div>{r}</div>
+                        ))}
+                      </div>
+                    </div>
+                  )
+                )}
               </div>
             </div>
           )
@@ -153,10 +156,11 @@ const getLinkedin = (m: any): string | null => {
                       class="block h-full"
                     >
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <img
+                        <Image
                           src={m.image}
                           alt={m.name}
                           class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
+                          width={400}
                         />
                         <h3 class="font-semibold">{m.name}</h3>
                         <div class="text-sm text-gray-600">
@@ -168,10 +172,11 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                      <img
+                      <Image
                         src={m.image}
                         alt={m.name}
                         class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
+                        width={400}
                       />
                       <h3 class="font-semibold">{m.name}</h3>
                       <div class="text-sm text-gray-600">
@@ -201,10 +206,11 @@ const getLinkedin = (m: any): string | null => {
                       class="block h-full"
                     >
                       <div class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <img
+                        <Image
                           src={m.image}
                           alt={m.name}
                           class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
+                          width={400}
                         />
                         <div class="font-medium">{m.name}</div>
                         <div class="text-sm text-gray-600">
@@ -216,10 +222,11 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-4 rounded-lg shadow-sm text-center h-full">
-                      <img
+                      <Image
                         src={m.image}
                         alt={m.name}
                         class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
+                        width={400}
                       />
                       <div class="font-medium">{m.name}</div>
                       <div class="text-sm text-gray-600">

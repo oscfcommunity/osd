@@ -1,5 +1,20 @@
 import OSDGreen from "@/assets/icons/OSDGreen.png";
 import OSWBlack from "@/assets/icons/OSWBlack.svg";
+import BhargavPithva from "@/assets/team/BhargavPithva.jpg";
+import DhananiTanvir from "@/assets/team/DhananiTanvir.jpg";
+import ViralParmar from "@/assets/team/ViralParmar.jpg";
+import NeelShah from "@/assets/team/NeelShah.jpg";
+import JigneshGadhavi from "@/assets/team/JigneshGadhavi.jpg";
+import FalgunBhalsod from "@/assets/team/FalgunBhalsod.jpg";
+import DhavalDesai from "@/assets/team/DhavalDesai.jpg";
+import RinkeshBansal from "@/assets/team/RinkeshBansal.png";
+import AshishTiwari from "@/assets/team/AshishTiwari.jpg";
+// import SurajNath from "@/assets/team/SurajNath.jpg";
+import MehulPatel from "@/assets/team/MehulPatel.jpg";
+import HarshManvar from "@/assets/team/HarshManvar.png";
+import NiravShah from "@/assets/team/NiravShah.png";
+import PrathameshChavan from "@/assets/team/PrathameshChavan.jpg";
+import RohitChavda from "@/assets/team/RohitChavda.jpg";
 
 export const SITE = {
   title: "OpenSourceDay 2025",
@@ -606,7 +621,7 @@ export const TEAM = {
       name: "Dr. Rinkesh Bansal",
       roles: ["Program Director", "Master Inventor at IBM"],
       linkedin: "https://www.linkedin.com/in/rinkesh-bansal-09798843/",
-      image: "/Advisory Council/Rinkesh Bansal.png",
+      image: RinkeshBansal,
     },
   ],
   mentors: [
@@ -620,7 +635,7 @@ export const TEAM = {
         "Google Developer Expert",
       ],
       linkedin: "https://www.linkedin.com/in/nomadicmehul/",
-      image: "/Mentor Board/Mehul Patel.jpg",
+      image: MehulPatel,
     },
     {
       name: "Ashish Tiwari",
@@ -629,7 +644,7 @@ export const TEAM = {
         "Search Specialist @ Elastic India",
       ],
       linkedin: "https://www.linkedin.com/in/ashishtiwari93/",
-      image: "/Mentor Board/Ashish Tiwari.jpg",
+      image: AshishTiwari,
     },
     {
       name: "Prathamesh Chavan",
@@ -639,13 +654,13 @@ export const TEAM = {
         "3X Wrangler at MozFest",
       ],
       linkedin: "https://www.linkedin.com/in/prathameshpchavan/",
-      image: "/Mentor Board/Prathamesh Chavan.jpg",
+      image: PrathameshChavan,
     },
     {
       name: "Harsh Manvar",
       roles: ["CNCF Ambassador", "Docker Captain", "Google Developer Expert"],
       linkedin: "https://www.linkedin.com/in/harsh-manvar-64a30aa3/",
-      image: "/Mentor Board/harsh-manvar-1.avif",
+      image: HarshManvar,
     },
     {
       name: "Nirav Shah",
@@ -654,43 +669,43 @@ export const TEAM = {
         "AWS Community Builder",
       ],
       linkedin: "https://www.linkedin.com/in/nirav-eternal/",
-      image: "/Mentor Board/Nirav Shah.png",
+      image: NiravShah,
     },
-    {
-      name: "Suraj Nath",
-      roles: ["Senior Software Engineer at Grafana Labs"],
-      linkedin: "https://www.linkedin.com/in/electron0zero/",
-      image: "/Mentor Board/Suraj Nath.jpg",
-      hide: true, // Hidden for now
-    },
-    {
-      name: "Kalyan Prasad",
-      roles: ["Advisor, Kaggle", "Organizer, PyCon India"],
-      linkedin: "https://www.linkedin.com/in/itskpflow/",
-      image: "/partners/Kalyan-Prasad.jpg",
-      hide: true, // Hidden for now (no Mentor Board image available)
-    },
-    {
-      name: "Vishal Rajpurohit",
-      roles: ["CTO, Viitor Cloud", "Organizer Laracon India"],
-      linkedin: "https://www.linkedin.com/in/vishalrajpurohit/",
-      image: "/partners/Vishal-Rajpurohit.jpg",
-      hide: true, // Hidden for now
-    },
-    {
-      name: "Ram Iyenger",
-      roles: ["Chief Evangelist at Cloud Foundry Foundation"],
-      linkedin: "https://www.linkedin.com/in/ram-iyengar/",
-      image: "/partners/Ram-Iyenger.jpg",
-      hide: true, // Hidden for now
-    },
-    {
-      name: "Santosh Yadav",
-      roles: ["Staff Engineer, Celonis"],
-      linkedin: "https://www.linkedin.com/in/santoshyadavdev/",
-      image: "/partners/Santosh-Yadav.jpg",
-      hide: true, // Hidden for now
-    },
+    // {
+    //   name: "Suraj Nath",
+    //   roles: ["Senior Software Engineer at Grafana Labs"],
+    //   linkedin: "https://www.linkedin.com/in/electron0zero/",
+    //   image: SurajNath,
+    //   hide: true, // Hidden for now
+    // },
+    // {
+    //   name: "Kalyan Prasad",
+    //   roles: ["Advisor, Kaggle", "Organizer, PyCon India"],
+    //   linkedin: "https://www.linkedin.com/in/itskpflow/",
+    //   image: "/partners/Kalyan-Prasad.jpg",
+    //   hide: true, // Hidden for now (no Mentor Board image available)
+    // },
+    // {
+    //   name: "Vishal Rajpurohit",
+    //   roles: ["CTO, Viitor Cloud", "Organizer Laracon India"],
+    //   linkedin: "https://www.linkedin.com/in/vishalrajpurohit/",
+    //   image: "/partners/Vishal-Rajpurohit.jpg",
+    //   hide: true, // Hidden for now
+    // },
+    // {
+    //   name: "Ram Iyenger",
+    //   roles: ["Chief Evangelist at Cloud Foundry Foundation"],
+    //   linkedin: "https://www.linkedin.com/in/ram-iyengar/",
+    //   image: "/partners/Ram-Iyenger.jpg",
+    //   hide: true, // Hidden for now
+    // },
+    // {
+    //   name: "Santosh Yadav",
+    //   roles: ["Staff Engineer, Celonis"],
+    //   linkedin: "https://www.linkedin.com/in/santoshyadavdev/",
+    //   image: "/partners/Santosh-Yadav.jpg",
+    //   hide: true, // Hidden for now
+    // },
   ],
   core: [
     {
@@ -702,7 +717,7 @@ export const TEAM = {
         "Co-organizer at Open Source Weekend",
       ],
       linkedin: "https://www.linkedin.com/in/viral-parmar-8402a04a/",
-      image: "/Core Team/Viral ParmarDP.jpg",
+      image: ViralParmar,
     },
     {
       name: "Neel Shah",
@@ -711,25 +726,25 @@ export const TEAM = {
         "Co-organizer at Open Source Weekend",
       ],
       linkedin: "https://www.linkedin.com/in/neelcshah/",
-      image: "/Core Team/Neel Shah.jpeg",
+      image: NeelShah,
     },
     {
       name: "Dhaval Desai",
       roles: ["Product Manager at Gluu"],
       linkedin: "https://www.linkedin.com/in/dhavaltdesai/",
-      image: "/Core Team/Dhaval Desai.jpg",
+      image: DhavalDesai,
     },
     {
       name: "Bhargav Pithva",
       roles: ["Technical Project Manager at Rysun Labs"],
       linkedin: "https://www.linkedin.com/in/bhargavpithva/",
-      image: "/Core Team/Bhargav Pithva.jpg",
+      image: BhargavPithva,
     },
     {
       name: "Tanvir Dhanani",
       roles: ["Backend Developer at IBM"],
       linkedin: "https://www.linkedin.com/in/dhanani-tanvir-aa4076118/",
-      image: "/Core Team/IMG_20250728_214844 - Dhanani Tanvir.jpg",
+      image: DhananiTanvir,
     },
     {
       name: "Jignesh Gadhavi",
@@ -738,20 +753,20 @@ export const TEAM = {
         "Co-organizer at GDG Cloud Gandhinagar",
       ],
       linkedin: "https://www.linkedin.com/in/jigneshkumar-gadhavi/",
-      image: "/Core Team/Jignesh Gadhavi.jpeg",
+      image: JigneshGadhavi,
     },
     {
       name: "Falgun Bhalsod",
       roles: ["DevOps Engineer at Yellow Panther"],
       linkedin: "https://www.linkedin.com/in/falgunbhalsod/",
-      image: "/Core Team/Falgun Bhalsod.jpeg",
+      image: FalgunBhalsod,
     },
   ],
   volunteers: [
     {
       name: "Chavda Rohit",
       role: "Website Engineer",
-      image: "/Volunteer/Rohit_chavda.jpg",
+      image: RohitChavda,
     },
   ],
 };
