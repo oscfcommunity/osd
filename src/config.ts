@@ -7,7 +7,7 @@ export const SITE = {
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://opensourceweekend.org",
   ogImage: "/images/OSWBlack.png",
-  icon: "/icons/OSD Green.png"
+  icon: "/icons/OSD Green.png",
 };
 
 export const eventSchedule = [
@@ -16,99 +16,99 @@ export const eventSchedule = [
     title: "Registration/Breakfast",
     speaker: "",
     type: "registration",
-    room: "Lobby/Food Court"
+    room: "Lobby/Food Court",
   },
   {
     time: "09:30 AM - 10:00 AM",
     title: "Warmup Activity",
     speaker: "",
     type: "activity",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "10:00 AM - 10:15 AM",
     title: "Welcome Note",
     speaker: "",
     type: "opening",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "10:15 AM - 10:45 AM",
     title: "Keynote",
     speaker: "",
     type: "keynote",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "10:45 AM - 11:30 AM",
     title: "Speaker 1",
     speaker: "",
     type: "talk",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "11:30 AM - 12:15 PM",
     title: "Speaker 2",
     speaker: "",
     type: "talk",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "12:15 PM - 01:00 PM",
     title: "Panel Discussion",
     speaker: "",
     type: "panel",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "01:00 PM - 02:00 PM",
     title: "Lunch",
     speaker: "",
     type: "break",
-    room: "Food Court"
+    room: "Food Court",
   },
   {
     time: "02:00 PM - 02:45 PM",
     title: "Speaker 3",
     speaker: "",
     type: "talk",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "02:45 PM - 03:30 PM",
     title: "Speaker 4",
     speaker: "",
     type: "talk",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "03:30 PM - 04:15 PM",
     title: "Panel Discussion",
     speaker: "",
     type: "panel",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "04:15 PM - 04:45 PM",
     title: "Closing Keynote",
     speaker: "",
     type: "keynote",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "04:45 PM - 05:00 PM",
     title: "Closing Remarks",
     speaker: "",
     type: "closing",
-    room: "Main Auditorium"
+    room: "Main Auditorium",
   },
   {
     time: "05:00 PM - 05:30 PM",
     title: "Goodies Distribution",
     speaker: "",
     type: "social",
-    room: "Exhibition Hall"
-  }
+    room: "Exhibition Hall",
+  },
 ];
 
 export const workshopSchedule = [];
@@ -121,14 +121,14 @@ export const BRANDING = {
     fullBlack: "/icons/OSWFullBlack.svg",
     white: "/icons/OSWWhite.svg",
     black: "/icons/OSWBlack.svg",
-    green: "/icons/OSD Green.png"
+    green: "/icons/OSD Green.png",
   },
   colors: {
     primary: "#22c55e",
     secondary: "#16a34a",
     dark: "#15803d",
-    light: "#dcfce7"
-  }
+    light: "#dcfce7",
+  },
 };
 
 export const EVENT = {
@@ -144,25 +144,24 @@ export const EVENT = {
     expectedAttendees: "600+",
     speakers: "20+",
     workshops: "15+",
-    sponsors: "20+"
-  }
+    sponsors: "20+",
+  },
 };
 
 export const NAVIGATION = {
   items: [
-    { name: "Home", href: "/" },
     { name: "Speakers", href: "/speakers" },
-    { name: "Venue", href: "/venue" },
-    { name: "Tickets", href: "/tickets" },
-    { name: "Past Events", href: "/past-events" },
     { name: "Schedule", href: "/schedule" },
+    { name: "Team", href: "/team" },
+    { name: "Tickets", href: "/tickets" },
     { name: "Sponsors", href: "/sponsors" },
-    { name: "Team", href: "/team" }
+    { name: "Venue", href: "/venue" },
+    { name: "Past Events", href: "/past-events" },
   ],
   cta: {
     text: "Register Now",
-    url: "https://konfhub.com/open-source-day-2025"
-  }
+    url: "https://konfhub.com/open-source-day-2025",
+  },
 };
 
 export const SOCIAL_LINKS = {
@@ -172,7 +171,7 @@ export const SOCIAL_LINKS = {
   linkedin: "https://www.linkedin.com/company/open-source-weekend/",
   medium: "https://medium.com/@opensourceweekend",
   github: "https://github.com/opensourceweekend",
-  discord: "https://discord.gg/opensourceweekend"
+  discord: "https://discord.gg/opensourceweekend",
 };
 
 export const CONTACT = {
@@ -183,9 +182,9 @@ export const CONTACT = {
     venue: "VENUE - TBA",
     city: "Ahmedabad",
     state: "Gujarat",
-    country: "India"
+    country: "India",
   },
-  emergencyPhone: "+91 8980808222"
+  emergencyPhone: "+91 8980808222",
 };
 
 export const HERO = {
@@ -193,20 +192,20 @@ export const HERO = {
     part1: "PEN",
     part2: "SOURCE",
     part3: "DAY",
-    year: "2025"
+    year: "2025",
   },
   subtitle:
     "Join us for a day of learning, networking, and celebrating open source innovation. Connect with developers, contribute to projects, and shape the future of technology.",
   buttons: {
     primary: {
       text: "Register Now",
-      url: "https://konfhub.com/open-source-day-2025"
+      url: "https://konfhub.com/open-source-day-2025",
     },
     secondary: {
       text: "Learn More",
-      url: "/about"
-    }
-  }
+      url: "/about",
+    },
+  },
 };
 
 export const ABOUT = {
@@ -218,21 +217,21 @@ export const ABOUT = {
       title: "Learn & Contribute",
       description:
         "Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.",
-      icon: "check"
+      icon: "check",
     },
     {
       title: "Connect",
       description:
         "Network with fellow developers, open source maintainers, and tech enthusiasts from the Indian tech community.",
-      icon: "users"
+      icon: "users",
     },
     {
       title: "Celebrate",
       description:
         "Celebrate the achievements of the open source community and discover exciting new projects and opportunities.",
-      icon: "star"
-    }
-  ]
+      icon: "star",
+    },
+  ],
 };
 
 export const SPEAKERS = [
@@ -242,7 +241,7 @@ export const SPEAKERS = [
     bio: "Open source advocate and maintainer of popular JavaScript libraries",
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    talk: "The Future of Open Source Collaboration"
+    talk: "The Future of Open Source Collaboration",
   },
   {
     name: "Marcus Rodriguez",
@@ -250,7 +249,7 @@ export const SPEAKERS = [
     bio: "Expert in cloud infrastructure and container orchestration",
     image:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    talk: "Scaling Open Source Projects"
+    talk: "Scaling Open Source Projects",
   },
   {
     name: "Dr. Aisha Patel",
@@ -258,7 +257,7 @@ export const SPEAKERS = [
     bio: "Leading researcher in machine learning and AI ethics",
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-    talk: "AI in Open Source: Opportunities and Challenges"
+    talk: "AI in Open Source: Opportunities and Challenges",
   },
   {
     name: "James Wilson",
@@ -266,7 +265,7 @@ export const SPEAKERS = [
     bio: "Serial entrepreneur and open source evangelist",
     image:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    talk: "Building Sustainable Open Source Communities"
+    talk: "Building Sustainable Open Source Communities",
   },
   {
     name: "Lisa Zhang",
@@ -274,7 +273,7 @@ export const SPEAKERS = [
     bio: "Cybersecurity expert specializing in open source security",
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    talk: "Security Best Practices in Open Source"
+    talk: "Security Best Practices in Open Source",
   },
   {
     name: "David Kumar",
@@ -282,8 +281,8 @@ export const SPEAKERS = [
     bio: "Infrastructure automation and CI/CD pipeline expert",
     image:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    talk: "Modern DevOps with Open Source Tools"
-  }
+    talk: "Modern DevOps with Open Source Tools",
+  },
 ];
 
 export const TICKETS = [
@@ -297,12 +296,12 @@ export const TICKETS = [
       "Full-access to conference",
       "Lunch",
       "Keynotes, Panels",
-      "OSD Goodies"
+      "OSD Goodies",
     ],
     popular: false,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800"
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
   },
   {
     name: "Community Fan",
@@ -316,12 +315,12 @@ export const TICKETS = [
       "Keynotes, Panels",
       "OSD Goodies",
       "Super Fan Goodies",
-      "Digital Certificate"
+      "Digital Certificate",
     ],
     popular: true,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805"
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805",
   },
   {
     name: "Supporter Ticket",
@@ -335,12 +334,12 @@ export const TICKETS = [
       "Keynotes, Panels",
       "OSD Goodies",
       "Supporter Exclusive goodies",
-      "Digital Certificate"
+      "Digital Certificate",
     ],
     popular: false,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56803"
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56803",
   },
   {
     name: "Silver Ticket",
@@ -357,12 +356,12 @@ export const TICKETS = [
       "Digital Certificate",
       "Shout out during the event",
       "Shout-out on Social Media",
-      "Networking Dinner with Speakers, sponsors, organizers and some special industry invitees"
+      "Networking Dinner with Speakers, sponsors, organizers and some special industry invitees",
     ],
     popular: false,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56804"
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56804",
   },
   {
     name: "Golden Ticket",
@@ -380,12 +379,12 @@ export const TICKETS = [
       "Networking Dinner with Speakers , sponsors , organizers and some special industry invitees",
       "Shout-out on Social Media",
       "Shout out during the event",
-      "Appreciation Memento from OSD"
+      "Appreciation Memento from OSD",
     ],
     popular: false,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806"
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806",
   },
   {
     name: "Micro Sponsor",
@@ -404,13 +403,13 @@ export const TICKETS = [
       "Networking Dinner with Speakers , sponsors , organizers and some special industry invitees",
       "Company Branding at relevant places",
       "Shout-out during the event",
-      "Appreciation Memento from OSD"
+      "Appreciation Memento from OSD",
     ],
     popular: false,
     available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56807"
-  }
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56807",
+  },
 ];
 
 export const VENUE = {
@@ -425,13 +424,13 @@ export const VENUE = {
     "Networking lounge and exhibition area",
     "High-speed WiFi throughout",
     "Professional A/V equipment",
-    "Accessible facilities"
+    "Accessible facilities",
   ],
   transport: {
     parking: "Free parking available. Exit 12A from Highway 101",
     publicTransit: "Bus and local transport options available, Train, Flights",
-    airport: "Sardar Vallabhbhai Patel International Airport (AMD)"
-  }
+    airport: "Sardar Vallabhbhai Patel International Airport (AMD)",
+  },
 };
 
 export const FOOTER = {
@@ -442,15 +441,15 @@ export const FOOTER = {
     { name: "Schedule", href: "/schedule" },
     { name: "Venue", href: "/venue" },
     { name: "Tickets", href: "/tickets" },
-    { name: "Past Events", href: "/past-events" }
+    { name: "Past Events", href: "/past-events" },
   ],
   legal: [
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
-    { name: "Code of Conduct", href: "/code-of-conduct" }
+    { name: "Code of Conduct", href: "/code-of-conduct" },
   ],
   copyright: "© {year} OpenSource Weekend. All rights reserved.",
-  credits: "Made with ❤️ by the OSW community"
+  credits: "Made with ❤️ by the OSW community",
 };
 
 export const META = {
@@ -464,10 +463,10 @@ export const META = {
     "developers",
     "technology",
     "innovation",
-    "community"
+    "community",
   ],
   author: "OpenSource Weekend",
-  twitterCard: "summary_large_image"
+  twitterCard: "summary_large_image",
 };
 
 export const SPONSORS = [
@@ -475,91 +474,91 @@ export const SPONSORS = [
     name: "Acme Labs",
     tier: "Platinum",
     logo: "https://placehold.co/200x80?text=Acme+Labs&bg=0d9488&color=ffffff",
-    website: "https://acme.example"
+    website: "https://acme.example",
   },
   {
     name: "DevTools Inc",
     tier: "Gold",
     logo: "https://placehold.co/200x80?text=DevTools&bg=16a34a&color=ffffff",
-    website: "https://devtools.example"
+    website: "https://devtools.example",
   },
   {
     name: "Cloudify",
     tier: "Silver",
     logo: "https://placehold.co/200x80?text=Cloudify&bg=0f172a&color=ffffff",
-    website: "https://cloudify.example"
+    website: "https://cloudify.example",
   },
   {
     name: "OpenSource Community",
     tier: "Community",
     logo: "https://placehold.co/200x80?text=Community&bg=64748b&color=ffffff",
-    website: "https://community.example"
-  }
+    website: "https://community.example",
+  },
 ];
 
 export const COMMUNITY_PARTNERS = [
   {
     name: "DevOops 1",
     logo: "/partners/DevOops-Sticker_Logo-V2-1_page-0001.jpg",
-    website: "#"
+    website: "#",
   },
   { name: "HashicorpUG", logo: "/partners/HashicorpUG.jpg", website: "#" },
   {
     name: "Cloud native",
     logo: "/partners/CNCG Blue.png",
-    website: "#"
+    website: "#",
   },
   { name: "gdg", logo: "/partners/gdg.png", website: "#" },
   {
     name: "Gdg Rajkot",
     logo: "/partners/GDG cloud rajkot SVG.svg",
-    website: "#"
+    website: "#",
   },
   {
     name: "THM",
     logo: "/partners/THM logo Black Long.png",
-    website: "#"
+    website: "#",
   },
   {
     name: "grafana",
     logo: "/partners/Grafana Ahmedabad.png",
-    website: "#"
+    website: "#",
   },
   {
     name: "adc",
     logo: "/partners/ADC with White BG - Ahmedabad Developer Club.jpg",
-    website: "#"
+    website: "#",
   },
   {
     name: "Fluter Flow vadodara",
     logo: "/partners/Fluter Flow vadodara.svg",
-    website: "#"
+    website: "#",
   },
   {
     name: "gdg cloud gandhinagar copy",
     logo: "/partners/gdg cloud gandhinagar copy.jpg",
-    website: "#"
+    website: "#",
   },
   {
     name: "GDG Surat",
     logo: "/partners/GDG Surat.png",
-    website: "#"
+    website: "#",
   },
   {
     name: "gujarat jug - full logo",
     logo: "/partners/gujarat jug - full logo.svg",
-    website: "#"
+    website: "#",
   },
   {
     name: "GDG pune",
     logo: "/partners/GDGPUNE.png",
-    website: "#"
+    website: "#",
   },
   {
     name: "GDG nashik",
     logo: "/partners/GDGNashik_logo.png",
-    website: "#"
-  }
+    website: "#",
+  },
 ];
 
 // Simple tier grouping for display on Home and Sponsors page.
@@ -567,18 +566,18 @@ export const SPONSOR_TIERS = {
   gold: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
     { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
-    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
+    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
   ],
   silver: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
     { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
-    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
+    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
   ],
   bronze: [
     { name: "OSCF", logo: "/icons/OSCF.png", website: "#" },
     { name: "OSW", logo: "/icons/OSD Green.png", website: "#" },
-    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" }
-  ]
+    { name: "CCSF", logo: "/icons/CCSF.png", website: "#" },
+  ],
 };
 
 // Add a few extra online sponsor logos for demo
@@ -586,18 +585,18 @@ export const EXTRA_SPONSORS = [
   {
     name: "Stripe",
     logo: "https://placehold.co/200x80?text=Stripe&bg=0ea5a4&color=ffffff",
-    website: "https://stripe.com"
+    website: "https://stripe.com",
   },
   {
     name: "Netlify",
     logo: "https://placehold.co/200x80?text=Netlify&bg=0f172a&color=ffffff",
-    website: "https://netlify.com"
+    website: "https://netlify.com",
   },
   {
     name: "Vercel",
     logo: "https://placehold.co/200x80?text=Vercel&bg=111827&color=ffffff",
-    website: "https://vercel.com"
-  }
+    website: "https://vercel.com",
+  },
 ];
 
 export const TEAM = {
@@ -606,8 +605,8 @@ export const TEAM = {
       name: "Dr. Rinkesh Bansal",
       roles: ["Program Director", "Master Inventor at IBM"],
       linkedin: "https://www.linkedin.com/in/rinkesh-bansal-09798843/",
-      image: "/Advisory Council/Rinkesh Bansal.png"
-    }
+      image: "/Advisory Council/Rinkesh Bansal.png",
+    },
   ],
   mentors: [
     {
@@ -617,80 +616,80 @@ export const TEAM = {
         "Mozilla Reps Council",
         "Docker Captain",
         "AWS Community Builder",
-        "Google Developer Expert"
+        "Google Developer Expert",
       ],
       linkedin: "https://www.linkedin.com/in/nomadicmehul/",
-      image: "/Mentor Board/Mehul Patel.jpg"
+      image: "/Mentor Board/Mehul Patel.jpg",
     },
     {
       name: "Ashish Tiwari",
       roles: [
         "Principal Solutions Architect",
-        "Search Specialist @ Elastic India"
+        "Search Specialist @ Elastic India",
       ],
       linkedin: "https://www.linkedin.com/in/ashishtiwari93/",
-      image: "/Mentor Board/Ashish Tiwari.jpg"
+      image: "/Mentor Board/Ashish Tiwari.jpg",
     },
     {
       name: "Prathamesh Chavan",
       roles: [
         "AI Engineering Manager at Red Hat",
         "Mozilla Reps Council",
-        "3X Wrangler at MozFest"
+        "3X Wrangler at MozFest",
       ],
       linkedin: "https://www.linkedin.com/in/prathameshpchavan/",
-      image: "/Mentor Board/Prathamesh Chavan.jpg"
+      image: "/Mentor Board/Prathamesh Chavan.jpg",
     },
     {
       name: "Harsh Manvar",
       roles: ["CNCF Ambassador", "Docker Captain", "Google Developer Expert"],
       linkedin: "https://www.linkedin.com/in/harsh-manvar-64a30aa3/",
-      image: "/Mentor Board/harsh-manvar-1.avif"
+      image: "/Mentor Board/harsh-manvar-1.avif",
     },
     {
       name: "Nirav Shah",
       roles: [
         "Director at Eternal Web Private Limited",
-        "AWS Community Builder"
+        "AWS Community Builder",
       ],
       linkedin: "https://www.linkedin.com/in/nirav-eternal/",
-      image: "/Mentor Board/Nirav Shah.png"
+      image: "/Mentor Board/Nirav Shah.png",
     },
     {
       name: "Suraj Nath",
       roles: ["Senior Software Engineer at Grafana Labs"],
       linkedin: "https://www.linkedin.com/in/electron0zero/",
       image: "/Mentor Board/Suraj Nath.jpg",
-      hide: true // Hidden for now
+      hide: true, // Hidden for now
     },
     {
       name: "Kalyan Prasad",
       roles: ["Advisor, Kaggle", "Organizer, PyCon India"],
       linkedin: "https://www.linkedin.com/in/itskpflow/",
       image: "/partners/Kalyan-Prasad.jpg",
-      hide: true // Hidden for now (no Mentor Board image available)
+      hide: true, // Hidden for now (no Mentor Board image available)
     },
     {
       name: "Vishal Rajpurohit",
       roles: ["CTO, Viitor Cloud", "Organizer Laracon India"],
       linkedin: "https://www.linkedin.com/in/vishalrajpurohit/",
       image: "/partners/Vishal-Rajpurohit.jpg",
-      hide: true // Hidden for now
+      hide: true, // Hidden for now
     },
     {
       name: "Ram Iyenger",
       roles: ["Chief Evangelist at Cloud Foundry Foundation"],
       linkedin: "https://www.linkedin.com/in/ram-iyengar/",
       image: "/partners/Ram-Iyenger.jpg",
-      hide: true // Hidden for now
+      hide: true, // Hidden for now
     },
     {
       name: "Santosh Yadav",
       roles: ["Staff Engineer, Celonis"],
       linkedin: "https://www.linkedin.com/in/santoshyadavdev/",
       image: "/partners/Santosh-Yadav.jpg",
-      hide: true // Hidden for now
-    }
+      hide: true, // Hidden for now
+    },
   ],
   core: [
     {
@@ -699,59 +698,59 @@ export const TEAM = {
         "Director - Open Source Community Foundation",
         "Director - ComExpo Cyber Security Foundation",
         "Community Manager at The Hackers Meetup",
-        "Co-organizer at Open Source Weekend"
+        "Co-organizer at Open Source Weekend",
       ],
       linkedin: "https://www.linkedin.com/in/viral-parmar-8402a04a/",
-      image: "/Core Team/Viral ParmarDP.jpg"
+      image: "/Core Team/Viral ParmarDP.jpg",
     },
     {
       name: "Neel Shah",
       roles: [
         "Developer Advocate at Middleware",
-        "Co-organizer at Open Source Weekend"
+        "Co-organizer at Open Source Weekend",
       ],
       linkedin: "https://www.linkedin.com/in/neelcshah/",
-      image: "/Core Team/Neel Shah.jpeg"
+      image: "/Core Team/Neel Shah.jpeg",
     },
     {
       name: "Dhaval Desai",
       roles: ["Product Manager at Gluu"],
       linkedin: "https://www.linkedin.com/in/dhavaltdesai/",
-      image: "/Core Team/Dhaval Desai.jpg"
+      image: "/Core Team/Dhaval Desai.jpg",
     },
     {
       name: "Bhargav Pithva",
       roles: ["Technical Project Manager at Rysun Labs"],
       linkedin: "https://www.linkedin.com/in/bhargavpithva/",
-      image: "/Core Team/Bhargav Pithva.jpg"
+      image: "/Core Team/Bhargav Pithva.jpg",
     },
     {
       name: "Tanvir Dhanani",
       roles: ["Backend Developer at IBM"],
       linkedin: "https://www.linkedin.com/in/dhanani-tanvir-aa4076118/",
-      image: "/Core Team/IMG_20250728_214844 - Dhanani Tanvir.jpg"
+      image: "/Core Team/IMG_20250728_214844 - Dhanani Tanvir.jpg",
     },
     {
       name: "Jignesh Gadhavi",
       roles: [
         "Senior DevOps Engineer at Yellow Panther",
-        "Co-organizer at GDG Cloud Gandhinagar"
+        "Co-organizer at GDG Cloud Gandhinagar",
       ],
       linkedin: "https://www.linkedin.com/in/jigneshkumar-gadhavi/",
-      image: "/Core Team/Jignesh Gadhavi.jpeg"
+      image: "/Core Team/Jignesh Gadhavi.jpeg",
     },
     {
       name: "Falgun Bhalsod",
       roles: ["DevOps Engineer at Yellow Panther"],
       linkedin: "https://www.linkedin.com/in/falgunbhalsod/",
-      image: "/Core Team/Falgun Bhalsod.jpeg"
-    }
+      image: "/Core Team/Falgun Bhalsod.jpeg",
+    },
   ],
   volunteers: [
     {
       name: "Chavda Rohit",
       role: "Website Engineer",
-      image: "/Volunteer/Rohit_chavda.jpg"
-    }
-  ]
+      image: "/Volunteer/Rohit_chavda.jpg",
+    },
+  ],
 };

@@ -22,10 +22,13 @@ const Navigation = () => {
       item.style.transform = "translateY(-20px)";
       item.style.transition = "all 0.6s ease-out";
 
-      setTimeout(() => {
-        item.style.opacity = "1";
-        item.style.transform = "translateY(0)";
-      }, 200 + index * 100);
+      setTimeout(
+        () => {
+          item.style.opacity = "1";
+          item.style.transform = "translateY(0)";
+        },
+        200 + index * 100
+      );
     });
   }, []);
 
@@ -52,18 +55,27 @@ const Navigation = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {NAVIGATION.items.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium"
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200 group-hover:w-full"></span>
-              </a>
-            ))}
+          {/* Desktop navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {NAVIGATION.items.map((item) => {
+              const isTickets = item.name.toLowerCase() === "tickets";
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className={
+                    isTickets
+                      ? "bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base"
+                      : "nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium"
+                  }
+                >
+                  {item.name}
+                  {!isTickets && (
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200 group-hover:w-full"></span>
+                  )}
+                </a>
+              );
+            })}
           </div>
 
           <div className="hidden md:block nav-item">
