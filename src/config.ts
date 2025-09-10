@@ -377,42 +377,71 @@ export const TICKETS = [
     price: "₹199",
     originalPrice: null,
     description:
-      "Full-access to conference. Lunch. Keynotes, Panels. OSD Goodies.",
+      "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies, and early bird discount.",
     features: [
       "Full-access to conference",
       "Lunch",
       "Keynotes, Panels",
       "OSD Goodies",
+      "Early Bird Discount",
     ],
+    availableTill: "20th Sep 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
   },
+  // {
+  //   name: "Regular Ticket",
+  //   price: "₹499",
+  //   originalPrice: null,
+  //   description:
+  //     "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
+  //   features: [
+  //     "Full-access to conference",
+  //     "Lunch",
+  //     "Keynotes, Panels",
+  //     "OSD Goodies",
+  //   ],
+  //   startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
+  //   popular: false,
+  //   available: false,
+  //   konfhubUrl:
+  //     "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
+  //   linkText: "Coming Soon",
+  // },
   {
-    name: "Regular Ticket",
-    price: "₹499",
+    name: "Open Source Day 25 + Devfest Gandhinagar 25",
+    price: "₹799",
     originalPrice: null,
     description:
-      "Full-access to conference. Lunch. Keynotes, Panels. OSD Goodies.",
+      "Tickets include access for both Open Source Day and DevFest Gandhinagar with multiple perks.",
     features: [
+      "Tickets include for Open Source Day:",
       "Full-access to conference",
       "Lunch",
       "Keynotes, Panels",
       "OSD Goodies",
+      "Tickets include for DevFest Gandhinagar:",
+      "Full-access to conference",
+      "Lunch",
+      "Hi-Tea",
+      "Keynotes, Panels",
+      "GDG Gandhinagar Goodies",
+      "Digital Certificate",
     ],
-    popular: false,
-    available: false,
+    availableTill: "20th Sep 2025, 06:00 PM (GMT+05:30)",
+    popular: true,
+    available: true,
     konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
-    linkText: "Coming soon",
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56934",
   },
   {
     name: "Community Fan",
     price: "₹999",
     originalPrice: null,
     description:
-      "For all our community people who constantly support us and create a vibrant community.",
+      "This ticket is for all community members who constantly support us and create a vibrant community.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -421,7 +450,8 @@ export const TICKETS = [
       "Super Fan Goodies",
       "Digital Certificate",
     ],
-    popular: true,
+    availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
+    popular: false,
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805",
@@ -431,7 +461,7 @@ export const TICKETS = [
     price: "₹1,999",
     originalPrice: null,
     description:
-      "For all our community people who constantly support us and create a vibrant community.",
+      "This ticket is for community members who support us and create a vibrant community.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -440,6 +470,7 @@ export const TICKETS = [
       "Supporter Exclusive goodies",
       "Digital Certificate",
     ],
+    availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
     konfhubUrl:
@@ -450,7 +481,7 @@ export const TICKETS = [
     price: "₹4,999",
     originalPrice: null,
     description:
-      "For all our community people who constantly support us and create a vibrant community.",
+      "This ticket is for community members who support us and create a vibrant community.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -462,6 +493,7 @@ export const TICKETS = [
       "Shout-out on Social Media",
       "Networking Dinner with Speakers, sponsors, organizers and some special industry invitees",
     ],
+    availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
     konfhubUrl:
@@ -472,7 +504,7 @@ export const TICKETS = [
     price: "₹9,999",
     originalPrice: null,
     description:
-      "For all our community people who constantly support us and create a vibrant community. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption.",
+      "This ticket is for community members who support us and create a vibrant community. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -485,6 +517,7 @@ export const TICKETS = [
       "Shout out during the event",
       "Appreciation Memento from OSD",
     ],
+    availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
     konfhubUrl:
@@ -496,7 +529,7 @@ export const TICKETS = [
     price: "₹29,999",
     originalPrice: null,
     description:
-      "Pack of 3 tickets with company branding and networking. Sponsorship considered as a Donation which could be claimed in 80G & 12AA Tax Exemption.",
+      "This ticket is for all our community people who constantly support us and create a vibrant community. Pack of 3 tickets with company branding and networking. Sponsorship considered as a Donation which could be claimed in 80G & 12AA Tax Exemption.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -509,12 +542,15 @@ export const TICKETS = [
       "Shout-out during the event",
       "Appreciation Memento from OSD",
     ],
+    availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
-    available: true,
+    available: false,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56807",
+    linkText: "Sold Out",
   },
 ];
+
 
 export const VENUE = {
   name: "Ahmedabad",
