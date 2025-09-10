@@ -1,12 +1,15 @@
 import { useRef, useEffect } from "react";
 import "../styles/global.css";
-import Image from "astro/components/Image.astro";
+
+/**
+ * @param {{ logos: {logo: string}[], duration?: number, height?: number, itemWidth?: number }} props
+ */
 
 export default function SmoothScrollLogos({
   logos = [],
   duration = 30,
   height = 300,
-  itemWidth = 700
+  itemWidth = 700,
 }) {
   const items = [...logos, ...logos]; // duplicate for seamless loop
   const trackRef = useRef(null);
@@ -14,7 +17,7 @@ export default function SmoothScrollLogos({
   useEffect(() => {
     const el = trackRef.current;
     if (el) void el.offsetWidth; // restart animation on logos change
-  }, [logos.map?.((l) => l.logo).join?.(",")]);
+  }, [logos.map((l) => l.logo).join(",")]);
 
   if (!logos || logos.length === 0) return null;
 
@@ -22,7 +25,7 @@ export default function SmoothScrollLogos({
     <div className="w-full overflow-hidden" style={{ height }}>
       <div
         ref={trackRef}
-        className="smoothscroll-track"
+        className="smoothscroll-track flex"
         style={{ animationDuration: `${duration}s`, height }}
       >
         {items.map((logo, idx) => (
@@ -32,8 +35,7 @@ export default function SmoothScrollLogos({
             style={{
               height,
               minWidth: 300,
-              maxWidth: 700,
-              width: "100%",
+              maxWidth: itemWidth,
               flexBasis: "auto",
             }}
           >
@@ -44,7 +46,7 @@ export default function SmoothScrollLogos({
                 width={itemWidth}
                 height={height}
                 className="w-full h-full object-cover"
-                priority
+                loading="lazy"
               />
             </div>
           </div>

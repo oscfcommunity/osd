@@ -6,65 +6,63 @@ import "../styles/global.css";
 import { BRANDING } from "@/config";
 import { PastEvent } from "@/config";
 
-  // const pastEvents = [
-  //   {
-  //     year: "2024",
-  //     title: "OpenSource Weekend 2024",
-  //     attendees: "450+",
-  //     speakers: "35",
-  //     projects: "80+",
-  //     highlights: [
-  //       "Launched 15 new open source projects",
-  //       "Record-breaking hackathon participation",
-  //       "First-ever AI/ML track",
-  //       "Global livestream with 10K+ viewers",
-  //     ],
-  //     images: [
-  //       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1559223607-b4d0555ae227?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&h=400&fit=crop",
-  //     ],
-  //   },
-  //   {
-  //     year: "2023",
-  //     title: "OpenSource Weekend 2023",
-  //     attendees: "380+",
-  //     speakers: "28",
-  //     projects: "65+",
-  //     highlights: [
-  //       "Introduction of sustainability track",
-  //       "Youth coding bootcamp",
-  //       "Open source security summit",
-  //       "Community awards ceremony",
-  //     ],
-  //     images: [
-  //       "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
-  //     ],
-  //   },
-  //   {
-  //     year: "2022",
-  //     title: "OpenSource Weekend 2022",
-  //     attendees: "320+",
-  //     speakers: "22",
-  //     projects: "50+",
-  //     highlights: [
-  //       "First hybrid event format",
-  //       "Women in Open Source panel",
-  //       "Blockchain and Web3 workshops",
-  //       "Mentorship program launch",
-  //     ],
-  //     images: [
-  //       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
-  //       "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop",
-  //     ],
-  //   },
-  // ];
+// const pastEvents = [
+//   {
+//     year: "2024",
+//     title: "OpenSource Weekend 2024",
+//     attendees: "450+",
+//     speakers: "35",
+//     projects: "80+",
+//     highlights: [
+//       "Launched 15 new open source projects",
+//       "Record-breaking hackathon participation",
+//       "First-ever AI/ML track",
+//       "Global livestream with 10K+ viewers",
+//     ],
+//     images: [
+//       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1559223607-b4d0555ae227?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=600&h=400&fit=crop",
+//     ],
+//   },
+//   {
+//     year: "2023",
+//     title: "OpenSource Weekend 2023",
+//     attendees: "380+",
+//     speakers: "28",
+//     projects: "65+",
+//     highlights: [
+//       "Introduction of sustainability track",
+//       "Youth coding bootcamp",
+//       "Open source security summit",
+//       "Community awards ceremony",
+//     ],
+//     images: [
+//       "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
+//     ],
+//   },
+//   {
+//     year: "2022",
+//     title: "OpenSource Weekend 2022",
+//     attendees: "320+",
+//     speakers: "22",
+//     projects: "50+",
+//     highlights: [
+//       "First hybrid event format",
+//       "Women in Open Source panel",
+//       "Blockchain and Web3 workshops",
+//       "Mentorship program launch",
+//     ],
+//     images: [
+//       "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+//       "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop",
+//     ],
+//   },
+// ];
 ---
-
-
 
 <Layout title="Past Events - OpenSource Weekend 2025">
   <Navigation client:load />
@@ -84,7 +82,8 @@ import { PastEvent } from "@/config";
       </div>
       <div
         class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      />
+      >
+      </div>
       <p class="text-xl text-black-300 max-w-3xl mx-auto">
         Look back at the incredible moments, innovations, and connections made
         at previous OpenSource Weekend events.
@@ -128,25 +127,27 @@ import { PastEvent } from "@/config";
   </section>
 
   <!-- Past Events Timeline Updated -->
-<section class="py-10 px-4">
-  <div class="max-w-screen mx-auto space-y-36">
-    {PastEvent.map((event, index) => (
-      <div key={index} class="text-center">
-        <span class="text-green-400 font-bold text-lg block mb-2">{event.year}</span>
-        <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
+  <section class="py-10 px-4">
+    <div class="max-w-screen mx-auto space-y-36">
+      {
+        PastEvent.map((event) => (
+          <div class="text-center">
+            <span class="text-green-400 font-bold text-lg block mb-2">
+              {event.year}
+            </span>
+            <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
 
-        <SmoothScrollLogos
-          logos={event.images.map((url) => ({ logo: url }))}
-          duration={60}
-          height={500}
-          itemWidth={700}
-        />
-      </div>
-    ))}
-  </div>
-</section>
-
-
+            <SmoothScrollLogos
+              logos={event.images.map((url) => ({ logo: url }))}
+              duration={60}
+              height={500}
+              itemWidth={700}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
 
   <!-- Testimonials -->
   <!-- <section class="py-20 px-4 bg-gradient-to-r from-green-900/50 to-white/50">
