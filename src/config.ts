@@ -1,3 +1,6 @@
+import type { Speaker } from "@/config.types";
+
+// Team imports
 import OSDGreen from "@/assets/icons/OSDGreen.png";
 import OSWBlack from "@/assets/icons/OSWBlack.svg";
 import BhargavPithva from "@/assets/team/BhargavPithva.jpg";
@@ -15,6 +18,18 @@ import HarshManvar from "@/assets/team/HarshManvar.png";
 import NiravShah from "@/assets/team/NiravShah.png";
 import PrathameshChavan from "@/assets/team/PrathameshChavan.jpg";
 import RohitChavda from "@/assets/team/RohitChavda.jpg";
+
+// Speaker Imports
+import SanjayVaghela from "@/assets/speakers/SanjayVaghela.png";
+// import AshishTiwari from "@/assets/speakers/AshishTiwari.png"; Repeat
+import DevarshShah from "@/assets/speakers/DevarshShah.png";
+import KrupaGaliya from "@/assets/speakers/KrupaGaliya.png";
+import NishargShah from "@/assets/speakers/NishargShah.png";
+import RishangBhavsar from "@/assets/speakers/RishangBhavsar.png";
+import RonakGanatra from "@/assets/speakers/RonakGanatra.png";
+import RuchitPatel from "@/assets/speakers/RuchitPatel.png";
+import SantoshViswanatham from "@/assets/speakers/SantoshViswanatham.png";
+// import DishantMakwana from "@/assets/speakers/DishantMakwana.png";
 
 export const SITE = {
   title: "OpenSourceDay 2025",
@@ -250,54 +265,109 @@ export const ABOUT = {
   ],
 };
 
-export const SPEAKERS = [
+export const SPEAKERS: Speaker[] = [
   {
-    name: "Chavda Rohit",
-    title: "Lead Developer at GitHub",
-    bio: "Open source advocate and maintainer of popular JavaScript libraries",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    talk: "The Future of Open Source Collaboration",
+    name: "Ashish Tiwari",
+    position: "Principal Solutions Architect",
+    company: "Elastic",
+    presentationTitle: "Open Source Journey with Elastic",
+    event: "2024 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2024,
+    image: AshishTiwari,
   },
   {
-    name: "Marcus Rodriguez",
-    title: "CTO at DevCorp",
-    bio: "Expert in cloud infrastructure and container orchestration",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face",
-    talk: "Scaling Open Source Projects",
+    name: "Sanjay Vaghela",
+    position: "CTO",
+    company: "IQM",
+    presentationTitle: "Open Source Technologies for a SaaS at Scale",
+    event: "2024 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2024,
+    image: SanjayVaghela,
   },
   {
-    name: "Dr. Aisha Patel",
-    title: "AI Research Scientist",
-    bio: "Leading researcher in machine learning and AI ethics",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-    talk: "AI in Open Source: Opportunities and Challenges",
+    name: "Ruchit Patel",
+    position: "Team lead",
+    company: "ViitorCloud Technologies",
+    presentationTitle: "Demystifying Open Source",
+    event: "2024 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2024,
+    image: RuchitPatel,
   },
   {
-    name: "James Wilson",
-    title: "Founder of OpenTech",
-    bio: "Serial entrepreneur and open source evangelist",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face",
-    talk: "Building Sustainable Open Source Communities",
+    name: "Devarsh Shah",
+    position: "Sr. Full Stack Developer",
+    company: "IQM",
+    presentationTitle: "Open Source Technologies for a SaaS at Scale",
+    event: "2024 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2024,
+    image: DevarshShah,
   },
   {
-    name: "Lisa Zhang",
-    title: "Security Engineer at CyberSafe",
-    bio: "Cybersecurity expert specializing in open source security",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face",
-    talk: "Security Best Practices in Open Source",
+    name: "Rishang Bhavsar",
+    position: "Devops Engineer",
+    company: "smartSense Consulting Solutions",
+    presentationTitle:
+      "How to start an Open Source Project and contribute on Github",
+    event: "2024 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2024,
+    image: RishangBhavsar,
   },
   {
-    name: "David Kumar",
-    title: "DevOps Architect",
-    bio: "Infrastructure automation and CI/CD pipeline expert",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=face",
-    talk: "Modern DevOps with Open Source Tools",
+    name: "Krupa Galiya",
+    position: "Sr.Data scientist",
+    company: "PatternAI",
+    presentationTitle:
+      "Significance of Open Source Contribution and Community Engagement",
+    event: "2023 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2023,
+    image: KrupaGaliya,
+  },
+  {
+    name: "Viral Parmar",
+    position: "Director",
+    company: "ComExpo Cyber Security",
+    presentationTitle:
+      "How Can We Create Community Around Open Source Project And Get More Contribution",
+    event: "2023 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2023,
+    image: ViralParmar,
+  },
+  {
+    name: "Santosh Viswanatham",
+    position: "Principal Engineer",
+    company: "Arcesium",
+    presentationTitle: "Coding for Change: Hacktoberfest with Interledger",
+    event: "2023 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2023,
+    image: SantoshViswanatham,
+  },
+  // {
+  //   name: "Dishant Makwana",
+  //   position: "Sr. System Engineer",
+  //   company: "EPAM Systems",
+  //   presentationTitle:
+  //     "Introduction to Kubernetes and How to Run Wordpress on Kubernetes",
+  //   event: "2023 OpenSourceWeekend x HacktoberFest",
+  //   eventYear: 2023,
+  //   image: "",
+  // },
+  {
+    name: "Ronak Ganatra",
+    position: "Sr. Wordpress Engineer",
+    company: "Multidots Solutions Pvt. Ltd.",
+    presentationTitle: "Kickstart Your Open Source Journey with Wordpress",
+    event: "2023 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2023,
+    image: RonakGanatra,
+  },
+  {
+    name: "Nisharg Shah",
+    position: "Sr. Software Engineer",
+    company: "Coda",
+    presentationTitle: "Kickstart Your Open Source Journey with NodeJS",
+    event: "2023 OpenSourceWeekend x HacktoberFest",
+    eventYear: 2023,
+    image: NishargShah,
   },
 ];
 
@@ -646,7 +716,7 @@ export const TEAM = {
     {
       name: "Mehul Patel",
       roles: [
-        "Senior DevOps Engineer",
+        "Sr. DevOps Engineer",
         "Mozilla Reps Council",
         "Docker Captain",
         "AWS Community Builder",
@@ -691,7 +761,7 @@ export const TEAM = {
     },
     // {
     //   name: "Suraj Nath",
-    //   roles: ["Senior Software Engineer at Grafana Labs"],
+    //   roles: ["Sr. Software Engineer at Grafana Labs"],
     //   linkedin: "https://www.linkedin.com/in/electron0zero/",
     //   image: SurajNath,
     //   hide: true, // Hidden for now
@@ -767,7 +837,7 @@ export const TEAM = {
     {
       name: "Jignesh Gadhavi",
       roles: [
-        "Senior DevOps Engineer at Yellow Panther",
+        "Sr. DevOps Engineer at Yellow Panther",
         "Co-organizer at GDG Cloud Gandhinagar",
       ],
       linkedin: "https://www.linkedin.com/in/jigneshkumar-gadhavi/",

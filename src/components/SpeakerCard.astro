@@ -1,0 +1,66 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+export interface Props {
+  name: string;
+  position: string;
+  company: string;
+  presentationTitle: string;
+  event: string;
+  width: number;
+  image: ImageMetadata;
+}
+
+const {
+  name,
+  position,
+  company,
+  presentationTitle,
+  event,
+  image,
+  width = 400,
+} = Astro.props;
+---
+
+<div
+  class="max-w-xs bg-green-100 shadow-green-100 rounded-2xl shadow-lg overflow-hidden border outline-1"
+>
+  <div class="w-full aspect-[3/4] overflow-hidden">
+    <Image
+      src={image}
+      alt={name}
+      width={width}
+      class="w-full h-full object-cover"
+      loading="lazy"
+    />
+  </div>
+
+  <div class="p-4 space-y-2">
+    <h3 class="text-xl font-semibold text-gray-900">{name}</h3>
+    {
+      position && company && (
+        <p class="text-sm text-gray-600">
+          <span>{position}</span>,<span class="font-bold"> {company}</span>
+        </p>
+      )
+    }
+
+    <dl class="mt-3 space-y-2">
+      {
+        presentationTitle === "TBD" ? (
+          ""
+        ) : (
+          <div>
+            <dt class="text-xs rounded-full bg-green-200 px-2 inline text-gray-800">
+              Presentation
+            </dt>
+            <dd class="text-sm font-medium text-gray-700">
+              {presentationTitle}
+            </dd>
+          </div>
+        )
+      }
+    </dl>
+  </div>
+</div>
