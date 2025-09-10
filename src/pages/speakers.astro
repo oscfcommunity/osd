@@ -1,8 +1,16 @@
 ---
+import SpeakerCard from "@components/SpeakerCard.astro";
 import Layout from "../components/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
 import { SPEAKERS, BRANDING } from "../config.ts";
 import "../styles/global.css";
+import OSDGreen from "@/assets/icons/OSDGreen.png";
+
+const OSD_YEAR = 2025;
+
+// separate speakers
+const currentSpeakers = SPEAKERS.filter((s) => s.eventYear === OSD_YEAR);
+const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 ---
 
 <Layout title="Speakers - OpenSource Weekend 2025">
@@ -25,39 +33,48 @@ import "../styles/global.css";
         class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
       >
       </div>
-      <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
-        Learn from industry leaders, open source maintainers, and innovative
-        thinkers who are shaping the future of technology.
-      </p>
+    </div>
+  </section>
+  <!-- Page Header ends -->
+
+  <!-- Current Year Speakers -->
+  <section class="pb-10 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-gray-700 mb-10 text-left">
+        2025 Open Source Day
+      </h2>
+      {
+        currentSpeakers.length !== 0 ? (
+          ""
+        ) : (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {Array.from({ length: 4 }, (_, index) => (
+              <SpeakerCard
+                width={5}
+                name="To be announced"
+                image={OSDGreen}
+                presentationTitle="TBD"
+                event=""
+                position=""
+                company=""
+              />
+            ))}
+          </div>
+        )
+      }
     </div>
   </section>
 
-  <!-- Speakers Grid -->
-  <section class="py-20 px-4">
+  <!-- Past Speakers -->
+  <section class="py-10 px-4 bg-gray-100">
     <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <h2 class="text-3xl font-bold text-gray-800 mb-10 text-left">
+        Past Speakers
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {
-          SPEAKERS.map((speaker) => (
-            <div class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm hover:border-green-500/40 transition-all duration-300 group">
-              <div class="aspect-square overflow-hidden rounded-t-xl">
-                <img
-                  src={speaker.image}
-                  alt={speaker.name}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-2xl font-bold text-white mb-2">
-                  {speaker.name}
-                </h3>
-                <p class="text-green-400 font-semibold mb-3">{speaker.title}</p>
-                <p class="text-black-300 mb-4">{speaker.bio}</p>
-                <div class="border-t border-gray-700 pt-4">
-                  <p class="text-sm text-black-400 font-medium">Talk:</p>
-                  <p class="text-white">{speaker.talk}</p>
-                </div>
-              </div>
-            </div>
+          pastSpeakers.map((speaker) => (
+            <SpeakerCard width={400} {...speaker} />
           ))
         }
       </div>
@@ -70,13 +87,13 @@ import "../styles/global.css";
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
         Want to Speak?
       </h2>
-      <p class="text-xl text-black-300 mb-8">
+      <p class="text-xl text-gray-200 mb-8">
         We're always looking for passionate speakers to share their knowledge
         and experience.
       </p>
       <a
         href="https://forms.gle/1snXWPXU63xHBMAB6"
-        class="inline-block bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 glow-effect hover:scale-105 transform"
+        class="inline-block bg-green-500 drop-shadow-2xl hover:bg-green-400 text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 glow-effect hover:scale-105 transform"
       >
         Submit Your Proposal
       </a>

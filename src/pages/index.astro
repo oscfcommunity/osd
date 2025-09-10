@@ -18,6 +18,7 @@ import {
 import MarqueeLogos from "../components/MarqueeLogos.jsx";
 import { COMMUNITY_PARTNERS } from "../config.ts";
 import OptimizedImage from "../components/OptimizedImage.astro";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Open Source Day 2025 - Celebrate Innovation">
@@ -309,24 +310,25 @@ import OptimizedImage from "../components/OptimizedImage.astro";
       <!-- Speakers Preview -->
       <div class="py-12 bg-green-50">
         <div class="max-w-6xl mx-auto px-4 text-center mb-6">
-          <h3 class="text-2xl font-bold">Featured Speakers</h3>
-          <p class="text-gray-600 mt-2">
-            Hear from our expert speakers — a preview of the lineup.
-          </p>
+          <h3 class="text-2xl font-bold">Past Speakers</h3>
         </div>
         <div class="max-w-6xl mx-auto px-4">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             {
               SPEAKERS.slice(0, 3).map((sp) => (
                 <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                  <OptimizedImage
+                  <Image
                     src={sp.image}
                     alt={sp.name}
                     class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                    loading="lazy"
+                    width={400}
                   />
                   <h4 class="font-semibold text-lg">{sp.name}</h4>
-                  <div class="text-sm text-gray-600 mb-2">{sp.title}</div>
-                  <p class="text-sm text-gray-700">{sp.talk}</p>
+                  <div class="text-sm text-gray-600 mb-2">
+                    {sp.position} at {sp.company}
+                  </div>
+                  <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
                 </div>
               ))
             }
@@ -337,14 +339,18 @@ import OptimizedImage from "../components/OptimizedImage.astro";
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {SPEAKERS.slice(3).map((sp) => (
                   <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                    <OptimizedImage
+                    <Image
                       src={sp.image}
                       alt={sp.name}
                       class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                      loading="lazy"
+                      width={400}
                     />
                     <h4 class="font-semibold text-lg">{sp.name}</h4>
-                    <div class="text-sm text-gray-600 mb-2">{sp.title}</div>
-                    <p class="text-sm text-gray-700">{sp.talk}</p>
+                    <div class="text-sm text-gray-600 mb-2">
+                      {sp.position} at {sp.company}
+                    </div>
+                    <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
                   </div>
                 ))}
               </div>
