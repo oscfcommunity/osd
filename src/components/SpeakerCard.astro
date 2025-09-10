@@ -10,6 +10,7 @@ export interface Props {
   event: string;
   width: number;
   image: ImageMetadata;
+  class?: string;
 }
 
 const {
@@ -20,11 +21,15 @@ const {
   event,
   image,
   width = 400,
+  class: className,
 } = Astro.props;
 ---
 
 <div
-  class="max-w-xs bg-green-100 shadow-green-100 rounded-2xl shadow-lg overflow-hidden border outline-1"
+  class:list={[
+    "max-w-xs bg-green-100 shadow-green-100 rounded-2xl shadow-lg overflow-hidden border outline-1",
+    className,
+  ]}
 >
   <div class="w-full aspect-[3/4] overflow-hidden">
     <Image
@@ -32,6 +37,7 @@ const {
       alt={name}
       width={width}
       class="w-full h-full object-cover"
+      ,
       loading="lazy"
     />
   </div>

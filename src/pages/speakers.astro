@@ -43,12 +43,12 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
       <h2 class="text-3xl font-bold text-gray-700 mb-10 text-left">
         2025 Open Source Day
       </h2>
-      {
-        currentSpeakers.length !== 0 ? (
-          ""
-        ) : (
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Array.from({ length: 4 }, (_, index) => (
+      <div class="container mx-auto px-4">
+        {
+          currentSpeakers.length !== 0 ? (
+            ""
+          ) : (
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
               <SpeakerCard
                 width={5}
                 name="To be announced"
@@ -58,10 +58,23 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
                 position=""
                 company=""
               />
-            ))}
-          </div>
-        )
-      }
+
+              {Array.from({ length: 3 }, (_, index) => (
+                <SpeakerCard
+                  width={5}
+                  name="To be announced"
+                  image={OSDGreen}
+                  presentationTitle="TBD"
+                  event=""
+                  position=""
+                  company=""
+                  class="hidden md:block lg:block"
+                />
+              ))}
+            </div>
+          )
+        }
+      </div>
     </div>
   </section>
 
@@ -71,12 +84,16 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
       <h2 class="text-3xl font-bold text-gray-800 mb-10 text-left">
         Past Speakers
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {
-          pastSpeakers.map((speaker) => (
-            <SpeakerCard width={400} {...speaker} />
-          ))
-        }
+      <div class="container mx-auto px-4">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8"
+        >
+          {
+            pastSpeakers.map((speaker) => (
+              <SpeakerCard width={400} {...speaker} />
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>
