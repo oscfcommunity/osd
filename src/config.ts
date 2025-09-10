@@ -303,7 +303,7 @@ export const SPEAKERS = [
 
 export const TICKETS = [
   {
-    name: "Regular Ticket",
+    name: "Early Bird Ticket",
     price: "₹199",
     originalPrice: null,
     description:
@@ -444,7 +444,7 @@ export const VENUE = {
   ],
   transport: {
     parking: "Free parking available. Exit 12A from Highway 101",
-    publicTransit: "Bus and local transport options available, Train, Flights",
+    Transit: "Bus and local transport options available, Train, Flights",
     airport: "Sardar Vallabhbhai Patel International Airport (AMD)",
   },
 };
@@ -770,3 +770,83 @@ export const TEAM = {
     },
   ],
 };
+
+export const PastEvent = [
+  {
+    year: "2025",
+    title: "Open Source Weekend - Product Collective - May 2025",
+    images: [
+      "/PastEvents/OSW-may/Image_20250504_135007_012.jpeg",
+      "/PastEvents/OSW-may/Image_20250504_135007_119 (1).jpeg",
+      "/PastEvents/OSW-may/Image_20250504_135007_299.jpeg",
+      "/PastEvents/OSW-may/Image_20250504_135008_924 (1).jpeg",
+      "/PastEvents/OSW-may/Image_20250504_135032_445.jpeg",
+      "/PastEvents/OSW-may/Image_20250504_135033_071.jpeg",
+      "/PastEvents/OSW-may/IMG_20250504_101248.jpg",
+      "/PastEvents/OSW-may/IMG_20250504_115928.jpg",
+      "/PastEvents/OSW-may/IMG_7570.JPG",
+    ],
+  },
+  {
+    year: "2025",
+    title: "OSW-Product Collective - April 2025",
+    images: [
+      "/PastEvents/OSW-april/20250405_114037.jpg",
+      "/PastEvents/OSW-april//20250405_142305.jpg",
+      "/PastEvents/OSW-april/20250405_123827.jpg",
+      "/PastEvents/OSW-april//20250405_140515.jpg",
+    ],
+  },
+  {
+    year: "2024",
+    title: "OSW-Day X Hacktoberfest 2024",
+    images: [
+      "/PastEvents/OSW-24/20241013_094222.jpg",
+      "/PastEvents/OSW-24/20241013_094249.jpg",
+      "/PastEvents/OSW-24/20241013_102037.jpg",
+      "/PastEvents/OSW-24/20241013_102246.jpg",
+      "/PastEvents/OSW-24/20241013_102830.jpg",
+      "/PastEvents/OSW-24/20241013_103742.jpg",
+      "/PastEvents/OSW-24/20241013_104148.jpg",
+      "/PastEvents/OSW-24/20241013_104753.jpg",
+      "/PastEvents/OSW-24/20241013_111739.jpg",
+      "/PastEvents/OSW-24/20241013_112335.jpg",
+      "/PastEvents/OSW-24/20241013_113256.jpg",
+      "/PastEvents/OSW-24/20241013_114008.jpg",
+      "/PastEvents/OSW-24/20241013_124553.jpg",
+      "/PastEvents/OSW-24/20241013_131111.jpg",
+    ],
+  },
+  {
+    year: "2023",
+    title: "OSW-June 2023",
+    images: [
+      "/PastEvents/OSW-june-23/IMG20230625102644.jpg",
+      "/PastEvents/OSW-june-23/IMG20230625121634.jpg",
+      "/PastEvents/OSW-june-23/IMG20230625121639.jpg",
+      "/PastEvents/OSW-june-23/IMG_7994.jpg",
+      "/PastEvents/OSW-june-23/IMG_7995.jpg",
+      "/PastEvents/OSW-june-23/IMG_8006.jpg",
+      "/PastEvents/OSW-june-23/IMG_8018.jpg",
+      "/PastEvents/OSW-june-23/IMG_8024.jpg",
+      "/PastEvents/OSW-june-23/IMG_8033.jpg",
+      "/PastEvents/OSW-june-23/IMG_8038.jpg",
+    ],
+  },
+  {
+    year: "2023",
+    title: "OSW-Day 2023",
+    images: [
+      "/PastEvents/OSW-23/IMG_0759.jpg",
+      "/PastEvents/OSW-23/IMG_0761.jpg",
+      "/PastEvents/OSW-23/IMG_0767.jpg",
+      "/PastEvents/OSW-23/IMG_0782.jpg",
+      "/PastEvents/OSW-23/IMG_0787.jpg",
+      "/PastEvents/OSW-23/IMG_0790.jpg",
+      "/PastEvents/OSW-23/IMG_0803.jpg",
+      "/PastEvents/OSW-23/IMG_0804.jpg",
+      "/PastEvents/OSW-23/IMG_0806.jpg",
+      "/PastEvents/OSW-23/IMG_0824.jpg",
+    ],
+  },
+];

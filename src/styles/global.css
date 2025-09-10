@@ -248,3 +248,36 @@ heme specific styles */
     transform: translateY(-20px) rotate(5deg);
   }
 }
+
+
+@keyframes smoothscroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.smoothscroll-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 8px;
+  animation-name: smoothscroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.smoothscroll-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.smoothscroll-img {
+  object-fit: contain;
+  display: block;
+}
