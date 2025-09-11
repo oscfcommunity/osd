@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import { SITE } from './src/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,7 +7,7 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
+  site: "https://osd.opensourceweekend.org",
   vite: {
     // @ts-ignore
     plugins: [tailwindcss()]
