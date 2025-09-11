@@ -1,7 +1,7 @@
 ---
-import SmoothScrollLogos from "@components/SmoothScrollLogos";
 import Layout from "../components/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
+import OptimizedImage from "../components/OptimizedImage.astro";
 import "../styles/global.css";
 import { BRANDING } from "@/config";
 import { PastEvent } from "@/config";
@@ -136,13 +136,11 @@ import { PastEvent } from "@/config";
               {event.year}
             </span>
             <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
-
-            <SmoothScrollLogos
-              logos={event.images.map((url) => ({ logo: url }))}
-              duration={60}
-              height={500}
-              itemWidth={700}
-            />
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+              {event.images.map((url) => (
+                <OptimizedImage src={url.src} alt={event.title} class="rounded-lg shadow-md max-h-72 object-cover" loading="lazy" />
+              ))}
+            </div>
           </div>
         ))
       }
