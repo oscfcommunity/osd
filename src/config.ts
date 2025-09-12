@@ -1,7 +1,7 @@
 import type { Speaker } from "@/config.types";
 
 // Team imports
-import OSDGreen from "@/assets/icons/OSDGreen.png";
+import OSDGreen from "@/assets/icons/OSDGreen.svg";
 import OSWBlack from "@/assets/icons/OSWBlack.svg";
 import BhargavPithva from "@/assets/team/BhargavPithva.webp";
 import DhananiTanvir from "@/assets/team/DhananiTanvir.webp";
@@ -92,7 +92,7 @@ export const SITE = {
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://osd.opensourceweekend.org",
   ogImage: "/images/OSWBlack.png",
-  icon: "@/assets/icons/OSDGreen.png",
+  icon: "@/assets/icons/OSDGreen.svg",
 };
 
 export const eventSchedule = [
@@ -200,13 +200,13 @@ export const workshopSchedule = [];
 
 export const BRANDING = {
   logos: {
-    main: OSDGreen.src,
+    main: OSDGreen,
     mainNoText: "/icons/OSDLogoNoText.svg",
     fullWhite: "/icons/OSWFullWhite.svg",
     fullBlack: "/icons/OSWFullBlack.svg",
     white: "/icons/OSWWhite.svg",
     black: "/icons/OSWBlack.svg",
-    green: OSDGreen.src,
+    green: OSDGreen,
   },
   colors: {
     primary: "#22c55e",

@@ -1,10 +1,11 @@
 ---
-import Layout from "../components/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
 import Footer from "../components/Footer.jsx";
 import SponsorsGrid from "../components/SponsorsGrid.jsx";
 import { COMMUNITY_PARTNERS, SPONSOR_TIERS, BRANDING } from "../config.ts";
 import "../styles/global.css";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Sponsors - Open Source Day 2025">
@@ -15,7 +16,7 @@ import "../styles/global.css";
       <div class="text-center mb-12">
         <div class="inline-block text-center">
           <div class="flex items-center justify-center gap-3">
-            <img src={BRANDING.logos.main} alt="OSD" class="w-10 h-10" />
+            <Image src={BRANDING.logos.main} alt="OSD" class="w-10 h-10" />
             <h1 class="text-4xl font-bold text-green-600">
               Sponsors & Community Partners
             </h1>

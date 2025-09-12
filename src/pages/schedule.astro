@@ -1,9 +1,10 @@
 ---
-import { eventSchedule } from "src/config";
-import Layout from "../components/Layout.astro";
+import { eventSchedule, BRANDING } from "src/config";
+import Layout from "@/layouts/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
 import "../styles/global.css";
 import OSDGreen from "@/assets/icons/OSDGreen.png";
+import { Image } from "astro:assets";
 
 const getTypeColor = (type: string) => {
   switch (type) {
@@ -38,8 +39,8 @@ const getTypeColor = (type: string) => {
   <section class="pt-32 pb-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
       <div class="mb-8 flex justify-center">
-        <img
-          src={OSDGreen.src}
+        <Image
+          src={BRANDING.logos.main}
           alt="Open Source Day Logo"
           class="w-16 h-16 md:w-20 md:h-20"
         />

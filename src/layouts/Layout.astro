@@ -9,8 +9,9 @@ const {
   description = "OpenSource Weekend 2025 - Join the biggest open source event of the year",
 } = Astro.props;
 
-import Navigation from './Navigation.jsx';
-import Footer from './Footer.jsx';
+import Navigation from "@/components/Navigation";
+import Footer from "@components/Footer";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -27,10 +28,11 @@ import Footer from './Footer.jsx';
       rel="stylesheet"
     />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body>
-    <Navigation client:only />
-    <main class="pt-16 md:pt-20">
+    <Navigation client:only transition:persist />
+    <main class="pt-16 md:pt-0 lg:pt-0" transition:animate="fade">
       <slot />
     </main>
     <Footer />

@@ -29,7 +29,7 @@ const Navigation = (props) => {
           <div className="nav-item flex items-center">
             <a href="/" className="flex items-center">
               <img
-                src={BRANDING.logos.main}
+                src={BRANDING.logos.main.src}
                 alt="OSW Logo"
                 className="w-8 h-8 mr-2"
               />
@@ -51,12 +51,14 @@ const Navigation = (props) => {
                   className={
                     isTickets
                       ? `bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base`
-                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${isActivePath ? 'text-green-600' : ''}`
+                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${isActivePath ? "text-green-600" : ""}`
                   }
                 >
                   {item.name}
                   {!isTickets && (
-                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? 'w-full' : ''}`}></span>
+                    <span
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? "w-full" : ""}`}
+                    ></span>
                   )}
                 </a>
               );

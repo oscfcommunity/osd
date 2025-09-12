@@ -1,5 +1,5 @@
 ---
-import Layout from "../components/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
 import Hero from "../components/Hero.jsx";
 import ScrollAnimations from "../components/ScrollAnimations.jsx";
@@ -17,7 +17,6 @@ import {
 } from "../config.ts";
 import MarqueeLogos from "../components/MarqueeLogos.jsx";
 import { COMMUNITY_PARTNERS } from "../config.ts";
-import OptimizedImage from "../components/OptimizedImage.astro";
 import { Image } from "astro:assets";
 ---
 
@@ -31,7 +30,7 @@ import { Image } from "astro:assets";
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16 animate-fade-up">
         <div class="mb-8 flex justify-center">
-          <OptimizedImage
+          <Image
             src={BRANDING.logos.main}
             alt="Open Source Day Logo"
             class="w-16 h-16 md:w-20 md:h-20"
@@ -128,8 +127,8 @@ import { Image } from "astro:assets";
         Ready to Join Us?
       </h2>
       <p class="text-xl text-black mb-8">
-          Don't miss out on this amazing open source community event.
-          Join us on WhatsApp now!
+        Don't miss out on this amazing open source community event. Join us on
+        WhatsApp now!
       </p>
       <a
         href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir"
@@ -303,7 +302,7 @@ import { Image } from "astro:assets";
 
       <div class="text-center mt-4 py-4">
         <a href="/sponsors" class="text-green-600 font-semibold hover:underline"
-          >See all sponsors</a
+          >See all the sponsors and partners</a
         >
       </div>
 

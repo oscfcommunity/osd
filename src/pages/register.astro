@@ -1,49 +1,67 @@
 ---
-import Layout from '../components/Layout.astro';
-import Navigation from '../components/Navigation.jsx';
-import '../styles/global.css';
+import Layout from "@/layouts/Layout.astro";
+import Navigation from "../components/Navigation.jsx";
+import "../styles/global.css";
 ---
 
 <Layout title="Register - OpenSource Weekend 2025">
   <Navigation client:load />
-  
+
   <section class="min-h-screen flex items-center justify-center px-4">
     <div class="max-w-2xl mx-auto text-center">
       <div class="mb-8">
-        <div class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse">
-          <svg class="w-12 h-12 text-black" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+        <div
+          class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6 animate-pulse"
+        >
+          <svg
+            class="w-12 h-12 text-black"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"></path>
           </svg>
         </div>
-        <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-6">Almost There!</h1>
+        <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-6">
+          Almost There!
+        </h1>
         <p class="text-xl text-black-300 mb-8">
-          You're being redirected to our secure registration platform on KonfHub. 
-          If you're not redirected automatically, click the button below.
+          You're being redirected to our secure registration platform on
+          KonfHub. If you're not redirected automatically, click the button
+          below.
         </p>
       </div>
-      
-      <div class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-8 mb-8">
+
+      <div
+        class="bg-gray-900/50 rounded-xl border border-green-500/20 backdrop-blur-sm p-8 mb-8"
+      >
         <h2 class="text-2xl font-bold text-white mb-4">What to Expect</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
           <div class="flex items-start space-x-3">
-            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0">
+            </div>
             <span class="text-black-300">Secure payment processing</span>
           </div>
           <div class="flex items-start space-x-3">
-            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0">
+            </div>
             <span class="text-black-300">Instant confirmation email</span>
           </div>
           <div class="flex items-start space-x-3">
-            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0">
+            </div>
             <span class="text-black-300">Mobile-friendly tickets</span>
           </div>
           <div class="flex items-start space-x-3">
-            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+            <div class="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0">
+            </div>
             <span class="text-black-300">Easy refund policy</span>
           </div>
         </div>
       </div>
-      
+
       <a
         href="https://konfhub.com/open-source-day-2025"
         target="_blank"
@@ -52,9 +70,13 @@ import '../styles/global.css';
       >
         Continue to Registration
       </a>
-      
+
       <p class="text-sm text-black-400 mt-6">
-        Having trouble? <a href="mailto:support@opensourceweekend.com" class="text-green-400 hover:text-green-300">Contact our support team</a>
+        Having trouble? <a
+          href="mailto:support@opensourceweekend.com"
+          class="text-green-400 hover:text-green-300"
+          >Contact our support team</a
+        >
       </p>
     </div>
   </section>
@@ -62,7 +84,7 @@ import '../styles/global.css';
   <script>
     // Auto-redirect after 3 seconds
     setTimeout(() => {
-      window.open('https://konfhub.com/open-source-day-2025', '_blank');
+      window.open("https://konfhub.com/open-source-day-2025", "_blank");
     }, 3000);
   </script>
 </Layout>

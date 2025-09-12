@@ -1,9 +1,10 @@
 ---
 import { BRANDING } from "@/config";
-import Layout from "../components/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import Navigation from "../components/Navigation.jsx";
 // import { VENUE } from '../config.ts';
 import "../styles/global.css";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Venue - OpenSource Weekend 2025">
@@ -13,7 +14,7 @@ import "../styles/global.css";
   <section class="pt-12 pb-8 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
       <div class="mb-4 flex justify-center">
-        <img
+        <Image
           src={BRANDING.logos.main}
           alt="Open Source Day Logo"
           class="w-12 h-12 md:w-16 md:h-16"
