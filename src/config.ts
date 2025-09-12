@@ -207,6 +207,7 @@ export const BRANDING = {
     white: "/icons/OSWWhite.svg",
     black: "/icons/OSWBlack.svg",
     green: OSDGreen,
+
   },
   colors: {
     primary: "#22c55e",
