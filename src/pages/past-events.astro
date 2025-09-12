@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-import "../styles/global.css";
-import { BRANDING } from "@/config";
+import Heading from "@/components/Heading.astro";
+import Navigation from "@/components/Navigation.jsx";
 import { PastEvent } from "@/config";
+import "@/styles/global.css";
 
 // const pastEvents = [
 //   {
@@ -68,23 +68,10 @@ import { PastEvent } from "@/config";
   <Navigation client:load activePath="/past-events" />
 
   <!-- Hero Section -->
-  <section class="pt-20 pb-20 px-4">
+  <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <Image
-          src={BRANDING.logos.main}
-          alt="OSD"
-          class="w-12 h-12 md:w-16 md:h-16"
-        />
-        <h1 class="text-5xl md:text-7xl font-bold text-green-600 mb-0">
-          Past Events
-        </h1>
-      </div>
-      <div
-        class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
-      <p class="text-xl text-black-300 max-w-3xl mx-auto">
+      <Heading title="Past Events" />
+      <p class="text-xl text-black-300 max-w-3xl mx-auto mt-4">
         Look back at the incredible moments, innovations, and connections made
         at previous OpenSource Weekend events.
       </p>

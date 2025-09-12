@@ -1,10 +1,9 @@
 ---
 import { eventSchedule, BRANDING } from "src/config";
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-import "../styles/global.css";
-import OSDGreen from "@/assets/icons/OSDGreen.png";
-import { Image } from "astro:assets";
+import Heading from "@/components/Heading.astro";
+import Navigation from "@/components/Navigation.jsx";
+import "@/styles/global.css";
 
 const getTypeColor = (type: string) => {
   switch (type) {
@@ -36,23 +35,10 @@ const getTypeColor = (type: string) => {
   <Navigation client:load activePath="/schedule" />
 
   <!-- Hero Section -->
-  <section class="pt-32 pb-20 px-4 bg-white">
+  <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
-      <div class="mb-8 flex justify-center">
-        <Image
-          src={BRANDING.logos.main}
-          alt="Open Source Day Logo"
-          class="w-16 h-16 md:w-20 md:h-20"
-        />
-      </div>
-      <h1 class="text-5xl md:text-7xl font-bold gradient-text mb-6">
-        Event Schedule
-      </h1>
-      <div
-        class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
-      <p class="text-xl text-black max-w-3xl mx-auto mb-8">
+      <Heading title="Event Schedule" />
+      <p class="text-xl text-black max-w-3xl mx-auto mt-4 mb-8">
         A full day packed with inspiring talks, hands-on workshops, networking
         opportunities, and celebrating open source innovation.
       </p>
@@ -191,7 +177,9 @@ const getTypeColor = (type: string) => {
                         {session.time}
                       </span>
                       <span
-                        class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}
+                        class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(
+                          session.type
+                        )}`}
                       >
                         {session.type.charAt(0).toUpperCase() +
                           session.type.slice(1)}

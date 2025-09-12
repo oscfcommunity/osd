@@ -1,11 +1,11 @@
 ---
 import SpeakerCard from "@components/SpeakerCard.astro";
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-import { SPEAKERS, BRANDING } from "../config.ts";
-import "../styles/global.css";
+import Navigation from "@/components/Navigation.jsx";
+import Heading from "@/components/Heading.astro";
 import PersonSVG from "@/assets/icons/square-user.svg";
-import { Image } from "astro:assets";
+import { SPEAKERS } from "@/config.ts";
+import "@/styles/global.css";
 
 const OSD_YEAR = 2025;
 
@@ -18,22 +18,9 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
   <Navigation client:load activePath="/speakers" />
 
   <!-- Page Header -->
-  <section class="pt-12 pb-8 px-4">
+  <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
-      <div class="mb-4 flex justify-center">
-        <Image
-          src={BRANDING.logos.main}
-          alt="Open Source Day Logo"
-          class="w-12 h-12 md:w-16 md:h-16"
-        />
-      </div>
-      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
-        Our Speakers
-      </h1>
-      <div
-        class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
+      <Heading title="Our Speakers" />
     </div>
   </section>
   <!-- Page Header ends -->

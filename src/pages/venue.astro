@@ -1,32 +1,17 @@
 ---
-import { BRANDING } from "@/config";
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-// import { VENUE } from '../config.ts';
-import "../styles/global.css";
-import { Image } from "astro:assets";
+import Navigation from "@/components/Navigation.jsx";
+import Heading from "@/components/Heading.astro";
+import "@/styles/global.css";
 ---
 
 <Layout title="Venue - OpenSource Weekend 2025">
   <Navigation client:load activePath="/venue" />
 
   <!-- Page Header -->
-  <section class="pt-12 pb-8 px-4 bg-white">
+  <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto text-center">
-      <div class="mb-4 flex justify-center">
-        <Image
-          src={BRANDING.logos.main}
-          alt="Open Source Day Logo"
-          class="w-12 h-12 md:w-16 md:h-16"
-        />
-      </div>
-      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
-        The Venue
-      </h1>
-      <div
-        class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
+      <Heading title="The Venue" />
       <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
         Join us at a premium venue in the heart of the tech hub, designed for
         collaboration and innovation.
@@ -60,9 +45,9 @@ import { Image } from "astro:assets";
                 <h3 class="text-xl font-semibold text-black mb-2">Location</h3>
                 <p class="text-black">
                   Ahmedabad, Gujarat<br />
-                  Exact Venue details will be shared<br />
-                  with registered participants<br />
-                  via email confirmation
+                   Exact Venue details will be shared<br />
+                   with registered participants<br />
+                   via email confirmation
                 </p>
               </div>
             </div>
@@ -88,8 +73,8 @@ import { Image } from "astro:assets";
                 </h3>
                 <p class="text-black">
                   October 05, 2025<br />
-                  9:00 AM - 6:00 PM<br />
-                  Full day event
+                   9:00 AM - 6:00 PM<br />
+                   Full day event
                 </p>
               </div>
             </div>
@@ -117,8 +102,8 @@ import { Image } from "astro:assets";
                 </h3>
                 <p class="text-black">
                   Wheelchair accessible venue<br />
-                  Public transport connectivity<br />
-                  Parking facilities available
+                   Public transport connectivity<br />
+                   Parking facilities available
                 </p>
               </div>
             </div>

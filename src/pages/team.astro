@@ -1,9 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Navigation from "../components/Navigation.jsx";
-import "../styles/global.css";
-import { TEAM, BRANDING } from "../config.ts";
+import Heading from "@/components/Heading.astro";
+import Navigation from "@/components/Navigation.jsx";
+import { TEAM } from "@/config.ts";
+import "@/styles/global.css";
 
 // Helper: normalize roles to an array and safely read linkedin
 const getRoles = (m: any): string[] => {
@@ -20,23 +21,10 @@ const getLinkedin = (m: any): string | null => {
 <Layout title="Team - Open Source Day 2025">
   <Navigation client:load activePath="/team" />
 
-  <section class="py-16 px-4 bg-white">
+  <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
-        <div class="mb-4 flex justify-center items-center gap-3">
-          <Image
-            src={BRANDING.logos.main}
-            alt="OSD"
-            class="w-12 h-12 md:w-16 md:h-16"
-          />
-          <h1 class="text-4xl md:text-6xl font-bold text-green-600 mb-0">
-            Our Team
-          </h1>
-        </div>
-        <div
-          class="w-32 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-        >
-        </div>
+        <Heading title="Our Team" />
         <p class="text-lg text-gray-600 mt-4">
           Meet the people who make Open Source Day possible.
         </p>

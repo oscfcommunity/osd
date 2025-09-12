@@ -1,0 +1,26 @@
+---
+export interface Props {
+  title: string;
+}
+import { Image } from "astro:assets";
+import { BRANDING } from "@/config";
+
+const { title } = Astro.props;
+---
+
+<div>
+  <div class="mb-4 flex justify-center">
+    <Image
+      src={BRANDING.logos.main}
+      alt="Open Source Day Logo"
+      class="w-12 h-12 md:w-16 md:h-16"
+    />
+  </div>
+  <h1 class="text-3xl md:text-6xl font-bold gradient-text mb-4">
+    {title}
+  </h1>
+  <div
+    class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
+  >
+  </div>
+</div>
