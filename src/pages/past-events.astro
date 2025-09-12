@@ -144,7 +144,14 @@ import { PastEvent } from "@/config";
             <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
             <div class="flex flex-wrap justify-center gap-6 mb-8">
               {event.images.map((url) => (
-                <OptimizedImage src={url.src} alt={event.title} class="rounded-lg shadow-md max-h-72 object-cover" loading="lazy" />
+                <div class="aspect-w-16 aspect-h-9 w-72 max-w-full rounded-lg overflow-hidden shadow-md">
+                  <OptimizedImage
+                    src={url.src}
+                    alt={event.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
               ))}
             </div>
           </div>
