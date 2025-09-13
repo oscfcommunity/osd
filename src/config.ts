@@ -85,6 +85,14 @@ import OSW23_8 from "@/assets/PastEvents/OSW-23/IMG_0804.webp";
 import OSW23_9 from "@/assets/PastEvents/OSW-23/IMG_0806.webp";
 import OSW23_10 from "@/assets/PastEvents/OSW-23/IMG_0824.webp";
 
+import FacebookIcon from "@/assets/icons/facebook.svg";
+import TwitterIcon from "@/assets/icons/x.svg";
+import InstagramIcon from "@/assets/icons/instagram.svg";
+import LinkedInIcon from "@/assets/icons/footer-linkedin.svg";
+import MediumIcon from "@/assets/icons/medium.svg";
+import GithubIcon from "@/assets/icons/github.svg";
+import DiscordIcon from "@/assets/icons/discord.svg";
+
 export const SITE = {
   title: "OpenSourceDay 2025",
   shortTitle: "OSD2025",
@@ -284,15 +292,50 @@ export const NAVIGATION = {
   },
 };
 
-export const SOCIAL_LINKS = {
-  facebook: "https://www.facebook.com/OSWeekend",
-  twitter: "https://twitter.com/OSWeekend",
-  instagram: "https://instagram.com/OSWeekend",
-  linkedin: "https://www.linkedin.com/company/open-source-weekend/",
-  medium: "https://medium.com/@opensourceweekend",
-  github: "https://github.com/opensourceweekend",
-  discord: "https://discord.gg/opensourceweekend",
-};
+export const SOCIAL_LINKS = [
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/OSWeekend",
+    icon: FacebookIcon,
+    description: "Facebook",
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/OSWeekend",
+    icon: TwitterIcon,
+    description: "Twitter icon",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/OSWeekend",
+    icon: InstagramIcon,
+    description: "Instagram icon",
+  },
+  {
+    name: "LinkedIn",
+    href: "https://www.linkedin.com/company/open-source-weekend/",
+    icon: LinkedInIcon,
+    description: "LinkedIn icon",
+  },
+  {
+    name: "Github",
+    href: "https://github.com/oscfcommunity",
+    icon: GithubIcon,
+    description: "Github icon",
+  },
+  {
+    name: "Discord",
+    href: "https://discord.gg/opensourceweekend",
+    icon: DiscordIcon,
+    description: "Discord icon",
+  },
+  {
+    name: "Medium",
+    href: "https://medium.com/@opensourceweekend",
+    icon: MediumIcon,
+    description: "Medium icon",
+  },
+];
 
 export const CONTACT = {
   title: "Contact Us",
