@@ -1,8 +1,9 @@
 ---
-import { eventSchedule, BRANDING } from "src/config";
+import { eventSchedule, fullEvent } from "src/config";
 import Layout from "@/layouts/Layout.astro";
 import Heading from "@/components/Heading.astro";
 import Navigation from "@/components/Navigation.jsx";
+import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
 
 const getTypeColor = (type: string) => {
@@ -170,7 +171,7 @@ const getTypeColor = (type: string) => {
           {
             eventSchedule.map((session) => (
               <div class="light-card rounded-xl p-6 transition-all duration-300">
-                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <div class="flex flex-col gap-5 md:flex-row md:items-center justify-between">
                   <div class="flex-1">
                     <div class="flex items-center space-x-4 mb-2">
                       <span class="text-green-600 font-bold text-lg min-w-[80px]">
@@ -193,6 +194,9 @@ const getTypeColor = (type: string) => {
                     )}
                     <p class="text-sm text-gray-600">{session.room}</p>
                   </div>
+                  <div class="border-2 border-green-500 text-center text-green-600 hover:bg-green-500 hover:text-white px-4 py-2 rounded-full font-bold  transition-all duration-200 hover:scale-105 transform">
+                    <AddToGoogleCalendar event={session} client:load />
+                  </div>
                 </div>
               </div>
             ))
@@ -211,18 +215,17 @@ const getTypeColor = (type: string) => {
         miss anything!
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
+        <!-- <a
           href="/schedule.pdf"
           class="bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 glow-effect hover:scale-105 transform"
         >
           Download PDF
-        </a>
-        <a
-          href="/schedule.ics"
-          class="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 transform"
+        </a> -->
+        <div
+          class="border-2 border-green-500 text-green-600 hover:bg-green-500 hover:text-white px-6 py-2 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 transform"
         >
-          Add to Calendar
-        </a>
+          <AddToGoogleCalendar event={fullEvent} client:load />
+        </div>
       </div>
     </div>
   </section>
