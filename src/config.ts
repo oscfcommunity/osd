@@ -98,8 +98,8 @@ export const SITE = {
 export const fullEvent = {
   title: "Open Source Day 2025",
   room: "VENUE - TBA Ahmedabad",
-  start: "20251005T080000Z",
-  end: "20251005T173000Z",
+  start: "20251005T080000",
+  end: "20251005T173000",
 };
 
 export const eventSchedule = [
@@ -109,8 +109,8 @@ export const eventSchedule = [
     speaker: "",
     type: "registration",
     room: "Lobby/Food Court",
-    start: "20251005T080000Z",
-    end: "20251005T093000Z",
+    start: "20251005T080000",
+    end: "20251005T093000",
   },
   {
     time: "09:30 AM - 10:00 AM",
@@ -118,8 +118,8 @@ export const eventSchedule = [
     speaker: "",
     type: "activity",
     room: "Main Auditorium",
-    start: "20251005T093000Z",
-    end: "20251005T100000Z",
+    start: "20251005T093000",
+    end: "20251005T100000",
   },
   {
     time: "10:00 AM - 10:15 AM",
@@ -127,8 +127,8 @@ export const eventSchedule = [
     speaker: "",
     type: "opening",
     room: "Main Auditorium",
-    start: "20251005T100000Z",
-    end: "20251005T101500Z",
+    start: "20251005T100000",
+    end: "20251005T101500",
   },
   {
     time: "10:15 AM - 10:45 AM",
@@ -136,8 +136,8 @@ export const eventSchedule = [
     speaker: "",
     type: "keynote",
     room: "Main Auditorium",
-    start: "20251005T101500Z",
-    end: "20251005T104500Z",
+    start: "20251005T101500",
+    end: "20251005T104500",
   },
   {
     time: "10:45 AM - 11:30 AM",
@@ -145,8 +145,8 @@ export const eventSchedule = [
     speaker: "",
     type: "talk",
     room: "Main Auditorium",
-    start: "20251005T104500Z",
-    end: "20251005T113000Z",
+    start: "20251005T104500",
+    end: "20251005T113000",
   },
   {
     time: "11:30 AM - 12:15 PM",
@@ -154,8 +154,8 @@ export const eventSchedule = [
     speaker: "",
     type: "talk",
     room: "Main Auditorium",
-    start: "20251005T113000Z",
-    end: "20251005T121500Z",
+    start: "20251005T113000",
+    end: "20251005T121500",
   },
   {
     time: "12:15 PM - 01:00 PM",
@@ -163,8 +163,8 @@ export const eventSchedule = [
     speaker: "",
     type: "panel",
     room: "Main Auditorium",
-    start: "20251005T121500Z",
-    end: "20251005T130000Z",
+    start: "20251005T121500",
+    end: "20251005T130000",
   },
   {
     time: "01:00 PM - 02:00 PM",
@@ -172,8 +172,8 @@ export const eventSchedule = [
     speaker: "",
     type: "break",
     room: "Food Court",
-    start: "20251005T130000Z",
-    end: "20251005T140000Z",
+    start: "20251005T130000",
+    end: "20251005T140000",
   },
   {
     time: "02:00 PM - 02:45 PM",
@@ -181,8 +181,8 @@ export const eventSchedule = [
     speaker: "",
     type: "talk",
     room: "Main Auditorium",
-    start: "20251005T140000Z",
-    end: "20251005T144500Z",
+    start: "20251005T140000",
+    end: "20251005T144500",
   },
   {
     time: "02:45 PM - 03:30 PM",
@@ -190,8 +190,8 @@ export const eventSchedule = [
     speaker: "",
     type: "talk",
     room: "Main Auditorium",
-    start: "20251005T144500Z",
-    end: "20251005T153000Z",
+    start: "20251005T144500",
+    end: "20251005T153000",
   },
   {
     time: "03:30 PM - 04:15 PM",
@@ -199,8 +199,8 @@ export const eventSchedule = [
     speaker: "",
     type: "panel",
     room: "Main Auditorium",
-    start: "20251005T153000Z",
-    end: "20251005T161500Z",
+    start: "20251005T153000",
+    end: "20251005T161500",
   },
   {
     time: "04:15 PM - 04:45 PM",
@@ -208,8 +208,8 @@ export const eventSchedule = [
     speaker: "",
     type: "keynote",
     room: "Main Auditorium",
-    start: "20251005T161500Z",
-    end: "20251005T164500Z",
+    start: "20251005T161500",
+    end: "20251005T164500",
   },
   {
     time: "04:45 PM - 05:00 PM",
@@ -217,8 +217,8 @@ export const eventSchedule = [
     speaker: "",
     type: "closing",
     room: "Main Auditorium",
-    start: "20251005T164500Z",
-    end: "20251005T170000Z",
+    start: "20251005T164500",
+    end: "20251005T170000",
   },
   {
     time: "05:00 PM - 05:30 PM",
@@ -226,8 +226,8 @@ export const eventSchedule = [
     speaker: "",
     type: "social",
     room: "Exhibition Hall",
-    start: "20251005T170000Z",
-    end: "20251005T173000Z",
+    start: "20251005T170000",
+    end: "20251005T173000",
   },
 ];
 
