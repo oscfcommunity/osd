@@ -1,7 +1,7 @@
 ---
 import { eventSchedule, fullEvent } from "src/config";
 import Layout from "@/layouts/Layout.astro";
-import Heading from "@/components/Heading.astro";
+import Heading from "@components/Heading.astro";
 import Navigation from "@/components/Navigation.jsx";
 import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
@@ -35,23 +35,14 @@ const getTypeColor = (type: string) => {
 <Layout title="Schedule - OpenSource Day 2025">
   <Navigation client:load activePath="/schedule" />
 
-  <!-- Hero Section -->
-  <section class="py-12 px-4 bg-white">
-    <div class="max-w-6xl mx-auto text-center">
-      <Heading title="Event Schedule" client:load />
-      <p class="text-xl text-black max-w-3xl mx-auto mt-4 mb-8">
-        A full day packed with inspiring talks, hands-on workshops, networking
-        opportunities, and celebrating open source innovation.
-      </p>
-      <div class="flex justify-center">
-        <div
-          class="bg-green-500 text-white px-8 py-3 rounded-full font-semibold"
-        >
-          October 5th, 2025
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Heading Section -->
+  <Heading
+    title="Event Schedule"
+    description="A full day packed with inspiring talks, hands-on workshops, networking opportunities, and celebrating open source innovation."
+    date="October 5th, 2025"
+    variant="schedule"
+    client:load
+  />
 
   <!-- Legend -->
   <section class="py-10 px-4 bg-white">

@@ -2,7 +2,7 @@
 import CountdownTimer from "@components/CountdownTimer.jsx";
 import Layout from "@/layouts/Layout.astro";
 import Navigation from "@/components/Navigation.jsx";
-import Heading from "@/components/Heading.astro";
+import Heading from "@components/Heading.astro";
 import { TICKETS, CONTACT } from "@/config.ts";
 import "@/styles/global.css";
 ---
@@ -10,16 +10,12 @@ import "@/styles/global.css";
 <Layout title="Tickets - OpenSource Weekend 2025">
   <Navigation client:load activePath="/tickets" />
 
-  <!-- Page Header -->
-  <section class="py-12 px-4 bg-white">
-    <div class="max-w-6xl mx-auto text-center">
-      <Heading title="Get Your Tickets" client:load />
-      <p class="text-lg text-gray-600 max-w-3xl mx-auto mt-4 mb-6">
-        Choose the perfect ticket for your needs. All tickets include access to
-        sessions, workshops, and networking opportunities.
-      </p>
-    </div>
-  </section>
+  <!-- Heading Section -->
+  <Heading
+    title="Get Your Tickets"
+    description="Choose the perfect ticket for your needs. All tickets include access to sessions, workshops, and networking opportunities."
+    client:load
+  />
 
   <!-- Pricing Cards -->
   <section class="py-20 px-4 bg-white">
