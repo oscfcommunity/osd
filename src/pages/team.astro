@@ -1,16 +1,18 @@
 ---
-import Layout from "../components/Layout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import Navigation from "../components/Navigation.jsx";
-import Footer from "../components/Footer.jsx";
-import "../styles/global.css";
-import { TEAM, BRANDING } from "../config.ts";
+import Heading from "@components/Heading.astro";
+import Navigation from "@/components/Navigation.jsx";
+import { TEAM } from "@/config.ts";
+import "@/styles/global.css";
+
 // Helper: normalize roles to an array and safely read linkedin
 const getRoles = (m: any): string[] => {
   if (Array.isArray(m.roles)) return m.roles as string[];
   if (m.role) return [m.role];
   return [];
 };
+
 const getLinkedin = (m: any): string | null => {
   return m && m.linkedin ? m.linkedin : null;
 };
@@ -19,28 +21,15 @@ const getLinkedin = (m: any): string | null => {
 <Layout title="Team - Open Source Day 2025">
   <Navigation client:load activePath="/team" />
 
-  <section class="py-16 px-4 bg-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <div class="mb-4 flex justify-center items-center gap-3">
-          <img
-            src={BRANDING.logos.main}
-            alt="OSD"
-            class="w-12 h-12 md:w-16 md:h-16"
-          />
-          <h1 class="text-4xl md:text-6xl font-bold text-green-600 mb-0">
-            Our Team
-          </h1>
-        </div>
-        <div
-          class="w-32 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-        >
-        </div>
-        <p class="text-lg text-gray-600 mt-4">
-          Meet the people who make Open Source Day possible.
-        </p>
-      </div>
+  <!-- Heading Section -->
+  <Heading
+    title="Our Team"
+    description="Meet the people who make Open Source Day possible."
+    client:load
+  />
 
+  <section class="py-12 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
       <div class="space-y-12">
         {
           TEAM.advisory && (
@@ -244,6 +233,4 @@ const getLinkedin = (m: any): string | null => {
       </div>
     </div>
   </section>
-
-  <Footer client:load />
 </Layout>

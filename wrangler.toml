@@ -1,5 +1,8 @@
 name = "osd2025"
 compatibility_date = "2025-09-07"
+preview_urls = true
+workers_dev = true
+routes = [{ pattern = "osd.opensourceweekend.org", custom_domain = true }]
 
 [assets]
 directory = "./dist"

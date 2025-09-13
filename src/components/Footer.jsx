@@ -1,8 +1,6 @@
 import { FOOTER, BRANDING, SITE, SOCIAL_LINKS, CONTACT } from "../config.ts";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-gray-50 border-t border-green-500/20 py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -12,7 +10,7 @@ const Footer = () => {
             <div className="mb-6">
               <div className="flex items-center mb-4">
                 <img
-                  src={BRANDING.logos.main}
+                  src={BRANDING.logos.main.src}
                   alt="OSW Logo"
                   className="w-12 h-12 mr-3"
                 />
@@ -135,14 +133,28 @@ const Footer = () => {
                   {CONTACT.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`tel:${CONTACT.phone}`}
-                  className="hover:text-green-600 transition-colors"
-                >
-                  {CONTACT.phone}
-                </a>
-              </li>
+              {/* Render each phone number as a separate link */}
+              {Array.isArray(CONTACT.phone) ? (
+                CONTACT.phone.map((phone, idx) => (
+                  <li key={idx}>
+                    <a
+                      href={`tel:${phone.replace(/\s+/g, "")}`}
+                      className="hover:text-green-600 transition-colors"
+                    >
+                      {phone}
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <li>
+                  <a
+                    href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`}
+                    className="hover:text-green-600 transition-colors"
+                  >
+                    {CONTACT.phone}
+                  </a>
+                </li>
+              )}
               <li className="text-sm">
                 {CONTACT.address.venue}
                 <br />
@@ -154,9 +166,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-black text-sm mb-4 md:mb-0">
-            © {currentYear} {FOOTER.copyright.text}
-          </p>
+          <p className="text-black text-sm mb-4 md:mb-0">{FOOTER.credits}</p>
           <div className="flex space-x-6 text-sm">
             {FOOTER.legal.map((link, index) => (
               <a

@@ -7,7 +7,7 @@ export default function MarqueeLogos({
   logos = [],
   duration = 100,
   height = 120,
-  itemMinWidth = 220
+  itemMinWidth = 220,
 }) {
   // Duplicate logos to create a seamless loop
   const items = [...logos, ...logos];
@@ -25,6 +25,14 @@ export default function MarqueeLogos({
   return (
     <div className="w-full overflow-hidden">
       <style>{`
+        .marquee-wrapper {
+          position: relative;
+          overflow-x: auto; /* enable manual scroll */
+          scrollbar-width: none; /* hide Firefox scrollbar */
+        }
+        .marquee-wrapper::-webkit-scrollbar {
+          display: none; /* hide Chrome/Safari scrollbar */
+        }
         .marquee-track {
           display: flex;
           align-items: center;
@@ -32,27 +40,30 @@ export default function MarqueeLogos({
           gap: 24px;
           animation: marquee ${duration}s linear infinite;
         }
-        .marquee-item { display:inline-flex; align-items:center; justify-content:center; width: ${itemMinWidth}px; height: ${height}px; }
-        .marquee-card { display:flex; align-items:center; justify-content:center; width:100%; height:100%; border-radius: 8px; }
-        .marquee-card img { max-width: calc(100% - 24px); max-height: calc(100% - 16px); object-fit: contain; display:block; }
-        /* cap image height to the component height but no more than 140px */
-        .marquee-item img, .marquee-card img, .marquee-img { max-height: ${Math.min(
-          height,
-          140
-        )}px; height: auto; }
-  /* Specific fix: reduce oversize WordPress logo which has a tall/large source image */
-  .marquee-card img[src*="wordpress"], .marquee-card img[src*="Wordpress"] { max-width: 60% !important; max-height: 80% !important; }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none !important; } }
-        @media (max-width: 640px) { .marquee-item { width: 120px; height: ${Math.max(
-          48,
-          Math.round(height * 0.7)
-        )}px; } }
+        .marquee-item {
+          flex: 0 0 auto;
+          display:inline-flex; 
+          align-items:center; 
+          justify-content:center; 
+          width: ${itemMinWidth}px; 
+          height: ${height}px;
+        }
+        .marquee-item img { 
+          max-height: ${Math.min(height, 140)}px; 
+          height: auto; 
+          max-width: 100%;
+          object-fit: contain;
+        }
+        @keyframes marquee { 
+          0% { transform: translateX(0); } 
+          100% { transform: translateX(-50%); } 
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation: none !important; }
+        }
       `}</style>
 
-      <div
-        style={{ display: "flex", alignItems: "center", height: `${height}px` }}
-      >
+      <div className="marquee-wrapper" style={{ height: `${height}px` }}>
         <div ref={trackRef} className="marquee-track">
           {items.map((logo, i) => (
             <div key={i} className="marquee-item">
@@ -60,7 +71,6 @@ export default function MarqueeLogos({
                 src={logo.logo}
                 alt={logo.name || `logo-${i}`}
                 loading="eager"
-                style={{ height: "auto", maxWidth: "100%" }}
                 className="marquee-img"
               />
             </div>
