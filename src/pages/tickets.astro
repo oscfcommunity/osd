@@ -2,7 +2,7 @@
 import CountdownTimer from "@components/CountdownTimer.jsx";
 import Layout from "@/layouts/Layout.astro";
 import Navigation from "@/components/Navigation.jsx";
-import HeroSection from "@components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import { TICKETS, CONTACT } from "@/config.ts";
 import "@/styles/global.css";
 ---
@@ -10,10 +10,11 @@ import "@/styles/global.css";
 <Layout title="Tickets - OpenSource Weekend 2025">
   <Navigation client:load activePath="/tickets" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="Get Your Tickets"
     description="Choose the perfect ticket for your needs. All tickets include access to sessions, workshops, and networking opportunities."
+    client:load
   />
 
   <!-- Pricing Cards -->

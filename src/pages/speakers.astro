@@ -2,7 +2,7 @@
 import SpeakerCard from "@components/SpeakerCard.astro";
 import Layout from "@/layouts/Layout.astro";
 import Navigation from "@/components/Navigation.jsx";
-import HeroSection from "@components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import PersonSVG from "@/assets/icons/square-user.svg";
 import { SPEAKERS } from "@/config.ts";
 import "@/styles/global.css";
@@ -17,10 +17,11 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 <Layout title="Speakers - OpenSource Weekend 2025">
   <Navigation client:load activePath="/speakers" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="Our Speakers"
     description="We're always looking for passionate speakers to share their knowledge and experience."
+    client:load
   />
 
   <!-- Current Year Speakers -->

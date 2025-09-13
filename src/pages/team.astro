@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
-import HeroSection from "@components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import Navigation from "@/components/Navigation.jsx";
 import { TEAM } from "@/config.ts";
 import "@/styles/global.css";
@@ -21,10 +21,11 @@ const getLinkedin = (m: any): string | null => {
 <Layout title="Team - Open Source Day 2025">
   <Navigation client:load activePath="/team" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="Our Team"
     description="Meet the people who make Open Source Day possible."
+    client:load
   />
 
   <section class="py-12 px-4 bg-white">

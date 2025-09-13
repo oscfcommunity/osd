@@ -1,26 +1,57 @@
 ---
 export interface Props {
   title: string;
+  description: string;
+  date?: string;
+  variant?: "default" | "past-events" | "venue" | "schedule";
 }
+
 import { Image } from "astro:assets";
 import { BRANDING } from "@/config";
 
-const { title } = Astro.props;
+const {
+  title = "Open Source Day 2025",
+  description = "",
+  date = "",
+  variant = "default",
+} = Astro.props;
 ---
 
-<div>
-  <div class="mb-4 flex justify-center">
-    <Image
-      src={BRANDING.logos.main}
-      alt="Open Source Day Logo"
-      class="w-12 h-12 md:w-16 md:h-16"
-    />
+<section class="py-12 px-4 bg-white">
+  <div class="max-w-6xl mx-auto text-center">
+    <div>
+      <div class="mb-4 flex justify-center">
+        <Image
+          src={BRANDING.logos.main}
+          alt="Open Source Day Logo"
+          class="w-12 h-12 md:w-16 md:h-16"
+        />
+      </div>
+      <h1 class="text-3xl md:text-6xl font-bold gradient-text mb-4">
+        {title}
+      </h1>
+      <div
+        class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
+      >
+      </div>
+    </div>
+
+    {
+      description && (
+        <p class={`max-w-3xl mx-auto mt-4 text-gray-600 text-lg`}>
+          {description}
+        </p>
+      )
+    }
+
+    {
+      variant === "schedule" && date && (
+        <div class="flex justify-center mt-8">
+          <div class="bg-green-500 text-white px-8 py-3 rounded-full font-semibold">
+            {date}
+          </div>
+        </div>
+      )
+    }
   </div>
-  <h1 class="text-3xl md:text-6xl font-bold gradient-text mb-4">
-    {title}
-  </h1>
-  <div
-    class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-  >
-  </div>
-</div>
+</section>

@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
-import HeroSection from "@components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import Navigation from "@/components/Navigation.jsx";
 import { PastEvent } from "@/config";
 import "@/styles/global.css";
@@ -67,10 +67,11 @@ import "@/styles/global.css";
 <Layout title="Past Events - OpenSource Weekend 2025">
   <Navigation client:load activePath="/past-events" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="Past Events"
     description="Look back at the incredible moments, innovations, and connections made at previous OpenSource Weekend events."
+    client:load
   />
 
   <!-- Overall Stats -->

@@ -1,7 +1,7 @@
 ---
 import { eventSchedule, fullEvent } from "src/config";
 import Layout from "@/layouts/Layout.astro";
-import HeroSection from "@components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import Navigation from "@/components/Navigation.jsx";
 import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
@@ -35,12 +35,13 @@ const getTypeColor = (type: string) => {
 <Layout title="Schedule - OpenSource Day 2025">
   <Navigation client:load activePath="/schedule" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="Event Schedule"
     description="A full day packed with inspiring talks, hands-on workshops, networking opportunities, and celebrating open source innovation."
     date="October 5th, 2025"
     variant="schedule"
+    client:load
   />
 
   <!-- Legend -->

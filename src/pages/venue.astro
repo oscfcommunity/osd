@@ -1,17 +1,18 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Navigation from "@/components/Navigation.jsx";
-import HeroSection from "@/components/HeroSection.astro";
+import Heading from "@components/Heading.astro";
 import "@/styles/global.css";
 ---
 
 <Layout title="Venue - OpenSource Weekend 2025">
   <Navigation client:load activePath="/venue" />
 
-  <!-- Hero Section -->
-  <HeroSection
+  <!-- Heading Section -->
+  <Heading
     title="The Venue"
     description="Join us at a premium venue in the heart of the tech hub, designed for collaboration and innovation."
+    client:load
   />
 
   <!-- Venue Details -->
