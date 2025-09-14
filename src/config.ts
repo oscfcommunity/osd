@@ -479,6 +479,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
+    konfhubTicketId: "56932",
   },
   {
     name: "Regular Ticket",
@@ -498,6 +499,7 @@ export const TICKETS = [
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
     linkText: "Coming Soon",
+    konfhubTicketId: "56800",
   },
   {
     name: "Open Source Day 25 + Devfest Gandhinagar 25",
@@ -524,6 +526,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56934",
+    konfhubTicketId: "56934",
   },
   {
     name: "Community Fan",
@@ -544,6 +547,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805",
+    konfhubTicketId: "56805",
   },
   {
     name: "Supporter Ticket",
@@ -564,6 +568,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56803",
+    konfhubTicketId: "56803",
   },
   {
     name: "Silver Ticket",
@@ -587,6 +592,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56804",
+    konfhubTicketId: "56804",
   },
   {
     name: "Golden Ticket",
@@ -611,6 +617,7 @@ export const TICKETS = [
     available: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806",
+    konfhubTicketId: "56806",
   },
   {
     name: "Micro Sponsor",
