@@ -1,15 +1,18 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "@/components/Navigation.jsx";
 import Hero from "@/components/Hero.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
 import Counter from "@/components/Counter";
 import CountdownTimer from "@/components/CountdownTimer.jsx";
 import SponsorsGrid from "@/components/SponsorsGrid.jsx";
+import MarqueeLogos from "../components/MarqueeLogos.jsx";
+import "@/styles/global.css";
+
 import LearnAndContribute from "@/assets/icons/learn-contribute.svg";
 import Connect from "@/assets/icons/connect.svg";
 import Celebrate from "@/assets/icons/celebrate.svg";
-import "@/styles/global.css";
 
 import {
   SPEAKERS,
@@ -17,13 +20,11 @@ import {
   TICKETS,
   SPONSOR_TIERS,
   BRANDING,
+  COMMUNITY_PARTNERS,
 } from "../config.ts";
-import MarqueeLogos from "../components/MarqueeLogos.jsx";
-import { COMMUNITY_PARTNERS } from "../config.ts";
-import { Image } from "astro:assets";
 ---
 
-<Layout title="Open Source Day 2025 - Celebrate Innovation">
+<Layout title="2025 OpenSourceDay">
   <Hero client:load />
   <ScrollAnimations client:load />
 
@@ -348,10 +349,6 @@ import { Image } from "astro:assets";
             <div class="text-gray-700 mb-4">{VENUE.name}</div>
             <div class="text-gray-600">{VENUE.address}</div>
             <p class="text-gray-700 mt-4">{VENUE.description}</p>
-            <div class="mt-4 text-sm text-gray-600">
-              <strong>Transport:</strong>
-              {VENUE.transport.Transit}
-            </div>
           </div>
 
           <div

@@ -1,10 +1,11 @@
 ---
-import Layout from "@/layouts/Layout.astro";
 import { Image } from "astro:assets";
+
+import Layout from "@/layouts/Layout.astro";
 import Heading from "@components/Heading.astro";
-import Navigation from "@/components/Navigation.jsx";
-import { TEAM } from "@/config.ts";
 import "@/styles/global.css";
+
+import { TEAM } from "@/config.ts";
 
 // Helper: normalize roles to an array and safely read linkedin
 const getRoles = (m: any): string[] => {
@@ -18,7 +19,7 @@ const getLinkedin = (m: any): string | null => {
 };
 ---
 
-<Layout title="Team - Open Source Day 2025">
+<Layout title="Team — 2025 OSD">
   <!-- Heading Section -->
   <Heading
     title="Our Team"

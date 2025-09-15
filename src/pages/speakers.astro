@@ -1,11 +1,12 @@
 ---
-import SpeakerCard from "@components/SpeakerCard.astro";
 import Layout from "@/layouts/Layout.astro";
-import Navigation from "@/components/Navigation.jsx";
 import Heading from "@components/Heading.astro";
-import PersonSVG from "@/assets/icons/square-user.svg";
-import { SPEAKERS } from "@/config.ts";
+import SpeakerCard from "@components/SpeakerCard.astro";
 import "@/styles/global.css";
+
+import PersonSVG from "@/assets/icons/square-user.svg";
+
+import { SPEAKERS } from "@/config.ts";
 
 const OSD_YEAR = 2025;
 
@@ -14,7 +15,7 @@ const currentSpeakers = SPEAKERS.filter((s) => s.eventYear === OSD_YEAR);
 const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 ---
 
-<Layout title="Speakers - OpenSource Weekend 2025">
+<Layout title="Speakers — 2025 OSD">
   <!-- Heading Section -->
   <Heading
     title="Our Speakers"

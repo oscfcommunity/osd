@@ -1,10 +1,10 @@
 ---
-import { eventSchedule, fullEvent } from "src/config";
 import Layout from "@/layouts/Layout.astro";
 import Heading from "@components/Heading.astro";
-import Navigation from "@/components/Navigation.jsx";
 import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
+
+import { eventSchedule, fullEvent } from "@/config";
 
 const getTypeColor = (type: string) => {
   switch (type) {
@@ -32,7 +32,7 @@ const getTypeColor = (type: string) => {
 };
 ---
 
-<Layout title="Schedule - OpenSource Day 2025">
+<Layout title="Schedule — 2025 OSD">
   <!-- Heading Section -->
   <Heading
     title="Event Schedule"
