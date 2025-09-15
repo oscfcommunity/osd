@@ -40,7 +40,7 @@ const Navigation = (props) => {
           </div>
 
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {NAVIGATION.items.map((item) => {
               const isTickets = item.name.toLowerCase() === "tickets";
               const isActivePath = item.href === activePath;
@@ -65,7 +65,7 @@ const Navigation = (props) => {
             })}
           </div>
 
-          <div className="hidden md:block nav-item">
+          <div className="hidden lg:block nav-item">
             <a
               href={NAVIGATION.cta.url}
               target="_blank"
@@ -77,7 +77,7 @@ const Navigation = (props) => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-black hover:text-green-600 transition-colors"

@@ -73,7 +73,11 @@ import { ClientRouter } from "astro:transitions";
     </script>
   </head>
   <body>
-    <Navigation client:only transition:persist />
+    <Navigation
+      client:only
+      transition:persist
+      activePath={Astro.url.pathname}
+    />
     <main class="pt-16 md:pt-0 lg:pt-0" transition:animate="fade">
       <slot />
     </main>
