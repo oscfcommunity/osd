@@ -96,7 +96,7 @@ import GithubIcon from "@/assets/icons/github.svg";
 import DiscordIcon from "@/assets/icons/discord.svg";
 
 export const SITE = {
-  title: "OpenSourceDay 2025",
+  title: "2025 OpenSourceDay",
   shortTitle: "OSD2025",
   description:
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
@@ -686,10 +686,11 @@ export const TICKETS = [
 ];
 
 export const VENUE = {
-  name: "Ahmedabad",
-  address: "Ahmedabad, Gujarat, India",
+  name: "Silver Oak University",
+  address:
+    "Silver Oak University, 370/371, near Bhavik Publication, Gota Gam, Gota, Ahmedabad, Gujarat 382481",
   description:
-    "Ahmedabad, the vibrant heart of Gujarat, where heritage meets innovation.",
+    "Silver Oak University (SOU) is premier private university carrying forward the legacy of Silver Oak Group of Institutes. As a reflection to its motto,“Gyanam Param Bhushanam” meaning Knowledge is the highest virtue, SOU delivers engaging learning experience through futuristic curriculum, advanced technological interface, eminent faculty, industry academia bonding, career planning and counseling and ample career opportunities. This state-of-the-art campus provides an inspiring and dynamic environment, perfect for fostering innovation and collaboration among tech enthusiasts.",
   capacity: "500+ attendees across multiple halls",
   facilities: [
     "Main auditorium with 300 seats",
