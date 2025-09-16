@@ -1,10 +1,12 @@
 ---
+import Layout from "@/layouts/Layout.astro";
+import Heading from "@components/Heading.astro";
 import SpeakerCard from "@components/SpeakerCard.astro";
-import Layout from "../components/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-import { SPEAKERS, BRANDING } from "../config.ts";
-import "../styles/global.css";
-import OSDGreen from "@/assets/icons/OSDGreen.png";
+import "@/styles/global.css";
+
+import PersonSVG from "@/assets/icons/square-user.svg";
+
+import { SPEAKERS } from "@/config.ts";
 
 const OSD_YEAR = 2025;
 
@@ -13,29 +15,12 @@ const currentSpeakers = SPEAKERS.filter((s) => s.eventYear === OSD_YEAR);
 const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 ---
 
-<Layout title="Speakers - OpenSource Weekend 2025">
-  <Navigation client:load />
-
-  <!-- Page Header -->
-  <section class="pt-12 pb-8 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="mb-4 flex justify-center">
-        <img
-          src={BRANDING.logos.main}
-          alt="Open Source Day Logo"
-          class="w-12 h-12 md:w-16 md:h-16"
-        />
-      </div>
-      <h1 class="text-4xl md:text-6xl font-bold gradient-text mb-4">
-        Our Speakers
-      </h1>
-      <div
-        class="w-32 h-1 mx-auto mt-2 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
-    </div>
-  </section>
-  <!-- Page Header ends -->
+<Layout title="Speakers — 2025 OSD">
+  <!-- Heading Section -->
+  <Heading
+    title="Our Speakers"
+    description="We're always looking for passionate speakers to share their knowledge and experience."
+  />
 
   <!-- Current Year Speakers -->
   <section class="pb-10 px-4">
@@ -43,25 +28,38 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
       <h2 class="text-3xl font-bold text-gray-700 mb-10 text-left">
         2025 Open Source Day
       </h2>
-      {
-        currentSpeakers.length !== 0 ? (
-          ""
-        ) : (
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {Array.from({ length: 4 }, (_, index) => (
+      <div class="container mx-auto px-4">
+        {
+          currentSpeakers.length !== 0 ? (
+            ""
+          ) : (
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
               <SpeakerCard
                 width={5}
                 name="To be announced"
-                image={OSDGreen}
+                image={PersonSVG}
                 presentationTitle="TBD"
                 event=""
                 position=""
                 company=""
               />
-            ))}
-          </div>
-        )
-      }
+
+              {Array.from({ length: 3 }, (_, index) => (
+                <SpeakerCard
+                  width={5}
+                  name="To be announced"
+                  image={PersonSVG}
+                  presentationTitle="TBD"
+                  event=""
+                  position=""
+                  company=""
+                  class="hidden md:block lg:block"
+                />
+              ))}
+            </div>
+          )
+        }
+      </div>
     </div>
   </section>
 
@@ -71,12 +69,16 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
       <h2 class="text-3xl font-bold text-gray-800 mb-10 text-left">
         Past Speakers
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {
-          pastSpeakers.map((speaker) => (
-            <SpeakerCard width={400} {...speaker} />
-          ))
-        }
+      <div class="container mx-auto px-4">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8"
+        >
+          {
+            pastSpeakers.map((speaker) => (
+              <SpeakerCard width={400} {...speaker} />
+            ))
+          }
+        </div>
       </div>
     </div>
   </section>

@@ -1,23 +1,34 @@
 /**
- * @param {{sponsors?: {name:string,logo:string}[], columns?: number, maxHeight?: number}} props
+ * @param {{sponsors?: {name:string,logo:string}[], columns?: number | {base?:number,sm?:number,md?:number,lg?:number,xl?:number}, maxHeight?: number}} props
  */
 export default function SponsorsGrid({
   sponsors = [],
   columns = 4,
   maxHeight = 140
 }) {
-  // Responsive grid classes: default to 2 cols on small, grow on md/lg
-  const baseCols =
-    {
-      1: "grid-cols-1",
-      2: "grid-cols-2 sm:grid-cols-3 md:grid-cols-2",
-      3: "grid-cols-3",
-      4: "grid-cols-3 md:grid-cols-4",
-      6: "grid-cols-3 md:grid-cols-3 lg:grid-cols-6"
-    }[columns] || "grid-cols-3";
+  // Helper to map number to Tailwind grid-cols-*
+  const colClass = (n) => `grid-cols-${n}`;
+  // Responsive grid classes
+  let gridClasses = "";
+  if (typeof columns === "object") {
+    const breakpoints = {
+      base: '',
+      sm: 'sm:',
+      md: 'md:',
+      lg: 'lg:',
+      xl: 'xl:'
+    };
+    gridClasses = Object.entries(columns)
+      .filter(([bp, n]) => n && breakpoints[bp] !== undefined)
+      .map(([bp, n]) => `${breakpoints[bp]}${colClass(n)}`)
+      .join(' ');
+  } else {
+    // fallback to old behavior
+    gridClasses = colClass(columns);
+  }
 
   return (
-    <div className={`grid ${baseCols} gap-6 items-center`}>
+    <div className={`grid ${gridClasses} gap-4 items-center`}>
       {sponsors.map((s) => (
         <div
           key={s.name}

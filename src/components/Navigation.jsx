@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { NAVIGATION, BRANDING, SITE } from "../config.ts";
 
-const Navigation = () => {
+const Navigation = (props) => {
+  const { activePath = "" } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -12,24 +14,6 @@ const Navigation = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    // Simple CSS animation for navigation items
-    const navItems = document.querySelectorAll(".nav-item");
-    navItems.forEach((item, index) => {
-      item.style.opacity = "0";
-      item.style.transform = "translateY(-20px)";
-      item.style.transition = "all 0.6s ease-out";
-
-      setTimeout(
-        () => {
-          item.style.opacity = "1";
-          item.style.transform = "translateY(0)";
-        },
-        200 + index * 100
-      );
-    });
   }, []);
 
   return (
@@ -45,7 +29,7 @@ const Navigation = () => {
           <div className="nav-item flex items-center">
             <a href="/" className="flex items-center">
               <img
-                src={BRANDING.logos.main}
+                src={BRANDING.logos.main.src}
                 alt="OSW Logo"
                 className="w-8 h-8 mr-2"
               />
@@ -56,29 +40,32 @@ const Navigation = () => {
           </div>
 
           {/* Desktop navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {NAVIGATION.items.map((item) => {
               const isTickets = item.name.toLowerCase() === "tickets";
+              const isActivePath = item.href === activePath;
               return (
                 <a
                   key={item.name}
                   href={item.href}
                   className={
                     isTickets
-                      ? "bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base"
-                      : "nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium"
+                      ? `bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base`
+                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${isActivePath ? "text-green-600" : ""}`
                   }
                 >
                   {item.name}
                   {!isTickets && (
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200 group-hover:w-full"></span>
+                    <span
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? "w-full" : ""}`}
+                    ></span>
                   )}
                 </a>
               );
             })}
           </div>
 
-          <div className="hidden md:block nav-item">
+          <div className="hidden lg:block nav-item">
             <a
               href={NAVIGATION.cta.url}
               target="_blank"
@@ -90,7 +77,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-black hover:text-green-600 transition-colors"

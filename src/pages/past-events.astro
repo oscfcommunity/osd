@@ -1,9 +1,10 @@
 ---
-import SmoothScrollLogos from "@components/SmoothScrollLogos";
-import Layout from "../components/Layout.astro";
-import Navigation from "../components/Navigation.jsx";
-import "../styles/global.css";
-import { BRANDING } from "@/config";
+import { Image } from "astro:assets";
+
+import Layout from "@/layouts/Layout.astro";
+import Heading from "@components/Heading.astro";
+import "@/styles/global.css";
+
 import { PastEvent } from "@/config";
 
 // const pastEvents = [
@@ -64,32 +65,12 @@ import { PastEvent } from "@/config";
 // ];
 ---
 
-<Layout title="Past Events - OpenSource Weekend 2025">
-  <Navigation client:load />
-
-  <!-- Hero Section -->
-  <section class="pt-20 pb-20 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <div class="flex items-center justify-center gap-3 mb-4">
-        <img
-          src={BRANDING.logos.main}
-          alt="OSD"
-          class="w-12 h-12 md:w-16 md:h-16"
-        />
-        <h1 class="text-5xl md:text-7xl font-bold text-green-600 mb-0">
-          Past Events
-        </h1>
-      </div>
-      <div
-        class="w-32 h-1 mx-auto mt-4 mb-6 rounded-full bg-gradient-to-r from-green-300 to-green-500"
-      >
-      </div>
-      <p class="text-xl text-black-300 max-w-3xl mx-auto">
-        Look back at the incredible moments, innovations, and connections made
-        at previous OpenSource Weekend events.
-      </p>
-    </div>
-  </section>
+<Layout title="Past Events — 2025 OSD">
+  <!-- Heading Section -->
+  <Heading
+    title="Past Events"
+    description="Look back at the incredible moments, innovations, and connections made at previous OpenSource Weekend events."
+  />
 
   <!-- Overall Stats -->
   <section class="py-10 px-4 bg-gradient-to-b from-green-400 to-green-100">
@@ -97,30 +78,36 @@ import { PastEvent } from "@/config";
       <h2 class="text-4xl font-bold text-center text-white mb-12">
         Our Impact Over the Years
       </h2>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
         <div>
           <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            1150+
+            10k+
           </div>
           <div class="text-black-300">Total Attendees</div>
         </div>
         <div>
           <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            85+
+            300+
+          </div>
+          <div class="text-black-300">Meetups</div>
+        </div>
+        <div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            600+
           </div>
           <div class="text-black-300">Speakers</div>
         </div>
         <div>
           <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            195+
+            500+
           </div>
-          <div class="text-black-300">Projects Showcased</div>
+          <div class="text-black-300">Topics Covered</div>
         </div>
         <div>
           <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
             50+
           </div>
-          <div class="text-black-300">New Projects Launched</div>
+          <div class="text-black-300">Community Partners</div>
         </div>
       </div>
     </div>
@@ -136,13 +123,19 @@ import { PastEvent } from "@/config";
               {event.year}
             </span>
             <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
-
-            <SmoothScrollLogos
-              logos={event.images.map((url) => ({ logo: url }))}
-              duration={60}
-              height={500}
-              itemWidth={700}
-            />
+            <div class="flex flex-wrap justify-center gap-6 mb-8">
+              {event.images.map((url) => (
+                <div class="aspect-w-16 aspect-h-9 w-72 max-w-full rounded-lg overflow-hidden shadow-md">
+                  <Image
+                    src={url}
+                    alt={event.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    width={800}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         ))
       }
@@ -212,21 +205,4 @@ import { PastEvent } from "@/config";
       </div>
     </div>
   </section> -->
-
-  <!-- Photo Gallery CTA -->
-  <section class="py-20 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-black mb-6">Want to See More?</h2>
-      <p class="text-xl text-black-300 mb-8">
-        Browse our complete photo galleries from past events and get inspired
-        for 2025!
-      </p>
-      <a
-        href="/gallery"
-        class="inline-block bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-full font-bold text-lg transition-all duration-200 glow-effect hover:scale-105 transform"
-      >
-        View Full Gallery
-      </a>
-    </div>
-  </section>
 </Layout>
