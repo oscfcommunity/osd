@@ -94,6 +94,8 @@ import LinkedInIcon from "@/assets/icons/footer-linkedin.svg";
 import MediumIcon from "@/assets/icons/medium.svg";
 import GithubIcon from "@/assets/icons/github.svg";
 import DiscordIcon from "@/assets/icons/discord.svg";
+import Mail from "@/assets/icons/mail.svg"
+import Phone from "@/assets/icons/phone.svg"
 
 export const SITE = {
   title: "2025 OpenSourceDay",
@@ -101,7 +103,7 @@ export const SITE = {
   description:
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://osd.opensourceweekend.org",
-  ogImage: "/images/OSWBlack.png",
+  ogImage: "/images/Viral_Parmar_on_Stage.jpg",
   icon: "@/assets/icons/OSDGreen.svg",
 };
 
@@ -325,12 +327,12 @@ export const SOCIAL_LINKS = [
     icon: GithubIcon,
     description: "Github icon",
   },
-  {
-    name: "Discord",
-    href: "https://discord.gg/opensourceweekend",
-    icon: DiscordIcon,
-    description: "Discord icon",
-  },
+  // {
+  //   name: "Discord",
+  //   href: "https://discord.gg/opensourceweekend",
+  //   icon: DiscordIcon,
+  //   description: "Discord icon",
+  // },
   {
     name: "Medium",
     href: "https://medium.com/@opensourceweekend",
@@ -338,6 +340,27 @@ export const SOCIAL_LINKS = [
     description: "Medium icon",
   },
 ];
+
+export const CONTACTS = [
+{
+  name: "Email",
+  content: "opensourceweekend@gmail.com",
+  href: "mailto:opensourceweekend@gmail.com",
+  icon: Mail
+},
+{
+  name: "Phone",
+  content: "+91 89 8080 8222",
+  href: "tel:+918980808222",
+  icon: Phone
+},
+{
+  name: "Phone",
+  content: "+91 8401 3399 36",
+  href: "tel:+918401339936",
+  icon: Phone
+},
+]
 
 export const CONTACT = {
   title: "Contact Us",
@@ -700,11 +723,6 @@ export const VENUE = {
     "Professional A/V equipment",
     "Accessible facilities",
   ],
-  transport: {
-    parking: "Free parking available. Exit 12A from Highway 101",
-    Transit: "Bus and local transport options available, Train, Flights",
-    airport: "Sardar Vallabhbhai Patel International Airport (AMD)",
-  },
 };
 
 export const FOOTER = {
