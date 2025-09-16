@@ -94,7 +94,7 @@ export default function VenueGallery() {
                   e.stopPropagation();
                   close();
                 }}
-                className="absolute top-3 right-3 rounded-full bg-white text-black  px-2 hover:bg-gray-900 w-9 h-9 flex items-center justify-center shadow"
+                className="absolute top-3 right-3 rounded-full bg-white text-black  px-2 hover:bg-gray-900 hover:text-white w-9 h-9 flex items-center justify-center shadow"
                 aria-label="Close"
                 title="Close"
               >
