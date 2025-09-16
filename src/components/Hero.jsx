@@ -127,7 +127,7 @@ const Hero = () => {
         </div>
 
         {/* Event details */}
-        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center px-4">
+        <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-center px-4">
           <div className="light-card p-4 md:p-6 rounded-2xl shadow-lg">
             <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
               {EVENT.date}
@@ -151,6 +151,16 @@ const Hero = () => {
               <Counter target={EVENT.stats.speakers} client:visible />+
             </h3>
             <p className="text-sm md:text-base text-black">Expert Speakers</p>
+          </div>
+
+          {/* Community Partners */}
+          <div className="light-card p-4 md:p-6 rounded-2xl shadow-lg">
+            <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
+              <Counter target={EVENT.stats.communityPartners} client:visible />+
+            </h3>
+            <p className="text-sm md:text-base text-black">
+              Community Partners
+            </p>
           </div>
         </div>
       </div>
