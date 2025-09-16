@@ -94,8 +94,8 @@ import LinkedInIcon from "@/assets/icons/footer-linkedin.svg";
 import MediumIcon from "@/assets/icons/medium.svg";
 import GithubIcon from "@/assets/icons/github.svg";
 import DiscordIcon from "@/assets/icons/discord.svg";
-import Mail from "@/assets/icons/mail.svg"
-import Phone from "@/assets/icons/phone.svg"
+import Mail from "@/assets/icons/mail.svg";
+import Phone from "@/assets/icons/phone.svg";
 
 export const SITE = {
   title: "2025 OpenSourceDay",
@@ -342,25 +342,25 @@ export const SOCIAL_LINKS = [
 ];
 
 export const CONTACTS = [
-{
-  name: "Email",
-  content: "opensourceweekend@gmail.com",
-  href: "mailto:opensourceweekend@gmail.com",
-  icon: Mail
-},
-{
-  name: "Phone",
-  content: "+91 89 8080 8222",
-  href: "tel:+918980808222",
-  icon: Phone
-},
-{
-  name: "Phone",
-  content: "+91 8401 3399 36",
-  href: "tel:+918401339936",
-  icon: Phone
-},
-]
+  {
+    name: "Email",
+    content: "opensourceweekend@gmail.com",
+    href: "mailto:opensourceweekend@gmail.com",
+    icon: Mail,
+  },
+  {
+    name: "Phone",
+    content: "+91 89 8080 8222",
+    href: "tel:+918980808222",
+    icon: Phone,
+  },
+  {
+    name: "Phone",
+    content: "+91 8401 3399 36",
+    href: "tel:+918401339936",
+    icon: Phone,
+  },
+];
 
 export const CONTACT = {
   title: "Contact Us",
@@ -568,6 +568,36 @@ export const TICKETS = [
   //   linkText: "Coming Soon",
   // },
   {
+    name: "Open Source with AI Workshop + OSD Conference",
+    price: "₹699",
+    originalPrice: null,
+    description:
+      "Use coupon code OSDWSHOP25 and get Flat 30% OFF. Access to hands-on workshop and conference.",
+    features: [
+      "Full-access to conference",
+      "Lunch",
+      "Keynotes, Panels",
+      "OSD Goodies",
+      "1 Day Open Source + AI Workshop",
+      "Beginner to Intermediate level",
+      "Hands-on Workshop",
+      "Make first Open Source Contribution",
+      "Create an AI Agent for your project",
+      "Develop Project and Pitch",
+      "Week long Mentorship",
+      "Solve Open Source Communities Problems",
+      "Workshop Exclusive Goodies",
+      "Digital Certificate",
+    ],
+    availableTill: "26th Sep 2025, 06:00 PM (GMT+05:30)",
+    popular: true,
+    available: true,
+    konfhubUrl:
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56933",
+    couponCode: "OSDWSHOP25",
+    discountedPrice: "₹499",
+  },
+  {
     name: "Open Source Day 25 + Devfest Gandhinagar 25",
     price: "₹799",
     originalPrice: null,
@@ -727,7 +757,6 @@ export const TICKETS = [
     linkText: "Sold Out",
   },
 ];
-
 
 export const VENUE = {
   name: "Silver Oak University",

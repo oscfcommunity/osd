@@ -15,6 +15,132 @@ import { TICKETS, CONTACT } from "@/config.ts";
   />
 
   <!-- Pricing Cards -->
+
+<section class="py-20 px-4 bg-white">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {
+        TICKETS.map((ticket) => (
+          <div
+            class={`relative light-card rounded-xl p-8 transition-all duration-300 hover:scale-102 flex flex-col justify-between items-center ${
+              ticket.popular
+                ? "border-green-500 ring-2 ring-green-500/20"
+                : "hover:border-green-500/40"
+            }`}
+          >
+            {ticket.popular && (
+              <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span class="bg-green-500 text-black px-4 py-2 rounded-full text-sm font-bold">
+                  Most Popular
+                </span>
+              </div>
+            )}
+
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold text-black mb-2">
+                {ticket.name}
+              </h3>
+              {ticket.subtitle && (
+                <h3 class="text-md text-green-500">{ticket.subtitle}</h3>
+              )}
+              <p class="text-black mb-4">{ticket.description}</p>
+              
+              {/* Updated pricing section */}
+              <div class="flex flex-col items-center justify-center space-y-2">
+                {ticket.discountedPrice ? (
+                  <>
+                    {/* Original price with strikethrough */}
+                    <span class="text-2xl text-gray-500 line-through">
+                      {ticket.price}
+                    </span>
+                    {/* Discounted price */}
+                    <span class="text-4xl font-bold gradient-text">
+                      {ticket.discountedPrice}
+                    </span>
+                    {/* Coupon code */}
+                    {ticket.couponCode && (
+                      <div class="bg-yellow-100 border border-yellow-400 rounded-lg px-3 py-2 mt-2">
+                        <span class="text-sm font-bold text-yellow-800">
+                          Use Code: {ticket.couponCode}
+                        </span>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  /* Regular pricing for tickets without discount */
+                  <div class="flex items-center justify-center space-x-2">
+                    {ticket.originalPrice && (
+                      <span class="text-2xl text-gray-500 line-through">
+                        {ticket.originalPrice}
+                      </span>
+                    )}
+                    <span class="text-4xl font-bold gradient-text">
+                      {ticket.price}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <ul class="space-y-3 mb-8">
+              {ticket.features.map((feature) => (
+                <li class="flex items-center space-x-3">
+                  <svg
+                    class="w-5 h-5 text-green-400 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <span class="text-black">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {
+              // If this is the micro sponsor pack, show contact mailto CTA
+              ticket.name &&
+              ticket.name.toLowerCase().includes("micro sponsor") ? (
+                <a
+                  href={`mailto:${
+                    CONTACT.email?.trim() ?? "opensourceweekend@gmail.com"
+                  }`}
+                  class={`block w-full py-4 rounded-full font-bold text-lg transition-all duration-200 text-center ${
+                    ticket.popular
+                      ? "bg-gradient-to-r from-yellow-200 via-emerald-300 via-60% to-green-500 text-black shadow-2xl ring-2 ring-yellow-100/60 glow-effect hover:from-yellow-100 hover:via-emerald-200 hover:to-green-400 hover:shadow-yellow-100/60 hover:scale-105"
+                      : "border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black"
+                  }`}
+                >
+                  Contact Us
+                </a>
+              ) : (
+                <a
+                  href={ticket.konfhubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`block w-full py-4 rounded-full font-bold text-lg transition-all duration-200 text-center ${
+                    ticket.popular
+                      ? "bg-gradient-to-r from-yellow-200 via-emerald-300 via-60% to-green-500 text-black shadow-2xl ring-2 ring-yellow-100/60 glow-effect hover:from-yellow-100 hover:via-emerald-200 hover:to-green-400 hover:shadow-yellow-100/60 hover:scale-105"
+                      : "border-2 border-green-500 text-green-400 hover:bg-green-500 hover:text-black"
+                  } ${!ticket.available && "pointer-events-none"}`}
+                >
+                  {ticket.linkText ? ticket.linkText : "Register Now"}
+                </a>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+
+<!--   
   <section class="py-20 px-4 bg-white">
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -110,13 +236,13 @@ import { TICKETS, CONTACT } from "@/config.ts";
         }
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Countdown appears here -->
   <div class="mt-5 py-16 px-4 bg-gradient-to-r from-green-50 to-green-100">
     <div class="max-w-5xl mx-auto text-center">
       <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-10">
-        Countdown to the Event 🚀
+        Countdown to the Event
       </h3>
 
       <CountdownTimer client:load />
