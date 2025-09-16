@@ -103,7 +103,7 @@ export const SITE = {
   description:
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://osd.opensourceweekend.org",
-  ogImage: "/images/Viral_Parmar_on_Stage.jpg",
+  ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: "@/assets/icons/OSDGreen.svg",
 };
 
