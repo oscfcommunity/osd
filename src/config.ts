@@ -545,35 +545,15 @@ export const TICKETS = [
     availableTill: "20th Sep 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
-    fillingFast: true,     
+    fillingFast: true,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
   },
-  // {
-  //   name: "Regular Ticket",
-  //   price: "₹499",
-  //   originalPrice: null,
-  //   description:
-  //     "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
-  //   features: [
-  //     "Full-access to conference",
-  //     "Lunch",
-  //     "Keynotes, Panels",
-  //     "OSD Goodies",
-  //   ],
-  //   startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
-  //   popular: false,
-  //   available: false,
-  //   konfhubUrl:
-  //     "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
-  //   linkText: "Coming Soon",
-  // },
   {
     name: "Open Source with AI Workshop + OSD Conference",
     price: "₹699",
     originalPrice: null,
-    description:
-      "Use coupon code OSDWSHOP25 and get Flat 30% OFF. Access to hands-on workshop and conference.",
+    description: "Use Coupon code to get it for 499 only",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -597,6 +577,24 @@ export const TICKETS = [
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56933",
     couponCode: "OSDWSHOP25",
     discountedPrice: "₹499",
+  },
+  {
+    name: "Regular Ticket",
+    price: "₹499",
+    originalPrice: null,
+    description:
+      "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
+    features: [
+      "Full-access to conference",
+      "Lunch",
+      "Keynotes, Panels",
+      "OSD Goodies",
+    ],
+    startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
+    popular: false,
+    available: true,
+    konfhubUrl:
+      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
   },
   {
     name: "Open Source Day 25 + Devfest Gandhinagar 25",
@@ -763,6 +761,7 @@ export const VENUE = {
   name: "Silver Oak University",
   address:
     "Silver Oak University, 370/371, near Bhavik Publication, Gota Gam, Gota, Ahmedabad, Gujarat 382481",
+  littledes: "Silver Oak University (SOU) – A premier private university known for its motto “Gyanam Param Bhushanam” (Knowledge is the highest virtue). With a futuristic curriculum, modern infrastructure, industry connections, and a vibrant campus, SOU is a hub for innovation, collaboration, and career growth.",
   description:
     "Silver Oak University (SOU) is premier private university carrying forward the legacy of Silver Oak Group of Institutes. As a reflection to its motto,“Gyanam Param Bhushanam” meaning Knowledge is the highest virtue, SOU delivers engaging learning experience through futuristic curriculum, advanced technological interface, eminent faculty, industry academia bonding, career planning and counseling and ample career opportunities. This state-of-the-art campus provides an inspiring and dynamic environment, perfect for fostering innovation and collaboration among tech enthusiasts.",
   capacity: "500+ attendees across multiple halls",

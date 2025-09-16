@@ -190,7 +190,6 @@ import {
     <div class="w-full">
       <!-- Tiered Sponsors Preview -->
       <div class="py-6 bg-white">
-
         <!-- Platinum / Gold -->
         <div class="max-w-6xl mx-auto px-4 mb-6">
           <div class="mb-4 text-center">
@@ -259,7 +258,6 @@ import {
             maxHeight={100}
           />
         </div>
-
       </div>
 
       <div class="py-8 bg-white">
@@ -346,11 +344,79 @@ import {
         <div
           class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-start"
         >
-          <div class="bg-green-50 p-6 rounded-lg">
-            <h3 class="text-xl font-bold mb-2">Venue</h3>
-            <div class="text-gray-700 mb-4">{VENUE.name}</div>
-            <div class="text-gray-600">{VENUE.address}</div>
-            <p class="text-gray-700 mt-4">{VENUE.description}</p>
+          <div
+            class="bg-gradient-to-br from-green-50 to-green-100 p-8 rounded-xl shadow-lg border border-green-200"
+          >
+          
+            <div class="flex items-center mb-4">
+              <div class="bg-green-500 p-2 rounded-lg mr-3">
+                <svg
+                  class="w-6 h-6 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-800">Event Venue</h3>
+            </div>
+            
+
+            <div class="space-y-3 mb-6 ">
+              <div class="flex items-start">
+                <svg
+                  class="w-5 h-5 text-green-600 mt-1 mr-3 flex-shrink-0"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                <div>
+                  <div class="font-semibold text-gray-800 text-lg">
+                    {VENUE.name}
+                  </div>
+                  <div class="text-gray-600 text-sm">{VENUE.address}</div>
+                </div>
+              </div>
+
+              
+
+              <a
+                href={`https://maps.app.goo.gl/2scjRdBXegtuU4Xe8`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-lg font-medium transition-all duration-200 shadow-md hover:shadow-lg"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"></path>
+                </svg>
+                Open in Google Maps
+              </a>
+            </div>
+
+            <!-- Action buttons -->
+            
           </div>
 
           <div
@@ -383,12 +449,26 @@ import {
               {
                 TICKETS.length > 2 && (
                   <div class="mt-2 text-center">
+                    
                     <a
-                      href="/tickets"
-                      class="inline-block text-green-700 px-4 py-2 rounded text-sm font-medium"
-                    >
-                      View more tickets
-                    </a>
+                href="/tickets"
+                class="flex items-center justify-center border-2 border-green-600 text-green-700 hover:bg-green-600 hover:text-white px-4 py-3 rounded-lg font-medium transition-all duration-200"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                  ></path>
+                </svg>
+                View More Tickets
+              </a>
                   </div>
                 )
               }
