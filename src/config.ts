@@ -545,6 +545,7 @@ export const TICKETS = [
     availableTill: "20th Sep 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: true,
+    fillingFast: true,     
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
   },
