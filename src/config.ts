@@ -549,25 +549,6 @@ export const TICKETS = [
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
   },
-  // {
-  //   name: "Regular Ticket",
-  //   price: "₹499",
-  //   originalPrice: null,
-  //   description:
-  //     "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
-  //   features: [
-  //     "Full-access to conference",
-  //     "Lunch",
-  //     "Keynotes, Panels",
-  //     "OSD Goodies",
-  //   ],
-  //   startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
-  //   popular: false,
-  //   available: false,
-  //   konfhubUrl:
-  //     "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
-  //   linkText: "Coming Soon",
-  // },
   {
     name: "Open Source with AI Workshop + OSD Conference",
     price: "₹699",
@@ -599,13 +580,12 @@ export const TICKETS = [
     discountedPrice: "₹499",
   },
   {
-    name: "Open Source Day 25 + Devfest Gandhinagar 25",
-    price: "₹799",
+    name: "Regular Ticket",
+    price: "₹499",
     originalPrice: null,
     description:
       "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
     features: [
-      "Tickets include for Open Source Day:",
       "Full-access to conference",
       "Lunch",
       "Keynotes, Panels",
@@ -613,7 +593,7 @@ export const TICKETS = [
     ],
     startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
     popular: false,
-    available: false,
+    availableTill: false,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
     linkText: "Coming Soon",
