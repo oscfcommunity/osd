@@ -1,0 +1,70 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { BRANDING } from "@/config.ts";
+import { Image } from "astro:assets";
+import "@/styles/global.css";
+
+Astro.response.status = 404;
+---
+
+<Layout title="Page Not Found — 2025 OSD">
+  <section class="relative px-4 py-5 md:py-12 overflow-hidden leaf-bg">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="floating-leaf floating-leaf-1"></div>
+      <div class="floating-leaf floating-leaf-2"></div>
+      <div class="floating-leaf floating-leaf-3"></div>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto text-center">
+      <div class="mb-8 flex justify-center">
+        <Image
+          src={BRANDING.logos.main}
+          alt="Open Source Day"
+          class="w-16 h-16 md:w-20 md:h-20"
+          loading="eager"
+        />
+      </div>
+
+      <h1
+        class="text-6xl md:text-8xl font-extrabold gradient-text tracking-tight mb-4"
+      >
+        404
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-700 max-w-2xl mx-auto mb-10">
+        The page you’re looking for doesn’t exist or has moved.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-block bg-green-500 hover:bg-green-400 text-white px-8 py-4 rounded-full font-bold transition-all duration-200 glow-effect hover:scale-105"
+        >
+          Go Home
+        </a>
+        <a
+          href="/schedule"
+          class="inline-block bg-white text-green-700 border border-green-300 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-all"
+        >
+          View Schedule
+        </a>
+        <a
+          href="/tickets"
+          class="inline-block bg-white text-green-700 border border-green-300 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-all"
+        >
+          Get Tickets
+        </a>
+      </div>
+
+      <div class="mt-12 text-gray-600">
+        <span class="pr-5">Or explore:</span>
+        <a href="/speakers" class="text-green-700 hover:underline">Speakers</a>
+        <span class="mx-2">·</span>
+        <a href="/sponsors" class="text-green-700 hover:underline">Sponsors</a>
+        <span class="mx-2">·</span>
+        <a href="/past-events" class="text-green-700 hover:underline"
+          >Past Events</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>
