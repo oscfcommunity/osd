@@ -44,9 +44,9 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          {/* <div class="text-right">
             <h4 className="text-lg font-semibold text-black mb-4">
-              {FOOTER.quickLinks.title}
+              Quick Links
             </h4>
             <ul className="space-y-2">
               {FOOTER.quickLinks.map((link, index) => (
@@ -60,7 +60,7 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div>

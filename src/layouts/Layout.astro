@@ -1,5 +1,11 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
+import Navigation from "@/components/Navigation";
+import Footer from "@components/Footer.astro";
+
 import { SITE } from "@/config";
+
 export interface Props {
   title?: string;
   description?: string;
@@ -13,10 +19,6 @@ const {
   ogImage = SITE.ogImage,
   canonicalUrl = Astro.url,
 } = Astro.props;
-
-import Navigation from "@/components/Navigation";
-import Footer from "@components/Footer";
-import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
