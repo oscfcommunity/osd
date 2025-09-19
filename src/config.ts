@@ -1096,6 +1096,24 @@ export const COMMUNITY_PARTNERS = [
     logo: "/partners/wordpress_surat.png",
     website: "#",
   },
+  {
+    id: 45,
+    name: "AWS Surat",
+    logo: "/partners/aws_surat.jpg",
+    website: "#",
+  },
+  {
+    id: 46,
+    name: "Figma Ahmedabad",
+    logo: "/partners/figma_ahmedabad.png",
+    website: "#",
+  },
+  {
+    id: 47,
+    name: "Wordpress Ahmedabad",
+    logo: "/partners/wordpress_ahmedabad.jpg",
+    website: "#",
+  },
 ];
 
 // Simple tier grouping for display on Home and Sponsors page.
