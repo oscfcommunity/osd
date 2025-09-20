@@ -7,7 +7,7 @@ import "@/styles/global.css";
 import { TICKETS, CONTACT } from "@/config.ts";
 ---
 
-<Layout title="Tickets — 2025 OSD">
+<Layout title="Tickets — 2025 OSD" activePath="/tickets">
   <!-- Heading Section -->
   <Heading
     title="Get Your Tickets"
@@ -73,8 +73,7 @@ import { TICKETS, CONTACT } from "@/config.ts";
                       )}
                     </>
                   ) : (
-                    /* Regular pricing for tickets without discount */
-                    <div class="flex items-center justify-center space-x-2">
+                    /* Regular pricing for tickets without discount */ <div class="flex items-center justify-center space-x-2">
                       {ticket.originalPrice && (
                         <span class="text-2xl text-gray-500 line-through">
                           {ticket.originalPrice}
