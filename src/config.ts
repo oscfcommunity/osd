@@ -19,7 +19,7 @@ import HarshManvar from "@/assets/team/HarshManvar.webp";
 import NiravShah from "@/assets/team/NiravShah.webp";
 import PrathameshChavan from "@/assets/team/PrathameshChavan.webp";
 import AbhishekSingh from "@/assets/team/AbhishekSingh.jpg";
-// import AshishVaghela from "@/assets/team/AshishVaghela.jpg";
+import AshishVaghela from "@/assets/team/AshishVaghela.png";
 import AshishZapadiya from "@/assets/team/AshishZapadiya.jpg";
 import DarshilVyas from "@/assets/team/DarshilVyas.jpg";
 import EktaAgja from "@/assets/team/EktaAgja.jpg";
@@ -1392,12 +1392,12 @@ export const TEAM = {
       role: "Website Engineer",
       image: AbhishekSingh,
     },
-    // {
-    //   id: 2,
-    //   name: "Ashish Vaghela",
-    //   role: "Website Engineer",
-    //   image: AshishVaghela,
-    // },
+    {
+      id: 2,
+      name: "Ashish Vaghela",
+      role: "Website Engineer",
+      image: AshishVaghela,
+    },
     {
       id: 3,
       name: "Ashish Zapadiya",
