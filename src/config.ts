@@ -1075,7 +1075,7 @@ export const COMMUNITY_PARTNERS = [
   {
     id: 41,
     name: "AWS Vadodara",
-    logo: "/partners/aws_vadodara.jpeg",
+    logo: "/partners/aws_vadodara.png",
     website: "#",
   },
   {
@@ -1112,6 +1112,24 @@ export const COMMUNITY_PARTNERS = [
     id: 47,
     name: "Wordpress Ahmedabad",
     logo: "/partners/wordpress_ahmedabad.jpg",
+    website: "#",
+  },
+  {
+    id: 48,
+    name: "GDG on Campus Karnavati University",
+    logo: "/partners/gdg_karnaviti.png",
+    website: "#",
+  },
+  {
+    id: 49,
+    name: "Javascript Gujarat",
+    logo: "/partners/javascript_gujarat.png",
+    website: "#",
+  },
+  {
+    id: 50,
+    name: "Kotlin Surat",
+    logo: "/partners/kotlin_surat.png",
     website: "#",
   },
 ];
