@@ -9,6 +9,7 @@ import ViralParmar from "@/assets/team/ViralParmar.webp";
 import NeelShah from "@/assets/team/NeelShah.webp";
 import JigneshGadhavi from "@/assets/team/JigneshGadhavi.webp";
 import FalgunBhalsod from "@/assets/team/FalgunBhalsod.webp";
+import SagarJethi from "@/assets/team/SagarJethi.jpg";
 import DhavalDesai from "@/assets/team/DhavalDesai.webp";
 import RinkeshBansal from "@/assets/team/RinkeshBansal.webp";
 import AshishTiwari from "@/assets/team/AshishTiwari.webp";
@@ -1345,6 +1346,12 @@ export const TEAM = {
       roles: ["DevOps Engineer at Yellow Panther"],
       linkedin: "https://www.linkedin.com/in/falgunbhalsod/",
       image: FalgunBhalsod,
+    },
+    {
+      name: "Sagar Jethi",
+      roles: ["Polygot Engineer, Blockchain Developer", "Chainlink Ambassador"],
+      linkedin: "https://www.linkedin.com/in/sagarjethi",
+      image: SagarJethi,
     },
   ],
   volunteers: [
