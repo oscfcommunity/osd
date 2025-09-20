@@ -24,7 +24,7 @@ import AshishZapadiya from "@/assets/team/AshishZapadiya.jpg";
 import DarshilVyas from "@/assets/team/DarshilVyas.jpg";
 import EktaAgja from "@/assets/team/EktaAgja.jpg";
 import HarshParekh from "@/assets/team/HarshParekh.jpg";
-import KrishSatasiya from "@/assets/team/KrishSatasiya.jpg";
+import KrishSatasiya from "@/assets/team/KrishSatasiya.png";
 import PranjalSingh from "@/assets/team/PranjalSingh.jpg";
 import RohitChavda from "@/assets/team/RohitChavda.webp";
 import RonitGandhi from "@/assets/team/RonitGandhi.jpg";
