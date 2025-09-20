@@ -2,6 +2,16 @@ import React, { useState, useCallback, useMemo } from "react";
 
 const images = [
   {
+    src: "/venue/Auditorium-1.jpeg",
+    alt: "Auditorium",
+    caption: "Main Auditorium",
+  },
+  {
+    src: "/venue/Auditorium-2.jpeg",
+    alt: "Auditorium Stage",
+    caption: "Auditorium Stage",
+  },
+  {
     src: "/venue/SOU-Main.jpeg",
     alt: "Silver Oak University main building",
     caption: "Main Building",
