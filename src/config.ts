@@ -18,7 +18,21 @@ import MehulPatel from "@/assets/team/MehulPatel.webp";
 import HarshManvar from "@/assets/team/HarshManvar.webp";
 import NiravShah from "@/assets/team/NiravShah.webp";
 import PrathameshChavan from "@/assets/team/PrathameshChavan.webp";
+import AbhishekSingh from "@/assets/team/AbhishekSingh.jpg";
+// import AshishVaghela from "@/assets/team/AshishVaghela.jpg";
+import AshishZapadiya from "@/assets/team/AshishZapadiya.jpg";
+import DarshilVyas from "@/assets/team/DarshilVyas.jpg";
+import EktaAgja from "@/assets/team/EktaAgja.jpg";
+import HarshParekh from "@/assets/team/HarshParekh.jpg";
+import KrishSatasiya from "@/assets/team/KrishSatasiya.jpg";
+import PranjalSingh from "@/assets/team/PranjalSingh.jpg";
 import RohitChavda from "@/assets/team/RohitChavda.webp";
+import RonitGandhi from "@/assets/team/RonitGandhi.jpg";
+import RutviPatel from "@/assets/team/RutviPatel.jpg";
+import SanketTank from "@/assets/team/SanketTank.jpg";
+import StavanMehta from "@/assets/team/StavanMehta.jpg";
+import YashNanda from "@/assets/team/YashNanda.jpg";
+
 import SantoshYadav from "@/assets/team/SantoshYadav.webp";
 import VishalRajpurohit from "@/assets/team/VishalRajpurohit.webp";
 import KalyanPrasad from "@/assets/team/KalyanPrasad.webp";
@@ -280,7 +294,7 @@ export const EVENT = {
     speakers: "20+",
     workshops: "15+",
     sponsors: "20+",
-    communityPartners: "40+",
+    communityPartners: "50+",
   },
 };
 
@@ -1176,12 +1190,14 @@ export const EXTRA_SPONSORS = [
 export const TEAM = {
   advisory: [
     {
+      id: 1,
       name: "Dr. Rinkesh Bansal",
       roles: ["Program Director", "Master Inventor at IBM"],
       linkedin: "https://www.linkedin.com/in/rinkesh-bansal-09798843/",
       image: RinkeshBansal,
     },
     {
+      id: 2,
       name: "Nirav Shah",
       roles: [
         "Director at Eternal Web Private Limited",
@@ -1191,6 +1207,7 @@ export const TEAM = {
       image: NiravShah,
     },
     {
+      id: 3,
       name: "Santosh Yadav",
       roles: [
         "Staff Engineer at Celonis",
@@ -1201,6 +1218,7 @@ export const TEAM = {
       image: SantoshYadav,
     },
     {
+      id: 4,
       name: "Vishal Rajpurohit",
       roles: ["CTO at ViitorCloud", "Organizer of Laracon India"],
       linkedin: "https://www.linkedin.com/in/vishalrajpurohit/",
@@ -1209,6 +1227,7 @@ export const TEAM = {
   ],
   mentors: [
     {
+      id: 1,
       name: "Mehul Patel",
       roles: [
         "Sr. DevOps Engineer",
@@ -1221,6 +1240,7 @@ export const TEAM = {
       image: MehulPatel,
     },
     {
+      id: 2,
       name: "Ashish Tiwari",
       roles: [
         "Principal Solutions Architect",
@@ -1230,6 +1250,7 @@ export const TEAM = {
       image: AshishTiwari,
     },
     {
+      id: 3,
       name: "Prathamesh Chavan",
       roles: [
         "AI Engineering Manager at Red Hat",
@@ -1240,19 +1261,21 @@ export const TEAM = {
       image: PrathameshChavan,
     },
     {
+      id: 4,
       name: "Harsh Manvar",
       roles: ["CNCF Ambassador", "Docker Captain", "Google Developer Expert"],
       linkedin: "https://www.linkedin.com/in/harsh-manvar-64a30aa3/",
       image: HarshManvar,
     },
-
     {
+      id: 5,
       name: "Suraj Nath",
       roles: ["Sr. Software Engineer at Grafana Labs"],
       linkedin: "https://www.linkedin.com/in/electron0zero/",
       image: SurajNath,
     },
     {
+      id: 6,
       name: "Kalyan Prasad",
       roles: [
         "Lead Data Scientist",
@@ -1295,6 +1318,7 @@ export const TEAM = {
   ],
   core: [
     {
+      id: 1,
       name: "Viral Parmar",
       roles: [
         "Director - Open Source Community Foundation",
@@ -1306,6 +1330,7 @@ export const TEAM = {
       image: ViralParmar,
     },
     {
+      id: 2,
       name: "Neel Shah",
       roles: [
         "Developer Advocate at Middleware",
@@ -1315,24 +1340,28 @@ export const TEAM = {
       image: NeelShah,
     },
     {
+      id: 3,
       name: "Dhaval Desai",
       roles: ["Product Manager at Gluu"],
       linkedin: "https://www.linkedin.com/in/dhavaltdesai/",
       image: DhavalDesai,
     },
     {
+      id: 4,
       name: "Bhargav Pithva",
       roles: ["Technical Project Manager at Rysun Labs"],
       linkedin: "https://www.linkedin.com/in/bhargavpithva/",
       image: BhargavPithva,
     },
     {
+      id: 5,
       name: "Tanvir Dhanani",
       roles: ["Backend Developer at IBM"],
       linkedin: "https://www.linkedin.com/in/dhanani-tanvir-aa4076118/",
       image: DhananiTanvir,
     },
     {
+      id: 6,
       name: "Jignesh Gadhavi",
       roles: [
         "Sr. DevOps Engineer at Yellow Panther",
@@ -1342,12 +1371,14 @@ export const TEAM = {
       image: JigneshGadhavi,
     },
     {
+      id: 7,
       name: "Falgun Bhalsod",
       roles: ["DevOps Engineer at Yellow Panther"],
       linkedin: "https://www.linkedin.com/in/falgunbhalsod/",
       image: FalgunBhalsod,
     },
     {
+      id: 8,
       name: "Sagar Jethi",
       roles: ["Polygot Engineer, Blockchain Developer", "Chainlink Ambassador"],
       linkedin: "https://www.linkedin.com/in/sagarjethi",
@@ -1356,9 +1387,88 @@ export const TEAM = {
   ],
   volunteers: [
     {
-      name: "Chavda Rohit",
+      id: 1,
+      name: "Abhishek Singh",
+      role: "Website Engineer",
+      image: AbhishekSingh,
+    },
+    // {
+    //   id: 2,
+    //   name: "Ashish Vaghela",
+    //   role: "Website Engineer",
+    //   image: AshishVaghela,
+    // },
+    {
+      id: 3,
+      name: "Ashish Zapadiya",
+      role: "Website Engineer",
+      image: AshishZapadiya,
+    },
+    {
+      id: 4,
+      name: "Darshil Vyas",
+      role: "Website Engineer",
+      image: DarshilVyas,
+    },
+    {
+      id: 5,
+      name: "Ekta Agja",
+      role: "Website Engineer",
+      image: EktaAgja,
+    },
+    {
+      id: 6,
+      name: "Harsh Parekh",
+      role: "Website Engineer",
+      image: HarshParekh,
+    },
+    {
+      id: 7,
+      name: "Krish Satasiya",
+      role: "Website Engineer",
+      image: KrishSatasiya,
+    },
+    {
+      id: 8,
+      name: "Pranjal Singh",
+      role: "Website Engineer",
+      image: PranjalSingh,
+    },
+    {
+      id: 9,
+      name: "Rohit Chavda",
       role: "Website Engineer",
       image: RohitChavda,
+    },
+    {
+      id: 10,
+      name: "Ronit Gandhi",
+      role: "Website Engineer",
+      image: RonitGandhi,
+    },
+    {
+      id: 11,
+      name: "Rutvi Patel",
+      role: "Website Engineer",
+      image: RutviPatel,
+    },
+    {
+      id: 12,
+      name: "Sanket Tank",
+      role: "Website Engineer",
+      image: SanketTank,
+    },
+    {
+      id: 13,
+      name: "Stavan Mehta",
+      role: "Website Engineer",
+      image: StavanMehta,
+    },
+    {
+      id: 14,
+      name: "Yash Nanda",
+      role: "Website Engineer",
+      image: YashNanda,
     },
   ],
 };
