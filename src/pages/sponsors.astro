@@ -4,7 +4,8 @@ import SponsorsGrid from "@/components/SponsorsGrid.jsx";
 import Heading from "@components/Heading.astro";
 import "@/styles/global.css";
 
-import { COMMUNITY_PARTNERS, SPONSOR_TIERS } from "@/config.ts";
+
+import {  VENUE_PARTNER,COMMUNITY_PARTNERS, SPONSOR_TIERS } from "@/config.ts";
 ---
 
 <Layout title="Sponsors — 2025 OSD" activePath="/sponsors">
@@ -31,6 +32,23 @@ import { COMMUNITY_PARTNERS, SPONSOR_TIERS } from "@/config.ts";
           client:load
           sponsors={SPONSOR_TIERS.gold}
           columns={3}
+          maxHeight={140}
+        />
+      </div>
+      <div class="mb-12">
+        <div class="flex items-center mb-6">
+          <div class="flex-1 h-px bg-gray-200"></div>
+          <div class="px-4 text-center">
+            <h2 class="text-2xl font-semibold text-gray-800 inline-block">
+              Venue Partner
+            </h2>
+          </div>
+          <div class="flex-1 h-px bg-gray-200"></div>
+        </div>
+        <SponsorsGrid
+          client:load
+          sponsors={VENUE_PARTNER}
+          columns={1}
           maxHeight={140}
         />
       </div>

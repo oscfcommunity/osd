@@ -4,7 +4,7 @@ import Heading from "@components/Heading.astro";
 import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
 
-import { eventSchedule, fullEvent } from "@/config";
+import { eventSchedule, workshopSchedule , fullEvent } from "@/config";
 
 const getTypeColor = (type: string) => {
   switch (type) {
@@ -117,34 +117,39 @@ const getTypeColor = (type: string) => {
 
   <section class="w-full flex flex-col md:flex-row gap-5 justify-center">
     <!-- Day 1 Schedule -->
-    <!-- <section id="day1" class="py-20 px-4 bg-white w-full">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-black mb-12">
-        Day 1 - <span class="gradient-text">March 15, 2025</span>
-      </h2>
-      <div class="space-y-4">
-        {workshopSchedule.map((session) => (
-          <div class="light-card rounded-xl p-6 transition-all duration-300">
-            <div class="flex flex-col md:flex-row md:items-center justify-between">
-              <div class="flex-1">
-                <div class="flex items-center space-x-4 mb-2">
-                  <span class="text-green-600 font-bold text-lg min-w-[80px]">{session.time}</span>
-                  <span class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}>
-                    {session.type.charAt(0).toUpperCase() + session.type.slice(1)}
-                  </span>
-                </div>
-                <h3 class="text-xl font-bold text-black mb-1">{session.title}</h3>
-                {session.speaker && (
-                  <p class="text-black mb-2">by {session.speaker}</p>
-                )}
-                <p class="text-sm text-gray-600">{session.room}</p>
+<!-- Workshop Schedule -->
+<section id="workshop" class="py-20 px-4 bg-white w-full">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center text-black mb-12">
+      <span class="gradient-text">October 05, 2025</span>
+    </h2>
+    <div class="space-y-4">
+      {workshopSchedule.map((session) => (
+        <div class="light-card rounded-xl p-6 transition-all duration-300">
+          <div class="flex flex-col gap-5 md:flex-row md:items-center justify-between">
+            <div class="flex-1">
+              <div class="flex items-center space-x-4 mb-2">
+                <span class="text-green-600 font-bold text-lg min-w-[80px]">{session.time}</span>
+                <span class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}>
+                  {session.type.charAt(0).toUpperCase() + session.type.slice(1)}
+                </span>
               </div>
+              <h3 class="text-xl font-bold text-black mb-1">{session.title}</h3>
+              {session.speaker && (
+                <p class="text-black mb-2">by {session.speaker}</p>
+              )}
+              <p class="text-sm text-gray-600">{session.room}</p>
+            </div>
+            <div class="border-2 border-green-500 text-center text-green-600 hover:bg-green-500 hover:text-white px-4 py-2 rounded-full font-bold transition-all duration-200 hover:scale-105 transform">
+              <AddToGoogleCalendar event={session} client:load />
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  </section> -->
+  </div>
+</section>
+
 
     <!-- Day 2 Schedule -->
     <section

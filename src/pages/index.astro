@@ -29,6 +29,17 @@ import {
   <Hero client:load />
   <ScrollAnimations client:load />
 
+  <!-- Countdown appears here -->
+  <div class="mt-4 py-10 px-4 bg-gradient-to-r from-green-50 to-green-100">
+    <div class="max-w-5xl mx-auto text-center">
+      <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-10">
+        Countdown to the Event
+      </h3>
+
+      <CountdownTimer client:load />
+    </div>
+  </div>
+
   <!-- About Section -->
   <section class="py-20 px-4 bg-gradient-to-r from-green-50 to-green-100">
     <div class="max-w-6xl mx-auto">
@@ -128,12 +139,19 @@ import {
       <h2 class="text-4xl md:text-5xl font-bold text-black mb-16">
         Impact in Progress
       </h2>
-      <div class="grid grid-cols-2 md:grid-cols-6 gap-8">
+      <div class="grid grid-cols-2 md:grid-cols-7 gap-8">
         <div class="flex flex-col items-center">
           <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
             <Counter target={600} client:visible />+
           </div>
           <div class="text-black">Expected Attendees</div>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
+            <Counter target={50} client:visible />+
+          </div>
+          <div class="text-black">Community Partners</div>
         </div>
 
         <div class="flex flex-col items-center">
@@ -425,14 +443,3 @@ import {
     </div>
   </section>
 </Layout>
-
-<!-- Countdown appears here -->
-<div class="mt-4 py-10 px-4 bg-gradient-to-r from-green-50 to-green-100">
-  <div class="max-w-5xl mx-auto text-center">
-    <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-10">
-      Countdown to the Event
-    </h3>
-
-    <CountdownTimer client:load />
-  </div>
-</div>

@@ -5,6 +5,7 @@ import OSDGreen from "@/assets/icons/OSDGreen.svg";
 import OSWBlack from "@/assets/icons/OSWBlack.svg";
 import BhargavPithva from "@/assets/team/BhargavPithva.webp";
 import DhananiTanvir from "@/assets/team/DhananiTanvir.webp";
+import BirajDesai from "@/assets/team/BirajDesai.jpg";
 import ViralParmar from "@/assets/team/ViralParmar.webp";
 import NeelShah from "@/assets/team/NeelShah.webp";
 import JigneshGadhavi from "@/assets/team/JigneshGadhavi.webp";
@@ -260,7 +261,91 @@ export const eventSchedule = [
   },
 ];
 
-export const workshopSchedule = [];
+
+export const workshopSchedule = [
+  {
+    time: "09:30 AM - 10:00 AM",
+    title: "Event Introduction & Icebreaker",
+    speaker: "",
+    type: "activity",
+    room: "Main Auditorium",
+    start: "20251005T093000",
+    end: "20251005T100000",
+  },
+  {
+    time: "10:00 AM - 11:00 AM",
+    title: "Introduction to Open Source",
+    speaker: "Speaker 1",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T100000",
+    end: "20251005T110000",
+  },
+  {
+    time: "11:00 AM - 12:30 PM",
+    title: "How to Start an Open Source Project & Contribution Process",
+    speaker: "Speaker 2",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T110000",
+    end: "20251005T123000",
+  },
+  {
+    time: "12:30 PM - 01:00 PM",
+    title: "Creating a Community Around Open Source Projects",
+    speaker: "Speaker 3",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T123000",
+    end: "20251005T130000",
+  },
+  {
+    time: "01:00 PM - 02:00 PM",
+    title: "Lunch Break",
+    speaker: "",
+    type: "break",
+    room: "Food Court",
+    start: "20251005T130000",
+    end: "20251005T140000",
+  },
+  {
+    time: "02:00 PM - 03:00 PM",
+    title: "Open Design & Design Thinking in Open Source",
+    speaker: "Speaker 4",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T140000",
+    end: "20251005T150000",
+  },
+  {
+    time: "03:00 PM - 04:00 PM",
+    title: "AI Agents in Open Source Projects",
+    speaker: "Speaker 5",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T150000",
+    end: "20251005T160000",
+  },
+  {
+    time: "04:00 PM - 05:00 PM",
+    title: "Project Development & Demo",
+    speaker: "Speaker 6",
+    type: "activity",
+    room: "Main Auditorium",
+    start: "20251005T160000",
+    end: "20251005T170000",
+  },
+  {
+    time: "05:00 PM - 05:15 PM",
+    title: "Closing Remarks",
+    speaker: "",
+    type: "closing",
+    room: "Main Auditorium",
+    start: "20251005T170000",
+    end: "20251005T171500",
+  },
+];
+
 
 export const BRANDING = {
   logos: {
@@ -1483,6 +1568,13 @@ export const TEAM = {
       roles: ["React Native Developer"],
       linkedin: "https://www.linkedin.com/in/yashnandha/",
       image: YashNanda,
+    },
+    {
+      id: 15,
+      name: "Biraj Desai",
+      roles: ["Technical Implementation Specialist and Developer"],
+      linkedin: "https://www.linkedin.com/in/biraj2692",
+      image: BirajDesai,
     },
   ],
 };
