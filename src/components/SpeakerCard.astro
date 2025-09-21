@@ -7,7 +7,7 @@ export interface Props {
   position: string;
   company: string;
   presentationTitle: string;
-  event: string;
+  event?: string;
   width: number;
   image: ImageMetadata;
   class?: string;
@@ -58,9 +58,11 @@ const {
           ""
         ) : (
           <div>
-            <dt class="text-xs rounded-full bg-green-200 px-2 inline text-gray-800">
-              {event}
-            </dt>
+            {event && (
+              <dt class="text-xs rounded-full bg-green-200 px-2 inline text-gray-800">
+                {event}
+              </dt>
+            )}
             <dd class="text-sm font-medium text-gray-700">
               {presentationTitle}
             </dd>

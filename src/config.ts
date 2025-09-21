@@ -49,6 +49,10 @@ import RuchitPatel from "@/assets/speakers/RuchitPatel.png";
 import SantoshViswanatham from "@/assets/speakers/SantoshViswanatham.png";
 // import DishantMakwana from "@/assets/speakers/DishantMakwana.png";
 
+import AshishPatel from "@/assets/speakers/AshishPatel.jpeg";
+
+import PersonImg from "@/assets/speakers/PersonImg.webp";
+
 // Past Events Images Imports
 import OSWMay_1 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_012.webp";
 import OSWMay_2 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_119 (1).webp";
@@ -439,6 +443,77 @@ export const ABOUT = {
     },
   ],
 };
+
+export const CURRENT_SPEAKERS = [
+  {
+    eventName: "Open Source with AI Workshop ",
+    date: "27 Sep 2025",
+    speakers: [
+      {
+        name: "Ashish Patel",
+        position: "Senior Principal Architect AI/ML& DS",
+        company: "Oracle",
+        presentationTitle: "Creating AI Agents for Open Source Projects",
+        linkedin: "https://www.linkedin.com/in/ashishpatel2604/",
+        image: AshishPatel,
+      },
+      {
+        name: " Dhaval Desai",
+        position: "Community manager - Maintainer",
+        company: "Gluu Inc",
+        presentationTitle:
+          "How to Start an Open Source Project & Manage like a Pro",
+        linkedin: "https://www.linkedin.com/in/dhavaltdesai/",
+        image: DhavalDesai,
+      },
+    ],
+  },
+  {
+    eventName: "Open Source Day 2025",
+    date: "05 Oct 2025",
+    sections: [
+      {
+        title: "OSD Speakers",
+        speakers: [
+          {
+            name: "TBD",
+            position: "TBD",
+            company: "TBD",
+            presentationTitle: "TBD",
+            linkedin: "https://www.linkedin.com",
+            image: PersonImg,
+          },
+        ],
+      },
+      {
+        title: "CXO panel",
+        speakers: [
+          {
+            name: "TBD",
+            position: "TBD",
+            company: "TBD",
+            presentationTitle: "TBD",
+            linkedin: "https://www.linkedin.com",
+            image: PersonImg,
+          },
+        ],
+      },
+      {
+        title: "Community Panel",
+        speakers: [
+          {
+            name: "TBD",
+            position: "TBD",
+            company: "TBD",
+            presentationTitle: "TBD",
+            linkedin: "https://www.linkedin.com",
+            image: PersonImg,
+          },
+        ],
+      },
+    ],
+  },
+];
 
 export const SPEAKERS: Speaker[] = [
   {

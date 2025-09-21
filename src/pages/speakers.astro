@@ -4,14 +4,11 @@ import Heading from "@components/Heading.astro";
 import SpeakerCard from "@components/SpeakerCard.astro";
 import "@/styles/global.css";
 
-import PersonSVG from "@/assets/icons/square-user.svg";
-
-import { SPEAKERS } from "@/config.ts";
+import { SPEAKERS, CURRENT_SPEAKERS } from "@/config.ts";
 
 const OSD_YEAR = 2025;
 
 // separate speakers
-const currentSpeakers = SPEAKERS.filter((s) => s.eventYear === OSD_YEAR);
 const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 ---
 
@@ -24,49 +21,50 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 
   <!-- Current Year Speakers -->
   <section class="pb-10 px-4">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-700 mb-10 text-left">
-        2025 Open Source Day
-      </h2>
-      <div class="container mx-auto px-4">
-        {
-          currentSpeakers.length !== 0 ? (
-            ""
-          ) : (
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
-              <SpeakerCard
-                width={5}
-                name="To be announced"
-                image={PersonSVG}
-                presentationTitle="TBD"
-                event=""
-                position=""
-                company=""
-              />
-
-              {Array.from({ length: 3 }, (_, index) => (
-                <SpeakerCard
-                  width={5}
-                  name="To be announced"
-                  image={PersonSVG}
-                  presentationTitle="TBD"
-                  event=""
-                  position=""
-                  company=""
-                  class="hidden md:block lg:block"
-                />
-              ))}
+    <div class="max-w-7xl mx-auto my-10">
+      {
+        CURRENT_SPEAKERS.map((event) => (
+          <>
+            <div class="my-5">
+              <h2 class="text-3xl font-bold text-gray-700 mb-5 text-left">
+                {`${event.eventName} - ${event.date}`}
+              </h2>
+              <div class="container mx-auto px-4">
+                {event?.speakers && (
+                  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
+                    {event.speakers.map((speaker) => (
+                      <SpeakerCard width={400} {...speaker} />
+                    ))}
+                  </div>
+                )}
+                {event?.sections && (
+                  <div>
+                    {event.sections.map((section) => (
+                      <div class="flex flex-col my-5">
+                        <h3 class="text-xl font-bold text-gray-700 mb-5">
+                          {section.title}
+                        </h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
+                          {section.speakers.map((speaker) => (
+                            <SpeakerCard width={400} {...speaker} />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
-          )
-        }
-      </div>
+          </>
+        ))
+      }
     </div>
   </section>
 
   <!-- Past Speakers -->
   <section class="py-10 px-4 bg-gray-100">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-800 mb-10 text-left">
+      <h2 class="text-3xl font-bold text-gray-800 mb-5 text-left">
         Past Speakers
       </h2>
       <div class="container mx-auto px-4">
