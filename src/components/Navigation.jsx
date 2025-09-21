@@ -51,13 +51,17 @@ const Navigation = (props) => {
                   className={
                     isTickets
                       ? `bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base`
-                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${isActivePath ? "text-green-600" : ""}`
+                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${
+                          isActivePath ? "text-green-600" : ""
+                        }`
                   }
                 >
                   {item.name}
                   {!isTickets && (
                     <span
-                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? "w-full" : ""}`}
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${
+                        isActivePath ? "w-full" : ""
+                      }`}
                     ></span>
                   )}
                 </a>
@@ -110,7 +114,7 @@ const Navigation = (props) => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-green-500/20 shadow-lg">
+          <div className="lg:hidden bg-white/95 backdrop-blur-md border-t border-green-500/20 shadow-lg">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {NAVIGATION.items.map((item) => (
                 <a

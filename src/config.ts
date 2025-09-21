@@ -9,6 +9,7 @@ import ViralParmar from "@/assets/team/ViralParmar.webp";
 import NeelShah from "@/assets/team/NeelShah.webp";
 import JigneshGadhavi from "@/assets/team/JigneshGadhavi.webp";
 import FalgunBhalsod from "@/assets/team/FalgunBhalsod.webp";
+import SagarJethi from "@/assets/team/SagarJethi.jpg";
 import DhavalDesai from "@/assets/team/DhavalDesai.webp";
 import RinkeshBansal from "@/assets/team/RinkeshBansal.webp";
 import AshishTiwari from "@/assets/team/AshishTiwari.webp";
@@ -17,9 +18,24 @@ import MehulPatel from "@/assets/team/MehulPatel.webp";
 import HarshManvar from "@/assets/team/HarshManvar.webp";
 import NiravShah from "@/assets/team/NiravShah.webp";
 import PrathameshChavan from "@/assets/team/PrathameshChavan.webp";
+import AbhishekSingh from "@/assets/team/AbhishekSingh.jpg";
+import AshishVaghela from "@/assets/team/AshishVaghela.png";
+import AshishZapadiya from "@/assets/team/AshishZapadiya.jpg";
+import DarshilVyas from "@/assets/team/DarshilVyas.jpg";
+import EktaAgja from "@/assets/team/EktaAgja.jpg";
+import HarshParekh from "@/assets/team/HarshParekh.jpg";
+import KrishSatasiya from "@/assets/team/KrishSatasiya.png";
+import PranjalSingh from "@/assets/team/PranjalSingh.jpg";
 import RohitChavda from "@/assets/team/RohitChavda.webp";
+import RonitGandhi from "@/assets/team/RonitGandhi.jpg";
+import RutviPatel from "@/assets/team/RutviPatel.jpg";
+import SanketTank from "@/assets/team/SanketTank.jpg";
+import StavanMehta from "@/assets/team/StavanMehta.jpg";
+import YashNanda from "@/assets/team/YashNanda.jpg";
+
 import SantoshYadav from "@/assets/team/SantoshYadav.webp";
 import VishalRajpurohit from "@/assets/team/VishalRajpurohit.webp";
+import KalyanPrasad from "@/assets/team/KalyanPrasad.webp";
 
 // Speaker Imports
 import SanjayVaghela from "@/assets/speakers/SanjayVaghela.png";
@@ -96,6 +112,7 @@ import GithubIcon from "@/assets/icons/github.svg";
 import DiscordIcon from "@/assets/icons/discord.svg";
 import Mail from "@/assets/icons/mail.svg";
 import Phone from "@/assets/icons/phone.svg";
+import SOU from "@/assets/partners/Silver Oak University.png";
 
 export const SITE = {
   title: "2025 OpenSourceDay",
@@ -103,7 +120,7 @@ export const SITE = {
   description:
     "OpenSourceDay is all about giving back to the open source projects, sharpening your skills, and celebrating all things open source. Join us for a day!",
   website: "https://osd.opensourceweekend.org",
-  ogImage: "/images/Viral_Parmar_on_Stage.jpg",
+  ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: "@/assets/icons/OSDGreen.svg",
 };
 
@@ -277,6 +294,7 @@ export const EVENT = {
     speakers: "20+",
     workshops: "15+",
     sponsors: "20+",
+    communityPartners: "50+",
   },
 };
 
@@ -553,7 +571,8 @@ export const TICKETS = [
     name: "Open Source with AI Workshop + OSD Conference",
     price: "₹699",
     originalPrice: null,
-    description: "Use Coupon code to get it for 499 only",
+    description:
+      "Use coupon code OSDWSHOP25 and get Flat 30% OFF. Access to hands-on workshop and conference.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -592,26 +611,7 @@ export const TICKETS = [
     ],
     startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
     popular: false,
-    available: true,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
-  },
-  {
-    name: "Open Source Day 25 + Devfest Gandhinagar 25",
-    price: "₹799",
-    originalPrice: null,
-    description:
-      "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies.",
-    features: [
-      "Tickets include for Open Source Day:",
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-    ],
-    startsOn: "20th Sep 2025, 03:45 AM (GMT+05:30)",
-    popular: false,
-    available: false,
+    availableTill: false,
     konfhubUrl:
       "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
     linkText: "Coming Soon",
@@ -765,6 +765,7 @@ export const VENUE = {
   description:
     "Silver Oak University (SOU) is premier private university carrying forward the legacy of Silver Oak Group of Institutes. As a reflection to its motto,“Gyanam Param Bhushanam” meaning Knowledge is the highest virtue, SOU delivers engaging learning experience through futuristic curriculum, advanced technological interface, eminent faculty, industry academia bonding, career planning and counseling and ample career opportunities. This state-of-the-art campus provides an inspiring and dynamic environment, perfect for fostering innovation and collaboration among tech enthusiasts.",
   capacity: "500+ attendees across multiple halls",
+  googleMapsLink: "https://maps.app.goo.gl/A3NanjxtBwtiqJQK8",
   facilities: [
     "Main auditorium with 300 seats",
     "3 workshop rooms (50 seats each)",
@@ -838,152 +839,313 @@ export const SPONSORS = [
   },
 ];
 
+export const VENUE_PARTNER = [
+  {
+    name: "Silver Oak University",
+    logo: SOU.src,
+    website: "#",
+  },
+];
+
 export const COMMUNITY_PARTNERS = [
   {
-    name: "DevOops 1",
-    logo: "/partners/DevOops-Sticker_Logo-V2-1_page-0001.jpg",
-    website: "#",
-  },
-  { name: "HashicorpUG", logo: "/partners/HashicorpUG.jpg", website: "#" },
-  {
-    name: "Cloud native",
-    logo: "/partners/CNCG Blue.png",
-    website: "#",
-  },
-  { name: "gdg", logo: "/partners/gdg.png", website: "#" },
-  {
-    name: "Gdg Rajkot",
-    logo: "/partners/GDG cloud rajkot.png",
+    id: 1,
+    name: "GDG Gandhinagar",
+    logo: "/partners/gdg_gandhinagar.png",
     website: "#",
   },
   {
-    name: "THM",
-    logo: "/partners/THM logo Black Long.png",
+    id: 2,
+    name: "GDG Cloud Gandhinagar",
+    logo: "/partners/gdg_cloud_gandhinagar.png",
     website: "#",
   },
   {
-    name: "grafana",
-    logo: "/partners/Grafana Ahmedabad.png",
+    id: 3,
+    name: "FFDG Vadodara",
+    logo: "/partners/ffdg_vadodara.svg",
     website: "#",
   },
   {
-    name: "adc",
-    logo: "/partners/ADC with White BG - Ahmedabad Developer Club.jpg",
+    id: 4,
+    name: "GDG Cloud Rajkot",
+    logo: "/partners/gdg_cloud_rajkot.png",
     website: "#",
   },
   {
-    name: "Fluter Flow vadodara",
-    logo: "/partners/Fluter Flow vadodara.svg",
-    website: "#",
-  },
-  {
-    name: "gdg cloud gandhinagar",
-    logo: "/partners/GDG cloud gandhinagar.png",
-    website: "#",
-  },
-  {
+    id: 5,
     name: "GDG Surat",
-    logo: "/partners/GDG Surat.png",
+    logo: "/partners/gdg_surat.png",
     website: "#",
   },
   {
-    name: "gujarat jug - full logo",
-    logo: "/partners/gujarat jug - full logo.svg",
+    id: 6,
+    name: "CNCG Gandhinagar",
+    logo: "/partners/cncg_gandhinagar.png",
     website: "#",
   },
   {
-    name: "GDG nashik",
-    logo: "/partners/GDGNashik_logo.png",
+    id: 7,
+    name: "Hashicorp Ahmedabad",
+    logo: "/partners/hashicorp_ahmedabad.jpg",
     website: "#",
   },
   {
-    name: "CNCF Rajkot",
-    logo: "/partners/CNCF Rajkot.png",
+    id: 8,
+    name: "Hashicorp Gandhinagar",
+    logo: "/partners/hashicorp_gandhinagar.jpg",
     website: "#",
   },
   {
-    name: "FFDG Ahmedabad",
-    logo: "/partners/FFDG-Ahmedabad(1).png",
+    id: 9,
+    name: "Grafana Ahmedabad",
+    logo: "/partners/grafana_ahmedabad.png",
     website: "#",
   },
   {
-    name: "FlutterFlow Gandhinagar",
-    logo: "/partners/FlutterFlow Gandhinagar.png",
+    id: 10,
+    name: "Ahmedabad Developer Club",
+    logo: "/partners/ahmedabad_developer_club.jpg",
     website: "#",
   },
   {
-    name: "Flutter Surat",
-    logo: "/partners/FlutterSuratLogo.png",
+    id: 11,
+    name: "Devoops Gujarat",
+    logo: "/partners/devoops_gujarat.jpg",
     website: "#",
   },
   {
+    id: 12,
+    name: "The Hackers Meetup",
+    logo: "/partners/the_hackers_meetup.png",
+    website: "#",
+  },
+  {
+    id: 13,
+    name: "Java User Group Gujarat",
+    logo: "/partners/java_user_group_gujarat.svg",
+    website: "#",
+  },
+  {
+    id: 14,
     name: "GDG Cloud Ahmedabad",
-    logo: "/partners/GDG Cloud Ahmedabad.png",
+    logo: "/partners/gdg_cloud_ahmedabad.png",
     website: "#",
   },
   {
-    name: "GDG Professional",
-    logo: "/partners/GDG Professional - Horizontal - Light (1) (1).png",
+    id: 15,
+    name: "GDG Ahmedabad",
+    logo: "/partners/gdg_ahmedabad.png",
     website: "#",
   },
   {
-    name: "GDG Cloud Mumbai",
-    logo: "/partners/GDGCloudMumbaiLogo.png",
+    id: 16,
+    name: "FFDG Gandhinagar",
+    logo: "/partners/ffdg_gandhinagar.png",
     website: "#",
   },
   {
-    name: "HRPC",
-    logo: "/partners/HRPC-Logo-Ver-1.png",
+    id: 17,
+    name: "FFDG Ahmedabad",
+    logo: "/partners/ffdg_ahmedabad.png",
     website: "#",
   },
   {
-    name: "HUG Gandhinagar",
-    logo: "/partners/HUG_Gandhinagar (2).jpg",
-    website: "#",
-  },
-  {
-    name: "IT Sales",
-    logo: "/partners/IT-SALES-FINAL-LOGO.png",
-    website: "#",
-  },
-  {
-    name: "GDG Pune White BG",
-    logo: "/partners/gdg_pune_logo_for_white_background.png",
-    website: "#",
-  },
-  {
+    id: 18,
     name: "Node Ahmedabad",
-    logo: "/partners/Node Ahmedabad.jpg",
+    logo: "/partners/node_ahmedabad.jpg",
     website: "#",
   },
   {
-    name: "r-user-group",
-    logo: "/partners/r-user-group.jpeg",
+    id: 19,
+    name: "GDG Nashik",
+    logo: "/partners/gdg_nashik.png",
     website: "#",
   },
   {
-    name: "azure",
-    logo: "/partners/azure-vadodara.jpeg",
+    id: 20,
+    name: "GDG Cloud Pune",
+    logo: "/partners/gdg_cloud_pune.png",
     website: "#",
   },
   {
-    name: "AICamp.png",
-    logo: "/partners/AICamp.png",
+    id: 21,
+    name: "CNCF Rajkot",
+    logo: "/partners/cncf_rajkot.png",
     website: "#",
   },
   {
-    name: "FFDGLogo",
-    logo: "/partners/FFDGLogo.png",
+    id: 22,
+    name: "GDG Pune",
+    logo: "/partners/gdg_pune.png",
     website: "#",
   },
   {
-    name: "GDG-Ahmedabad-vertical",
-    logo: "/partners/GDG-Ahmedabad-vertical.png",
+    id: 23,
+    name: "Flutter Surat",
+    logo: "/partners/flutter_surat.png",
     website: "#",
   },
   {
-    name: "Laracon 2025",
-    logo: "/partners/Laracon 2025.png",
+    id: 24,
+    name: "R User Group Ahmedabad",
+    logo: "/partners/r_user_group_ahmedabad.jpeg",
+    website: "#",
+  },
+  {
+    id: 25,
+    name: "IT Sales Community",
+    logo: "/partners/it_sales_community.png",
+    website: "#",
+  },
+  {
+    id: 26,
+    name: "HR Professional Community",
+    logo: "/partners/hr_professional_community.png",
+    website: "#",
+  },
+  {
+    id: 27,
+    name: "GDG Cloud Mumbai",
+    logo: "/partners/gdg_cloud_mumbai.png",
+    website: "#",
+  },
+  {
+    id: 28,
+    name: "Azure UG Vadodara",
+    logo: "/partners/azure_vadodara.jpeg",
+    website: "#",
+  },
+  {
+    id: 29,
+    name: "Laracon India",
+    logo: "/partners/laracon_india.png",
+    website: "#",
+  },
+  {
+    id: 30,
+    name: "AI Camp India",
+    logo: "/partners/ai_camp_india.png",
+    website: "#",
+  },
+  {
+    id: 31,
+    name: "TechExpo Gujarat",
+    logo: "/partners/techexpo_gujarat.png",
+    website: "#",
+  },
+  {
+    id: 32,
+    name: "FFDG Rajkot",
+    logo: "/partners/ffdg_rajkot.png",
+    website: "#",
+  },
+  {
+    id: 33,
+    name: "GDG Rajkot",
+    logo: "/partners/gdg_rajkot.png",
+    website: "#",
+  },
+  {
+    id: 34,
+    name: "AWS Ahmedabad",
+    logo: "/partners/aws_ahmedabad.png",
+    website: "#",
+  },
+  {
+    id: 35,
+    name: "Figma Surat",
+    logo: "/partners/figma_surat.png",
+    website: "#",
+  },
+  {
+    id: 36,
+    name: "Laravel Surat",
+    logo: "/partners/laravel_surat.png",
+    website: "#",
+  },
+  {
+    id: 37,
+    name: "MongoDB Ahmedabad",
+    logo: "/partners/mongodb_ahmedabad.jpg",
+    website: "#",
+  },
+  {
+    id: 38,
+    name: "Magento Ahmedabad",
+    logo: "/partners/magento_ahmedabad.png",
+    website: "#",
+  },
+  {
+    id: 39,
+    name: "CNCF Ahmedabad",
+    logo: "/partners/cncf_ahmedabad.jpg",
+    website: "#",
+  },
+  {
+    id: 40,
+    name: "FFDG Surat",
+    logo: "/partners/ffdg_surat.png",
+    website: "#",
+  },
+  {
+    id: 41,
+    name: "AWS Vadodara",
+    logo: "/partners/aws_vadodara.png",
+    website: "#",
+  },
+  {
+    id: 42,
+    name: "Hashicorp Vadodara",
+    logo: "/partners/hashicorp_vadodara.png",
+    website: "#",
+  },
+  {
+    id: 43,
+    name: "HydPy",
+    logo: "/partners/hydpy.png",
+    website: "#",
+  },
+  {
+    id: 44,
+    name: "Wordpress Surat",
+    logo: "/partners/wordpress_surat.png",
+    website: "#",
+  },
+  {
+    id: 45,
+    name: "AWS Surat",
+    logo: "/partners/aws_surat.jpg",
+    website: "#",
+  },
+  {
+    id: 46,
+    name: "Figma Ahmedabad",
+    logo: "/partners/figma_ahmedabad.png",
+    website: "#",
+  },
+  {
+    id: 47,
+    name: "Wordpress Ahmedabad",
+    logo: "/partners/wordpress_ahmedabad.jpg",
+    website: "#",
+  },
+  {
+    id: 48,
+    name: "GDG on Campus Karnavati University",
+    logo: "/partners/gdg_karnaviti.png",
+    website: "#",
+  },
+  {
+    id: 49,
+    name: "Javascript Gujarat",
+    logo: "/partners/javascript_gujarat.png",
+    website: "#",
+  },
+  {
+    id: 50,
+    name: "Kotlin Surat",
+    logo: "/partners/kotlin_surat.png",
     website: "#",
   },
 ];
@@ -1029,12 +1191,14 @@ export const EXTRA_SPONSORS = [
 export const TEAM = {
   advisory: [
     {
+      id: 1,
       name: "Dr. Rinkesh Bansal",
       roles: ["Program Director", "Master Inventor at IBM"],
       linkedin: "https://www.linkedin.com/in/rinkesh-bansal-09798843/",
       image: RinkeshBansal,
     },
     {
+      id: 2,
       name: "Nirav Shah",
       roles: [
         "Director at Eternal Web Private Limited",
@@ -1044,6 +1208,7 @@ export const TEAM = {
       image: NiravShah,
     },
     {
+      id: 3,
       name: "Santosh Yadav",
       roles: [
         "Staff Engineer at Celonis",
@@ -1054,6 +1219,7 @@ export const TEAM = {
       image: SantoshYadav,
     },
     {
+      id: 4,
       name: "Vishal Rajpurohit",
       roles: ["CTO at ViitorCloud", "Organizer of Laracon India"],
       linkedin: "https://www.linkedin.com/in/vishalrajpurohit/",
@@ -1062,6 +1228,7 @@ export const TEAM = {
   ],
   mentors: [
     {
+      id: 1,
       name: "Mehul Patel",
       roles: [
         "Sr. DevOps Engineer",
@@ -1074,6 +1241,7 @@ export const TEAM = {
       image: MehulPatel,
     },
     {
+      id: 2,
       name: "Ashish Tiwari",
       roles: [
         "Principal Solutions Architect",
@@ -1083,6 +1251,7 @@ export const TEAM = {
       image: AshishTiwari,
     },
     {
+      id: 3,
       name: "Prathamesh Chavan",
       roles: [
         "AI Engineering Manager at Red Hat",
@@ -1093,17 +1262,31 @@ export const TEAM = {
       image: PrathameshChavan,
     },
     {
+      id: 4,
       name: "Harsh Manvar",
       roles: ["CNCF Ambassador", "Docker Captain", "Google Developer Expert"],
       linkedin: "https://www.linkedin.com/in/harsh-manvar-64a30aa3/",
       image: HarshManvar,
     },
-
     {
+      id: 5,
       name: "Suraj Nath",
       roles: ["Sr. Software Engineer at Grafana Labs"],
       linkedin: "https://www.linkedin.com/in/electron0zero/",
       image: SurajNath,
+    },
+    {
+      id: 6,
+      name: "Kalyan Prasad",
+      roles: [
+        "Lead Data Scientist",
+        "Open Source & Community Advocate",
+        "Chair PyConf Hyderabad",
+        "Co-chair PyCon India",
+        "Kaggle4X contributor",
+      ],
+      linkedin: "https://www.linkedin.com/in/itskpflow/",
+      image: KalyanPrasad,
     },
     // {
     //   name: "Kalyan Prasad",
@@ -1136,6 +1319,7 @@ export const TEAM = {
   ],
   core: [
     {
+      id: 1,
       name: "Viral Parmar",
       roles: [
         "Director - Open Source Community Foundation",
@@ -1147,6 +1331,7 @@ export const TEAM = {
       image: ViralParmar,
     },
     {
+      id: 2,
       name: "Neel Shah",
       roles: [
         "Developer Advocate at Middleware",
@@ -1156,24 +1341,28 @@ export const TEAM = {
       image: NeelShah,
     },
     {
+      id: 3,
       name: "Dhaval Desai",
       roles: ["Product Manager at Gluu"],
       linkedin: "https://www.linkedin.com/in/dhavaltdesai/",
       image: DhavalDesai,
     },
     {
+      id: 4,
       name: "Bhargav Pithva",
       roles: ["Technical Project Manager at Rysun Labs"],
       linkedin: "https://www.linkedin.com/in/bhargavpithva/",
       image: BhargavPithva,
     },
     {
+      id: 5,
       name: "Tanvir Dhanani",
       roles: ["Backend Developer at IBM"],
       linkedin: "https://www.linkedin.com/in/dhanani-tanvir-aa4076118/",
       image: DhananiTanvir,
     },
     {
+      id: 6,
       name: "Jignesh Gadhavi",
       roles: [
         "Sr. DevOps Engineer at Yellow Panther",
@@ -1183,17 +1372,118 @@ export const TEAM = {
       image: JigneshGadhavi,
     },
     {
+      id: 7,
       name: "Falgun Bhalsod",
       roles: ["DevOps Engineer at Yellow Panther"],
       linkedin: "https://www.linkedin.com/in/falgunbhalsod/",
       image: FalgunBhalsod,
     },
+    {
+      id: 8,
+      name: "Sagar Jethi",
+      roles: ["Polygot Engineer, Blockchain Developer", "Chainlink Ambassador"],
+      linkedin: "https://www.linkedin.com/in/sagarjethi",
+      image: SagarJethi,
+    },
   ],
   volunteers: [
     {
-      name: "Chavda Rohit",
-      role: "Website Engineer",
+      id: 1,
+      name: "Abhishek Singh",
+      roles: ["AI System Developer"],
+      linkedin: "https://www.linkedin.com/in/abhishek7x",
+      image: AbhishekSingh,
+    },
+    {
+      id: 2,
+      name: "Ashish Vaghela",
+      roles: ["Software Crafter"],
+      linkedin: "https://www.linkedin.com/in/rohitchavda",
+      image: AshishVaghela,
+    },
+    {
+      id: 3,
+      name: "Ashish Zapadiya",
+      roles: ["Software Engineer"],
+      linkedin: "https://www.linkedin.com/in/zapadiya007/",
+      image: AshishZapadiya,
+    },
+    {
+      id: 4,
+      name: "Darshil Vyas",
+      roles: ["Cyber Security Consultant"],
+      linkedin: "https://www.linkedin.com/in/iamgrepboy/",
+      image: DarshilVyas,
+    },
+    {
+      id: 5,
+      name: "Ekta Agja",
+      roles: ["Teaching Assistant"],
+      linkedin: "https://www.linkedin.com/in/ektaagja",
+      image: EktaAgja,
+    },
+    {
+      id: 6,
+      name: "Harsh Parekh",
+      roles: ["Trainee Software Engineer"],
+      linkedin: "https://www.linkedin.com/in/hap404/",
+      image: HarshParekh,
+    },
+    {
+      id: 7,
+      name: "Krish Satasiya",
+      roles: ["Full Stack Developer"],
+      linkedin: "https://www.linkedin.com/in/satasiyakrish1/",
+      image: KrishSatasiya,
+    },
+    {
+      id: 8,
+      name: "Pranjal Singh",
+      roles: ["Student"],
+      linkedin: "https://www.linkedin.com/in/pranjalksingh92",
+      image: PranjalSingh,
+    },
+    {
+      id: 9,
+      name: "Rohit Chavda",
+      roles: ["Full Stack Developer"],
+      linkedin: "https://www.linkedin.com/in/rohitchavda",
       image: RohitChavda,
+    },
+    {
+      id: 10,
+      name: "Ronit Gandhi",
+      roles: ["Student"],
+      linkedin: "https://www.linkedin.com/in/ronitgandhi08/",
+      image: RonitGandhi,
+    },
+    {
+      id: 11,
+      name: "Rutvi Patel",
+      roles: ["Business Growth Partner"],
+      linkedin: "https://www.linkedin.com/in/rutvi-shiroya-898593203/",
+      image: RutviPatel,
+    },
+    {
+      id: 12,
+      name: "Sanket Tank",
+      roles: ["Full Stack Developer"],
+      linkedin: "https://www.linkedin.com/in/sankettank66",
+      image: SanketTank,
+    },
+    {
+      id: 13,
+      name: "Stavan Mehta",
+      roles: ["Student"],
+      linkedin: "https://www.linkedin.com/in/stavanmehta17/",
+      image: StavanMehta,
+    },
+    {
+      id: 14,
+      name: "Yash Nanda",
+      roles: ["React Native Developer"],
+      linkedin: "https://www.linkedin.com/in/yashnandha/",
+      image: YashNanda,
     },
   ],
 };

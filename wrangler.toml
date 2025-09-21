@@ -6,3 +6,4 @@ routes = [{ pattern = "osd.opensourceweekend.org", custom_domain = true }]
 
 [assets]
 directory = "./dist"
+not_found_handling = "404-page"
