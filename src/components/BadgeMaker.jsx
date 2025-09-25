@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
-import { BRANDING, EVENT } from "@/config";
+import { BRANDING, EVENT, SITE } from "@/config";
 
 const BadgeMaker = () => {
   const [selectedTemplate, setSelectedTemplate] = useState("volunteer");
@@ -8,27 +8,29 @@ const BadgeMaker = () => {
   const [imageScale, setImageScale] = useState(2);
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [userName, setUserName] = useState("");
+  const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
 
   const templates = [
     {
       id: "speaker",
-      title: "I am Speaking at",
+      title: "Speaking",
       subtitle: "Open Source Day 2025",
       color: "#22c55e",
       bgGradient: "linear-gradient(135deg, #22c55e 0%, #16a34a 100%)",
     },
     {
       id: "attendee",
-      title: "I am Attending",
+      title: "Attending",
       subtitle: "Open Source Day 2025",
       color: "#3b82f6",
       bgGradient: "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)",
     },
     {
       id: "volunteer",
-      title: "I am Volunteering at",
+      title: "Volunteering",
       subtitle: "Open Source Day 2025",
       color: "#f59e0b",
       bgGradient: "linear-gradient(135deg, #f59e0b 0%, #d97706 100%)",
@@ -65,10 +67,6 @@ const BadgeMaker = () => {
     });
   };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
   const drawBadge = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -92,7 +90,7 @@ const BadgeMaker = () => {
     ctx.fillRect(0, 0, width, height);
 
     // Add geometric shapes for visual appeal
-    ctx.fillStyle = "rgba(255, 255, 255, 0.1)";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.10)";
     ctx.beginPath();
     ctx.moveTo(0, height * 0.7);
     ctx.quadraticCurveTo(width * 0.3, height * 0.3, width, height * 0.5);
@@ -100,13 +98,20 @@ const BadgeMaker = () => {
     ctx.closePath();
     ctx.fill();
 
+    // Subtle dark overlay strip for text contrast (left side)
+    const overlayGradient = ctx.createLinearGradient(0, 0, 400, 0);
+    overlayGradient.addColorStop(0, "rgba(0,0,0,0.30)");
+    overlayGradient.addColorStop(1, "rgba(0,0,0,0.00)");
+    ctx.fillStyle = overlayGradient;
+    ctx.fillRect(0, 0, 420, height);
+
     // Add user image if uploaded
     if (uploadedImage) {
       const img = new Image();
       img.onload = () => {
         const imgSize = 200 * imageScale;
         const imgX = width - 250 + imagePosition.x;
-        const imgY = height - 300 + imagePosition.y;
+        const imgY = height - 370 + imagePosition.y;
 
         // Create circular clipping path
         ctx.save();
@@ -140,42 +145,161 @@ const BadgeMaker = () => {
     }
 
     // Add text content
-    ctx.fillStyle = "white";
+    ctx.fillStyle = "#ffffff";
     ctx.textAlign = "left";
+    ctx.shadowColor = "rgba(0,0,0,0.25)";
+    ctx.shadowBlur = 8;
 
-    // Main title
-    ctx.font = "bold 48px Inter, sans-serif";
-    ctx.fillText(currentTemplate.title, 50, 150);
+    // Role badge pill
+    const roleText = currentTemplate.title.toUpperCase();
+    ctx.font = "bold 28px Inter, sans-serif";
+    const rolePaddingX = 18;
+    const rolePaddingY = 10;
+    const roleMetrics = ctx.measureText(roleText);
+    const roleWidth = roleMetrics.width + rolePaddingX * 2;
+    const roleHeight = 40 + rolePaddingY * 2 - 20; // visual tweak
+    const roleX = 50;
+    const roleY = 80;
+    // rounded rect
+    ctx.save();
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = "rgba(255,255,255,0.18)";
+    const r = 14;
+    ctx.beginPath();
+    ctx.moveTo(roleX + r, roleY);
+    ctx.lineTo(roleX + roleWidth - r, roleY);
+    ctx.quadraticCurveTo(
+      roleX + roleWidth,
+      roleY,
+      roleX + roleWidth,
+      roleY + r
+    );
+    ctx.lineTo(roleX + roleWidth, roleY + roleHeight - r);
+    ctx.quadraticCurveTo(
+      roleX + roleWidth,
+      roleY + roleHeight,
+      roleX + roleWidth - r,
+      roleY + roleHeight
+    );
+    ctx.lineTo(roleX + r, roleY + roleHeight);
+    ctx.quadraticCurveTo(
+      roleX,
+      roleY + roleHeight,
+      roleX,
+      roleY + roleHeight - r
+    );
+    ctx.lineTo(roleX, roleY + r);
+    ctx.quadraticCurveTo(roleX, roleY, roleX + r, roleY);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+    ctx.fillStyle = "#ffffff";
+    ctx.fillText(roleText, roleX + rolePaddingX, roleY + rolePaddingY + 24);
 
-    // Subtitle
-    ctx.font = "bold 50px Inter, sans-serif";
-    ctx.fillText(currentTemplate.subtitle, 50, 250);
+    // Event name prominent
+    ctx.font = "800 54px Inter, sans-serif";
+    ctx.fillText(EVENT.name, 50, 180);
 
-    // Event details
-    ctx.font = "24px Inter, sans-serif";
-    ctx.fillText(EVENT.date, 50, 350);
-    ctx.fillText(EVENT.location, 50, 400);
+    // User name (if provided)
+    if (userName.trim()) {
+      ctx.font = "600 34px Inter, sans-serif";
+      ctx.fillText(userName, 50, 235);
+    }
 
-    // Logo area (top right)
-    ctx.font = "bold 20px Inter, sans-serif";
-    ctx.textAlign = "right";
-    ctx.fillText("OPEN SOURCE DAY 2025", width - 50, 100);
+    // Date and Location
+    ctx.font = "500 24px Inter, sans-serif";
+    ctx.fillText(EVENT.date, 50, 290);
+    ctx.font = "500 22px Inter, sans-serif";
+    const location = EVENT.location;
+    const locationLines = [];
+    // wrap simple if too long
+    const maxWidth = 680;
+    let remaining = location;
+    while (remaining.length) {
+      let i = remaining.length;
+      while (i > 0 && ctx.measureText(remaining.slice(0, i)).width > maxWidth)
+        i--;
+      // backtrack to last space
+      let cut = i;
+      while (cut > 0 && remaining[cut] !== " ") cut--;
+      if (cut <= 0) cut = i;
+      locationLines.push(remaining.slice(0, cut).trim());
+      remaining = remaining.slice(cut).trim();
+      if (locationLines.length > 2) break;
+    }
+    locationLines.forEach((line, idx) =>
+      ctx.fillText(line, 50, 325 + idx * 26)
+    );
 
-    // Add some decorative elements
-    ctx.fillStyle = "rgba(255, 255, 255, 0.2)";
-    ctx.fillRect(width - 200, 50, 150, 4);
-    ctx.fillRect(width - 200, 60, 100, 2);
+    // Hashtags and site URL at bottom
+    ctx.textAlign = "left";
+    ctx.font = "600 20px Inter, sans-serif";
+    ctx.fillText("#OpenSourceDay #OSD2025", 50, height - 70);
+    ctx.font = "500 18px Inter, sans-serif";
+    ctx.fillText(SITE.website.replace(/^https?:\/\//, ""), 50, height - 40);
+
+    // OSD Green logo at bottom-right (if available)
+    try {
+      const logoUrl2 =
+        typeof BRANDING.logos.green === "string"
+          ? BRANDING.logos.green
+          : BRANDING.logos.green?.src || BRANDING.logos.green;
+      if (logoUrl2) {
+        const logoImg2 = new Image();
+        logoImg2.onload = () => {
+          const maxLogoWidth2 = 150;
+          const maxLogoHeight2 = 64;
+          let drawW2 = logoImg2.width;
+          let drawH2 = logoImg2.height;
+          const scale2 = Math.min(
+            maxLogoWidth2 / drawW2,
+            maxLogoHeight2 / drawH2
+          );
+          drawW2 = Math.floor(drawW2 * scale2);
+          drawH2 = Math.floor(drawH2 * scale2);
+          const pad2 = 40;
+          ctx.save();
+          ctx.shadowColor = "rgba(0,0,0,0.15)";
+          ctx.shadowBlur = 4;
+          ctx.drawImage(
+            logoImg2,
+            width - drawW2 - pad2,
+            height - drawH2 - pad2,
+            drawW2,
+            drawH2
+          );
+          ctx.restore();
+        };
+        logoImg2.src = logoUrl2;
+      }
+    } catch (_) {}
+
+    // Add some decorative elements (top-right)
+    ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
+    ctx.fillRect(width - 220, 56, 170, 4);
+    ctx.fillRect(width - 220, 68, 110, 2);
   }, [
     selectedTemplate,
     uploadedImage,
     imagePosition,
     imageScale,
     currentTemplate,
+    userName,
   ]);
 
   React.useEffect(() => {
     drawBadge();
   }, [drawBadge]);
+
+  // Detect browser-only APIs after mount to avoid SSR errors
+  React.useEffect(() => {
+    if (
+      typeof navigator !== "undefined" &&
+      typeof navigator.share === "function"
+    ) {
+      setCanNativeShare(true);
+    }
+  }, []);
 
   const downloadBadge = () => {
     const canvas = canvasRef.current;
@@ -187,30 +311,64 @@ const BadgeMaker = () => {
     link.click();
   };
 
-  const shareToSocial = (platform) => {
+  const shareToSocial = async (platform) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const dataUrl = canvas.toDataURL();
-    const text = `I'm ${currentTemplate.subtitle.toLowerCase()} at ${
-      EVENT.name
-    }! Join me on ${EVENT.date} at ${
-      EVENT.location
-    }. #OpenSourceDay2025 #OSD2025`;
+    const baseText = userName.trim()
+      ? `${userName} is ${currentTemplate.title.toLowerCase()} at ${
+          EVENT.name
+        }!`
+      : `I'm ${currentTemplate.title.toLowerCase()} at ${EVENT.name}!`;
 
+    const fullText = `${baseText} Join us on ${EVENT.date} at ${EVENT.location}. #OpenSourceDay2025 #OSD2025`;
+
+    // Convert canvas to blob for sharing
+    const blob = await new Promise((resolve) =>
+      canvas.toBlob(resolve, "image/png")
+    );
+
+    if (
+      typeof navigator !== "undefined" &&
+      navigator.share &&
+      platform === "native"
+    ) {
+      // Use native sharing if available
+      try {
+        const file = new File(
+          [blob],
+          `osd-2025-${selectedTemplate}-badge.png`,
+          { type: "image/png" }
+        );
+        await navigator.share({
+          title: "My OSD 2025 Badge",
+          text: fullText,
+          files: [file],
+        });
+        return;
+      } catch (error) {
+        console.log(
+          "Native sharing failed, falling back to platform-specific sharing"
+        );
+      }
+    }
+
+    const currentHref =
+      typeof window !== "undefined" ? window.location.href : "";
     const shareUrls = {
       twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        text
-      )}&url=${encodeURIComponent(window.location.href)}`,
+        fullText
+      )}&url=${encodeURIComponent(currentHref)}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        window.location.href
-      )}`,
+        currentHref
+      )}&summary=${encodeURIComponent(fullText)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        window.location.href
-      )}`,
+        currentHref
+      )}&quote=${encodeURIComponent(fullText)}`,
     };
 
-    if (shareUrls[platform]) {
+    if (shareUrls[platform] && typeof window !== "undefined") {
       window.open(shareUrls[platform], "_blank", "width=600,height=400");
     }
   };
@@ -220,14 +378,22 @@ const BadgeMaker = () => {
     if (!canvas) return;
 
     try {
-      const blob = await new Promise((resolve) =>
-        canvas.toBlob(resolve, "image/png")
-      );
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          "image/png": blob,
-        }),
-      ]);
+      if (
+        typeof navigator !== "undefined" &&
+        navigator.clipboard &&
+        typeof ClipboardItem !== "undefined"
+      ) {
+        const blob = await new Promise((resolve) =>
+          canvas.toBlob(resolve, "image/png")
+        );
+        await navigator.clipboard.write([
+          new ClipboardItem({
+            "image/png": blob,
+          }),
+        ]);
+      } else {
+        throw new Error("Clipboard API not available");
+      }
       // alert("Badge copied to clipboard!");
     } catch (err) {
       console.error("Failed to copy to clipboard:", err);
@@ -251,10 +417,41 @@ const BadgeMaker = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Panel - Controls */}
           <div className="space-y-6">
-            {/* Step 1: Template Selection */}
+            {/* Step 1: Name Input */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                1. Choose Template
+                1. Enter Your Name
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Your Name (Required)
+                  </label>
+                  <input
+                    type="text"
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    placeholder="Enter your name"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  />
+                  {userName.trim() === "" ? (
+                    <p className="text-sm text-red-600 mt-1">
+                      Name is required to generate your badge.
+                    </p>
+                  ) : (
+                    <p className="text-sm text-gray-500 mt-1">
+                      Your name will appear on the badge
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Step 2: Template Selection */}
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                2. Choose Template
               </h2>
               <div className="grid grid-cols-1 gap-4">
                 {templates.map((template) => (
@@ -286,10 +483,10 @@ const BadgeMaker = () => {
               </div>
             </div>
 
-            {/* Step 2: Image Upload and Adjustment */}
+            {/* Step 3: Image Upload and Adjustment */}
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                2. Upload and Adjust
+                3. Upload and Adjust
               </h2>
 
               {!uploadedImage ? (
@@ -335,34 +532,11 @@ const BadgeMaker = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="text-center">
-                    <p className="text-sm text-gray-600 mb-2">
-                      Drag inside preview to move. Use the slider to resize.
-                    </p>
-                  </div>
-
-                  <div className="space-y-3">
-                    <label className="block text-sm font-medium text-gray-700">
-                      Zoom: {Math.round(imageScale * 100)}%
-                    </label>
-                    <input
-                      type="range"
-                      min="0.5"
-                      max="2"
-                      step="0.1"
-                      value={imageScale}
-                      onChange={(e) =>
-                        setImageScale(parseFloat(e.target.value))
-                      }
-                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-                    />
-                  </div>
-
                   <button
                     onClick={() => {
                       setUploadedImage(null);
-                      setImagePosition({ x: 0, y: 0 });
-                      setImageScale(1);
+                      setImagePosition({ x: -350, y: -180 });
+                      setImageScale(2);
                     }}
                     className="w-full bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors"
                   >
@@ -371,17 +545,37 @@ const BadgeMaker = () => {
                 </div>
               )}
             </div>
+          </div>
 
-            {/* Step 3: Download and Share */}
-            <div className="bg-white rounded-lg shadow-lg p-6">
+          {/* Right Panel - Badge Preview */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Badge Preview
+            </h2>
+
+            <div className="relative flex items-center justify-center">
+              <canvas
+                ref={canvasRef}
+                className="w-full max-w-md mx-auto border border-gray-200 rounded-lg shadow-lg"
+                style={{ aspectRatio: "4/5" }}
+              />
+            </div>
+
+            {/* Download & Share - visible on all screen sizes */}
+            <div className="mt-8">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                3. Download & Share
+                Download & Share
               </h2>
 
               <div className="space-y-4">
                 <button
                   onClick={downloadBadge}
-                  className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  disabled={userName.trim() === ""}
+                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                    userName.trim() === ""
+                      ? "bg-green-300 text-white cursor-not-allowed"
+                      : "bg-green-600 text-white hover:bg-green-700"
+                  }`}
                 >
                   <svg
                     className="w-5 h-5"
@@ -401,7 +595,12 @@ const BadgeMaker = () => {
 
                 <button
                   onClick={copyToClipboard}
-                  className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
+                  disabled={userName.trim() === ""}
+                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                    userName.trim() === ""
+                      ? "bg-blue-300 text-white cursor-not-allowed"
+                      : "bg-blue-600 text-white hover:bg-blue-700"
+                  }`}
                 >
                   <svg
                     className="w-5 h-5"
@@ -419,22 +618,64 @@ const BadgeMaker = () => {
                   <span>Copy to Clipboard</span>
                 </button>
 
+                {canNativeShare && (
+                  <button
+                    onClick={() => shareToSocial("native")}
+                    disabled={userName.trim() === ""}
+                    className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                      userName.trim() === ""
+                        ? "bg-purple-300 text-white cursor-not-allowed"
+                        : "bg-purple-600 text-white hover:bg-purple-700"
+                    }`}
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"
+                      />
+                    </svg>
+                    <span>Share Badge</span>
+                  </button>
+                )}
+
                 <div className="grid grid-cols-3 gap-2">
                   <button
                     onClick={() => shareToSocial("twitter")}
-                    className="bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition-colors text-sm"
+                    disabled={userName.trim() === ""}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-300 text-white cursor-not-allowed"
+                        : "bg-blue-500 text-white hover:bg-blue-600"
+                    }`}
                   >
                     Twitter
                   </button>
                   <button
                     onClick={() => shareToSocial("linkedin")}
-                    className="bg-blue-700 text-white py-2 px-3 rounded-lg hover:bg-blue-800 transition-colors text-sm"
+                    disabled={userName.trim() === ""}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-400 text-white cursor-not-allowed"
+                        : "bg-blue-700 text-white hover:bg-blue-800"
+                    }`}
                   >
                     LinkedIn
                   </button>
                   <button
                     onClick={() => shareToSocial("facebook")}
-                    className="bg-blue-600 text-white py-2 px-3 rounded-lg hover:bg-blue-700 transition-colors text-sm"
+                    disabled={userName.trim() === ""}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-500 text-white cursor-not-allowed"
+                        : "bg-blue-600 text-white hover:bg-blue-700"
+                    }`}
                   >
                     Facebook
                   </button>
@@ -442,38 +683,9 @@ const BadgeMaker = () => {
               </div>
             </div>
           </div>
-
-          {/* Right Panel - Badge Preview */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Badge Preview
-            </h2>
-
-            <div className="relative flex items-center justify-center">
-              <canvas
-                ref={canvasRef}
-                className="w-full max-w-md mx-auto border border-gray-200 rounded-lg shadow-lg"
-                style={{ aspectRatio: "4/5" }}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onMouseLeave={handleMouseUp}
-              />
-            </div>
-
-            <div className="mt-4 text-center">
-              <button
-                onClick={() => {
-                  setImagePosition({ x: 0, y: 0 });
-                  setImageScale(1);
-                }}
-                className="text-sm text-gray-600 hover:text-gray-800 transition-colors"
-              >
-                Reset Position
-              </button>
-            </div>
-          </div>
         </div>
+
+        {/* Mobile Download & Share section removed; unified section lives under preview */}
       </div>
     </div>
   );
