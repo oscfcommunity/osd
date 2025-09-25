@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { BRANDING, EVENT, SITE } from "@/config";
+import Cropper from "react-easy-crop";
 
 const BadgeMaker = () => {
   const [selectedTemplate, setSelectedTemplate] = useState("volunteer");
@@ -12,6 +13,11 @@ const BadgeMaker = () => {
   const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const [isCropping, setIsCropping] = useState(false);
 
   const templates = [
     {
@@ -45,6 +51,7 @@ const BadgeMaker = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         setUploadedImage(e.target.result);
+        setIsCropping(true); // start cropping mode
       };
       reader.readAsDataURL(file);
     }
@@ -64,6 +71,34 @@ const BadgeMaker = () => {
     setImagePosition({
       x: e.clientX - dragStart.x,
       y: e.clientY - dragStart.y,
+    });
+  };
+
+  const getCroppedImg = (imageSrc, pixelCrop) => {
+    return new Promise((resolve, reject) => {
+      const image = new Image();
+      image.src = imageSrc;
+      image.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = pixelCrop.width;
+        canvas.height = pixelCrop.height;
+        const ctx = canvas.getContext("2d");
+
+        ctx.drawImage(
+          image,
+          pixelCrop.x,
+          pixelCrop.y,
+          pixelCrop.width,
+          pixelCrop.height,
+          0,
+          0,
+          pixelCrop.width,
+          pixelCrop.height
+        );
+
+        resolve(canvas.toDataURL("image/png"));
+      };
+      image.onerror = reject;
     });
   };
 
@@ -532,6 +567,43 @@ const BadgeMaker = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
+                  {isCropping && (
+                    <div className="relative w-full h-96 bg-black">
+                      <Cropper
+                        image={uploadedImage}
+                        crop={crop}
+                        zoom={zoom}
+                        aspect={1} // square crop for circular avatar
+                        onCropChange={setCrop}
+                        onZoomChange={setZoom}
+                        onCropComplete={(croppedArea, croppedAreaPixels) => {
+                          setCroppedAreaPixels(croppedAreaPixels);
+                        }}
+                      />
+                      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
+                        <button
+                          className="bg-red-600 text-white px-4 py-2 rounded"
+                          onClick={() => setIsCropping(false)} // cancel
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          className="bg-green-600 text-white px-4 py-2 rounded"
+                          onClick={async () => {
+                            const croppedImg = await getCroppedImg(
+                              uploadedImage,
+                              croppedAreaPixels
+                            );
+                            setUploadedImage(croppedImg); // replace with cropped version
+                            setIsCropping(false); // exit cropping mode
+                          }}
+                        >
+                          Crop
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
                   <button
                     onClick={() => {
                       setUploadedImage(null);
