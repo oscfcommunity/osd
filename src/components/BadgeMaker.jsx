@@ -247,8 +247,8 @@ const BadgeMaker = () => {
       if (logoUrl2) {
         const logoImg2 = new Image();
         logoImg2.onload = () => {
-          const maxLogoWidth2 = 150;
-          const maxLogoHeight2 = 64;
+          const maxLogoWidth2 = 200;
+          const maxLogoHeight2 = 90;
           let drawW2 = logoImg2.width;
           let drawH2 = logoImg2.height;
           const scale2 = Math.min(
@@ -257,7 +257,7 @@ const BadgeMaker = () => {
           );
           drawW2 = Math.floor(drawW2 * scale2);
           drawH2 = Math.floor(drawH2 * scale2);
-          const pad2 = 40;
+          const pad2 = 30;
           ctx.save();
           ctx.shadowColor = "rgba(0,0,0,0.15)";
           ctx.shadowBlur = 4;
