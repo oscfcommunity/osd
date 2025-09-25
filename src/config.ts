@@ -310,7 +310,7 @@ export const NAVIGATION = {
     { name: "Tickets", href: "/tickets" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Venue", href: "/venue" },
-    { name: "My Badge", href: "/my-badge" },
+    { name: "Badge", href: "/badge" },
     { name: "Past Events", href: "/past-events" },
   ],
   cta: {
