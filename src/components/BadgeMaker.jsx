@@ -568,38 +568,57 @@ const BadgeMaker = () => {
               ) : (
                 <div className="space-y-4">
                   {isCropping && (
-                    <div className="relative w-full h-96 bg-black">
-                      <Cropper
-                        image={uploadedImage}
-                        crop={crop}
-                        zoom={zoom}
-                        aspect={1} // square crop for circular avatar
-                        onCropChange={setCrop}
-                        onZoomChange={setZoom}
-                        onCropComplete={(croppedArea, croppedAreaPixels) => {
-                          setCroppedAreaPixels(croppedAreaPixels);
-                        }}
-                      />
-                      <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-4">
-                        <button
-                          className="bg-red-600 text-white px-4 py-2 rounded"
-                          onClick={() => setIsCropping(false)} // cancel
-                        >
-                          Cancel
-                        </button>
-                        <button
-                          className="bg-green-600 text-white px-4 py-2 rounded"
-                          onClick={async () => {
-                            const croppedImg = await getCroppedImg(
-                              uploadedImage,
-                              croppedAreaPixels
-                            );
-                            setUploadedImage(croppedImg); // replace with cropped version
-                            setIsCropping(false); // exit cropping mode
-                          }}
-                        >
-                          Crop
-                        </button>
+                    <div className="w-full">
+                      {/* Crop area */}
+                      <div className="relative w-full h-[400px] bg-black rounded-lg overflow-hidden">
+                        <Cropper
+                          image={uploadedImage}
+                          crop={crop}
+                          zoom={zoom}
+                          aspect={1} // square crop (good for circular avatar)
+                          onCropChange={setCrop}
+                          onZoomChange={setZoom}
+                          onCropComplete={(croppedArea, croppedAreaPixels) =>
+                            setCroppedAreaPixels(croppedAreaPixels)
+                          }
+                        />
+                      </div>
+
+                      {/* Toolbar below the image */}
+                      <div className="flex flex-col items-center space-y-4 mt-4">
+                        {/* Zoom bar */}
+                        <input
+                          type="range"
+                          min={1}
+                          max={3}
+                          step={0.1}
+                          value={zoom}
+                          onChange={(e) => setZoom(Number(e.target.value))}
+                          className="w-64 accent-green-600"
+                        />
+
+                        {/* Action buttons */}
+                        <div className="flex space-x-4">
+                          <button
+                            className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+                            onClick={() => setIsCropping(false)}
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+                            onClick={async () => {
+                              const croppedImg = await getCroppedImg(
+                                uploadedImage,
+                                croppedAreaPixels
+                              );
+                              setUploadedImage(croppedImg);
+                              setIsCropping(false);
+                            }}
+                          >
+                            Crop
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )}
