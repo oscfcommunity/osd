@@ -42,7 +42,7 @@ import { FOOTER, BRANDING, SITE, SOCIAL_LINKS, CONTACTS } from "../config.ts";
       {
         CONTACTS.map((item) => (
           <div class="flex items-center gap-3">
-            <item.icon class="w-5 h-5" />
+            {item.icon && <item.icon class="w-5 h-5" />}
             <a href={item.href} class="hover:text-green-600 transition-colors">
               {item.content}
             </a>
@@ -53,6 +53,7 @@ import { FOOTER, BRANDING, SITE, SOCIAL_LINKS, CONTACTS } from "../config.ts";
   </div>
 
   <p class="mt-4 pt-4 border-t text-center border-gray-300 text-sm text-black">
-    Made with ❤️ by Open Source Weekend community!
+    Made with ❤️ by <a href="https://github.com/oscfcommunity" target="_blank" rel="noopener noreferrer" class="text-green-600 hover:underline">Open Source Weekend community</a>!<br />
+    &copy; {new Date().getFullYear()} Open Source Weekend. All rights reserved.
   </p>
 </footer>
