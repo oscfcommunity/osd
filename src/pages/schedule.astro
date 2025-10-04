@@ -51,35 +51,72 @@ const getTypeColor = (type: string) => {
           </div>
         </div>
 
-        <div class="space-y-4">
+        <div class="grid grid-flow-row grid-cols-2 gap-4 grid-rows-[auto]">
           {
             eventSchedule.map((session) => (
-              <div class="light-card rounded-xl p-6 transition-all duration-300">
-                <div class="flex flex-col gap-5 md:flex-row md:items-center justify-between">
-                  <div class="flex-1">
-                    <div class="flex items-center space-x-4 mb-2">
-                      <span class="text-green-600 font-bold text-lg min-w-[80px]">
-                        {session.time}
-                      </span>
-                      <span
-                        class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(
-                          session.type
-                        )}`}
-                      >
-                        {session.type.toUpperCase()}
-                      </span>
-                    </div>
+              <div
+                class:list={[
+                  "light-card rounded-xl p-6 transition-all duration-300",
+                  {
+                    "col-span-2 md:col-span-1": session?.isPanelRight,
+                  },
+                  {
+                    "col-span-2 md:col-span-1 md:row-span-2": session?.isPanelLeft,
+                  },
+                  {
+                    "col-span-2":
+                      !session?.isPanelRight && !session?.isPanelLeft,
+                  },
+                ]}
+              >
+                <div class="h-full flex flex-col items-stretch justify-between gap-5">
+                  <header class="flex items-center justify-between gap-5">
+                    <span class="text-green-600 font-bold text-lg min-w-[80px]">
+                      {session.time}
+                    </span>
+                    <span
+                      class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(
+                        session.type
+                      )}`}
+                    >
+                      {session.type.toUpperCase()}
+                    </span>
+                  </header>
+                  <main>
                     <h3 class="text-xl font-bold text-black mb-1">
                       {session.title}
                     </h3>
                     {session.speaker && (
                       <p class="text-black mb-2">by {session.speaker}</p>
                     )}
-                    <p class="text-sm text-gray-600">{session.room}</p>
-                  </div>
-                  <div class="btn">
-                    <AddToGoogleCalendar event={session} client:load />
-                  </div>
+                  </main>
+                  <footer class="flex flex-wrap gap-5 items-center justify-between">
+                    <span class="text-sm text-gray-600 flex items-center flex-wrap gap-1">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="size-6"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                        />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
+                        />
+                      </svg>
+                      <p>{session.room}</p>
+                    </span>
+                    <div class="btn">
+                      <AddToGoogleCalendar event={session} client:load />
+                    </div>
+                  </footer>
                 </div>
               </div>
             ))

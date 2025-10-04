@@ -215,15 +215,6 @@ export const eventSchedule = [
     end: "20251005T113000",
   },
   {
-    time: "11:30 AM – 12:00 PM",
-    title: "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
-    speaker: "Someshwaran Mohan Kumar",
-    type: "talk",
-    room: "Main Auditorium",
-    start: "20251005T113000",
-    end: "20251005T120000",
-  },
-  {
     time: "11:30 AM – 12:45 PM",
     title: "Gemini CLI: The All-Round Developer Friend in the Terminal",
     speaker: "Jay Thakkar",
@@ -231,6 +222,17 @@ export const eventSchedule = [
     room: "Secondary Hall",
     start: "20251005T113000",
     end: "20251005T124500",
+    isPanelLeft: true,
+  },
+  {
+    time: "11:30 AM – 12:00 PM",
+    title: "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
+    speaker: "Someshwaran Mohan Kumar",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T113000",
+    end: "20251005T120000",
+    isPanelRight: true,
   },
   {
     time: "12:00 PM – 12:45 PM",
@@ -240,6 +242,7 @@ export const eventSchedule = [
     room: "Main Auditorium",
     start: "20251005T120000",
     end: "20251005T124500",
+    isPanelRight: true,
   },
   {
     time: "12:45 PM – 01:45 PM",
@@ -251,15 +254,6 @@ export const eventSchedule = [
     end: "20251005T134500",
   },
   {
-    time: "01:45 PM – 02:30 PM",
-    title: "Significance of Open Source Projects and its sustainability",
-    speaker: "Ansh Arora",
-    type: "talk",
-    room: "Main Auditorium",
-    start: "20251005T134500",
-    end: "20251005T143000",
-  },
-  {
     time: "01:45 PM – 03:00 PM",
     title:
       "Hands-On Workshop: Data Ingestion, ES|QL Processing, and Nginx Dashboards with Elasticsearch",
@@ -268,6 +262,17 @@ export const eventSchedule = [
     room: "Secondary Hall",
     start: "20251005T134500",
     end: "20251005T150000",
+    isPanelLeft: true,
+  },
+  {
+    time: "01:45 PM – 02:30 PM",
+    title: "Significance of Open Source Projects and its sustainability",
+    speaker: "Ansh Arora",
+    type: "talk",
+    room: "Main Auditorium",
+    start: "20251005T134500",
+    end: "20251005T143000",
+    isPanelRight: true,
   },
   {
     time: "02:30 PM – 03:00 PM",
@@ -277,6 +282,7 @@ export const eventSchedule = [
     room: "Main Auditorium",
     start: "20251005T143000",
     end: "20251005T150000",
+    isPanelRight: true,
   },
   {
     time: "03:00 PM – 03:45 PM",
