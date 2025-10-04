@@ -1,29 +1,39 @@
 ---
 import { Image } from "astro:assets";
 
-import Layout from "@/layouts/Layout.astro";
+import CountdownTimer from "@/components/CountdownTimer.jsx";
+import Counter from "@/components/Counter";
 import Hero from "@/components/Hero.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
-import Counter from "@/components/Counter";
-import CountdownTimer from "@/components/CountdownTimer.jsx";
 import SponsorsGrid from "@/components/SponsorsGrid.jsx";
-import MarqueeLogos from "../components/MarqueeLogos.jsx";
+import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
+import MarqueeLogos from "../components/MarqueeLogos.jsx";
 
-import LearnAndContribute from "@/assets/icons/learn-contribute.svg";
-import Connect from "@/assets/icons/connect.svg";
 import Celebrate from "@/assets/icons/celebrate.svg";
+import Connect from "@/assets/icons/connect.svg";
+import LearnAndContribute from "@/assets/icons/learn-contribute.svg";
 
 import {
-  SPEAKERS,
-  VENUE,
-  TICKETS,
-  SPONSOR_TIERS,
   BRANDING,
   COMMUNITY_PARTNERS,
-  VENUE_PARTNER,
+  CURRENT_SPEAKERS,
   EVENT_PARTNER,
+  SPONSOR_TIERS,
+  TICKETS,
+  VENUE,
+  VENUE_PARTNER,
 } from "../config.ts";
+
+import { type Speaker } from "../config.types.ts";
+
+// pick each speaker from each section of CURRENT_SPEAKERS data list
+const ParsedCurrentSpeakers: Speaker[] = CURRENT_SPEAKERS.flatMap(
+  (currentSpeakerItem) => {
+    const sections = currentSpeakerItem.sections || [];
+    return sections.flatMap((section) => section.speakers || []);
+  }
+);
 ---
 
 <Layout title="2025 OpenSourceDay" activePath="/">
@@ -302,8 +312,8 @@ import {
       >
     </div>
 
-    <!-- Speakers Preview -->
-    <div class="py-12 bg-green-50">
+    <!-- Past Speakers Preview -->
+    <!-- <div class="py-12 bg-green-50">
       <div class="max-w-6xl mx-auto px-4 text-center mb-6">
         <h3 class="text-2xl font-bold">Past Speakers</h3>
       </div>
@@ -352,8 +362,61 @@ import {
           )
         }
       </div>
-    </div>
+    </div> -->
 
+    <!-- Current Speakers Preview -->
+    <div class="py-12 bg-green-50">
+      <div class="max-w-6xl mx-auto px-4 text-center mb-6">
+        <h3 class="text-2xl font-bold">Current Speakers</h3>
+      </div>
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
+          {
+            ParsedCurrentSpeakers.map((sp) => (
+              <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                <Image
+                  src={sp.image}
+                  alt={sp.name}
+                  class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                  loading="lazy"
+                  width={400}
+                />
+                <h4 class="font-semibold text-lg">{sp.name}</h4>
+                <div class="text-sm text-gray-600 mb-2">
+                  {sp.position} at {sp.company}
+                </div>
+                {Boolean(sp?.presentationTitle) && (
+                  <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
+                )}
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- {
+          SPEAKERS.length > 3 && (
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {SPEAKERS.slice(3).map((sp) => (
+                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
+                  <Image
+                    src={sp.image}
+                    alt={sp.name}
+                    class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                    loading="lazy"
+                    width={400}
+                  />
+                  <h4 class="font-semibold text-lg">{sp.name}</h4>
+                  <div class="text-sm text-gray-600 mb-2">
+                    {sp.position} at {sp.company}
+                  </div>
+                  <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
+                </div>
+              ))}
+            </div>
+          )
+        } -->
+      </div>
+    </div>
     <!-- Venue & Tickets -->
     <div class="py-8 bg-white">
       <div
