@@ -236,7 +236,7 @@ export const eventSchedule = [
     time: "12:00 PM – 12:45 PM",
     title: "The Role of Open Source in Driving Innovation and Collaboration",
     speaker: "Nirav Gohil, Chetan Sheladiya, Bhavika Patel, Chinmay Shah",
-    type: "CXO Panel",
+    type: "CXO Panel Discussion",
     room: "Main Auditorium",
     start: "20251005T120000",
     end: "20251005T124500",
@@ -252,9 +252,8 @@ export const eventSchedule = [
   },
   {
     time: "01:45 PM – 02:30 PM",
-    title:
-      "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
-    speaker: "Chetan Soni",
+    title: "Significance of Open Source Projects and its sustainability",
+    speaker: "Ansh Arora",
     type: "talk",
     room: "Main Auditorium",
     start: "20251005T134500",
@@ -285,15 +284,16 @@ export const eventSchedule = [
       "Building a Successful Open Source Community: Best Practices and Lessons Learned",
     speaker:
       "Pratik Bhatt, Vijay Golani, Vikas Rajput, Ruchit Patel & Hussain Lokhandwala",
-    type: "Community Panel",
+    type: "Community Panel Discussion",
     room: "Main Auditorium",
     start: "20251005T150000",
     end: "20251005T154500",
   },
   {
     time: "03:45 PM – 04:15 PM",
-    title: "Significance of Open Source Projects and its sustainability",
-    speaker: "Ansh Arora",
+    title:
+      "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
+    speaker: "Chetan Soni",
     type: "talk",
     room: "Main Auditorium",
     start: "20251005T154500",
