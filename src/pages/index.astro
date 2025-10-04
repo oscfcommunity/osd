@@ -1,39 +1,38 @@
 ---
 import { Image } from "astro:assets";
 
-import CountdownTimer from "@/components/CountdownTimer.jsx";
-import Counter from "@/components/Counter";
+import Layout from "@/layouts/Layout.astro";
 import Hero from "@/components/Hero.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
+import Counter from "@/components/Counter";
+import CountdownTimer from "@/components/CountdownTimer.jsx";
 import SponsorsGrid from "@/components/SponsorsGrid.jsx";
-import Layout from "@/layouts/Layout.astro";
-import "@/styles/global.css";
 import MarqueeLogos from "../components/MarqueeLogos.jsx";
+import "@/styles/global.css";
 
-import Celebrate from "@/assets/icons/celebrate.svg";
-import Connect from "@/assets/icons/connect.svg";
 import LearnAndContribute from "@/assets/icons/learn-contribute.svg";
+import Connect from "@/assets/icons/connect.svg";
+import Celebrate from "@/assets/icons/celebrate.svg";
 
 import {
+  CURRENT_SPEAKERS,
+  VENUE,
+  TICKETS,
+  SPONSOR_TIERS,
   BRANDING,
   COMMUNITY_PARTNERS,
-  CURRENT_SPEAKERS,
-  EVENT_PARTNER,
-  SPONSOR_TIERS,
-  TICKETS,
-  VENUE,
   VENUE_PARTNER,
+  EVENT_PARTNER,
 } from "../config.ts";
 
 import { type Speaker } from "../config.types.ts";
 
 // pick each speaker from each section of CURRENT_SPEAKERS data list
-const ParsedCurrentSpeakers: Speaker[] = CURRENT_SPEAKERS.flatMap(
-  (currentSpeakerItem) => {
+const ParsedCurrentSpeakers: Omit<Speaker, "event" | "eventYear">[] =
+  CURRENT_SPEAKERS.flatMap((currentSpeakerItem) => {
     const sections = currentSpeakerItem.sections || [];
     return sections.flatMap((section) => section.speakers || []);
-  }
-);
+  });
 ---
 
 <Layout title="2025 OpenSourceDay" activePath="/">
