@@ -70,7 +70,7 @@ const getTypeColor = (type: string) => {
                 ]}
               >
                 <div class="h-full flex flex-col items-stretch justify-between gap-5">
-                  <header class="flex items-center justify-between gap-5">
+                  <div class="flex items-center justify-between gap-5">
                     <span class="text-green-600 font-bold text-lg min-w-[80px]">
                       {session.time}
                     </span>
@@ -81,16 +81,16 @@ const getTypeColor = (type: string) => {
                     >
                       {session.type.toUpperCase()}
                     </span>
-                  </header>
-                  <main>
+                  </div>
+                  <div>
                     <h3 class="text-xl font-bold text-black mb-1">
                       {session.title}
                     </h3>
                     {session.speaker && (
                       <p class="text-black mb-2">by {session.speaker}</p>
                     )}
-                  </main>
-                  <footer class="flex flex-wrap gap-5 items-center justify-between">
+                  </div>
+                  <div class="flex flex-wrap gap-5 items-center justify-between">
                     <span class="text-sm text-gray-600 flex items-center flex-wrap gap-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,7 @@ const getTypeColor = (type: string) => {
                     <div class="btn">
                       <AddToGoogleCalendar event={session} client:load />
                     </div>
-                  </footer>
+                  </div>
                 </div>
               </div>
             ))
