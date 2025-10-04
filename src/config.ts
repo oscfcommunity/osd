@@ -170,7 +170,7 @@ export const fullEvent = {
 export const eventSchedule = [
   {
     time: "08:00 AM – 09:30 AM",
-    title: "Registration",
+    title: "Registration/Breakfast",
     speaker: "",
     type: "registration",
     room: "Lobby",
@@ -179,7 +179,7 @@ export const eventSchedule = [
   },
   {
     time: "09:30 AM – 10:00 AM",
-    title: "Warmup Activity",
+    title: "Warm Up Activity",
     speaker: "",
     type: "activity",
     room: "Main Auditorium",
