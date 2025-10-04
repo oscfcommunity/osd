@@ -15,24 +15,15 @@ import Connect from "@/assets/icons/connect.svg";
 import Celebrate from "@/assets/icons/celebrate.svg";
 
 import {
-  CURRENT_SPEAKERS,
+  OUR_SPEAKERS,
   VENUE,
   TICKETS,
   SPONSOR_TIERS,
-  BRANDING,
-  COMMUNITY_PARTNERS,
-  VENUE_PARTNER,
+BRANDING,
+COMMUNITY_PARTNERS,
+VENUE_PARTNER,
   EVENT_PARTNER,
 } from "../config.ts";
-
-import { type Speaker } from "../config.types.ts";
-
-// pick each speaker from each section of CURRENT_SPEAKERS data list
-const ParsedCurrentSpeakers: Omit<Speaker, "event" | "eventYear">[] =
-  CURRENT_SPEAKERS.flatMap((currentSpeakerItem) => {
-    const sections = currentSpeakerItem.sections || [];
-    return sections.flatMap((section) => section.speakers || []);
-  });
 ---
 
 <Layout title="2025 OpenSourceDay" activePath="/">
@@ -257,7 +248,7 @@ const ParsedCurrentSpeakers: Omit<Speaker, "event" | "eventYear">[] =
           <SponsorsGrid
             client:load
             sponsors={EVENT_PARTNER}
-            columns={2}
+            columns={EVENT_PARTNER.length}
             maxHeight={100}
           />
         </div>
@@ -366,17 +357,17 @@ const ParsedCurrentSpeakers: Omit<Speaker, "event" | "eventYear">[] =
     <!-- Current Speakers Preview -->
     <div class="py-12 bg-green-50">
       <div class="max-w-6xl mx-auto px-4 text-center mb-6">
-        <h3 class="text-2xl font-bold">Current Speakers</h3>
+        <h3 class="text-2xl font-bold">Our Speakers</h3>
       </div>
       <div class="max-w-6xl mx-auto px-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
           {
-            ParsedCurrentSpeakers.map((sp) => (
+            OUR_SPEAKERS.map((sp) => (
               <div class="bg-white p-6 rounded-lg shadow-sm text-center">
                 <Image
                   src={sp.image}
                   alt={sp.name}
-                  class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
+                  class="w-24 h-24 rounded-full mx-auto object-cover object-top mb-4"
                   loading="lazy"
                   width={400}
                 />

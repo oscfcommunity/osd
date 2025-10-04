@@ -6,8 +6,8 @@ import "@/styles/global.css";
 
 import {
   VENUE_PARTNER,
-  COMMUNITY_PARTNERS,
-  SPONSOR_TIERS,
+COMMUNITY_PARTNERS,
+SPONSOR_TIERS,
   EVENT_PARTNER,
 } from "@/config.ts";
 ---
@@ -71,7 +71,7 @@ import {
         <SponsorsGrid
           client:load
           sponsors={EVENT_PARTNER}
-          columns={2}
+          columns={EVENT_PARTNER.length}
           maxHeight={140}
         />
       </div>
