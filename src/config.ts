@@ -181,6 +181,8 @@ export const eventSchedule = [
     room: "Lobby",
     start: "20251005T080000",
     end: "20251005T093000",
+    // TODO: need to update below link @Ashish Vaghela
+    presentationLink: "https://google.com",
   },
   {
     time: "09:30 AM – 10:00 AM",
@@ -611,6 +613,8 @@ export const CURRENT_SPEAKERS = [
               "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
             link: "https://www.linkedin.com/in/parthjpandya/",
             image: ParthPandya,
+            // TODO: need to update below link @Ashish Vaghela
+            presentationLink: "https://google.com",
           },
           {
             name: "Harshad Modi",
