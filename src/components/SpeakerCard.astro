@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 
 export interface Props {
   name: string;
@@ -8,6 +8,7 @@ export interface Props {
   company: string;
   presentationTitle: string;
   event?: string;
+  presentationLink?: string;
   width: number;
   link?: string;
   image: ImageMetadata;
@@ -21,6 +22,7 @@ const {
   company,
   presentationTitle,
   event,
+  presentationLink,
   image,
   link = "",
   width = 400,
@@ -87,6 +89,35 @@ const {
               </dd>
             )}
           </dl>
+        )
+      }
+
+      {
+        presentationLink && (
+          <span class="pt-4 px-2">
+            <a
+              href={presentationLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-4 inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-black bg-orange-300"
+            >
+              <span class="uppercase">Presentation</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+            </a>
+          </span>
         )
       }
     </div>
