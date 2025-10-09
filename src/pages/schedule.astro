@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Heading from "@components/Heading.astro";
-import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import "@/styles/global.css";
+import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
+import Heading from "@components/Heading.astro";
 
-import { eventSchedule, workshopSchedule, fullEvent } from "@/config";
+import { eventSchedule, fullEvent, workshopSchedule } from "@/config";
 
 const getTypeColor = (type: string) => {
   const colorMap: Record<string, string> = {
@@ -97,17 +97,43 @@ const getTypeColor = (type: string) => {
                 ]}
               >
                 <div class="h-full flex flex-col items-stretch justify-between gap-5">
-                  <div class="flex items-center justify-between gap-5">
+                  <div class="flex md:items-center md:justify-between gap-5 flex-wrap">
                     <span class="text-green-600 font-bold text-lg min-w-[80px]">
                       {session.time}
                     </span>
-                    <span
-                      class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(
-                        session.type
-                      )}`}
-                    >
-                      {session.type.toUpperCase()}
-                    </span>
+                    <div class="inline-flex items-center justify-end gap-2 ">
+                      <span
+                        class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(
+                          session.type
+                        )}`}
+                      >
+                        {session.type.toUpperCase()}
+                      </span>
+                      {session.presentationLink && (
+                        <a
+                          href={session.presentationLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class={`inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-black bg-orange-300`}
+                        >
+                          <span class="uppercase">Presentation</span>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            class="size-3"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                            />
+                          </svg>
+                        </a>
+                      )}
+                    </div>
                   </div>
                   <div>
                     <h3 class="text-xl font-bold text-black mb-1">
