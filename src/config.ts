@@ -614,8 +614,7 @@ export const CURRENT_SPEAKERS = [
               "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
             link: "https://www.linkedin.com/in/parthjpandya/",
             image: ParthPandya,
-            // TODO: need to update below link @Ashish Vaghela
-            presentationLink: "https://google.com",
+            presentationLink: "https://docs.google.com/presentation/d/1BDmEFwgB7gFbU113F0Goc2lNcrGK3TUF/",
           },
           {
             name: "Harshad Modi",
@@ -626,6 +625,7 @@ export const CURRENT_SPEAKERS = [
               "Building a Multi Billion Dollar Open Source Product",
             link: "https://www.linkedin.com/in/harshadmodi/",
             image: HarshadModi,
+            presentationLink: "https://docs.google.com/presentation/d/1V6_3L1Dvtqwb3-fXegtnJF4s2Y4pXkvu/",
           },
           {
             name: "Kiran Trivedi",
@@ -635,6 +635,7 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open source hardware for Tiny ML",
             link: "https://www.linkedin.com/in/krtrivedi",
             image: KiranTrivedi,
+            presentationLink: "https://drive.google.com/file/d/197nu_pdVwZXPeMSHd3IyYkKhhDJY4Usc/",
           },
           {
             name: "Varun Pandya",
@@ -644,6 +645,7 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open Source & AI",
             link: "https://www.linkedin.com/in/varun-pandya-1676a0103/",
             image: VarunPandya,
+            presentationLink: "https://docs.google.com/presentation/d/1e2pBdBgyC1_Z5vOUdKsLEnUNe_ibmOhW/",
           },
           {
             name: "Chetan Soni",
@@ -654,7 +656,7 @@ export const CURRENT_SPEAKERS = [
               "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
             link: "https://www.linkedin.com/in/sonichetan/",
             image: ChetanSoni,
-            presentationLink: "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
+            presentationLink: "https://docs.google.com/presentation/d/1zpu2B9zoczKyeiQyX-wmSeDOkrKt_-VC/",
           },
           {
             name: "Someshwaran Mohan Kumar",
@@ -666,6 +668,7 @@ export const CURRENT_SPEAKERS = [
               "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
             link: "https://www.linkedin.com/in/somdevsupport/",
             image: Someshwaran,
+            presentationLink: "https://docs.google.com/presentation/d/1efYkRjWY0wgBscOaddHrkspH9rVXq5QN/",
           },
           {
             name: "Ansh Arora",
@@ -676,6 +679,7 @@ export const CURRENT_SPEAKERS = [
               "Significance of Open Source Projects and its sustainability",
             link: "https://www.linkedin.com/in/ansharora28/",
             image: AnshArora,
+            presentationLink: "https://docs.google.com/presentation/d/1aEVSYHcPHdxgBWZe40mNvEy770KbKmZF/",
           },
         ],
       },
