@@ -310,6 +310,7 @@ export const eventSchedule = [
     room: "Main Auditorium",
     start: "20251005T154500",
     end: "20251005T161500",
+    presentationLink: "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
   },
   {
     time: "04:15 PM – 04:45 PM",
@@ -653,6 +654,7 @@ export const CURRENT_SPEAKERS = [
               "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
             link: "https://www.linkedin.com/in/sonichetan/",
             image: ChetanSoni,
+            presentationLink: "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
           },
           {
             name: "Someshwaran Mohan Kumar",
