@@ -500,12 +500,6 @@ export const SOCIAL_LINKS = [
     icon: GithubIcon,
     description: "Github icon",
   },
-  // {
-  //   name: "Discord",
-  //   href: "https://discord.gg/opensourceweekend",
-  //   icon: DiscordIcon,
-  //   description: "Discord icon",
-  // },
   {
     name: "Medium",
     href: "https://medium.com/@opensourceweekend",
@@ -729,14 +723,6 @@ export const CURRENT_SPEAKERS = [
             link: "https://www.linkedin.com/in/mukeshmgoswami/",
             image: MukeshGoswami,
           },
-          // {
-          //   name: "",
-          //   position: "",
-          //   company: "",
-          //   presentationTitle: "",
-          //   link: "",
-          //   image: ,
-          // },
         ],
       },
       {
@@ -780,15 +766,6 @@ export const CURRENT_SPEAKERS = [
             link: "https://www.linkedin.com/in/about-ruchit-patel/",
             image: RuchitPatel,
           },
-          // {
-          //   name: "Hussain Lokhandwala",
-          //   position: "DevOps Engineer",
-          //   company: "UsefulBI Corporation",
-          //   event: "Community Panel",
-          //   presentationTitle: "The Hackers Meetup",
-          //   link: "https://www.linkedin.com/in/hussain-lokhandwala/",
-          //   image: HussainLokhandwala,
-          // },
         ],
       },
       {
@@ -857,7 +834,6 @@ export const CURRENT_SPEAKERS = [
     ],
   },
 ];
-// TODO: need to remove and create common speaker list
 export const OUR_SPEAKERS = [
   {
     name: "Parth Pandya",
@@ -1091,16 +1067,6 @@ export const SPEAKERS: Speaker[] = [
     eventYear: 2023,
     image: SantoshViswanatham,
   },
-  // {
-  //   name: "Dishant Makwana",
-  //   position: "Sr. System Engineer",
-  //   company: "EPAM Systems",
-  //   presentationTitle:
-  //     "Introduction to Kubernetes and How to Run Wordpress on Kubernetes",
-  //   event: "2023 OpenSourceWeekend × HacktoberFest",
-  //   eventYear: 2023,
-  //   image: "",
-  // },
   {
     name: "Ronak Ganatra",
     position: "Sr. Wordpress Engineer",
@@ -1887,7 +1853,6 @@ export const SPONSOR_TIERS = {
   ],
 };
 
-// Add a few extra online sponsor logos for demo
 export const EXTRA_SPONSORS = [
   {
     name: "Stripe",
