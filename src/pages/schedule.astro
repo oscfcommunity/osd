@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/global.css";
-import AddToGoogleCalendar from "@components/AddToGoogleCalendar";
 import Heading from "@components/Heading.astro";
 
-import { eventSchedule, fullEvent, workshopSchedule } from "@/config";
+import { eventSchedule, workshopSchedule } from "@/config";
 
 const getTypeColor = (type: string) => {
   const colorMap: Record<string, string> = {
@@ -26,10 +25,21 @@ const getTypeColor = (type: string) => {
 ---
 
 <Layout title="Schedule — 2025 OSD" activePath="/schedule">
+  <!-- Event Ended Banner -->
+  <section class="w-full py-8 bg-red-100 text-center mb-8 rounded-xl border border-red-300">
+    <h2 class="text-3xl font-bold text-red-700 mb-2">
+      Open Source Day 2025 has concluded!
+    </h2>
+    <p class="text-lg text-red-600">
+      Thank you to all attendees, speakers, and partners for making it a success.
+      See you next year!
+    </p>
+  </section>
+
   <!-- Heading Section -->
   <Heading
-    title="Event Schedule"
-    description="A full day packed with inspiring talks, hands-on workshops, networking opportunities, and celebrating open source innovation."
+    title="Event Schedule (Concluded)"
+    description="This page is now an archive of the event schedule for Open Source Day 2025."
   />
 
   <section class="w-full flex flex-col gap-5 justify-center">
@@ -47,8 +57,10 @@ const getTypeColor = (type: string) => {
             >
           </h2>
           <div class="flex items-center gap-6">
-            <div class="btn mb-12 w-fit">
-              <AddToGoogleCalendar event={fullEvent} client:load />
+            <div class="btn mb-12 w-fit opacity-50 cursor-not-allowed">
+              <span class="flex items-center gap-2"
+                >Add to Google Calendar (disabled)</span
+              >
             </div>
             <div class="btn mb-12 w-fit">
               <a
@@ -57,7 +69,7 @@ const getTypeColor = (type: string) => {
                 rel="noopener noreferrer"
                 class="flex items-center gap-2"
               >
-                <span>Event Guide</span>
+                <span>Event Guide (Archive)</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -140,14 +152,39 @@ const getTypeColor = (type: string) => {
                       {session.title}
                     </h3>
                     {session.speaker && (
-                      <p class="text-black mb-2">by {session.speaker}</p>
+                      <div class="flex flex-col gap-1">
+                        <span class="text-black">by {session.speaker}</span>
+                        {/* Speaker PPT link if available */}
+                        {session.speakerObj?.presentationLink && (
+                          <a
+                            href={session.speakerObj.presentationLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-blue-400 bg-blue-100 mt-1"
+                          >
+                            <span>Speaker PPT</span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 24 24"
+                              stroke-width="1.5"
+                              stroke="currentColor"
+                              class="size-3"
+                            >
+                              <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
+                              />
+                            </svg>
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                   <div class="flex flex-wrap gap-5 items-center justify-between">
                     <span class="text-sm text-gray-600 flex items-center flex-wrap gap-1">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
                         viewBox="0 0 24 24"
                         stroke-width="1.5"
                         stroke="currentColor"
@@ -164,10 +201,10 @@ const getTypeColor = (type: string) => {
                           d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"
                         />
                       </svg>
-                      <p>{session.room}</p>
+                      <span>{session.room}</span>
                     </span>
-                    <div class="btn">
-                      <AddToGoogleCalendar event={session} client:load />
+                    <div class="btn opacity-50 cursor-not-allowed">
+                      <span>Add to Google Calendar (disabled)</span>
                     </div>
                   </div>
                 </div>
@@ -182,10 +219,9 @@ const getTypeColor = (type: string) => {
   <!-- Download Schedule -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold text-black mb-6">Take It With You</h2>
+      <h2 class="text-4xl font-bold text-black mb-6">Event Archive</h2>
       <p class="text-xl text-black mb-8">
-        Download the complete schedule and add it to your calendar so you don't
-        miss anything!
+        The schedule below is for reference only. The event has ended.
       </p>
     </div>
   </section>
@@ -222,10 +258,10 @@ const getTypeColor = (type: string) => {
                   {session.speaker && (
                     <p class="text-black mb-2">by {session.speaker}</p>
                   )}
-                  <p class="text-sm text-gray-600">{session.room}</p>
+                  <span class="text-sm text-gray-600">{session.room}</span>
                 </div>
-                <div class="btn">
-                  <AddToGoogleCalendar event={session} client:load />
+                <div class="btn opacity-50 cursor-not-allowed">
+                  <span>Add to Google Calendar (disabled)</span>
                 </div>
               </div>
             </div>
