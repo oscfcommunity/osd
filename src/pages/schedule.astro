@@ -155,9 +155,9 @@ const getTypeColor = (type: string) => {
                       <div class="flex flex-col gap-1">
                         <span class="text-black">by {session.speaker}</span>
                         {/* Speaker PPT link if available */}
-                        {session.presentationLink && (
+                        {session.speakerObj?.presentationLink && (
                           <a
-                            href={session.presentationLink}
+                            href={session.speakerObj.presentationLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             class="inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-blue-400 bg-blue-100 mt-1"
