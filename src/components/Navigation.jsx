@@ -69,17 +69,6 @@ const Navigation = (props) => {
             })}
           </div>
 
-          <div className="hidden lg:block nav-item">
-            <a
-              href={NAVIGATION.cta.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-green-500 hover:bg-green-400 text-white px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base"
-            >
-              {NAVIGATION.cta.text}
-            </a>
-          </div>
-
           {/* Mobile menu button */}
           <div className="lg:hidden">
             <button
@@ -126,16 +115,6 @@ const Navigation = (props) => {
                   {item.name}
                 </a>
               ))}
-
-              <a
-                href="https://konfhub.com/open-source-day-2025"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block mx-3 mt-4 bg-green-500 hover:bg-green-400 text-white px-6 py-2 rounded-full font-semibold text-center transition-all duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                Register Now
-              </a>
             </div>
           </div>
         )}
