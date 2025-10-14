@@ -1,0 +1,85 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/global.css";
+import { Masonry } from "astro-masonry";
+import { Image } from "astro:assets";
+
+// TODO: need to update images below
+import img1 from "/public/images/Viral_Parmar_Stage.jpg";
+import img2 from "/public/partners/aws_ahmedabad.png";
+import img4 from "/public/partners/figma_ahmedabad.png";
+import img3 from "/public/partners/gdg_ahmedabad.png";
+import img5 from "/public/partners/laracon_india.png";
+import img6 from "/public/partners/mindmaze.jpg";
+import img7 from "/public/partners/wordpress_ahmedabad.jpg";
+
+// TODO: need to update images below
+// Gallery page for OSD event images
+const eventImages = [
+  { src: img1, alt: "Viral Parmar Stage" },
+  { src: img2, alt: "AWS Ahmedabad" },
+  { src: img3, alt: "GDG Ahmedabad" },
+  { src: img4, alt: "Figma Ahmedabad" },
+  { src: img5, alt: "Laracon India" },
+  { src: img6, alt: "Mindmaze" },
+  { src: img7, alt: "Wordpress Ahmedabad" },
+];
+// TODO: need to update images below
+const googleDriveUrl =
+  "https://drive.google.com/drive/folders/EXAMPLE-GOOGLE-DRIVE-ID"; // TODO: Replace with actual link
+---
+
+<Layout title="Gallery | Open Source Day" activePath="/gallery">
+  <div class="relative w-full min-h-screen shadow-2xl shadow-green-500/20">
+    {/* Masonry background grid */}
+    <div class="absolute inset-0 -z-10 w-full h-full overflow-hidden">
+      <Masonry
+        breakpointCols={{ default: 3, 1100: 2, 700: 1 }}
+        class="p-4 h-full"
+        columnClass="gap-4"
+        sortByHeight={true}
+        debug={false}
+      >
+        {
+          eventImages.map((img) => (
+            <div class="mb-4 rounded-xl overflow-hidden shadow-lg bg-white">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                class="object-contain w-full h-auto transition-transform duration-300 hover:scale-105 focus:scale-105"
+                loading="lazy"
+                fit="contain"
+              />
+            </div>
+          ))
+        }
+      </Masonry>
+      <div
+        class="absolute inset-0 pointer-events-none backdrop-blur-sm bg-white/90"
+      >
+      </div>
+    </div>
+
+    {/* Overlay layout */}
+    <div
+      class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4"
+    >
+      <section class="max-w-xl w-full mx-auto text-center py-12">
+        <h1 class="text-3xl md:text-5xl font-bold mb-6 text-green-600">
+          Gallery
+        </h1>
+        <p class="text-base mb-8 text-gray-700">
+          Event highlights. For all pictures and videos, see the link below.
+        </p>
+        <a
+          href={googleDriveUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-block bg-green-100 hover:bg-green-200 text-green-700 px-6 py-3 rounded font-medium text-base border border-green-200 transition"
+        >
+          View All Photos & Videos
+        </a>
+      </section>
+    </div>
+  </div>
+</Layout>
