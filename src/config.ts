@@ -3,58 +3,58 @@ import type { Speaker } from "@/config.types";
 // Team imports
 import OSDGreen from "@/assets/icons/OSDGreen.svg";
 import OSWBlack from "@/assets/icons/OSWBlack.svg";
-import BhargavPithva from "@/assets/team/BhargavPithva.webp";
-import DhananiTanvir from "@/assets/team/DhananiTanvir.webp";
-import BirajDesai from "@/assets/team/BirajDesai.jpg";
-import ViralParmar from "@/assets/team/ViralParmar.webp";
-import NeelShah from "@/assets/team/NeelShah.webp";
-import JigneshGadhavi from "@/assets/team/JigneshGadhavi.webp";
-import FalgunBhalsod from "@/assets/team/FalgunBhalsod.webp";
-import DhavalDesai from "@/assets/team/DhavalDesai.webp";
-import RinkeshBansal from "@/assets/team/RinkeshBansal.webp";
-import AshishTiwari from "@/assets/team/AshishTiwari.webp";
-import SurajNath from "@/assets/team/SurajNath.webp";
-import MehulPatel from "@/assets/team/MehulPatel.webp";
-import HarshManvar from "@/assets/team/HarshManvar.webp";
-import NiravShah from "@/assets/team/NiravShah.webp";
-import PrathameshChavan from "@/assets/team/PrathameshChavan.webp";
 import AbhishekSingh from "@/assets/team/AbhishekSingh.jpg";
+import AmitRana from "@/assets/team/AmitRana.jpg";
+import AshishTiwari from "@/assets/team/AshishTiwari.webp";
 import AshishVaghela from "@/assets/team/AshishVaghela.png";
 import AshishZapadiya from "@/assets/team/AshishZapadiya.jpg";
+import BharatMakwana from "@/assets/team/BharatMakwana.webp";
+import BhargavPithva from "@/assets/team/BhargavPithva.webp";
+import BirajDesai from "@/assets/team/BirajDesai.jpg";
 import DarshilVyas from "@/assets/team/DarshilVyas.jpg";
+import DhananiTanvir from "@/assets/team/DhananiTanvir.webp";
+import DhavalDesai from "@/assets/team/DhavalDesai.webp";
+import DhwanitMistry from "@/assets/team/DhwanitMistry.jpg";
+import DilipLuhar from "@/assets/team/DilipLuhar.jpg";
 import EktaAgja from "@/assets/team/EktaAgja.jpg";
+import FalgunBhalsod from "@/assets/team/FalgunBhalsod.webp";
+import FennySheth from "@/assets/team/FennySheth.png";
+import HarshilShah from "@/assets/team/HarshilShah.jpg";
+import HarshManvar from "@/assets/team/HarshManvar.webp";
 import HarshParekh from "@/assets/team/HarshParekh.jpg";
+import Harshpatel from "@/assets/team/Harshpatel.jpg";
+import JayDobariya from "@/assets/team/JayDobariya.jpg";
+import JayrajRathod from "@/assets/team/JayrajRathod.jpg";
+import JigneshGadhavi from "@/assets/team/JigneshGadhavi.webp";
+import KajalSangani from "@/assets/team/KajalSangani.jpeg";
 import KrishSatasiya from "@/assets/team/KrishSatasiya.png";
+import KunjanAtara from "@/assets/team/KunjanAtara.jpg";
+import MeetRaval from "@/assets/team/MeetRaval.jpg";
+import MehulPatel from "@/assets/team/MehulPatel.webp";
+import NeelShah from "@/assets/team/NeelShah.webp";
+import NiravShah from "@/assets/team/NiravShah.webp";
 import PranjalSingh from "@/assets/team/PranjalSingh.jpg";
+import PrashantBhavsar from "@/assets/team/PrashantBhavsar.webp";
+import PrathameshChavan from "@/assets/team/PrathameshChavan.webp";
+import PratikPopat from "@/assets/team/PratikPopat.jpeg";
+import RinkeshBansal from "@/assets/team/RinkeshBansal.webp";
 import RohitChavda from "@/assets/team/RohitChavda.webp";
 import RonitGandhi from "@/assets/team/RonitGandhi.jpg";
 import RutviPatel from "@/assets/team/RutviPatel.jpg";
 import SanketTank from "@/assets/team/SanketTank.jpg";
-import StavanMehta from "@/assets/team/StavanMehta.jpg";
-import YashNanda from "@/assets/team/YashNanda.jpg";
-import AmitRana from "@/assets/team/AmitRana.jpg";
-import DhwanitMistry from "@/assets/team/DhwanitMistry.jpg";
-import DilipLuhar from "@/assets/team/DilipLuhar.jpg";
-import HarshilShah from "@/assets/team/HarshilShah.jpg";
-import JayDobariya from "@/assets/team/JayDobariya.jpg";
-import JayrajRathod from "@/assets/team/JayrajRathod.jpg";
-import KajalSangani from "@/assets/team/KajalSangani.jpeg";
-import KunjanAtara from "@/assets/team/KunjanAtara.jpg";
-import MeetRaval from "@/assets/team/MeetRaval.jpg";
 import ShabbirAli from "@/assets/team/ShabbirAli.jpg";
 import ShailShah from "@/assets/team/ShailShah.jpg";
 import ShyamRughani from "@/assets/team/ShyamRughani.jpeg";
-import BharatMakwana from "@/assets/team/BharatMakwana.webp";
-import PrashantBhavsar from "@/assets/team/PrashantBhavsar.webp";
-import FennySheth from "@/assets/team/FennySheth.png";
-import PratikPopat from "@/assets/team/PratikPopat.jpeg";
+import StavanMehta from "@/assets/team/StavanMehta.jpg";
+import SurajNath from "@/assets/team/SurajNath.webp";
 import SwapneelSolanki from "@/assets/team/SwapneelSolanki.jpg";
 import VedantDomadiya from "@/assets/team/VedantDomadiya.png";
-import Harshpatel from "@/assets/team/Harshpatel.jpg";
+import ViralParmar from "@/assets/team/ViralParmar.webp";
+import YashNanda from "@/assets/team/YashNanda.jpg";
 
+import KalyanPrasad from "@/assets/team/KalyanPrasad.webp";
 import SantoshYadav from "@/assets/team/SantoshYadav.webp";
 import VishalRajpurohit from "@/assets/team/VishalRajpurohit.webp";
-import KalyanPrasad from "@/assets/team/KalyanPrasad.webp";
 
 // Speaker Imports
 import SanjayVaghela from "@/assets/speakers/SanjayVaghela.png";
@@ -67,27 +67,24 @@ import RonakGanatra from "@/assets/speakers/RonakGanatra.png";
 import RuchitPatel from "@/assets/speakers/RuchitPatel.png";
 import SantoshViswanatham from "@/assets/speakers/SantoshViswanatham.png";
 // import DishantMakwana from "@/assets/speakers/DishantMakwana.png";
-import AshishPatel from "@/assets/speakers/AshishPatel.jpeg";
-import VarunPandya from "@/assets/speakers/varun_pandya.jpeg";
-import KiranTrivedi from "@/assets/speakers/kiran_trivedi.jpeg";
-import ShreyanMehta from "@/assets/speakers/shreyan_mehta.jpeg";
-import ChetanSoni from "@/assets/speakers/chetan_soni.jpg";
-import Someshwaran from "@/assets/speakers/someshwaran.png";
 import AnshArora from "@/assets/speakers/AnshArora.jpeg";
-import PratikBhatt from "@/assets/speakers/PratikBhatt.jpg";
-import NiravGohil from "@/assets/speakers/NiravGohil.jpg";
-import ChinmayShah from "@/assets/speakers/ChinmayShah.jpeg";
-import ChetanSheladiya from "@/assets/speakers/ChetanSheladiya.png";
+import AshishPatel from "@/assets/speakers/AshishPatel.jpeg";
 import BhavikaPatel from "@/assets/speakers/BhavikaPatel.png";
-import ParthPandya from "@/assets/speakers/ParthPandya.png";
-import JayThakkar from "@/assets/speakers/JayThakkar.jpg";
-import MukeshGoswami from "@/assets/speakers/MukeshGoswami.png";
-import HussainLokhandwala from "@/assets/speakers/HussainLokhandwala.jpeg";
-import VikasRajput from "@/assets/speakers/VikasRajput.jpg";
-import VijayGolani from "@/assets/speakers/VijayGolani.jpg";
+import ChetanSoni from "@/assets/speakers/chetan_soni.jpg";
+import ChetanSheladiya from "@/assets/speakers/ChetanSheladiya.png";
+import ChinmayShah from "@/assets/speakers/ChinmayShah.jpeg";
 import HarshadModi from "@/assets/speakers/HarshadModi.png";
-
-import PersonImg from "@/assets/speakers/PersonImg.webp";
+import JayThakkar from "@/assets/speakers/JayThakkar.jpg";
+import KiranTrivedi from "@/assets/speakers/kiran_trivedi.jpeg";
+import MukeshGoswami from "@/assets/speakers/MukeshGoswami.png";
+import NiravGohil from "@/assets/speakers/NiravGohil.jpg";
+import ParthPandya from "@/assets/speakers/ParthPandya.png";
+import PratikBhatt from "@/assets/speakers/PratikBhatt.jpg";
+import ShreyanMehta from "@/assets/speakers/shreyan_mehta.jpeg";
+import Someshwaran from "@/assets/speakers/someshwaran.png";
+import VarunPandya from "@/assets/speakers/varun_pandya.jpeg";
+import VijayGolani from "@/assets/speakers/VijayGolani.jpg";
+import VikasRajput from "@/assets/speakers/VikasRajput.jpg";
 
 // Past Events Images Imports
 import OSWMay_1 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_012.webp";
@@ -144,16 +141,15 @@ import OSW23_9 from "@/assets/PastEvents/OSW-23/IMG_0806.webp";
 import OSW23_10 from "@/assets/PastEvents/OSW-23/IMG_0824.webp";
 
 import FacebookIcon from "@/assets/icons/facebook.svg";
-import TwitterIcon from "@/assets/icons/x.svg";
-import InstagramIcon from "@/assets/icons/instagram.svg";
 import LinkedInIcon from "@/assets/icons/footer-linkedin.svg";
-import MediumIcon from "@/assets/icons/medium.svg";
 import GithubIcon from "@/assets/icons/github.svg";
-import DiscordIcon from "@/assets/icons/discord.svg";
+import InstagramIcon from "@/assets/icons/instagram.svg";
 import Mail from "@/assets/icons/mail.svg";
+import MediumIcon from "@/assets/icons/medium.svg";
 import Phone from "@/assets/icons/phone.svg";
-import SOU from "@/assets/partners/Silver Oak University.png";
+import TwitterIcon from "@/assets/icons/x.svg";
 import GoogleForDevelopers from "@/assets/partners/GoogleForDevelopers.png";
+import SOU from "@/assets/partners/Silver Oak University.png";
 
 export const SITE = {
   title: "2025 OpenSourceDay",
@@ -310,7 +306,8 @@ export const eventSchedule = [
     room: "Main Auditorium",
     start: "20251005T154500",
     end: "20251005T161500",
-    presentationLink: "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
+    presentationLink:
+      "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
   },
   {
     time: "04:15 PM – 04:45 PM",
@@ -464,8 +461,8 @@ export const NAVIGATION = {
     { name: "Past Events", href: "/past-events" },
   ],
   cta: {
-    text: "Register Now",
-    url: "https://konfhub.com/open-source-day-2025",
+    text: "Gallery",
+    url: "/gallery",
   },
 };
 
@@ -608,7 +605,8 @@ export const CURRENT_SPEAKERS = [
               "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
             link: "https://www.linkedin.com/in/parthjpandya/",
             image: ParthPandya,
-            presentationLink: "https://docs.google.com/presentation/d/1BDmEFwgB7gFbU113F0Goc2lNcrGK3TUF/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1BDmEFwgB7gFbU113F0Goc2lNcrGK3TUF/",
           },
           {
             name: "Harshad Modi",
@@ -619,7 +617,8 @@ export const CURRENT_SPEAKERS = [
               "Building a Multi Billion Dollar Open Source Product",
             link: "https://www.linkedin.com/in/harshadmodi/",
             image: HarshadModi,
-            presentationLink: "https://docs.google.com/presentation/d/1V6_3L1Dvtqwb3-fXegtnJF4s2Y4pXkvu/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1V6_3L1Dvtqwb3-fXegtnJF4s2Y4pXkvu/",
           },
           {
             name: "Kiran Trivedi",
@@ -629,7 +628,8 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open source hardware for Tiny ML",
             link: "https://www.linkedin.com/in/krtrivedi",
             image: KiranTrivedi,
-            presentationLink: "https://drive.google.com/file/d/197nu_pdVwZXPeMSHd3IyYkKhhDJY4Usc/",
+            presentationLink:
+              "https://drive.google.com/file/d/197nu_pdVwZXPeMSHd3IyYkKhhDJY4Usc/",
           },
           {
             name: "Varun Pandya",
@@ -639,7 +639,8 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open Source & AI",
             link: "https://www.linkedin.com/in/varun-pandya-1676a0103/",
             image: VarunPandya,
-            presentationLink: "https://docs.google.com/presentation/d/1e2pBdBgyC1_Z5vOUdKsLEnUNe_ibmOhW/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1e2pBdBgyC1_Z5vOUdKsLEnUNe_ibmOhW/",
           },
           {
             name: "Chetan Soni",
@@ -650,7 +651,8 @@ export const CURRENT_SPEAKERS = [
               "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
             link: "https://www.linkedin.com/in/sonichetan/",
             image: ChetanSoni,
-            presentationLink: "https://docs.google.com/presentation/d/1zpu2B9zoczKyeiQyX-wmSeDOkrKt_-VC/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1zpu2B9zoczKyeiQyX-wmSeDOkrKt_-VC/",
           },
           {
             name: "Someshwaran Mohan Kumar",
@@ -662,7 +664,8 @@ export const CURRENT_SPEAKERS = [
               "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
             link: "https://www.linkedin.com/in/somdevsupport/",
             image: Someshwaran,
-            presentationLink: "https://docs.google.com/presentation/d/1efYkRjWY0wgBscOaddHrkspH9rVXq5QN/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1efYkRjWY0wgBscOaddHrkspH9rVXq5QN/",
           },
           {
             name: "Ansh Arora",
@@ -673,7 +676,8 @@ export const CURRENT_SPEAKERS = [
               "Significance of Open Source Projects and its sustainability",
             link: "https://www.linkedin.com/in/ansharora28/",
             image: AnshArora,
-            presentationLink: "https://docs.google.com/presentation/d/1aEVSYHcPHdxgBWZe40mNvEy770KbKmZF/",
+            presentationLink:
+              "https://docs.google.com/presentation/d/1aEVSYHcPHdxgBWZe40mNvEy770KbKmZF/",
           },
         ],
       },

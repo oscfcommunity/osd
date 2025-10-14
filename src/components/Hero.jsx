@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { HERO, BRANDING, EVENT } from "../config.ts";
 import Counter from "../components/Counter.jsx";
+import { BRANDING, EVENT, HERO } from "../config.ts";
 
 const Hero = () => {
   const heroRef = useRef(null);
@@ -78,11 +78,11 @@ const Hero = () => {
 
       <div
         ref={heroRef}
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-8 md:mt-0"
+        className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-8 md:mt-0 pt-8"
       >
         <h1
           ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight flex flex-col items-center"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight flex flex-col items-center"
         >
           <div className="flex items-center">
             <img
@@ -90,13 +90,9 @@ const Hero = () => {
               alt="Open Source Day Logo"
               className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 "
             />
-            <span className="text-black">{HERO.title.part1} ‎</span>
-            <span className="gradient-text">{HERO.title.part2}</span>
+            <span className="text-black">Thanks for making</span>
           </div>
-          <span className="text-black">{HERO.title.part3}</span>
-          <span className="text-green-600 text-5xl sm:text-6xl md:text-8xl lg:text-9xl">
-            {HERO.title.year}
-          </span>
+          <span className="gradient-text">OSD awesome.</span>
         </h1>
 
         <p
@@ -111,12 +107,10 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
         >
           <a
-            href={HERO.buttons.primary.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/gallery"
             className="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-200 glow-effect hover:scale-105 transform text-center shadow-lg"
           >
-            {HERO.buttons.primary.text}
+            Gallery
           </a>
           <a
             href="/schedule"
