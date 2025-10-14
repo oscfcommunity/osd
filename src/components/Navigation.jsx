@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { NAVIGATION, BRANDING, SITE } from "../config.ts";
+import { useEffect, useState } from "react";
+import { BRANDING, NAVIGATION, SITE } from "../config.ts";
 
 const Navigation = (props) => {
   const { activePath = "" } = props;
@@ -128,13 +128,11 @@ const Navigation = (props) => {
               ))}
 
               <a
-                href="https://konfhub.com/open-source-day-2025"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/gallery"
                 className="block mx-3 mt-4 bg-green-500 hover:bg-green-400 text-white px-6 py-2 rounded-full font-semibold text-center transition-all duration-200"
                 onClick={() => setIsOpen(false)}
               >
-                Register Now
+                Gallery
               </a>
             </div>
           </div>
