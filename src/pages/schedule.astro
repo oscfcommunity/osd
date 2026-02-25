@@ -1,86 +1,132 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
+import { eventSchedule, workshopSchedule } from "@/config/config";
+import CalendarClock from "@/assets/icons/calendarClock.svg";
+import LayoutList from "@/assets/icons/layoutList.svg";
+import PageHero from "@/components/PageHero.jsx";
 ---
 
 <Layout title="Schedule — Open Source Day 2026" activePath="/schedule">
   <!-- Hero -->
-  <div class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white px-4 py-24">
-    <div class="absolute top-0 -right-4 w-80 h-80 bg-sky-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 -left-4 w-80 h-80 bg-teal-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+  <PageHero client:load
+    badge="BEING PLANNED"
+    title="OSD 2026"
+    titleGradient="SCHEDULE"
+    subtitle="The OSD 2026 schedule is being crafted. The CFP is open — be part of the lineup."
+    primaryCta={{ text: "Apply to Speak", href: "/cfspk", external: true }}
+    secondaryCta={{ text: "View 2025 Schedule", href: "/2025/schedule" }}
+  />
 
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <!-- Status badge -->
-      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-sky-50 text-sky-700 text-sm font-bold border border-sky-200 mb-8 shadow-sm">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
-        </span>
-        BEING PLANNED
+  <!-- Main Conference Schedule -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Main <span class="gradient-text">Conference</span></h2>
+        <p class="text-gray-500">A full day packed with talks, workshops, panels, and networking</p>
       </div>
-
-      <div class="text-7xl mb-6">🗓️</div>
-
-      <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6">
-        <span class="block text-gray-900">OSD 2026</span>
-        <span class="block" style="background: linear-gradient(135deg, #0ea5e9, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SCHEDULE</span>
-      </h1>
-
-      <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-        The OSD 2026 schedule is being architected. Stay tuned — and if you'd like to speak, volunteer, or partner, the forms are open now!
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-        <a
-          href="/cfspk"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center gap-2 px-8 py-4 font-bold text-white rounded-full transition-all duration-200 hover:scale-105 shadow-xl"
-          style="background: linear-gradient(135deg, #0ea5e9, #06b6d4);"
-        >
-          🎤 Apply to Speak
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
-        <a
-          href="/2025/schedule"
-          class="inline-flex items-center gap-2 px-8 py-4 font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105"
-        >
-          View 2025 Schedule
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
+      <div class="space-y-2">
+        {eventSchedule.map((item) => {
+          const colorMap = {
+            registration: "border-blue-100 bg-blue-50 text-blue-700",
+            opening: "border-green-100 bg-green-50 text-green-700",
+            keynote: "border-yellow-100 bg-yellow-50 text-yellow-700",
+            talk: "border-green-100 bg-green-50 text-green-700",
+            break: "border-gray-100 bg-gray-50 text-gray-500",
+            "Closing Keynote": "border-yellow-100 bg-yellow-50 text-yellow-700",
+            Closing: "border-orange-100 bg-orange-50 text-orange-700",
+            Social: "border-pink-100 bg-pink-50 text-pink-700",
+          };
+          const color = colorMap[item.type] || "border-green-100 bg-green-50 text-green-700";
+          return (
+            <div class="flex gap-4 items-start">
+              <div class="w-28 shrink-0 text-right pt-3">
+                <span class="text-xs text-gray-400 font-mono">{item.time}</span>
+              </div>
+              <div class="w-px bg-gray-200 self-stretch mx-2"></div>
+              <div class={`flex-1 border rounded-xl p-3 ${color} flex items-center gap-3`}>
+                <div class="w-4 h-4 shrink-0 opacity-60"><CalendarClock /></div>
+                <div>
+                  <div class="font-semibold text-sm">{item.title}</div>
+                  {item.speaker && <div class="text-xs opacity-60">{item.speaker}</div>}
+                  <div class="text-xs opacity-50 capitalize">{item.type} · {item.room}</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
+      <p class="text-center text-gray-400 text-xs mt-6">* Preview schedule. Official schedule announced closer to the event.</p>
+    </div>
+  </section>
 
-      <!-- Teaser cards -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
-        <div class="bg-white border border-sky-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">🧠</div>
-          <h3 class="font-bold text-gray-900 mb-2">Keynotes</h3>
-          <p class="text-gray-500 text-sm">Opening & closing keynotes from industry leaders in the open source world.</p>
-        </div>
-        <div class="bg-white border border-sky-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">🛠️</div>
-          <h3 class="font-bold text-gray-900 mb-2">Workshops & Devrooms</h3>
-          <p class="text-gray-500 text-sm">Parallel hands-on sessions and devrooms across multiple tracks.</p>
-        </div>
-        <div class="bg-white border border-sky-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">🌐</div>
-          <h3 class="font-bold text-gray-900 mb-2">Community Panels</h3>
-          <p class="text-gray-500 text-sm">Curated panel discussions on open source community, business, and tech.</p>
-        </div>
+  <!-- Workshop Track -->
+  <section class="py-20 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Workshop <span class="gradient-text">Track</span></h2>
+        <p class="text-gray-500">Hands-on sessions running parallel to the main conference</p>
+      </div>
+      <div class="space-y-2">
+        {workshopSchedule.map((item) => {
+          const colorMap = {
+            workshop: "border-teal-100 bg-teal-50 text-teal-700",
+            break: "border-gray-100 bg-gray-50 text-gray-500",
+            panel: "border-indigo-100 bg-indigo-50 text-indigo-700",
+            closing: "border-orange-100 bg-orange-50 text-orange-700",
+            activity: "border-purple-100 bg-purple-50 text-purple-700",
+          };
+          const color = colorMap[item.type] || "border-green-100 bg-green-50 text-green-700";
+          return (
+            <div class="flex gap-4 items-start">
+              <div class="w-28 shrink-0 text-right pt-3">
+                <span class="text-xs text-gray-400 font-mono">{item.time}</span>
+              </div>
+              <div class="w-px bg-gray-200 self-stretch mx-2"></div>
+              <div class={`flex-1 border rounded-xl p-3 ${color} flex items-center gap-3`}>
+                <div class="w-4 h-4 shrink-0 opacity-60"><LayoutList /></div>
+                <div>
+                  <div class="font-semibold text-sm">{item.title}</div>
+                  {item.speaker && <div class="text-xs opacity-60">{item.speaker}</div>}
+                  <div class="text-xs opacity-50 capitalize">{item.type}</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Notify me -->
-  <section class="py-16 px-4 bg-gray-950 text-center">
-    <p class="text-gray-400 mb-2 text-lg">Want to be notified when the schedule is announced?</p>
-    <p class="text-gray-500 text-sm mb-4">Follow us or reach out at</p>
-    <a href="mailto:opensourceweekend@gmail.com" class="text-sky-400 hover:text-sky-300 font-semibold text-lg hover:underline">
-      opensourceweekend@gmail.com
-    </a>
+  <!-- Session Tracks -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Session <span class="gradient-text">Tracks</span></h2>
+        <p class="text-gray-500">Multiple tracks running throughout the day</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: "Keynotes", desc: "Opening & closing keynotes from industry leaders in the open source world.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 0 1 6 0v8.25a3 3 0 0 1-3 3Z" />` },
+          { title: "Workshops & Devrooms", desc: "Parallel hands-on sessions and devrooms across multiple tracks.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l5.653-4.655m5.585-5.585.06-.06a.968.968 0 0 1 1.37 0l.17.17a.968.968 0 0 1 0 1.37l-.06.06" />` },
+          { title: "Community Panels", desc: "Curated panel discussions on open source community, business, and tech.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />` },
+        ].map(({ title, desc, icon }) => (
+          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-7 rounded-2xl transition-all duration-300">
+            <div class="w-10 h-10 mb-4 text-green-600">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" set:html={icon}></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="py-16 px-4 bg-gray-50 text-center">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Want to be <span class="gradient-text">notified</span> when schedule is out?</h3>
+    <p class="text-gray-500 mb-2">Follow us or reach out at</p>
+    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold">opensourceweekend@gmail.com</a>
   </section>
 </Layout>

@@ -32,12 +32,17 @@ body {
 }
 
 .gradient-text {
-  background: linear-gradient(135deg,
-      var(--primary-green),
-      var(--secondary-green));
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  /* Prevent italic descenders/slant from being clipped by the background box */
+  padding-right: 0.15em;
+  padding-bottom: 0.05em;
 }
 
 .glow-effect {
@@ -86,7 +91,6 @@ body {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     opacity: 1;
@@ -98,7 +102,6 @@ body {
 }
 
 @keyframes bounce {
-
   0%,
   20%,
   53%,
@@ -199,7 +202,6 @@ body {
   filter: blur(64px);
 }
 
-
 .light-card {
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid black;
@@ -256,7 +258,6 @@ body {
 }
 
 @keyframes float-gentle {
-
   0%,
   100% {
     transform: translateY(0px) rotate(0deg);
@@ -266,7 +267,6 @@ body {
     transform: translateY(-20px) rotate(5deg);
   }
 }
-
 
 @keyframes smoothscroll {
   0% {

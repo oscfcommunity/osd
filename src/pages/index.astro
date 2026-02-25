@@ -1,120 +1,72 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { BRANDING, CALLS_2026 } from "@/config/config";
-import { Image } from "astro:assets";
 import "@/styles/2025/global.css";
+import { CALLS_2026, OUR_SPEAKERS, VENUE, TICKETS } from "@/config/config";
+import Hero from "@/components/Hero.jsx";
+import Counter from "@/components/Counter.jsx";
+import ScrollAnimations from "@/components/ScrollAnimations.jsx";
+import LearnAndContribute from "@/assets/icons/learn-contribute.svg";
+import Connect from "@/assets/icons/connect.svg";
+import Celebrate from "@/assets/icons/celebrate.svg";
+import SquareUser from "@/assets/icons/square-user.svg";
+import LocationIcon from "@/assets/icons/location.svg";
+import CalendarClock from "@/assets/icons/calendarClock.svg";
 
-// This is the root landing page for the site
+const DUMMY_GOLD = [
+  { name: "Platinum Sponsor" },
+  { name: "Gold Sponsor A" },
+  { name: "Gold Sponsor B" },
+];
+const DUMMY_PARTNERS = [
+  "Event Partner",
+  "Venue Partner",
+  "Media Partner",
+  "Tech Partner",
+  "Community A",
+  "Community B",
+  "Community C",
+  "Community D",
+  "Community E",
+  "Community F",
+];
 ---
 
-<Layout title="Open Source Day 2026 — Stay Alert" activePath="/">
-  <div class="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-    <!-- Animated Background Blobs -->
-    <div class="absolute top-0 -right-4 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 left-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-    
-    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
-      <div class="flex flex-col items-center mb-12 animate-fade-in-up">
-        <!-- Status Indicator -->
-        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-bold border border-green-100 mb-8 animate-pulse shadow-sm">
-          <span class="relative flex h-2 w-2">
-            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span>STAY ALERT</span>
-        </div>
+<Layout title="Open Source Day 2026" activePath="/">
+  <Hero client:load />
+  <ScrollAnimations client:load />
 
-        <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6">
-          <span class="block text-gray-900">OSD 2026</span>
-          <span class="gradient-text italic">IS COMING.</span>
-        </h1>
-        
-        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-          The next chapter of the ultimate Open Source celebration is being architected. Prepare for impact.
-        </p>
-
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-          <a
-            href="/2025/"
-            class="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 hover:scale-105"
-          >
-            Explore 2025 Event
-            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Tech Stack Icons / Partners placeholders if needed -->
-      <div class="mt-20 pt-10 border-t border-gray-100 flex flex-wrap justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-        <div class="text-2xl font-bold text-gray-400">#OSD2026</div>
-        <div class="text-2xl font-bold text-gray-400">#OpenSource</div>
-        <div class="text-2xl font-bold text-gray-400">#ComingSoon</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- OSD 2026 Get Involved Section -->
-  <section class="py-24 px-4 bg-gradient-to-b from-white via-green-50 to-white relative overflow-hidden">
-    <!-- Decorative blobs -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden">
-      <div class="absolute -top-20 -left-20 w-96 h-96 bg-green-100 rounded-full opacity-40 blur-3xl"></div>
-      <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-emerald-100 rounded-full opacity-40 blur-3xl"></div>
-    </div>
-
-    <div class="relative z-10 max-w-6xl mx-auto">
-      <!-- Section Header -->
-      <div class="text-center mb-16">
-        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-green-100 text-green-700 text-sm font-bold border border-green-200 mb-6 shadow-sm">
+  <!-- ─── GET INVOLVED ─── -->
+  <section class="py-24 px-4 bg-white" id="get-involved">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-bold border border-green-100 mb-6 shadow-sm">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
           </span>
           Forms are LIVE
         </div>
-        <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-5">
-          Get Involved in <span class="gradient-text">OSD 2026</span>
-        </h2>
-        <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-          OSD 2026 is taking shape — and we need <em>you</em>. Whether you want to speak, volunteer, sponsor, or spread the word, there's a place for you here.
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Get Involved in <span class="gradient-text">OSD 2026</span></h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+          Whether you want to speak, volunteer, sponsor, or spread the word — there's a place for you at Open Source Day.
         </p>
       </div>
 
-      <!-- Cards Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CALLS_2026.map((call) => (
           <a
             href={call.href}
             target="_blank"
             rel="noopener noreferrer"
-            class="group relative flex flex-col bg-white border border-gray-100 rounded-2xl p-7 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col"
           >
-            <!-- Gradient accent top bar -->
-            <div class={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${call.color} rounded-t-2xl`}></div>
-
-            <!-- Badge -->
-            <div class="absolute top-4 right-4">
-              <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-green-50 text-green-700 text-xs font-bold border border-green-200">
-                <span class="block w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                {call.badge}
-              </span>
+            <div class="w-11 h-11 bg-green-50 border border-green-100 rounded-xl mb-5 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </div>
-
-            <!-- Emoji Icon -->
-            <div class={`w-14 h-14 rounded-xl bg-gradient-to-br ${call.color} flex items-center justify-center text-2xl mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}>
-              {call.emoji}
-            </div>
-
-            <!-- Content -->
-            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-700 transition-colors">
-              {call.title}
-            </h3>
-            <p class="text-gray-500 text-sm leading-relaxed flex-1">
-              {call.description}
-            </p>
-
-            <!-- CTA -->
+            <h3 class="text-lg font-bold text-gray-900 mb-2">{call.title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed flex-1">{call.description}</p>
             <div class="mt-5 flex items-center text-sm font-semibold text-green-600 group-hover:text-green-700">
               Apply Now
               <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -125,20 +77,250 @@ import "@/styles/2025/global.css";
         ))}
       </div>
 
-      <!-- Bottom note -->
-      <p class="text-center text-gray-400 text-sm mt-12">
-        All forms open for OSD 2026. Questions? Reach us at
-        <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-medium">opensourceweekend@gmail.com</a>
+      <p class="text-center text-gray-400 text-sm mt-10">
+        Questions? Reach us at
+        <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-medium ml-1">opensourceweekend@gmail.com</a>
       </p>
     </div>
   </section>
-</Layout>
 
-<style>
-  /* Custom extra styles for the futuristic feel */
-  .gradient-text {
-    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-</style>
+  <!-- ─── ABOUT ─── -->
+  <section class="py-24 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <div class="mb-6 flex justify-center">
+          <img src="/icons/OSDGreen.svg" alt="Open Source Day Logo" class="w-14 h-14" loading="eager" />
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">About <span class="gradient-text">Open Source Day</span></h2>
+        <p class="text-lg text-gray-500 max-w-3xl mx-auto">
+          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in Ahmedabad.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white border border-gray-100 p-8 rounded-2xl hover:shadow-md hover:border-green-100 transition-all duration-300">
+          <div class="w-11 h-11 bg-green-500 rounded-xl mb-5 flex items-center justify-center text-white">
+            <LearnAndContribute />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Learn & Contribute</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.</p>
+        </div>
+        <div class="bg-white border border-gray-100 p-8 rounded-2xl hover:shadow-md hover:border-green-100 transition-all duration-300">
+          <div class="w-11 h-11 bg-green-500 rounded-xl mb-5 flex items-center justify-center text-white">
+            <Connect />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Connect</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Network with fellow developers, open source maintainers, and tech enthusiasts from across the Indian tech community.</p>
+        </div>
+        <div class="bg-white border border-gray-100 p-8 rounded-2xl hover:shadow-md hover:border-green-100 transition-all duration-300">
+          <div class="w-11 h-11 bg-green-500 rounded-xl mb-5 flex items-center justify-center text-white">
+            <Celebrate />
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Celebrate</h3>
+          <p class="text-gray-500 text-sm leading-relaxed">Celebrate open source achievements and discover exciting new projects, communities, and opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── IMPACT STATS ─── -->
+  <section class="py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Building <span class="gradient-text">Impact</span> in 2026</h2>
+        <p class="text-lg text-gray-500">What we're aiming for — bigger and better than ever</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
+        {[
+          { value: 1000, suffix: "+", label: "Expected Attendees" },
+          { value: 80, suffix: "+", label: "Community Partners" },
+          { value: 30, suffix: "+", label: "Expert Speakers" },
+          { value: 15, suffix: "+", label: "Technical Sessions" },
+        ].map(({ value, suffix, label }) => (
+          <div class="flex flex-col items-center py-10 px-6 bg-white">
+            <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
+              <Counter target={value} client:visible />{suffix}
+            </div>
+            <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
+          </div>
+        ))}
+      </div>
+      <div class="grid grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 mt-px">
+        <div class="flex flex-col items-center py-10 px-6 bg-white">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-2"><Counter target={3} client:visible />+</div>
+          <div class="text-sm text-gray-500 font-medium text-center">Panel Discussions</div>
+        </div>
+        <div class="flex flex-col items-center py-10 px-6 bg-white">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-2"><Counter target={6} client:visible />+</div>
+          <div class="text-sm text-gray-500 font-medium text-center">Workshops</div>
+        </div>
+        <div class="flex flex-col items-center py-10 px-6 bg-white">
+          <div class="text-4xl md:text-5xl font-black gradient-text mb-2">1</div>
+          <div class="text-sm text-gray-500 font-medium text-center">Full Day Event</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SPONSORS & PARTNERS ─── -->
+  <section class="py-24 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Sponsors & <span class="gradient-text">Partners</span></h2>
+        <p class="text-lg text-gray-500">Thank you to the organizations making OSD 2026 possible</p>
+      </div>
+
+      <!-- Gold Sponsors (Dummy) -->
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px flex-1 bg-gray-200"></div>
+          <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Gold Sponsors</span>
+          <div class="h-px flex-1 bg-gray-200"></div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {DUMMY_GOLD.map((s) => (
+            <div class="h-24 border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
+              {s.name}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Community Partners (Dummy) -->
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <div class="h-px flex-1 bg-gray-200"></div>
+          <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Community Partners</span>
+          <div class="h-px flex-1 bg-gray-200"></div>
+        </div>
+        <div class="flex flex-wrap justify-center gap-3">
+          {DUMMY_PARTNERS.map((p) => (
+            <div class="border-2 border-dashed border-gray-200 rounded-xl px-6 py-3 text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
+              {p}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="text-center mt-10">
+        <a href="/sponsors" class="inline-flex items-center gap-2 font-semibold text-gray-700 border-2 border-gray-900 px-6 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200">
+          View All Sponsors & Partners
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SPEAKERS PREVIEW ─── -->
+  <section class="py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Our <span class="gradient-text">Speakers</span></h2>
+        <p class="text-lg text-gray-500">Our 2026 speaker lineup is coming together. Apply to share your expertise!</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
+        {OUR_SPEAKERS.map((sp) => (
+          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-6 rounded-2xl text-center transition-all duration-300">
+            <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-green-500 border border-green-100">
+              <SquareUser class="w-9 h-9" />
+            </div>
+            <h4 class="font-bold text-gray-900">{sp.name}</h4>
+            <div class="text-sm text-gray-500 mt-1">{sp.position} · {sp.company}</div>
+            {Boolean(sp?.event) && (
+              <span class="inline-block mt-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">{sp.event}</span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center">
+        <a href="/speakers" class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
+          View All Speakers
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VENUE + TICKETS ─── -->
+  <section class="py-24 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Venue Card -->
+      <div class="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col hover:shadow-md hover:border-green-100 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-green-600 border border-green-100">
+            <LocationIcon />
+          </div>
+          <h3 class="text-xl font-black text-gray-900">Venue</h3>
+        </div>
+        <div class="text-2xl font-bold text-gray-800 mb-1">{VENUE.name}</div>
+        <div class="text-gray-500 text-sm mb-6">{VENUE.address}</div>
+        <div class="flex items-center gap-2 text-sm text-gray-400 mb-auto">
+          <CalendarClock class="w-4 h-4" />
+          TBA · Ahmedabad, Gujarat
+        </div>
+        <a href="/venue" class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
+          Venue Details
+        </a>
+      </div>
+
+      <!-- Tickets Card -->
+      <div class="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col hover:shadow-md hover:border-green-100 transition-all duration-300">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-green-600 border border-green-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a3 3 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-black text-gray-900">Tickets</h3>
+        </div>
+
+        <div class="flex flex-col gap-3 mb-auto">
+          {TICKETS.slice(0, 2).map((t) => (
+            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
+              <div>
+                <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
+                <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
+              </div>
+              <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
+            </div>
+          ))}
+        </div>
+        <a href="/tickets" class="mt-6 block text-center bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-full font-bold text-sm transition-all glow-effect hover:scale-105">
+          View All Tickets
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── COMMUNITY CTA ─── -->
+  <section class="py-24 px-4 bg-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Ready to <span class="gradient-text">Join Us?</span></h2>
+      <p class="text-lg text-gray-500 mb-10">
+        Don't miss out on India's biggest open source community event. Join our WhatsApp community to stay updated!
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir" target="_blank" rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
+          Join WhatsApp Community
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+        <a href="/2025/" class="inline-flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+          Explore OSD 2025
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
