@@ -1,85 +1,78 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
+import { OUR_SPEAKERS } from "@/config/config";
+import SquareUser from "@/assets/icons/square-user.svg";
+import PageHero from "@/components/PageHero.jsx";
 ---
 
 <Layout title="Speakers — Open Source Day 2026" activePath="/speakers">
   <!-- Hero -->
-  <div class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white px-4 py-24">
-    <div class="absolute top-0 -right-4 w-80 h-80 bg-violet-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
-    <div class="absolute -bottom-8 -left-4 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+  <PageHero client:load
+    badge="CFP OPEN — APPLY NOW"
+    title="OSD 2026"
+    titleGradient="SPEAKERS"
+    subtitle="Share your knowledge, your open source story, or your latest project with 1000+ developers and builders."
+    primaryCta={{ text: "Submit a Talk Proposal", href: "/cfspk", external: true }}
+    secondaryCta={{ text: "View 2025 Speakers", href: "/2025/speakers" }}
+  />
 
-    <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <!-- Status badge -->
-      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-violet-50 text-violet-700 text-sm font-bold border border-violet-200 mb-8 shadow-sm animate-pulse">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
-        </span>
-        APPLICATIONS OPEN
+  <!-- Confirmed Speakers -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Confirmed <span class="gradient-text">Speakers</span></h2>
+        <p class="text-gray-500">Our 2026 lineup is coming together. Apply to be part of it!</p>
       </div>
-
-      <div class="text-7xl mb-6">🎤</div>
-
-      <h1 class="text-6xl md:text-8xl font-black tracking-tight mb-6">
-        <span class="block text-gray-900">OSD 2026</span>
-        <span class="block" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">SPEAKERS</span>
-      </h1>
-
-      <p class="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 leading-relaxed">
-        We're looking for passionate speakers to inspire India's open source community at OSD 2026. Got a story, a project, or an idea worth sharing?
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-        <a
-          href="/cfspk"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="group inline-flex items-center gap-2 px-10 py-4 font-bold text-white rounded-full transition-all duration-200 hover:scale-105 shadow-xl"
-          style="background: linear-gradient(135deg, #7c3aed, #4f46e5);"
-        >
-          🎤 Submit Your Talk Proposal
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
-        <a
-          href="/2025/speakers"
-          class="inline-flex items-center gap-2 px-8 py-4 font-bold text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-200 hover:scale-105"
-        >
-          View 2025 Speakers
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- What we're looking for -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left mt-8">
-        <div class="bg-white border border-violet-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">💡</div>
-          <h3 class="font-bold text-gray-900 mb-2">Talks & Keynotes</h3>
-          <p class="text-gray-500 text-sm">20–45 min talks on open source tools, projects, practices, or community stories.</p>
-        </div>
-        <div class="bg-white border border-violet-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">🛠️</div>
-          <h3 class="font-bold text-gray-900 mb-2">Workshops</h3>
-          <p class="text-gray-500 text-sm">Hands-on sessions where attendees build something real with open source tech.</p>
-        </div>
-        <div class="bg-white border border-violet-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
-          <div class="text-3xl mb-3">🎙️</div>
-          <h3 class="font-bold text-gray-900 mb-2">Panel Discussions</h3>
-          <p class="text-gray-500 text-sm">Join a curated panel of experts to discuss the future of open source in India.</p>
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        {OUR_SPEAKERS.map((sp) => (
+          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-6 rounded-2xl text-center transition-all duration-300">
+            <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-green-500 border border-green-100">
+              <SquareUser class="w-9 h-9" />
+            </div>
+            <h4 class="font-bold text-gray-900">{sp.name}</h4>
+            <div class="text-sm text-gray-500 mt-1">{sp.position} · {sp.company}</div>
+            {Boolean(sp?.event) && (
+              <span class="inline-block mt-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">{sp.event}</span>
+            )}
+          </div>
+        ))}
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- What we're looking for -->
+  <section class="py-20 px-4 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">What We're <span class="gradient-text">Looking For</span></h2>
+        <p class="text-gray-500">We welcome all kinds of proposals from the open source community</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { title: "Talks & Keynotes", desc: "20–45 min talks on open source tools, projects, practices, or community stories.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 0 1 6 0v8.25a3 3 0 0 1-3 3Z" />` },
+          { title: "Workshops", desc: "Hands-on sessions where attendees build something real with open source tech.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l5.653-4.655m5.585-5.585.06-.06a.968.968 0 0 1 1.37 0l.17.17a.968.968 0 0 1 0 1.37l-.06.06" />` },
+          { title: "Panel Discussions", desc: "Join a curated panel of experts to discuss the future of open source in India.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />` },
+        ].map(({ title, desc, icon }) => (
+          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-7 rounded-2xl transition-all duration-300">
+            <div class="w-10 h-10 mb-4 text-green-600">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" set:html={icon}></svg>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 
   <!-- Bottom CTA -->
-  <section class="py-16 px-4 bg-gray-950 text-center">
-    <p class="text-gray-400 mb-4 text-lg">Questions about speaking? Reach out to us.</p>
-    <a href="mailto:opensourceweekend@gmail.com" class="text-violet-400 hover:text-violet-300 font-semibold text-lg hover:underline">
-      opensourceweekend@gmail.com
+  <section class="py-16 px-4 bg-white text-center">
+    <h3 class="text-2xl font-black text-gray-900 mb-3">Ready to speak at <span class="gradient-text">OSD 2026?</span></h3>
+    <p class="text-gray-500 mb-6">Questions? Reach us at <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-medium">opensourceweekend@gmail.com</a></p>
+    <a href="/cfspk" target="_blank" rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105">
+      Submit a Talk Proposal
     </a>
   </section>
 </Layout>

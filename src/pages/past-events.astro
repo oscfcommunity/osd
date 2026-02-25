@@ -1,0 +1,109 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import "@/styles/2025/global.css";
+import PageHero from "@/components/PageHero.jsx";
+---
+
+<Layout title="Past Events — Open Source Day" activePath="/past-events">
+  <!-- Hero -->
+  <PageHero client:load
+    badge="5 YEARS OF OPEN SOURCE"
+    title="OUR"
+    titleGradient="PAST EVENTS"
+    subtitle="From humble beginnings to India's largest open source conference — look back at the journey."
+    primaryCta={{ text: "Explore OSD 2025", href: "/2025/" }}
+  />
+
+  <!-- OSD 2025 Highlight -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center gap-3 mb-10">
+        <div class="h-px flex-1 bg-gray-200"></div>
+        <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Most Recent</span>
+        <div class="h-px flex-1 bg-gray-200"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="inline-block px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-bold mb-4 border border-green-100">OCT 2025</span>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-4">Open Source Day <span class="gradient-text">2025</span></h2>
+          <p class="text-gray-500 mb-6 leading-relaxed">
+            OSD 2025 was held at Silver Oak University, Ahmedabad — our biggest edition yet. 1000+ attendees, 30+ talks, sold-out workshops, and an incredible open source community.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            {[["1000+", "Attendees"], ["30+", "Sessions"], ["80+", "Partners"]].map(([num, label]) => (
+              <div class="border border-gray-100 rounded-2xl p-4 text-center">
+                <div class="text-2xl font-black gradient-text">{num}</div>
+                <div class="text-gray-500 text-xs mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+          <a href="/2025/" class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-6 py-3 rounded-full transition-all hover:scale-105">
+            Visit OSD 2025 Site
+          </a>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          {[1, 2, 3, 4].map((i) => (
+            <div class="bg-gray-50 border border-gray-100 rounded-2xl aspect-square flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-10 h-10 mx-auto mb-2 text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                  </svg>
+                </div>
+                <p class="text-gray-400 text-xs">Photo {i}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="py-20 px-4 bg-gray-50">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">The <span class="gradient-text">Journey</span></h2>
+        <p class="text-gray-500">Open Source Day has been growing every year</p>
+      </div>
+      <div class="space-y-4">
+        {[
+          { year: "2026", title: "Open Source Day 2026", desc: "TBA · Ahmedabad, Gujarat", upcoming: true },
+          { year: "2025", title: "Open Source Day 2025", desc: "Silver Oak University · 1000+ attendees · 30+ sessions", href: "/2025/" },
+          { year: "2024", title: "Open Source Day 2024", desc: "Another milestone year for the open source community" },
+          { year: "2023", title: "Open Source Day 2023", desc: "Growing the community across Gujarat and beyond" },
+          { year: "2022", title: "Open Source Day 2022", desc: "Back in person after the pandemic, stronger than ever" },
+        ].map((e) => (
+          <div class={`border rounded-2xl p-5 flex items-center gap-4 transition-all ${e.upcoming ? "border-green-200 bg-white" : "border-gray-100 bg-white hover:border-green-100"}`}>
+            <div class={`text-3xl font-black shrink-0 ${e.upcoming ? "gradient-text" : "text-gray-300"}`}>{e.year}</div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900">{e.title}</div>
+              <div class="text-gray-500 text-sm">{e.desc}</div>
+            </div>
+            {e.href && (
+              <a href={e.href} class="text-sm font-semibold text-green-600 hover:underline shrink-0">View →</a>
+            )}
+            {e.upcoming && (
+              <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full shrink-0">Upcoming</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Community CTA -->
+  <section class="py-16 px-4 bg-white text-center">
+    <h3 class="text-2xl font-black text-gray-900 mb-3">Be part of <span class="gradient-text">OSD 2026</span></h3>
+    <p class="text-gray-500 mb-6 max-w-xl mx-auto">The next chapter is being written. Join the community to stay updated and get involved.</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105">
+        Join WhatsApp Community
+      </a>
+      <a href="#get-involved" class="inline-flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+        Get Involved
+      </a>
+    </div>
+  </section>
+</Layout>
