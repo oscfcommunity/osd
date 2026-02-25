@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 /**
  * PageHero — shared hero for all inner pages.
  * Mirrors Hero.jsx design exactly; only content differs via props.
+ * @param {{ badge: string, title: string, titleGradient: string, subtitle: string, primaryCta: { text: string, href: string, external?: boolean }, secondaryCta?: { text: string, href: string, external?: boolean } }} props
  */
 const PageHero = ({
   badge,

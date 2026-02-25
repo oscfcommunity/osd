@@ -5,6 +5,29 @@ import { eventSchedule, workshopSchedule } from "@/config/config";
 import CalendarClock from "@/assets/icons/calendarClock.svg";
 import LayoutList from "@/assets/icons/layoutList.svg";
 import PageHero from "@/components/PageHero.jsx";
+
+const eventColorMap: Record<string, string> = {
+  registration: "border-blue-100 bg-blue-50 text-blue-700",
+  opening: "border-green-100 bg-green-50 text-green-700",
+  keynote: "border-yellow-100 bg-yellow-50 text-yellow-700",
+  talk: "border-green-100 bg-green-50 text-green-700",
+  break: "border-gray-100 bg-gray-50 text-gray-500",
+  "Closing Keynote": "border-yellow-100 bg-yellow-50 text-yellow-700",
+  Closing: "border-orange-100 bg-orange-50 text-orange-700",
+  Social: "border-pink-100 bg-pink-50 text-pink-700",
+};
+const getEventColor = (type: string) =>
+  eventColorMap[type] ?? "border-green-100 bg-green-50 text-green-700";
+
+const workshopColorMap: Record<string, string> = {
+  workshop: "border-teal-100 bg-teal-50 text-teal-700",
+  break: "border-gray-100 bg-gray-50 text-gray-500",
+  panel: "border-indigo-100 bg-indigo-50 text-indigo-700",
+  closing: "border-orange-100 bg-orange-50 text-orange-700",
+  activity: "border-purple-100 bg-purple-50 text-purple-700",
+};
+const getWorkshopColor = (type: string) =>
+  workshopColorMap[type] ?? "border-green-100 bg-green-50 text-green-700";
 ---
 
 <Layout title="Schedule — Open Source Day 2026" activePath="/schedule">
@@ -27,17 +50,7 @@ import PageHero from "@/components/PageHero.jsx";
       </div>
       <div class="space-y-2">
         {eventSchedule.map((item) => {
-          const colorMap = {
-            registration: "border-blue-100 bg-blue-50 text-blue-700",
-            opening: "border-green-100 bg-green-50 text-green-700",
-            keynote: "border-yellow-100 bg-yellow-50 text-yellow-700",
-            talk: "border-green-100 bg-green-50 text-green-700",
-            break: "border-gray-100 bg-gray-50 text-gray-500",
-            "Closing Keynote": "border-yellow-100 bg-yellow-50 text-yellow-700",
-            Closing: "border-orange-100 bg-orange-50 text-orange-700",
-            Social: "border-pink-100 bg-pink-50 text-pink-700",
-          };
-          const color = colorMap[item.type] || "border-green-100 bg-green-50 text-green-700";
+          const color = getEventColor(item.type);
           return (
             <div class="flex gap-4 items-start">
               <div class="w-28 shrink-0 text-right pt-3">
@@ -69,14 +82,7 @@ import PageHero from "@/components/PageHero.jsx";
       </div>
       <div class="space-y-2">
         {workshopSchedule.map((item) => {
-          const colorMap = {
-            workshop: "border-teal-100 bg-teal-50 text-teal-700",
-            break: "border-gray-100 bg-gray-50 text-gray-500",
-            panel: "border-indigo-100 bg-indigo-50 text-indigo-700",
-            closing: "border-orange-100 bg-orange-50 text-orange-700",
-            activity: "border-purple-100 bg-purple-50 text-purple-700",
-          };
-          const color = colorMap[item.type] || "border-green-100 bg-green-50 text-green-700";
+          const color = getWorkshopColor(item.type);
           return (
             <div class="flex gap-4 items-start">
               <div class="w-28 shrink-0 text-right pt-3">
