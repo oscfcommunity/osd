@@ -3,6 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import { TICKETS } from "@/config/config";
 import PageHero from "@/components/PageHero.jsx";
+
+import { ticketsData } from "@/lib/graphql/queries/tickets.query";
+console.log(JSON.stringify(ticketsData, null, 2));
 ---
 
 <Layout title="Tickets — Open Source Day 2026" activePath="/tickets">

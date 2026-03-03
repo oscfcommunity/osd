@@ -3,6 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import SquareUser from "@/assets/icons/square-user.svg";
 import PageHero from "@/components/PageHero.jsx";
+
+import { teamsData } from "@/lib/graphql/queries/teams.query";
+console.log(JSON.stringify(teamsData, null, 2));
 ---
 
 <Layout title="Team — Open Source Day 2026" activePath="/team">

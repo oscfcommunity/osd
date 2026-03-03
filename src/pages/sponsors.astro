@@ -3,6 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import PageHero from "@/components/PageHero.jsx";
 
+import { sponsorsData } from "@/lib/graphql/queries/sponsors.query";
+console.log(JSON.stringify(sponsorsData, null, 2));
+
 const TIERS = [
   {
     name: "Platinum",

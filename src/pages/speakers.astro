@@ -4,6 +4,10 @@ import "@/styles/2025/global.css";
 import { OUR_SPEAKERS } from "@/config/config";
 import SquareUser from "@/assets/icons/square-user.svg";
 import PageHero from "@/components/PageHero.jsx";
+import { speakersData } from "@/lib/graphql/queries/speakers.query";
+
+console.log(JSON.stringify(speakersData, null, 2));
+
 ---
 
 <Layout title="Speakers — Open Source Day 2026" activePath="/speakers">
