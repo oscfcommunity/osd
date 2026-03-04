@@ -19,23 +19,15 @@ const Navigation = (props) => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/85 backdrop-blur-xl border-b border-green-500/20 shadow-lg text-shadow-sm text-shadow-green-500/5"
-          : "bg-white backdrop-blur-sm"
+        scrolled ? "bg-white/85 backdrop-blur-xl border-b border-green-500/20 shadow-lg text-shadow-sm text-shadow-green-500/5" : "bg-white backdrop-blur-sm"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="nav-item flex items-center">
             <a href="/" className="flex items-center">
-              <img
-                src={BRANDING.logos.main.src}
-                alt="OSW Logo"
-                className="w-8 h-8 mr-2"
-              />
-              <span className="text-xl md:text-2xl font-bold gradient-text">
-                {SITE.shortTitle}
-              </span>
+              <img src={BRANDING.logos.main.src} alt="OSW Logo" className="w-8 h-8 mr-2" />
+              <span className="text-xl md:text-2xl font-bold gradient-text">{SITE.shortTitle}</span>
             </a>
           </div>
 
@@ -58,11 +50,7 @@ const Navigation = (props) => {
                 >
                   {item.name}
                   {!isTickets && (
-                    <span
-                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${
-                        isActivePath ? "w-full" : ""
-                      }`}
-                    ></span>
+                    <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? "w-full" : ""}`}></span>
                   )}
                 </a>
               );
@@ -80,30 +68,12 @@ const Navigation = (props) => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-black hover:text-green-600 transition-colors"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+            <button onClick={() => setIsOpen(!isOpen)} className="text-black hover:text-green-600 transition-colors">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>

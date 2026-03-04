@@ -84,17 +84,7 @@ const BadgeMaker = () => {
         canvas.height = pixelCrop.height;
         const ctx = canvas.getContext("2d");
 
-        ctx.drawImage(
-          image,
-          pixelCrop.x,
-          pixelCrop.y,
-          pixelCrop.width,
-          pixelCrop.height,
-          0,
-          0,
-          pixelCrop.width,
-          pixelCrop.height
-        );
+        ctx.drawImage(image, pixelCrop.x, pixelCrop.y, pixelCrop.width, pixelCrop.height, 0, 0, pixelCrop.width, pixelCrop.height);
 
         resolve(canvas.toDataURL("image/png"));
       };
@@ -151,13 +141,7 @@ const BadgeMaker = () => {
         // Create circular clipping path
         ctx.save();
         ctx.beginPath();
-        ctx.arc(
-          imgX + imgSize / 2,
-          imgY + imgSize / 2,
-          imgSize / 2,
-          0,
-          Math.PI * 2
-        );
+        ctx.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2);
         ctx.clip();
 
         ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
@@ -167,13 +151,7 @@ const BadgeMaker = () => {
         ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
         ctx.lineWidth = 4;
         ctx.beginPath();
-        ctx.arc(
-          imgX + imgSize / 2,
-          imgY + imgSize / 2,
-          imgSize / 2,
-          0,
-          Math.PI * 2
-        );
+        ctx.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2);
         ctx.stroke();
       };
       img.src = uploadedImage;
@@ -203,26 +181,11 @@ const BadgeMaker = () => {
     ctx.beginPath();
     ctx.moveTo(roleX + r, roleY);
     ctx.lineTo(roleX + roleWidth - r, roleY);
-    ctx.quadraticCurveTo(
-      roleX + roleWidth,
-      roleY,
-      roleX + roleWidth,
-      roleY + r
-    );
+    ctx.quadraticCurveTo(roleX + roleWidth, roleY, roleX + roleWidth, roleY + r);
     ctx.lineTo(roleX + roleWidth, roleY + roleHeight - r);
-    ctx.quadraticCurveTo(
-      roleX + roleWidth,
-      roleY + roleHeight,
-      roleX + roleWidth - r,
-      roleY + roleHeight
-    );
+    ctx.quadraticCurveTo(roleX + roleWidth, roleY + roleHeight, roleX + roleWidth - r, roleY + roleHeight);
     ctx.lineTo(roleX + r, roleY + roleHeight);
-    ctx.quadraticCurveTo(
-      roleX,
-      roleY + roleHeight,
-      roleX,
-      roleY + roleHeight - r
-    );
+    ctx.quadraticCurveTo(roleX, roleY + roleHeight, roleX, roleY + roleHeight - r);
     ctx.lineTo(roleX, roleY + r);
     ctx.quadraticCurveTo(roleX, roleY, roleX + r, roleY);
     ctx.closePath();
@@ -252,8 +215,7 @@ const BadgeMaker = () => {
     let remaining = location;
     while (remaining.length) {
       let i = remaining.length;
-      while (i > 0 && ctx.measureText(remaining.slice(0, i)).width > maxWidth)
-        i--;
+      while (i > 0 && ctx.measureText(remaining.slice(0, i)).width > maxWidth) i--;
       // backtrack to last space
       let cut = i;
       while (cut > 0 && remaining[cut] !== " ") cut--;
@@ -262,9 +224,7 @@ const BadgeMaker = () => {
       remaining = remaining.slice(cut).trim();
       if (locationLines.length > 2) break;
     }
-    locationLines.forEach((line, idx) =>
-      ctx.fillText(line, 50, 325 + idx * 26)
-    );
+    locationLines.forEach((line, idx) => ctx.fillText(line, 50, 325 + idx * 26));
 
     // Hashtags and site URL at bottom
     ctx.textAlign = "left";
@@ -275,10 +235,7 @@ const BadgeMaker = () => {
 
     // OSD Green logo at bottom-right (if available)
     try {
-      const logoUrl2 =
-        typeof BRANDING.logos.green === "string"
-          ? BRANDING.logos.green
-          : BRANDING.logos.green?.src || BRANDING.logos.green;
+      const logoUrl2 = typeof BRANDING.logos.green === "string" ? BRANDING.logos.green : BRANDING.logos.green?.src || BRANDING.logos.green;
       if (logoUrl2) {
         const logoImg2 = new Image();
         logoImg2.onload = () => {
@@ -286,23 +243,14 @@ const BadgeMaker = () => {
           const maxLogoHeight2 = 90;
           let drawW2 = logoImg2.width;
           let drawH2 = logoImg2.height;
-          const scale2 = Math.min(
-            maxLogoWidth2 / drawW2,
-            maxLogoHeight2 / drawH2
-          );
+          const scale2 = Math.min(maxLogoWidth2 / drawW2, maxLogoHeight2 / drawH2);
           drawW2 = Math.floor(drawW2 * scale2);
           drawH2 = Math.floor(drawH2 * scale2);
           const pad2 = 30;
           ctx.save();
           ctx.shadowColor = "rgba(0,0,0,0.15)";
           ctx.shadowBlur = 4;
-          ctx.drawImage(
-            logoImg2,
-            width - drawW2 - pad2,
-            height - drawH2 - pad2,
-            drawW2,
-            drawH2
-          );
+          ctx.drawImage(logoImg2, width - drawW2 - pad2, height - drawH2 - pad2, drawW2, drawH2);
           ctx.restore();
         };
         logoImg2.src = logoUrl2;
@@ -313,14 +261,7 @@ const BadgeMaker = () => {
     ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
     ctx.fillRect(width - 220, 56, 170, 4);
     ctx.fillRect(width - 220, 68, 110, 2);
-  }, [
-    selectedTemplate,
-    uploadedImage,
-    imagePosition,
-    imageScale,
-    currentTemplate,
-    userName,
-  ]);
+  }, [selectedTemplate, uploadedImage, imagePosition, imageScale, currentTemplate, userName]);
 
   React.useEffect(() => {
     drawBadge();
@@ -328,10 +269,7 @@ const BadgeMaker = () => {
 
   // Detect browser-only APIs after mount to avoid SSR errors
   React.useEffect(() => {
-    if (
-      typeof navigator !== "undefined" &&
-      typeof navigator.share === "function"
-    ) {
+    if (typeof navigator !== "undefined" && typeof navigator.share === "function") {
       setCanNativeShare(true);
     }
   }, []);
@@ -352,30 +290,18 @@ const BadgeMaker = () => {
 
     const dataUrl = canvas.toDataURL();
     const baseText = userName.trim()
-      ? `${userName} is ${currentTemplate.title.toLowerCase()} at ${
-          EVENT.name
-        }!`
+      ? `${userName} is ${currentTemplate.title.toLowerCase()} at ${EVENT.name}!`
       : `I'm ${currentTemplate.title.toLowerCase()} at ${EVENT.name}!`;
 
     const fullText = `${baseText} Join us on ${EVENT.date} at ${EVENT.location}. #OpenSourceDay2025 #OSD2025`;
 
     // Convert canvas to blob for sharing
-    const blob = await new Promise((resolve) =>
-      canvas.toBlob(resolve, "image/png")
-    );
+    const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
 
-    if (
-      typeof navigator !== "undefined" &&
-      navigator.share &&
-      platform === "native"
-    ) {
+    if (typeof navigator !== "undefined" && navigator.share && platform === "native") {
       // Use native sharing if available
       try {
-        const file = new File(
-          [blob],
-          `osd-2025-${selectedTemplate}-badge.png`,
-          { type: "image/png" }
-        );
+        const file = new File([blob], `osd-2025-${selectedTemplate}-badge.png`, { type: "image/png" });
         await navigator.share({
           title: "My OSD 2025 Badge",
           text: fullText,
@@ -383,24 +309,15 @@ const BadgeMaker = () => {
         });
         return;
       } catch (error) {
-        console.log(
-          "Native sharing failed, falling back to platform-specific sharing"
-        );
+        console.log("Native sharing failed, falling back to platform-specific sharing");
       }
     }
 
-    const currentHref =
-      typeof window !== "undefined" ? window.location.href : "";
+    const currentHref = typeof window !== "undefined" ? window.location.href : "";
     const shareUrls = {
-      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        fullText
-      )}&url=${encodeURIComponent(currentHref)}`,
-      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-        currentHref
-      )}&summary=${encodeURIComponent(fullText)}`,
-      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-        currentHref
-      )}&quote=${encodeURIComponent(fullText)}`,
+      twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(fullText)}&url=${encodeURIComponent(currentHref)}`,
+      linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentHref)}&summary=${encodeURIComponent(fullText)}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentHref)}&quote=${encodeURIComponent(fullText)}`,
     };
 
     if (shareUrls[platform] && typeof window !== "undefined") {
@@ -413,14 +330,8 @@ const BadgeMaker = () => {
     if (!canvas) return;
 
     try {
-      if (
-        typeof navigator !== "undefined" &&
-        navigator.clipboard &&
-        typeof ClipboardItem !== "undefined"
-      ) {
-        const blob = await new Promise((resolve) =>
-          canvas.toBlob(resolve, "image/png")
-        );
+      if (typeof navigator !== "undefined" && navigator.clipboard && typeof ClipboardItem !== "undefined") {
+        const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
         await navigator.clipboard.write([
           new ClipboardItem({
             "image/png": blob,
@@ -440,13 +351,8 @@ const BadgeMaker = () => {
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Create Your OSD 2025 Badge
-          </h1>
-          <p className="text-lg text-gray-600">
-            Choose a template, upload your photo, and create a personalized
-            badge to share on social media
-          </p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Create Your OSD 2025 Badge</h1>
+          <p className="text-lg text-gray-600">Choose a template, upload your photo, and create a personalized badge to share on social media</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -454,14 +360,10 @@ const BadgeMaker = () => {
           <div className="space-y-6">
             {/* Step 1: Name Input */}
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                1. Enter Your Name
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Enter Your Name</h2>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name (Required)
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Your Name (Required)</label>
                   <input
                     type="text"
                     value={userName}
@@ -471,13 +373,9 @@ const BadgeMaker = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
                   {userName.trim() === "" ? (
-                    <p className="text-sm text-red-600 mt-1">
-                      Name is required to generate your badge.
-                    </p>
+                    <p className="text-sm text-red-600 mt-1">Name is required to generate your badge.</p>
                   ) : (
-                    <p className="text-sm text-gray-500 mt-1">
-                      Your name will appear on the badge
-                    </p>
+                    <p className="text-sm text-gray-500 mt-1">Your name will appear on the badge</p>
                   )}
                 </div>
               </div>
@@ -485,32 +383,21 @@ const BadgeMaker = () => {
 
             {/* Step 2: Template Selection */}
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                2. Choose Template
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Choose Template</h2>
               <div className="grid grid-cols-1 gap-4">
                 {templates.map((template) => (
                   <button
                     key={template.id}
                     onClick={() => setSelectedTemplate(template.id)}
                     className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                      selectedTemplate === template.id
-                        ? "border-green-500 bg-green-50"
-                        : "border-gray-200 hover:border-gray-300"
+                      selectedTemplate === template.id ? "border-green-500 bg-green-50" : "border-gray-200 hover:border-gray-300"
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <div
-                        className="w-4 h-4 rounded-full"
-                        style={{ backgroundColor: template.color }}
-                      ></div>
+                      <div className="w-4 h-4 rounded-full" style={{ backgroundColor: template.color }}></div>
                       <div className="text-left">
-                        <div className="font-semibold text-gray-900">
-                          {template.title}
-                        </div>
-                        <div className="text-sm text-gray-600">
-                          {template.subtitle}
-                        </div>
+                        <div className="font-semibold text-gray-900">{template.title}</div>
+                        <div className="text-sm text-gray-600">{template.subtitle}</div>
                       </div>
                     </div>
                   </button>
@@ -520,50 +407,29 @@ const BadgeMaker = () => {
 
             {/* Step 3: Image Upload and Adjustment */}
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                3. Upload and Adjust
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Upload and Adjust</h2>
 
               {!uploadedImage ? (
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
                   <div className="text-gray-400 mb-4">
-                    <svg
-                      className="mx-auto h-12 w-12"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
+                    <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
                         d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
                       />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
-                  <p className="text-gray-600 mb-4">
-                    Upload a clear headshot or portrait photo. PNG or JPG
-                    recommended.
-                  </p>
+                  <p className="text-gray-600 mb-4">Upload a clear headshot or portrait photo. PNG or JPG recommended.</p>
                   <button
                     onClick={() => fileInputRef.current?.click()}
                     className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                   >
                     Upload Photo
                   </button>
-                  <input
-                    ref={fileInputRef}
-                    type="file"
-                    accept="image/*"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                  />
+                  <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -578,9 +444,7 @@ const BadgeMaker = () => {
                           aspect={1} // square crop (good for circular avatar)
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
-                          onCropComplete={(croppedArea, croppedAreaPixels) =>
-                            setCroppedAreaPixels(croppedAreaPixels)
-                          }
+                          onCropComplete={(croppedArea, croppedAreaPixels) => setCroppedAreaPixels(croppedAreaPixels)}
                         />
                       </div>
 
@@ -599,19 +463,13 @@ const BadgeMaker = () => {
 
                         {/* Action buttons */}
                         <div className="flex space-x-4">
-                          <button
-                            className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
-                            onClick={() => setIsCropping(false)}
-                          >
+                          <button className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700" onClick={() => setIsCropping(false)}>
                             Cancel
                           </button>
                           <button
                             className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
                             onClick={async () => {
-                              const croppedImg = await getCroppedImg(
-                                uploadedImage,
-                                croppedAreaPixels
-                              );
+                              const croppedImg = await getCroppedImg(uploadedImage, croppedAreaPixels);
                               setUploadedImage(croppedImg);
                               setIsCropping(false);
                             }}
@@ -640,40 +498,25 @@ const BadgeMaker = () => {
 
           {/* Right Panel - Badge Preview */}
           <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
-              Badge Preview
-            </h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Badge Preview</h2>
 
             <div className="relative flex items-center justify-center">
-              <canvas
-                ref={canvasRef}
-                className="w-full max-w-md mx-auto border border-gray-200 rounded-lg shadow-lg"
-                style={{ aspectRatio: "4/5" }}
-              />
+              <canvas ref={canvasRef} className="w-full max-w-md mx-auto border border-gray-200 rounded-lg shadow-lg" style={{ aspectRatio: "4/5" }} />
             </div>
 
             {/* Download & Share - visible on all screen sizes */}
             <div className="mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Download & Share
-              </h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Download & Share</h2>
 
               <div className="space-y-4">
                 <button
                   onClick={downloadBadge}
                   disabled={userName.trim() === ""}
                   className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
-                    userName.trim() === ""
-                      ? "bg-green-300 text-white cursor-not-allowed"
-                      : "bg-green-600 text-white hover:bg-green-700"
+                    userName.trim() === "" ? "bg-green-300 text-white cursor-not-allowed" : "bg-green-600 text-white hover:bg-green-700"
                   }`}
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -688,17 +531,10 @@ const BadgeMaker = () => {
                   onClick={copyToClipboard}
                   disabled={userName.trim() === ""}
                   className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
-                    userName.trim() === ""
-                      ? "bg-blue-300 text-white cursor-not-allowed"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
+                    userName.trim() === "" ? "bg-blue-300 text-white cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"
                   }`}
                 >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -714,17 +550,10 @@ const BadgeMaker = () => {
                     onClick={() => shareToSocial("native")}
                     disabled={userName.trim() === ""}
                     className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
-                      userName.trim() === ""
-                        ? "bg-purple-300 text-white cursor-not-allowed"
-                        : "bg-purple-600 text-white hover:bg-purple-700"
+                      userName.trim() === "" ? "bg-purple-300 text-white cursor-not-allowed" : "bg-purple-600 text-white hover:bg-purple-700"
                     }`}
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -741,9 +570,7 @@ const BadgeMaker = () => {
                     onClick={() => shareToSocial("twitter")}
                     disabled={userName.trim() === ""}
                     className={`py-2 px-3 rounded-lg transition-colors text-sm ${
-                      userName.trim() === ""
-                        ? "bg-blue-300 text-white cursor-not-allowed"
-                        : "bg-blue-500 text-white hover:bg-blue-600"
+                      userName.trim() === "" ? "bg-blue-300 text-white cursor-not-allowed" : "bg-blue-500 text-white hover:bg-blue-600"
                     }`}
                   >
                     Twitter
@@ -752,9 +579,7 @@ const BadgeMaker = () => {
                     onClick={() => shareToSocial("linkedin")}
                     disabled={userName.trim() === ""}
                     className={`py-2 px-3 rounded-lg transition-colors text-sm ${
-                      userName.trim() === ""
-                        ? "bg-blue-400 text-white cursor-not-allowed"
-                        : "bg-blue-700 text-white hover:bg-blue-800"
+                      userName.trim() === "" ? "bg-blue-400 text-white cursor-not-allowed" : "bg-blue-700 text-white hover:bg-blue-800"
                     }`}
                   >
                     LinkedIn
@@ -763,9 +588,7 @@ const BadgeMaker = () => {
                     onClick={() => shareToSocial("facebook")}
                     disabled={userName.trim() === ""}
                     className={`py-2 px-3 rounded-lg transition-colors text-sm ${
-                      userName.trim() === ""
-                        ? "bg-blue-500 text-white cursor-not-allowed"
-                        : "bg-blue-600 text-white hover:bg-blue-700"
+                      userName.trim() === "" ? "bg-blue-500 text-white cursor-not-allowed" : "bg-blue-600 text-white hover:bg-blue-700"
                     }`}
                   >
                     Facebook

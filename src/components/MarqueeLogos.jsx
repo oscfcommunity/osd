@@ -1,11 +1,6 @@
 import { useRef, useEffect } from "react";
 
-export default function MarqueeLogos({
-  logos = [],
-  duration = 100,
-  height = 120,
-  itemMinWidth = 220,
-}) {
+export default function MarqueeLogos({ logos = [], duration = 100, height = 120, itemMinWidth = 220 }) {
   const items = [...logos, ...logos];
   const trackRef = useRef(null);
 
@@ -62,12 +57,7 @@ export default function MarqueeLogos({
         <div ref={trackRef} className="marquee-track">
           {items.map((logo, i) => (
             <div key={i} className="marquee-item">
-              <img
-                src={logo.logo}
-                alt={logo.name || `logo-${i}`}
-                loading="eager"
-                className="marquee-img"
-              />
+              <img src={logo.logo} alt={logo.name || `logo-${i}`} loading="eager" className="marquee-img" />
             </div>
           ))}
         </div>

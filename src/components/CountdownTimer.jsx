@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function CountdownTimer({
-  targetDate = "2026-10-04T08:00:00+05:30",
-}) {
+export default function CountdownTimer({ targetDate = "2026-10-04T08:00:00+05:30" }) {
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -37,11 +35,7 @@ export default function CountdownTimer({
   }, [targetDate]);
 
   if (isExpired) {
-    return (
-      <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-600">
-        The event has ended. Thank you for participating! 🎉
-      </p>
-    );
+    return <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-green-600">The event has ended. Thank you for participating! 🎉</p>;
   }
 
   const blocks = [
@@ -53,21 +47,12 @@ export default function CountdownTimer({
 
   return (
     <div>
-      <h3 className="text-xl sm:text-2xl font-bold text-black mb-6">
-        Event Starts In
-      </h3>
+      <h3 className="text-xl sm:text-2xl font-bold text-black mb-6">Event Starts In</h3>
       <div className="flex justify-center gap-3 sm:gap-6">
         {blocks.map((b) => (
-          <div
-            key={b.label}
-            className="bg-white border-2 border-green-200 rounded-2xl px-4 sm:px-6 py-3 sm:py-5 min-w-[70px] sm:min-w-[100px] shadow-lg"
-          >
-            <div className="text-3xl sm:text-5xl font-black gradient-text tabular-nums">
-              {String(b.value).padStart(2, "0")}
-            </div>
-            <div className="text-xs sm:text-sm text-gray-500 font-medium mt-1">
-              {b.label}
-            </div>
+          <div key={b.label} className="bg-white border-2 border-green-200 rounded-2xl px-4 sm:px-6 py-3 sm:py-5 min-w-[70px] sm:min-w-[100px] shadow-lg">
+            <div className="text-3xl sm:text-5xl font-black gradient-text tabular-nums">{String(b.value).padStart(2, "0")}</div>
+            <div className="text-xs sm:text-sm text-gray-500 font-medium mt-1">{b.label}</div>
           </div>
         ))}
       </div>

@@ -24,13 +24,7 @@ const TIERS = [
   {
     name: "Gold",
     tagline: "Best value — most popular",
-    perks: [
-      "Speaking slot (20 min talk)",
-      "Logo on website, stage & materials",
-      "Exhibition booth",
-      "10 complimentary passes",
-      "Social media shoutouts (3×)",
-    ],
+    perks: ["Speaking slot (20 min talk)", "Logo on website, stage & materials", "Exhibition booth", "10 complimentary passes", "Social media shoutouts (3×)"],
     popular: true,
     // popular styling applied via border/CTA only — no scale
     cta: "Become a Sponsor",
@@ -38,12 +32,7 @@ const TIERS = [
   {
     name: "Silver",
     tagline: "Essential sponsorship",
-    perks: [
-      "Logo on website & backdrop",
-      "Social media mention (1×)",
-      "Shared booth space",
-      "5 complimentary passes",
-    ],
+    perks: ["Logo on website & backdrop", "Social media mention (1×)", "Shared booth space", "5 complimentary passes"],
     popular: false,
     cta: "Contact Us",
   },
@@ -56,19 +45,28 @@ const STATS = [
   { value: "5 yrs", label: "Running" },
 ];
 
-const DUMMY_GOLD    = ["Gold Sponsor A", "Gold Sponsor B", "Gold Sponsor C"];
-const DUMMY_SILVER  = ["Silver A", "Silver B", "Silver C", "Silver D"];
+const DUMMY_GOLD = ["Gold Sponsor A", "Gold Sponsor B", "Gold Sponsor C"];
+const DUMMY_SILVER = ["Silver A", "Silver B", "Silver C", "Silver D"];
 const DUMMY_COMMUNITY = [
-  "Event Partner", "Venue Partner", "Media Partner", "Tech Partner",
-  "Community A",  "Community B",  "Community C",  "Community D",
-  "Community E",  "Community F",  "Community G",  "Community H",
+  "Event Partner",
+  "Venue Partner",
+  "Media Partner",
+  "Tech Partner",
+  "Community A",
+  "Community B",
+  "Community C",
+  "Community D",
+  "Community E",
+  "Community F",
+  "Community G",
+  "Community H",
 ];
 ---
 
 <Layout title="Sponsors — Open Source Day 2026" activePath="/sponsors">
-
   <!-- Hero -->
-  <PageHero client:load
+  <PageHero
+    client:load
     badge="APPLICATIONS OPEN"
     title="OSD 2026"
     titleGradient="SPONSORS"
@@ -80,12 +78,14 @@ const DUMMY_COMMUNITY = [
   <!-- Stats -->
   <section class="py-14 px-4 bg-gray-50 border-y border-gray-100">
     <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-      {STATS.map(({ value, label }) => (
-        <div class="text-center border border-gray-100 bg-white rounded-2xl py-6 px-4">
-          <div class="text-3xl font-black gradient-text">{value}</div>
-          <div class="text-gray-500 text-sm mt-1">{label}</div>
-        </div>
-      ))}
+      {
+        STATS.map(({ value, label }) => (
+          <div class="text-center border border-gray-100 bg-white rounded-2xl py-6 px-4">
+            <div class="text-3xl font-black gradient-text">{value}</div>
+            <div class="text-gray-500 text-sm mt-1">{label}</div>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -100,39 +100,42 @@ const DUMMY_COMMUNITY = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-        {TIERS.map((tier) => (
-          <div class={`relative bg-white rounded-2xl p-8 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${tier.popular ? "border-2 border-green-300" : "border border-gray-200"}`}>
-
-            {tier.popular && (
-              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                <span class="bg-gray-900 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">MOST POPULAR</span>
-              </div>
-            )}
-
-            <h3 class="text-2xl font-black text-gray-900 mt-2 mb-1">{tier.name}</h3>
-            <p class="text-gray-400 text-sm mb-6">{tier.tagline}</p>
-
-            <ul class="space-y-3 mb-8 flex-1">
-              {tier.perks.map((perk) => (
-                <li class="flex items-start gap-2.5 text-sm text-gray-600">
-                  <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                  {perk}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="/cfs"
-              target="_blank"
-              rel="noopener noreferrer"
-              class={`block w-full text-center py-3 rounded-full font-bold text-sm transition-all hover:scale-105 ${tier.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+        {
+          TIERS.map((tier) => (
+            <div
+              class={`relative bg-white rounded-2xl p-8 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${tier.popular ? "border-2 border-green-300" : "border border-gray-200"}`}
             >
-              {tier.cta}
-            </a>
-          </div>
-        ))}
+              {tier.popular && (
+                <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span class="bg-gray-900 text-white text-xs font-bold px-4 py-1.5 rounded-full whitespace-nowrap">MOST POPULAR</span>
+                </div>
+              )}
+
+              <h3 class="text-2xl font-black text-gray-900 mt-2 mb-1">{tier.name}</h3>
+              <p class="text-gray-400 text-sm mb-6">{tier.tagline}</p>
+
+              <ul class="space-y-3 mb-8 flex-1">
+                {tier.perks.map((perk) => (
+                  <li class="flex items-start gap-2.5 text-sm text-gray-600">
+                    <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                    {perk}
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="/cfs"
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`block w-full text-center py-3 rounded-full font-bold text-sm transition-all hover:scale-105 ${tier.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+              >
+                {tier.cta}
+              </a>
+            </div>
+          ))
+        }
       </div>
 
       <p class="text-center text-gray-400 text-sm mt-8">
@@ -160,11 +163,13 @@ const DUMMY_COMMUNITY = [
           <div class="h-px flex-1 bg-gray-200"></div>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {DUMMY_GOLD.map((label) => (
-            <div class="h-24 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
-              <span class="text-gray-300 text-sm font-medium">{label}</span>
-            </div>
-          ))}
+          {
+            DUMMY_GOLD.map((label) => (
+              <div class="h-24 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
+                <span class="text-gray-300 text-sm font-medium">{label}</span>
+              </div>
+            ))
+          }
         </div>
       </div>
 
@@ -176,11 +181,13 @@ const DUMMY_COMMUNITY = [
           <div class="h-px flex-1 bg-gray-200"></div>
         </div>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {DUMMY_SILVER.map((label) => (
-            <div class="h-20 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
-              <span class="text-gray-300 text-sm font-medium">{label}</span>
-            </div>
-          ))}
+          {
+            DUMMY_SILVER.map((label) => (
+              <div class="h-20 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
+                <span class="text-gray-300 text-sm font-medium">{label}</span>
+              </div>
+            ))
+          }
         </div>
       </div>
     </div>
@@ -194,11 +201,13 @@ const DUMMY_COMMUNITY = [
       </h3>
       <p class="text-gray-500 mb-10">Communities that amplify open source with us</p>
       <div class="flex flex-wrap justify-center gap-3">
-        {DUMMY_COMMUNITY.map((p) => (
-          <div class="border border-gray-200 rounded-full px-5 py-2 text-gray-500 text-sm font-medium bg-gray-50 hover:border-green-300 hover:text-green-700 hover:bg-green-50 transition-all">
-            {p}
-          </div>
-        ))}
+        {
+          DUMMY_COMMUNITY.map((p) => (
+            <div class="border border-gray-200 rounded-full px-5 py-2 text-gray-500 text-sm font-medium bg-gray-50 hover:border-green-300 hover:text-green-700 hover:bg-green-50 transition-all">
+              {p}
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -208,19 +217,17 @@ const DUMMY_COMMUNITY = [
     <h3 class="text-2xl font-black text-gray-900 mb-3">
       Interested in <span class="gradient-text">sponsoring?</span>
     </h3>
-    <p class="text-gray-500 mb-6 max-w-md mx-auto">
-      We'd love to partner with you. Drop us a line and let's make it happen.
-    </p>
+    <p class="text-gray-500 mb-6 max-w-md mx-auto">We'd love to partner with you. Drop us a line and let's make it happen.</p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/cfs" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105">
+      <a
+        href="/cfs"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105"
+      >
         Apply to Sponsor
       </a>
-      <a href="mailto:opensourceweekend@gmail.com"
-        class="font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-        opensourceweekend@gmail.com
-      </a>
+      <a href="mailto:opensourceweekend@gmail.com" class="font-semibold text-gray-500 hover:text-gray-900 transition-colors"> opensourceweekend@gmail.com </a>
     </div>
   </section>
-
 </Layout>

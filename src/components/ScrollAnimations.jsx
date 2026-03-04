@@ -16,9 +16,7 @@ const ScrollAnimations = () => {
       });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll(
-      ".animate-fade-up, .animate-stagger"
-    );
+    const animatedElements = document.querySelectorAll(".animate-fade-up, .animate-stagger");
     animatedElements.forEach((el, index) => {
       el.style.opacity = "0";
       el.style.transform = "translateY(30px)";

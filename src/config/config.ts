@@ -12,8 +12,7 @@ import OSWBlack from "@/assets/icons/OSWBlack.svg";
 export const SITE = {
   title: "2026 OpenSourceDay",
   shortTitle: "OSD2026",
-  description:
-    "OpenSourceDay 2026 - Join us for the next chapter of open source innovation, learning, and community building.",
+  description: "OpenSourceDay 2026 - Join us for the next chapter of open source innovation, learning, and community building.",
   website: "https://osd.opensourceweekend.org",
   ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: OSDGreen,
@@ -30,8 +29,7 @@ export const EVENT = {
   shortName: "OSD2026",
   date: "TBA",
   location: "Ahmedabad, Gujarat, India",
-  tagline:
-    "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
+  tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
     "Open Source Day 2026 is a community-driven event celebrating the power of open source software. Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.",
   stats: {
@@ -84,8 +82,7 @@ export const NAVIGATION = {
 export const CALLS_2026 = [
   {
     title: "Call for Speakers",
-    description:
-      "Share your knowledge & inspire the community with a talk or workshop.",
+    description: "Share your knowledge & inspire the community with a talk or workshop.",
     href: "/cfspk",
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
@@ -93,8 +90,7 @@ export const CALLS_2026 = [
   },
   {
     title: "Call for Volunteers",
-    description:
-      "Help us make OSD 2026 an unforgettable experience for everyone.",
+    description: "Help us make OSD 2026 an unforgettable experience for everyone.",
     href: "/cfv",
     emoji: "🙌",
     color: "from-emerald-500 to-green-600",
@@ -110,8 +106,7 @@ export const CALLS_2026 = [
   },
   {
     title: "Call for Community Partners",
-    description:
-      "Partner with us to amplify the open source movement together.",
+    description: "Partner with us to amplify the open source movement together.",
     href: "/cfc",
     emoji: "🌐",
     color: "from-sky-500 to-blue-600",
@@ -356,15 +351,8 @@ export const TICKETS = [
     name: "Early Bird Ticket",
     price: "Coming Soon",
     originalPrice: null,
-    description:
-      "Early bird pricing with full conference access. Limited availability!",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Early Bird Discount",
-    ],
+    description: "Early bird pricing with full conference access. Limited availability!",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Early Bird Discount"],
     popular: false,
     available: false,
     alert: {
@@ -378,14 +366,8 @@ export const TICKETS = [
     name: "Regular Ticket",
     price: "Coming Soon",
     originalPrice: null,
-    description:
-      "Full conference access including lunch, keynotes, panels, and OSD goodies.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-    ],
+    description: "Full conference access including lunch, keynotes, panels, and OSD goodies.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies"],
     popular: true,
     available: false,
     alert: {
@@ -399,16 +381,8 @@ export const TICKETS = [
     name: "Community Fan",
     price: "Coming Soon",
     originalPrice: null,
-    description:
-      "For community members who support us and want exclusive perks.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Super Fan Goodies",
-      "Digital Certificate",
-    ],
+    description: "For community members who support us and want exclusive perks.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Super Fan Goodies", "Digital Certificate"],
     popular: false,
     available: false,
     alert: {
@@ -422,16 +396,8 @@ export const TICKETS = [
     name: "Supporter Ticket",
     price: "Coming Soon",
     originalPrice: null,
-    description:
-      "Support the open source movement and get exclusive goodies and networking opportunities.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Supporter Exclusive goodies",
-      "Digital Certificate",
-    ],
+    description: "Support the open source movement and get exclusive goodies and networking opportunities.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Supporter Exclusive goodies", "Digital Certificate"],
     popular: false,
     available: false,
     konfhubUrl: "#",
@@ -441,8 +407,7 @@ export const TICKETS = [
     name: "Golden Ticket",
     price: "Coming Soon",
     originalPrice: null,
-    description:
-      "Premium ticket with exclusive benefits, networking dinner, and appreciation memento.",
+    description: "Premium ticket with exclusive benefits, networking dinner, and appreciation memento.",
     features: [
       "Full-access to conference",
       "Lunch",

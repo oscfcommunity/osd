@@ -67,46 +67,31 @@ import { PastEvent } from "@/config/2025/config";
 
 <Layout title="Past Events — 2025 OSD" activePath="/2025/past-events">
   <!-- Heading Section -->
-  <Heading
-    title="Past Events"
-    description="Look back at the incredible moments, innovations, and connections made at previous OpenSource Weekend events."
-  />
+  <Heading title="Past Events" description="Look back at the incredible moments, innovations, and connections made at previous OpenSource Weekend events." />
 
   <!-- Overall Stats -->
   <section class="py-10 px-4 bg-gradient-to-b from-green-400 to-green-100">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-4xl font-bold text-center text-white mb-12">
-        Our Impact Over the Years
-      </h2>
+      <h2 class="text-4xl font-bold text-center text-white mb-12">Our Impact Over the Years</h2>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-8 text-center">
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            10k+
-          </div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">10k+</div>
           <div class="text-black-300">Total Attendees</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            300+
-          </div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">300+</div>
           <div class="text-black-300">Meetups</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            600+
-          </div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">600+</div>
           <div class="text-black-300">Speakers</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            500+
-          </div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">500+</div>
           <div class="text-black-300">Topics Covered</div>
         </div>
         <div>
-          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">
-            50+
-          </div>
+          <div class="text-4xl md:text-6xl font-bold gradient-text mb-2">50+</div>
           <div class="text-black-300">Community Partners</div>
         </div>
       </div>
@@ -119,20 +104,12 @@ import { PastEvent } from "@/config/2025/config";
       {
         PastEvent.map((event) => (
           <div class="text-center">
-            <span class="text-green-400 font-bold text-lg block mb-2">
-              {event.year}
-            </span>
+            <span class="text-green-400 font-bold text-lg block mb-2">{event.year}</span>
             <h3 class="text-4xl font-bold text-black mb-12">{event.title}</h3>
             <div class="flex flex-wrap justify-center gap-6 mb-8">
               {event.images.map((url) => (
                 <div class="aspect-w-16 aspect-h-9 w-72 max-w-full rounded-lg overflow-hidden shadow-md">
-                  <Image
-                    src={url}
-                    alt={event.title}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                    width={800}
-                  />
+                  <Image src={url} alt={event.title} class="w-full h-full object-cover" loading="lazy" width={800} />
                 </div>
               ))}
             </div>

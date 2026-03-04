@@ -34,17 +34,12 @@ const getTypeColor = (type: string) => {
 
   <section class="w-full flex flex-col gap-5 justify-center">
     <!-- OSD Schedule -->
-    <section
-      id="day2"
-      class="py-20 px-4 w-full bg-gradient-to-t to-green-50 from-green-300"
-    >
+    <section id="day2" class="py-20 px-4 w-full bg-gradient-to-t to-green-50 from-green-300">
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-col flex-1 items-center">
           <h2 class="text-4xl font-bold text-center text-black mb-4">
             <span class="gradient-text">Open Source Day 2025</span>
-            <span class="text-lg block text-green-500"
-              >Silver Oak University (5th October 2025)</span
-            >
+            <span class="text-lg block text-green-500">Silver Oak University (5th October 2025)</span>
           </h2>
           <div class="flex items-center gap-6">
             <div class="btn mb-12 w-fit">
@@ -58,19 +53,11 @@ const getTypeColor = (type: string) => {
                 class="flex items-center gap-2"
               >
                 <span>Event Guide</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="size-5"
-                >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"
-                  ></path>
+                    d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3"></path>
                 </svg>
               </a>
             </div>
@@ -87,25 +74,19 @@ const getTypeColor = (type: string) => {
                     "col-span-2 md:col-span-1": session?.isPanelRight,
                   },
                   {
-                    "col-span-2 md:col-span-1 md:row-span-2":
-                      session?.isPanelLeft,
+                    "col-span-2 md:col-span-1 md:row-span-2": session?.isPanelLeft,
                   },
                   {
-                    "col-span-2":
-                      !session?.isPanelRight && !session?.isPanelLeft,
+                    "col-span-2": !session?.isPanelRight && !session?.isPanelLeft,
                   },
                 ]}
               >
                 <div class="h-full flex flex-col items-stretch justify-between gap-5">
                   <div class="flex md:items-center md:justify-between gap-5 flex-wrap">
-                    <span class="text-green-600 font-bold text-lg min-w-[80px]">
-                      {session.time}
-                    </span>
+                    <span class="text-green-600 font-bold text-lg min-w-[80px]">{session.time}</span>
                     <div class="inline-flex items-center justify-end gap-2 ">
                       <span
-                        class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(
-                          session.type
-                        )}`}
+                        class={`px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2  text-black border-black ${getTypeColor(session.type)}`}
                       >
                         {session.type.toUpperCase()}
                       </span>
@@ -117,14 +98,7 @@ const getTypeColor = (type: string) => {
                           class={`inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-black bg-orange-300`}
                         >
                           <span class="uppercase">Presentation</span>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="currentColor"
-                            class="size-3"
-                          >
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
                             <path
                               stroke-linecap="round"
                               stroke-linejoin="round"
@@ -136,28 +110,13 @@ const getTypeColor = (type: string) => {
                     </div>
                   </div>
                   <div>
-                    <h3 class="text-xl font-bold text-black mb-1">
-                      {session.title}
-                    </h3>
-                    {session.speaker && (
-                      <p class="text-black mb-2">by {session.speaker}</p>
-                    )}
+                    <h3 class="text-xl font-bold text-black mb-1">{session.title}</h3>
+                    {session.speaker && <p class="text-black mb-2">by {session.speaker}</p>}
                   </div>
                   <div class="flex flex-wrap gap-5 items-center justify-between">
                     <span class="text-sm text-gray-600 flex items-center flex-wrap gap-1">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="currentColor"
-                        class="size-6"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                        />
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -183,10 +142,7 @@ const getTypeColor = (type: string) => {
   <section class="py-20 px-4 bg-white">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-4xl font-bold text-black mb-6">Take It With You</h2>
-      <p class="text-xl text-black mb-8">
-        Download the complete schedule and add it to your calendar so you don't
-        miss anything!
-      </p>
+      <p class="text-xl text-black mb-8">Download the complete schedule and add it to your calendar so you don't miss anything!</p>
     </div>
   </section>
 
@@ -195,9 +151,7 @@ const getTypeColor = (type: string) => {
     <div class="max-w-6xl mx-auto">
       <h2 class="text-4xl font-bold text-center text-black mb-12">
         <span class="gradient-text">Open Source with AI</span>
-        <span class="text-lg block text-green-500"
-          >Workshop at Aubergine (27th September 2025)</span
-        >
+        <span class="text-lg block text-green-500">Workshop at Aubergine (27th September 2025)</span>
       </h2>
       <div class="space-y-4">
         {
@@ -206,22 +160,13 @@ const getTypeColor = (type: string) => {
               <div class="flex flex-col gap-5 md:flex-row md:items-center justify-between">
                 <div class="flex-1">
                   <div class="flex items-center space-x-4 mb-2">
-                    <span class="text-green-600 font-bold text-lg min-w-[80px]">
-                      {session.time}
-                    </span>
-                    <span
-                      class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}
-                    >
-                      {session.type.charAt(0).toUpperCase() +
-                        session.type.slice(1)}
+                    <span class="text-green-600 font-bold text-lg min-w-[80px]">{session.time}</span>
+                    <span class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}>
+                      {session.type.charAt(0).toUpperCase() + session.type.slice(1)}
                     </span>
                   </div>
-                  <h3 class="text-xl font-bold text-black mb-1">
-                    {session.title}
-                  </h3>
-                  {session.speaker && (
-                    <p class="text-black mb-2">by {session.speaker}</p>
-                  )}
+                  <h3 class="text-xl font-bold text-black mb-1">{session.title}</h3>
+                  {session.speaker && <p class="text-black mb-2">by {session.speaker}</p>}
                   <p class="text-sm text-gray-600">{session.room}</p>
                 </div>
                 <div class="btn">

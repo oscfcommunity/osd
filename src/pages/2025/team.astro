@@ -37,16 +37,15 @@ const getLinkedin = (m: any): string | null => {
         class="shrink-0 inline-flex items-center gap-2 bg-white text-green-700 font-bold px-6 py-2.5 rounded-full hover:bg-green-50 transition-all duration-200 hover:scale-105 shadow-lg text-sm"
       >
         Apply to Volunteer
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+        >
       </a>
     </div>
   </div>
 
   <!-- Heading Section -->
-  <Heading
-    title="Our Team"
-    description="Meet the people who make Open Source Day possible."
-  />
+  <Heading title="Our Team" description="Meet the people who make Open Source Day possible." />
 
   <section class="py-12 px-4 bg-gradient-to-t from-green-200 to-green-50">
     <div class="max-w-6xl mx-auto">
@@ -58,19 +57,9 @@ const getLinkedin = (m: any): string | null => {
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {TEAM.advisory.map((m) =>
                   getLinkedin(m) ? (
-                    <a
-                      href={getLinkedin(m)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="block h-full"
-                    >
+                    <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <Image
-                          src={m.image}
-                          alt={m.name}
-                          class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
-                          width={400}
-                        />
+                        <Image src={m.image} alt={m.name} class="w-28 h-28 rounded-full mx-auto object-cover mb-4" width={400} />
                         <h3 class="font-semibold text-lg">{m.name}</h3>
                         <div class="text-sm text-gray-600">
                           {getRoles(m).map((r: string) => (
@@ -81,12 +70,7 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                      <Image
-                        src={m.image}
-                        alt={m.name}
-                        class="w-28 h-28 rounded-full mx-auto object-cover mb-4"
-                        width={400}
-                      />
+                      <Image src={m.image} alt={m.name} class="w-28 h-28 rounded-full mx-auto object-cover mb-4" width={400} />
                       <h3 class="font-semibold text-lg">{m.name}</h3>
                       <div class="text-sm text-gray-600">
                         {getRoles(m).map((r: string) => (
@@ -108,19 +92,9 @@ const getLinkedin = (m: any): string | null => {
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {TEAM.mentors.map((m) =>
                   getLinkedin(m) ? (
-                    <a
-                      href={getLinkedin(m)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="block h-full"
-                    >
+                    <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <Image
-                          src={m.image}
-                          alt={m.name}
-                          class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
-                          width={400}
-                        />
+                        <Image src={m.image} alt={m.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" width={400} />
                         <h3 class="font-semibold">{m.name}</h3>
                         <div class="text-sm text-gray-600">
                           {getRoles(m).map((r: string) => (
@@ -131,12 +105,7 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                      <Image
-                        src={m.image}
-                        alt={m.name}
-                        class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
-                        width={400}
-                      />
+                      <Image src={m.image} alt={m.name} class="w-24 h-24 rounded-full mx-auto object-cover mb-4" width={400} />
                       <h3 class="font-semibold">{m.name}</h3>
                       <div class="text-sm text-gray-600">
                         {getRoles(m).map((r: string) => (
@@ -158,19 +127,9 @@ const getLinkedin = (m: any): string | null => {
               <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {TEAM.core.map((m) =>
                   getLinkedin(m) ? (
-                    <a
-                      href={getLinkedin(m)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="block h-full"
-                    >
+                    <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
                       <div class="bg-white p-6 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <Image
-                          src={m.image}
-                          alt={m.name}
-                          class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
-                          width={400}
-                        />
+                        <Image src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-4" width={400} />
                         <h3 class="font-semibold">{m.name}</h3>
                         <div class="text-sm text-gray-600">
                           {getRoles(m).map((r: string) => (
@@ -181,12 +140,7 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-6 rounded-lg shadow-sm text-center h-full">
-                      <Image
-                        src={m.image}
-                        alt={m.name}
-                        class="w-20 h-20 rounded-full mx-auto object-cover mb-4"
-                        width={400}
-                      />
+                      <Image src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-4" width={400} />
                       <h3 class="font-semibold">{m.name}</h3>
                       <div class="text-sm text-gray-600">
                         {getRoles(m).map((r: string) => (
@@ -208,19 +162,9 @@ const getLinkedin = (m: any): string | null => {
               <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {TEAM.volunteers.map((m) =>
                   getLinkedin(m) ? (
-                    <a
-                      href={getLinkedin(m)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="block h-full"
-                    >
+                    <a href={getLinkedin(m)} target="_blank" rel="noopener noreferrer" class="block h-full">
                       <div class="bg-white p-4 rounded-lg shadow-sm text-center hover:shadow-md transition-shadow h-full">
-                        <Image
-                          src={m.image}
-                          alt={m.name}
-                          class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
-                          width={400}
-                        />
+                        <Image src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-3" width={400} />
                         <div class="font-medium">{m.name}</div>
                         <div class="text-sm text-gray-600">
                           {getRoles(m).map((r: string) => (
@@ -231,12 +175,7 @@ const getLinkedin = (m: any): string | null => {
                     </a>
                   ) : (
                     <div class="bg-white p-4 rounded-lg shadow-sm text-center h-full">
-                      <Image
-                        src={m.image}
-                        alt={m.name}
-                        class="w-20 h-20 rounded-full mx-auto object-cover mb-3"
-                        width={400}
-                      />
+                      <Image src={m.image} alt={m.name} class="w-20 h-20 rounded-full mx-auto object-cover mb-3" width={400} />
                       <div class="font-medium">{m.name}</div>
                       <div class="text-sm text-gray-600">
                         {getRoles(m).map((r) => (
@@ -256,16 +195,20 @@ const getLinkedin = (m: any): string | null => {
 
   <!-- Join as Volunteer OSD 2026 -->
   <section class="py-20 px-4 bg-gradient-to-br from-gray-950 via-emerald-950 to-gray-900 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 50%, #059669 0%, transparent 50%), radial-gradient(circle at 80% 50%, #10b981 0%, transparent 50%);"></div>
+    <div
+      class="absolute inset-0 opacity-20"
+      style="background-image: radial-gradient(circle at 20% 50%, #059669 0%, transparent 50%), radial-gradient(circle at 80% 50%, #10b981 0%, transparent 50%);"
+    >
+    </div>
     <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-semibold mb-6">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-sm font-semibold mb-6"
+      >
         <span class="block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
         OSD 2026 — Volunteer Applications Open
       </div>
       <div class="text-5xl mb-4">🙌</div>
-      <h2 class="text-4xl md:text-5xl font-black text-white mb-5">
-        Want to be Part of the OSD 2026 Team?
-      </h2>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-5">Want to be Part of the OSD 2026 Team?</h2>
       <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
         Volunteers are the heart of Open Source Day. Join us to help organize, coordinate, and make OSD 2026 a legendary experience.
       </p>
@@ -276,7 +219,9 @@ const getLinkedin = (m: any): string | null => {
         class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 shadow-xl shadow-emerald-900/50"
       >
         Apply to Volunteer
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+        >
       </a>
     </div>
   </section>

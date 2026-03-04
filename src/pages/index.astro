@@ -12,11 +12,7 @@ import SquareUser from "@/assets/icons/square-user.svg";
 import LocationIcon from "@/assets/icons/location.svg";
 import CalendarClock from "@/assets/icons/calendarClock.svg";
 
-const DUMMY_GOLD = [
-  { name: "Platinum Sponsor" },
-  { name: "Gold Sponsor A" },
-  { name: "Gold Sponsor B" },
-];
+const DUMMY_GOLD = [{ name: "Platinum Sponsor" }, { name: "Gold Sponsor A" }, { name: "Gold Sponsor B" }];
 const DUMMY_PARTNERS = [
   "Event Partner",
   "Venue Partner",
@@ -53,28 +49,30 @@ const DUMMY_PARTNERS = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CALLS_2026.map((call) => (
-          <a
-            href={call.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col"
-          >
-            <div class="w-11 h-11 bg-green-50 border border-green-100 rounded-xl mb-5 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-2">{call.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed flex-1">{call.description}</p>
-            <div class="mt-5 flex items-center text-sm font-semibold text-green-600 group-hover:text-green-700">
-              Apply Now
-              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </div>
-          </a>
-        ))}
+        {
+          CALLS_2026.map((call) => (
+            <a
+              href={call.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col"
+            >
+              <div class="w-11 h-11 bg-green-50 border border-green-100 rounded-xl mb-5 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{call.title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed flex-1">{call.description}</p>
+              <div class="mt-5 flex items-center text-sm font-semibold text-green-600 group-hover:text-green-700">
+                Apply Now
+                <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </div>
+            </a>
+          ))
+        }
       </div>
 
       <p class="text-center text-gray-400 text-sm mt-10">
@@ -93,7 +91,8 @@ const DUMMY_PARTNERS = [
         </div>
         <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">About <span class="gradient-text">Open Source Day</span></h2>
         <p class="text-lg text-gray-500 max-w-3xl mx-auto">
-          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in Ahmedabad.
+          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a
+          full day of learning, collaboration, and innovation in Ahmedabad.
         </p>
       </div>
 
@@ -103,21 +102,27 @@ const DUMMY_PARTNERS = [
             <LearnAndContribute />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">Learn & Contribute</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.</p>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.
+          </p>
         </div>
         <div class="bg-white border border-gray-100 p-8 rounded-2xl hover:shadow-md hover:border-green-100 transition-all duration-300">
           <div class="w-11 h-11 bg-green-500 rounded-xl mb-5 flex items-center justify-center text-white">
             <Connect />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">Connect</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Network with fellow developers, open source maintainers, and tech enthusiasts from across the Indian tech community.</p>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Network with fellow developers, open source maintainers, and tech enthusiasts from across the Indian tech community.
+          </p>
         </div>
         <div class="bg-white border border-gray-100 p-8 rounded-2xl hover:shadow-md hover:border-green-100 transition-all duration-300">
           <div class="w-11 h-11 bg-green-500 rounded-xl mb-5 flex items-center justify-center text-white">
             <Celebrate />
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">Celebrate</h3>
-          <p class="text-gray-500 text-sm leading-relaxed">Celebrate open source achievements and discover exciting new projects, communities, and opportunities.</p>
+          <p class="text-gray-500 text-sm leading-relaxed">
+            Celebrate open source achievements and discover exciting new projects, communities, and opportunities.
+          </p>
         </div>
       </div>
     </div>
@@ -131,19 +136,22 @@ const DUMMY_PARTNERS = [
         <p class="text-lg text-gray-500">What we're aiming for — bigger and better than ever</p>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
-        {[
-          { value: 1000, suffix: "+", label: "Expected Attendees" },
-          { value: 80, suffix: "+", label: "Community Partners" },
-          { value: 30, suffix: "+", label: "Expert Speakers" },
-          { value: 15, suffix: "+", label: "Technical Sessions" },
-        ].map(({ value, suffix, label }) => (
-          <div class="flex flex-col items-center py-10 px-6 bg-white">
-            <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
-              <Counter target={value} client:visible />{suffix}
+        {
+          [
+            { value: 1000, suffix: "+", label: "Expected Attendees" },
+            { value: 80, suffix: "+", label: "Community Partners" },
+            { value: 30, suffix: "+", label: "Expert Speakers" },
+            { value: 15, suffix: "+", label: "Technical Sessions" },
+          ].map(({ value, suffix, label }) => (
+            <div class="flex flex-col items-center py-10 px-6 bg-white">
+              <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
+                <Counter target={value} client:visible />
+                {suffix}
+              </div>
+              <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
             </div>
-            <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
-          </div>
-        ))}
+          ))
+        }
       </div>
       <div class="grid grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 mt-px">
         <div class="flex flex-col items-center py-10 px-6 bg-white">
@@ -178,11 +186,13 @@ const DUMMY_PARTNERS = [
           <div class="h-px flex-1 bg-gray-200"></div>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {DUMMY_GOLD.map((s) => (
-            <div class="h-24 border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
-              {s.name}
-            </div>
-          ))}
+          {
+            DUMMY_GOLD.map((s) => (
+              <div class="h-24 border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
+                {s.name}
+              </div>
+            ))
+          }
         </div>
       </div>
 
@@ -194,19 +204,24 @@ const DUMMY_PARTNERS = [
           <div class="h-px flex-1 bg-gray-200"></div>
         </div>
         <div class="flex flex-wrap justify-center gap-3">
-          {DUMMY_PARTNERS.map((p) => (
-            <div class="border-2 border-dashed border-gray-200 rounded-xl px-6 py-3 text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
-              {p}
-            </div>
-          ))}
+          {
+            DUMMY_PARTNERS.map((p) => (
+              <div class="border-2 border-dashed border-gray-200 rounded-xl px-6 py-3 text-gray-400 text-sm font-medium bg-gray-50 hover:border-green-200 transition-colors">
+                {p}
+              </div>
+            ))
+          }
         </div>
       </div>
 
       <div class="text-center mt-10">
-        <a href="/sponsors" class="inline-flex items-center gap-2 font-semibold text-gray-700 border-2 border-gray-900 px-6 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200">
+        <a
+          href="/sponsors"
+          class="inline-flex items-center gap-2 font-semibold text-gray-700 border-2 border-gray-900 px-6 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200"
+        >
           View All Sponsors & Partners
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
@@ -222,25 +237,30 @@ const DUMMY_PARTNERS = [
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mb-10">
-        {OUR_SPEAKERS.map((sp) => (
-          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-6 rounded-2xl text-center transition-all duration-300">
-            <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-green-500 border border-green-100">
-              <SquareUser class="w-9 h-9" />
+        {
+          OUR_SPEAKERS.map((sp) => (
+            <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-6 rounded-2xl text-center transition-all duration-300">
+              <div class="w-20 h-20 rounded-full mx-auto mb-4 bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center text-green-500 border border-green-100">
+                <SquareUser class="w-9 h-9" />
+              </div>
+              <h4 class="font-bold text-gray-900">{sp.name}</h4>
+              <div class="text-sm text-gray-500 mt-1">
+                {sp.position} · {sp.company}
+              </div>
+              {Boolean(sp?.event) && <span class="inline-block mt-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">{sp.event}</span>}
             </div>
-            <h4 class="font-bold text-gray-900">{sp.name}</h4>
-            <div class="text-sm text-gray-500 mt-1">{sp.position} · {sp.company}</div>
-            {Boolean(sp?.event) && (
-              <span class="inline-block mt-2 px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">{sp.event}</span>
-            )}
-          </div>
-        ))}
+          ))
+        }
       </div>
 
       <div class="text-center">
-        <a href="/speakers" class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
+        <a
+          href="/speakers"
+          class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105"
+        >
           View All Speakers
           <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>
@@ -250,7 +270,6 @@ const DUMMY_PARTNERS = [
   <!-- ─── VENUE + TICKETS ─── -->
   <section class="py-24 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-
       <!-- Venue Card -->
       <div class="bg-white border border-gray-100 rounded-2xl p-8 flex flex-col hover:shadow-md hover:border-green-100 transition-all duration-300">
         <div class="flex items-center gap-3 mb-6">
@@ -265,7 +284,10 @@ const DUMMY_PARTNERS = [
           <CalendarClock class="w-4 h-4" />
           TBA · Ahmedabad, Gujarat
         </div>
-        <a href="/venue" class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
+        <a
+          href="/venue"
+          class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105"
+        >
           Venue Details
         </a>
       </div>
@@ -275,24 +297,33 @@ const DUMMY_PARTNERS = [
         <div class="flex items-center gap-3 mb-6">
           <div class="w-10 h-10 bg-green-50 rounded-xl flex items-center justify-center text-green-600 border border-green-100">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a3 3 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a3 3 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z"
+              ></path>
             </svg>
           </div>
           <h3 class="text-xl font-black text-gray-900">Tickets</h3>
         </div>
 
         <div class="flex flex-col gap-3 mb-auto">
-          {TICKETS.slice(0, 2).map((t) => (
-            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
-              <div>
-                <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
-                <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
+          {
+            TICKETS.slice(0, 2).map((t) => (
+              <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
+                <div>
+                  <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
+                  <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
+                </div>
+                <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
               </div>
-              <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
-            </div>
-          ))}
+            ))
+          }
         </div>
-        <a href="/tickets" class="mt-6 block text-center bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-full font-bold text-sm transition-all glow-effect hover:scale-105">
+        <a
+          href="/tickets"
+          class="mt-6 block text-center bg-green-500 hover:bg-green-400 text-white px-6 py-3 rounded-full font-bold text-sm transition-all glow-effect hover:scale-105"
+        >
           View All Tickets
         </a>
       </div>
@@ -303,21 +334,23 @@ const DUMMY_PARTNERS = [
   <section class="py-24 px-4 bg-white">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Ready to <span class="gradient-text">Join Us?</span></h2>
-      <p class="text-lg text-gray-500 mb-10">
-        Don't miss out on India's biggest open source community event. Join our WhatsApp community to stay updated!
-      </p>
+      <p class="text-lg text-gray-500 mb-10">Don't miss out on India's biggest open source community event. Join our WhatsApp community to stay updated!</p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir" target="_blank" rel="noopener noreferrer"
-          class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
+        <a
+          href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105"
+        >
           Join WhatsApp Community
           <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
         <a href="/2025/" class="inline-flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-900 transition-colors">
           Explore OSD 2025
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
           </svg>
         </a>
       </div>

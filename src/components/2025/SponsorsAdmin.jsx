@@ -17,7 +17,7 @@ export default function SponsorsAdmin() {
       const obj = {
         name: parts[0] || "Unnamed",
         logo: parts[1] || `/partners/${parts[0]}.png`,
-        website: parts[2] || "#"
+        website: parts[2] || "#",
       };
       if (parts[3]) obj.tier = parts[3];
       return obj;
@@ -29,20 +29,11 @@ export default function SponsorsAdmin() {
     <div className="p-4 bg-white rounded shadow">
       <h3 className="font-semibold mb-2">Sponsors Admin (helper)</h3>
       <p className="text-sm text-gray-600 mb-4">
-        Paste one sponsor per line as: <code>name,logo,website,tier</code> or
-        just a filename per line.
+        Paste one sponsor per line as: <code>name,logo,website,tier</code> or just a filename per line.
       </p>
-      <textarea
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        className="w-full p-2 border rounded mb-3"
-        rows={6}
-      />
+      <textarea value={input} onChange={(e) => setInput(e.target.value)} className="w-full p-2 border rounded mb-3" rows={6} />
       <div className="flex gap-2">
-        <button
-          onClick={generate}
-          className="px-4 py-2 bg-green-600 text-white rounded"
-        >
+        <button onClick={generate} className="px-4 py-2 bg-green-600 text-white rounded">
           Generate JSON
         </button>
         <button
@@ -56,15 +47,8 @@ export default function SponsorsAdmin() {
         </button>
       </div>
 
-      <label className="block mt-4 font-medium">
-        Output (copy into config or data file)
-      </label>
-      <textarea
-        value={output}
-        readOnly
-        rows={8}
-        className="w-full p-2 border rounded mt-1 font-mono text-sm"
-      />
+      <label className="block mt-4 font-medium">Output (copy into config or data file)</label>
+      <textarea value={output} readOnly rows={8} className="w-full p-2 border rounded mt-1 font-mono text-sm" />
     </div>
   );
 }

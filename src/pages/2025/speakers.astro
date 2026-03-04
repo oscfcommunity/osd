@@ -30,7 +30,9 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
         class="shrink-0 inline-flex items-center gap-2 bg-white text-purple-700 font-bold px-6 py-2.5 rounded-full hover:bg-purple-50 transition-all duration-200 hover:scale-105 shadow-lg text-sm"
       >
         Apply to Speak
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+        >
       </a>
     </div>
   </div>
@@ -47,9 +49,7 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
             <h2 class="text-4xl font-bold text-center mb-12">
               <span class="gradient-text">{event.eventName}</span>
               <br />
-              <span class="text-lg text-green-500">
-                {`At ${event.venue} (${event.date})`}
-              </span>
+              <span class="text-lg text-green-500">{`At ${event.venue} (${event.date})`}</span>
             </h2>
             <div class="container mx-auto px-4 pb-10">
               {event?.speakers && (
@@ -65,13 +65,9 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
                     <div class="flex flex-col my-5">
                       {section.segment && (
                         <h3 class="text-xl font-bold text-gray-700 mt-4 mb-7 ml-1">
-                          <span class="font-light text-lg underline underline-offset-6">
-                            {section.segment.toUpperCase()}
-                          </span>
+                          <span class="font-light text-lg underline underline-offset-6">{section.segment.toUpperCase()}</span>
                           <br />
-                          {section.title && (
-                            <span class="text-2xl">{section.title}</span>
-                          )}
+                          {section.title && <span class="text-2xl">{section.title}</span>}
                         </h3>
                       )}
                       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
@@ -93,18 +89,10 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
   <!-- Past Speakers -->
   <section class="py-10 px-4 bg-gray-100">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-800 mb-5 text-left">
-        Past Speakers
-      </h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-5 text-left">Past Speakers</h2>
       <div class="container mx-auto px-4">
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8"
-        >
-          {
-            pastSpeakers.map((speaker) => (
-              <SpeakerCard width={400} {...speaker} />
-            ))
-          }
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-items-center lg:grid-cols-4 gap-8">
+          {pastSpeakers.map((speaker) => <SpeakerCard width={400} {...speaker} />)}
         </div>
       </div>
     </div>
@@ -112,16 +100,20 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
 
   <!-- Call for Speakers OSD 2026 -->
   <section class="py-20 px-4 bg-gradient-to-br from-gray-950 via-violet-950 to-gray-900 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 20% 50%, #7c3aed 0%, transparent 50%), radial-gradient(circle at 80% 50%, #4f46e5 0%, transparent 50%);"></div>
+    <div
+      class="absolute inset-0 opacity-20"
+      style="background-image: radial-gradient(circle at 20% 50%, #7c3aed 0%, transparent 50%), radial-gradient(circle at 80% 50%, #4f46e5 0%, transparent 50%);"
+    >
+    </div>
     <div class="relative z-10 max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 text-sm font-semibold mb-6">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-500/20 border border-violet-400/30 text-violet-300 text-sm font-semibold mb-6"
+      >
         <span class="block w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse"></span>
         OSD 2026 — Applications Open
       </div>
       <div class="text-5xl mb-4">🎤</div>
-      <h2 class="text-4xl md:text-5xl font-black text-white mb-5">
-        Want to Speak at OSD 2026?
-      </h2>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-5">Want to Speak at OSD 2026?</h2>
       <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
         We're looking for passionate speakers to inspire India's open source community. Share your story, your code, your ideas.
       </p>
@@ -132,7 +124,9 @@ const pastSpeakers = SPEAKERS.filter((s) => s.eventYear < OSD_YEAR);
         class="inline-flex items-center gap-2 bg-violet-500 hover:bg-violet-400 text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-200 hover:scale-105 shadow-xl shadow-violet-900/50"
       >
         Submit Your Talk Proposal
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+        >
       </a>
     </div>
   </section>

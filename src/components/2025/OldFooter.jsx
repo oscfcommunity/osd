@@ -12,14 +12,8 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="mb-6">
               <div className="flex items-center mb-4">
-                <img
-                  src={BRANDING.logos.main.src}
-                  alt="OSW Logo"
-                  className="w-12 h-12 mr-3"
-                />
-                <h3 className="text-3xl font-bold gradient-text">
-                  {SITE.shortTitle}
-                </h3>
+                <img src={BRANDING.logos.main.src} alt="OSW Logo" className="w-12 h-12 mr-3" />
+                <h3 className="text-3xl font-bold gradient-text">{SITE.shortTitle}</h3>
               </div>
               <p className="text-black max-w-md">{FOOTER.description}</p>
             </div>
@@ -33,11 +27,7 @@ const Footer = () => {
                   className="w-10 h-10 bg-white border-2 border-gray-200 rounded-lg flex items-center justify-center hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-200 text-black-600"
                   aria-label={media.name}
                 >
-                  <img
-                    src={media.icon.src}
-                    alt={media.description}
-                    className="w-6 h-6"
-                  />
+                  <img src={media.icon.src} alt={media.description} className="w-6 h-6" />
                 </a>
               ))}
             </div>
@@ -64,21 +54,12 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-black mb-4">
-              {CONTACT.title}
-            </h4>
+            <h4 className="text-lg font-semibold text-black mb-4">{CONTACT.title}</h4>
             <ul className="space-y-2 text-black">
               <li>
-                <a
-                  href={`mailto:${CONTACT.email}`}
-                  className="hover:text-green-600 transition-colors"
-                >
+                <a href={`mailto:${CONTACT.email}`} className="hover:text-green-600 transition-colors">
                   <div className="flex items-center gap-2">
-                    <img
-                      src={MailIcon.src}
-                      alt={"Mail Icon"}
-                      className="w-5 h-5"
-                    />
+                    <img src={MailIcon.src} alt={"Mail Icon"} className="w-5 h-5" />
                     {CONTACT.email}
                   </div>
                 </a>
@@ -87,16 +68,9 @@ const Footer = () => {
               {Array.isArray(CONTACT.phone) ? (
                 CONTACT.phone.map((phone, idx) => (
                   <li key={idx}>
-                    <a
-                      href={`tel:${phone.replace(/\s+/g, "")}`}
-                      className="hover:text-green-600 transition-colors"
-                    >
+                    <a href={`tel:${phone.replace(/\s+/g, "")}`} className="hover:text-green-600 transition-colors">
                       <div className="flex items-center gap-2">
-                        <img
-                          src={PhoneIcon.src}
-                          alt={"Phone Icon"}
-                          className="w-5 h-5"
-                        />
+                        <img src={PhoneIcon.src} alt={"Phone Icon"} className="w-5 h-5" />
                         {phone}
                       </div>
                     </a>
@@ -104,17 +78,10 @@ const Footer = () => {
                 ))
               ) : (
                 <li>
-                  <a
-                    href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`}
-                    className="hover:text-green-600 transition-colors"
-                  >
+                  <a href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`} className="hover:text-green-600 transition-colors">
                     <div className="flex items-center gap-2">
                       <div className="flex items-center gap-2">
-                        <img
-                          src={PhoneIcon.src}
-                          alt={"Phone Icon"}
-                          className="w-5 h-5"
-                        />
+                        <img src={PhoneIcon.src} alt={"Phone Icon"} className="w-5 h-5" />
                         {CONTACT.phone}
                       </div>
                     </div>
@@ -123,11 +90,7 @@ const Footer = () => {
               )}
               <li className="text-sm">
                 <div className="flex items-center gap-2">
-                  <img
-                    src={LocationIcon.src}
-                    alt={"Location Icon"}
-                    className="w-5 h-5"
-                  />
+                  <img src={LocationIcon.src} alt={"Location Icon"} className="w-5 h-5" />
                   <div>
                     {CONTACT.address.venue}
                     <br />
@@ -144,11 +107,7 @@ const Footer = () => {
           <p className="text-black text-sm mb-4 md:mb-0">{FOOTER.credits}</p>
           <div className="flex space-x-6 text-sm">
             {FOOTER.legal.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="text-black hover:text-green-600 transition-colors"
-              >
+              <a key={index} href={link.href} className="text-black hover:text-green-600 transition-colors">
                 {link.label}
               </a>
             ))}

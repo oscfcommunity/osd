@@ -16,38 +16,13 @@ export interface Props {
   tags?: Array<string>;
 }
 
-const {
-  name,
-  position,
-  company,
-  presentationTitle,
-  event,
-  presentationLink,
-  image,
-  link = "",
-  width = 400,
-  tags,
-  class: className,
-} = Astro.props;
+const { name, position, company, presentationTitle, event, presentationLink, image, link = "", width = 400, tags, class: className } = Astro.props;
 ---
 
-<div
-  class:list={[
-    "w-full bg-green-100 shadow-gray-300 rounded-2xl shadow-md overflow-hidden border-2 pb-4",
-    className,
-  ]}
->
+<div class:list={["w-full bg-green-100 shadow-gray-300 rounded-2xl shadow-md overflow-hidden border-2 pb-4", className]}>
   <a href={link} target="_blank" rel="noopener noreferrer">
-    <div
-      class="relative w-full aspect-[3/4] min-h-[400px] pb-[133%] overflow-hidden"
-    >
-      <Image
-        src={image}
-        alt={name}
-        width={width}
-        class="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
-      />
+    <div class="relative w-full aspect-[3/4] min-h-[400px] pb-[133%] overflow-hidden">
+      <Image src={image} alt={name} width={width} class="absolute inset-0 w-full h-full object-cover" loading="lazy" />
     </div>
 
     <div>
@@ -66,9 +41,7 @@ const {
         tags && (
           <p class="text-sm px-4 text-gray-900">
             {tags.map((tag) => (
-              <span class="text-sm bg-green-200 rounded-full drop-shadow-xl shadow-gray-800 border-2 mt-1 mx-0.5 py-0.3 inline-block px-2">
-                {tag}
-              </span>
+              <span class="text-sm bg-green-200 rounded-full drop-shadow-xl shadow-gray-800 border-2 mt-1 mx-0.5 py-0.3 inline-block px-2">{tag}</span>
             ))}
           </p>
         )
@@ -102,14 +75,7 @@ const {
               class="mt-4 inline-flex items-center gap-1 px-3 py-1 whitespace-nowrap rounded-full text-xs font-semibold border-2 text-black border-black bg-orange-300"
             >
               <span class="uppercase">Presentation</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="size-3"
-              >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"

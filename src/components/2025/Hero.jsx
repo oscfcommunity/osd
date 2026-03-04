@@ -71,19 +71,10 @@ const Hero = () => {
       </div>
 
       {/* Background particles */}
-      <div
-        ref={particlesRef}
-        className="absolute inset-0 pointer-events-none"
-      ></div>
+      <div ref={particlesRef} className="absolute inset-0 pointer-events-none"></div>
 
-      <div
-        ref={heroRef}
-        className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-8 md:mt-0 pt-8"
-      >
-        <h1
-          ref={titleRef}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight flex flex-col items-center"
-        >
+      <div ref={heroRef} className="relative z-10 text-center px-4 max-w-6xl mx-auto mt-8 md:mt-0 pt-8">
+        <h1 ref={titleRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight flex flex-col items-center">
           <div className="flex items-center">
             <span className="text-black">Thanks for making</span>
           </div>
@@ -100,17 +91,11 @@ const Hero = () => {
           </span>
         </h1>
 
-        <p
-          ref={subtitleRef}
-          className="text-lg sm:text-xl md:text-2xl text-black mb-8 max-w-3xl mx-auto leading-relaxed px-4"
-        >
+        <p ref={subtitleRef} className="text-lg sm:text-xl md:text-2xl text-black mb-8 max-w-3xl mx-auto leading-relaxed px-4">
           {HERO.subtitle}
         </p>
 
-        <div
-          ref={ctaRef}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
-        >
+        <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4">
           <a
             href="/gallery"
             className="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all duration-200 glow-effect hover:scale-105 transform text-center shadow-lg"
@@ -128,9 +113,7 @@ const Hero = () => {
         {/* Event details */}
         <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 text-center px-4">
           <div className="light-card p-4 md:p-6 rounded-2xl shadow-lg">
-            <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
-              {EVENT.date}
-            </h3>
+            <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">{EVENT.date}</h3>
             <p className="text-sm md:text-base text-black">One Day Event</p>
           </div>
 
@@ -139,9 +122,7 @@ const Hero = () => {
             <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
               <Counter target={EVENT.stats.expectedAttendees} client:visible />+
             </h3>
-            <p className="text-sm md:text-base text-black">
-              Attendees Expected
-            </p>
+            <p className="text-sm md:text-base text-black">Attendees Expected</p>
           </div>
 
           {/* Speakers */}
@@ -157,9 +138,7 @@ const Hero = () => {
             <h3 className="text-xl md:text-2xl font-bold text-green-600 mb-2">
               <Counter target={EVENT.stats.communityPartners} client:visible />+
             </h3>
-            <p className="text-sm md:text-base text-black">
-              Community Partners
-            </p>
+            <p className="text-sm md:text-base text-black">Community Partners</p>
           </div>
         </div>
       </div>

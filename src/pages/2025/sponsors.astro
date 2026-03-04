@@ -4,12 +4,7 @@ import SponsorsGrid from "@/components/2025/SponsorsGrid.jsx";
 import Heading from "@components/2025/Heading.astro";
 import "@/styles/2025/global.css";
 
-import {
-  VENUE_PARTNER,
-COMMUNITY_PARTNERS,
-SPONSOR_TIERS,
-  EVENT_PARTNER,
-} from "@/config/2025/config";
+import { VENUE_PARTNER, COMMUNITY_PARTNERS, SPONSOR_TIERS, EVENT_PARTNER } from "@/config/2025/config";
 ---
 
 <Layout title="Sponsors — 2025 OSD" activePath="/2025/sponsors">
@@ -30,16 +25,15 @@ SPONSOR_TIERS,
         class="shrink-0 inline-flex items-center gap-2 bg-white text-amber-700 font-bold px-6 py-2.5 rounded-full hover:bg-amber-50 transition-all duration-200 hover:scale-105 shadow-lg text-sm"
       >
         Sponsor OSD 2026
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+        >
       </a>
     </div>
   </div>
 
   <!-- Heading Section -->
-  <Heading
-    title="Sponsors & Community Partners"
-    description="We're grateful for the support of our partners."
-  />
+  <Heading title="Sponsors & Community Partners" description="We're grateful for the support of our partners." />
 
   <section class="py-12 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
@@ -47,36 +41,22 @@ SPONSOR_TIERS,
         <div class="flex items-center mb-6">
           <div class="flex-1 h-px bg-green-600"></div>
           <div class="px-4 text-center">
-            <h2 class="text-2xl font-semibold text-green-600 inline-block">
-              Sponsors
-            </h2>
+            <h2 class="text-2xl font-semibold text-green-600 inline-block">Sponsors</h2>
           </div>
           <div class="flex-1 h-px bg-green-600"></div>
         </div>
         <!-- temporarily show community partner images in Sponsors grid (plain images only) -->
-        <SponsorsGrid
-          client:load
-          sponsors={SPONSOR_TIERS.gold}
-          columns={3}
-          maxHeight={140}
-        />
+        <SponsorsGrid client:load sponsors={SPONSOR_TIERS.gold} columns={3} maxHeight={140} />
       </div>
       <div class="mb-12">
         <div class="flex items-center mb-6">
           <div class="flex-1 h-px bg-green-600"></div>
           <div class="px-4 text-center">
-            <h2 class="text-2xl font-semibold text-green-600 inline-block">
-              Venue Partner
-            </h2>
+            <h2 class="text-2xl font-semibold text-green-600 inline-block">Venue Partner</h2>
           </div>
           <div class="flex-1 h-px bg-green-600"></div>
         </div>
-        <SponsorsGrid
-          client:load
-          sponsors={VENUE_PARTNER}
-          columns={1}
-          maxHeight={140}
-        />
+        <SponsorsGrid client:load sponsors={VENUE_PARTNER} columns={1} maxHeight={140} />
       </div>
 
       <!-- Event Partner -->
@@ -84,43 +64,33 @@ SPONSOR_TIERS,
         <div class="flex items-center mb-6">
           <div class="flex-1 h-px bg-green-600"></div>
           <div class="px-4 text-center">
-            <h2 class="text-2xl font-semibold text-green-600 inline-block">
-              Event Partner
-            </h2>
+            <h2 class="text-2xl font-semibold text-green-600 inline-block">Event Partner</h2>
           </div>
           <div class="flex-1 h-px bg-green-600"></div>
         </div>
-        <SponsorsGrid
-          client:load
-          sponsors={EVENT_PARTNER}
-          columns={EVENT_PARTNER.length}
-          maxHeight={140}
-        />
+        <SponsorsGrid client:load sponsors={EVENT_PARTNER} columns={EVENT_PARTNER.length} maxHeight={140} />
       </div>
 
       <div class="mb-8">
         <div class="flex items-center mb-6">
           <div class="flex-1 h-px bg-green-600"></div>
           <div class="px-4 text-center">
-            <h2 class="text-2xl font-semibold text-green-600 inline-block">
-              Community Partners
-            </h2>
+            <h2 class="text-2xl font-semibold text-green-600 inline-block">Community Partners</h2>
           </div>
           <div class="flex-1 h-px bg-green-600"></div>
         </div>
-        <SponsorsGrid
-          client:load
-          sponsors={COMMUNITY_PARTNERS}
-          columns={{ base: 2, md: 4, lg: 6 }}
-          maxHeight={140}
-        />
+        <SponsorsGrid client:load sponsors={COMMUNITY_PARTNERS} columns={{ base: 2, md: 4, lg: 6 }} maxHeight={140} />
       </div>
     </div>
   </section>
 
   <!-- OSD 2026 Get Involved Section -->
   <section class="py-20 px-4 bg-gradient-to-br from-gray-950 via-slate-900 to-gray-950 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 10% 50%, #f59e0b 0%, transparent 40%), radial-gradient(circle at 50% 80%, #0ea5e9 0%, transparent 40%), radial-gradient(circle at 90% 30%, #ec4899 0%, transparent 40%);"></div>
+    <div
+      class="absolute inset-0 opacity-20"
+      style="background-image: radial-gradient(circle at 10% 50%, #f59e0b 0%, transparent 40%), radial-gradient(circle at 50% 80%, #0ea5e9 0%, transparent 40%), radial-gradient(circle at 90% 30%, #ec4899 0%, transparent 40%);"
+    >
+    </div>
     <div class="relative z-10 max-w-6xl mx-auto">
       <!-- Section Header -->
       <div class="text-center mb-14">
@@ -128,9 +98,7 @@ SPONSOR_TIERS,
           <span class="block w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
           OSD 2026 — Now Accepting Applications
         </div>
-        <h2 class="text-4xl md:text-5xl font-black text-white mb-4">
-          Partner with OSD 2026
-        </h2>
+        <h2 class="text-4xl md:text-5xl font-black text-white mb-4">Partner with OSD 2026</h2>
         <p class="text-gray-400 text-lg max-w-2xl mx-auto">
           Be part of India's biggest open source event. Whether you sponsor, partner, or spread the word — your involvement matters.
         </p>
@@ -146,12 +114,20 @@ SPONSOR_TIERS,
           class="group relative flex flex-col bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-amber-500/40"
         >
           <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-500 to-orange-600 rounded-t-2xl"></div>
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform">🤝</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform"
+          >
+            🤝
+          </div>
           <h3 class="text-xl font-bold text-white mb-2">Call for Sponsors</h3>
-          <p class="text-gray-400 text-sm leading-relaxed flex-1">Support open source & grow your brand. Get visibility with 1000+ developers and community members.</p>
+          <p class="text-gray-400 text-sm leading-relaxed flex-1">
+            Support open source & grow your brand. Get visibility with 1000+ developers and community members.
+          </p>
           <div class="mt-5 flex items-center text-sm font-semibold text-amber-400 group-hover:text-amber-300">
             Become a Sponsor
-            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+            >
           </div>
         </a>
 
@@ -163,12 +139,20 @@ SPONSOR_TIERS,
           class="group relative flex flex-col bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-sky-500/40"
         >
           <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-t-2xl"></div>
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform">🌐</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform"
+          >
+            🌐
+          </div>
           <h3 class="text-xl font-bold text-white mb-2">Call for Community Partners</h3>
-          <p class="text-gray-400 text-sm leading-relaxed flex-1">Partner with us to amplify the open source community together and bring your members to OSD 2026.</p>
+          <p class="text-gray-400 text-sm leading-relaxed flex-1">
+            Partner with us to amplify the open source community together and bring your members to OSD 2026.
+          </p>
           <div class="mt-5 flex items-center text-sm font-semibold text-sky-400 group-hover:text-sky-300">
             Become a Partner
-            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+            >
           </div>
         </a>
 
@@ -180,16 +164,21 @@ SPONSOR_TIERS,
           class="group relative flex flex-col bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 hover:border-pink-500/40"
         >
           <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-500 to-rose-600 rounded-t-2xl"></div>
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform">📣</div>
+          <div
+            class="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-2xl mb-5 shadow-lg group-hover:scale-110 transition-transform"
+          >
+            📣
+          </div>
           <h3 class="text-xl font-bold text-white mb-2">Call for Evangelists</h3>
           <p class="text-gray-400 text-sm leading-relaxed flex-1">Spread the word about OSD 2026 and help grow our community reach across India and beyond.</p>
           <div class="mt-5 flex items-center text-sm font-semibold text-pink-400 group-hover:text-pink-300">
             Become an Evangelist
-            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+            <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg
+            >
           </div>
         </a>
       </div>
     </div>
   </section>
 </Layout>
-

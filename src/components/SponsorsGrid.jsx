@@ -1,8 +1,4 @@
-export default function SponsorsGrid({
-  sponsors = [],
-  columns = 3,
-  maxHeight = 140,
-}) {
+export default function SponsorsGrid({ sponsors = [], columns = 3, maxHeight = 140 }) {
   const gridClassMap = {
     1: "grid-cols-1",
     2: "grid-cols-1 sm:grid-cols-2",
@@ -22,13 +18,7 @@ export default function SponsorsGrid({
           className="flex items-center justify-center p-3 bg-white rounded-lg transition"
           style={{ minHeight: `${Math.min(maxHeight, 110)}px` }}
         >
-          <img
-            src={s.logo}
-            alt={s.name}
-            loading="lazy"
-            className="w-auto object-contain max-w-full"
-            style={{ maxHeight: `${maxHeight}px` }}
-          />
+          <img src={s.logo} alt={s.name} loading="lazy" className="w-auto object-contain max-w-full" style={{ maxHeight: `${maxHeight}px` }} />
         </div>
       ))}
     </div>

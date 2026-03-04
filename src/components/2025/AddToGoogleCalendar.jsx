@@ -11,11 +11,7 @@ function AddToGoogleCalendar({ event }) {
   };
 
   return (
-    <a
-      href={createGoogleCalendarUrl()}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
+    <a href={createGoogleCalendarUrl()} target="_blank" rel="noopener noreferrer">
       Add to Calendar
     </a>
   );

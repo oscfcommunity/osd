@@ -5,12 +5,7 @@ import "../styles/global.css";
  * @param {{ logos: {logo: string}[], duration?: number, height?: number, itemWidth?: number }} props
  */
 
-export default function SmoothScrollLogos({
-  logos = [],
-  duration = 30,
-  height = 300,
-  itemWidth = 700,
-}) {
+export default function SmoothScrollLogos({ logos = [], duration = 30, height = 300, itemWidth = 700 }) {
   const items = [...logos, ...logos]; // duplicate for seamless loop
   const trackRef = useRef(null);
 
@@ -23,11 +18,7 @@ export default function SmoothScrollLogos({
 
   return (
     <div className="w-full overflow-hidden" style={{ height }}>
-      <div
-        ref={trackRef}
-        className="smoothscroll-track flex"
-        style={{ animationDuration: `${duration}s`, height }}
-      >
+      <div ref={trackRef} className="smoothscroll-track flex" style={{ animationDuration: `${duration}s`, height }}>
         {items.map((logo, idx) => (
           <div
             key={idx}
@@ -40,14 +31,7 @@ export default function SmoothScrollLogos({
             }}
           >
             <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-              <img
-                src={logo.logo}
-                alt={logo.name || `logo-${idx}`}
-                width={itemWidth}
-                height={height}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
+              <img src={logo.logo} alt={logo.name || `logo-${idx}`} width={itemWidth} height={height} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
         ))}
