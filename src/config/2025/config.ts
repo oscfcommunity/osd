@@ -1,4 +1,4 @@
-import type { Speaker } from "@/config/2025/config.types";
+import type { Speaker } from "@/config/2025/config.types.ts";
 
 // Team imports
 import OSDGreen from "@/assets/icons/OSDGreen.svg";
@@ -200,8 +200,7 @@ export const eventSchedule = [
   },
   {
     time: "10:15 AM – 10:45 AM",
-    title:
-      "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
+    title: "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
     speaker: "Parth Pandya",
     type: "keynote",
     room: "Main Auditorium",
@@ -258,8 +257,7 @@ export const eventSchedule = [
   },
   {
     time: "01:45 PM – 03:00 PM",
-    title:
-      "Hands-On Workshop: Data Ingestion, ES|QL Processing, and Nginx Dashboards with Elasticsearch",
+    title: "Hands-On Workshop: Data Ingestion, ES|QL Processing, and Nginx Dashboards with Elasticsearch",
     speaker: "Someshwaran Mohan Kumar",
     type: "Devroom (Parallel)",
     room: "Secondary Hall",
@@ -289,8 +287,7 @@ export const eventSchedule = [
   },
   {
     time: "03:00 PM – 03:45 PM",
-    title:
-      "Building a Successful Open Source Community: Best Practices and Lessons Learned",
+    title: "Building a Successful Open Source Community: Best Practices and Lessons Learned",
     speaker: "Pratik Bhatt, Vijay Golani, Vikas Rajput & Ruchit Patel",
     type: "Community Panel Discussion",
     room: "Main Auditorium",
@@ -299,15 +296,13 @@ export const eventSchedule = [
   },
   {
     time: "03:45 PM – 04:15 PM",
-    title:
-      "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
+    title: "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
     speaker: "Chetan Soni",
     type: "talk",
     room: "Main Auditorium",
     start: "20251005T154500",
     end: "20251005T161500",
-    presentationLink:
-      "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
+    presentationLink: "https://docs.google.com/presentation/d/1wET2S8Npjv3TJlql8AG56xdG9o3MmRczGRH8W-83N3o/edit?usp=drivesdk",
   },
   {
     time: "04:15 PM – 04:45 PM",
@@ -436,8 +431,7 @@ export const EVENT = {
   shortName: "OSD2025",
   date: "October 05, 2025",
   location: "Silver Oak University, Ahmedabad, Gujarat, India",
-  tagline:
-    "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
+  tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
     "Open Source Day 2025 is a community-driven event celebrating the power of open source software. Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.",
   stats: {
@@ -567,20 +561,17 @@ export const ABOUT = {
   features: [
     {
       title: "Learn & Contribute",
-      description:
-        "Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.",
+      description: "Discover new technologies, learn best practices, and get hands-on experience contributing to real open source projects.",
       icon: "check",
     },
     {
       title: "Connect",
-      description:
-        "Network with fellow developers, open source maintainers, and tech enthusiasts from the Indian tech community.",
+      description: "Network with fellow developers, open source maintainers, and tech enthusiasts from the Indian tech community.",
       icon: "users",
     },
     {
       title: "Celebrate",
-      description:
-        "Celebrate the achievements of the open source community and discover exciting new projects and opportunities.",
+      description: "Celebrate the achievements of the open source community and discover exciting new projects and opportunities.",
       icon: "star",
     },
   ],
@@ -601,24 +592,20 @@ export const CURRENT_SPEAKERS = [
             position: "Founder & CEO",
             company: "KrishaWeb",
             event: "Keynote",
-            presentationTitle:
-              "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
+            presentationTitle: "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
             link: "https://www.linkedin.com/in/parthjpandya/",
             image: ParthPandya,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1BDmEFwgB7gFbU113F0Goc2lNcrGK3TUF/",
+            presentationLink: "https://docs.google.com/presentation/d/1BDmEFwgB7gFbU113F0Goc2lNcrGK3TUF/",
           },
           {
             name: "Harshad Modi",
             position: "CTO",
             company: "Odoo India",
             event: "Closing Keynote",
-            presentationTitle:
-              "Building a Multi Billion Dollar Open Source Product",
+            presentationTitle: "Building a Multi Billion Dollar Open Source Product",
             link: "https://www.linkedin.com/in/harshadmodi/",
             image: HarshadModi,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1V6_3L1Dvtqwb3-fXegtnJF4s2Y4pXkvu/",
+            presentationLink: "https://docs.google.com/presentation/d/1V6_3L1Dvtqwb3-fXegtnJF4s2Y4pXkvu/",
           },
           {
             name: "Kiran Trivedi",
@@ -628,8 +615,7 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open source hardware for Tiny ML",
             link: "https://www.linkedin.com/in/krtrivedi",
             image: KiranTrivedi,
-            presentationLink:
-              "https://drive.google.com/file/d/197nu_pdVwZXPeMSHd3IyYkKhhDJY4Usc/",
+            presentationLink: "https://drive.google.com/file/d/197nu_pdVwZXPeMSHd3IyYkKhhDJY4Usc/",
           },
           {
             name: "Varun Pandya",
@@ -639,20 +625,17 @@ export const CURRENT_SPEAKERS = [
             presentationTitle: "Open Source & AI",
             link: "https://www.linkedin.com/in/varun-pandya-1676a0103/",
             image: VarunPandya,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1e2pBdBgyC1_Z5vOUdKsLEnUNe_ibmOhW/",
+            presentationLink: "https://docs.google.com/presentation/d/1e2pBdBgyC1_Z5vOUdKsLEnUNe_ibmOhW/",
           },
           {
             name: "Chetan Soni",
             position: "Cloud Head & Solutions Architect",
             company: "Linearloop",
             event: "Open Source Security",
-            presentationTitle:
-              "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
+            presentationTitle: "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
             link: "https://www.linkedin.com/in/sonichetan/",
             image: ChetanSoni,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1zpu2B9zoczKyeiQyX-wmSeDOkrKt_-VC/",
+            presentationLink: "https://docs.google.com/presentation/d/1zpu2B9zoczKyeiQyX-wmSeDOkrKt_-VC/",
           },
           {
             name: "Someshwaran Mohan Kumar",
@@ -660,30 +643,25 @@ export const CURRENT_SPEAKERS = [
             company: "Elastic India",
             event: "Open Data",
 
-            presentationTitle:
-              "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
+            presentationTitle: "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
             link: "https://www.linkedin.com/in/somdevsupport/",
             image: Someshwaran,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1efYkRjWY0wgBscOaddHrkspH9rVXq5QN/",
+            presentationLink: "https://docs.google.com/presentation/d/1efYkRjWY0wgBscOaddHrkspH9rVXq5QN/",
           },
           {
             name: "Ansh Arora",
             position: "Program and Partnerships Manager",
             company: "FOSS United",
             event: "Open Source Community",
-            presentationTitle:
-              "Significance of Open Source Projects and its sustainability",
+            presentationTitle: "Significance of Open Source Projects and its sustainability",
             link: "https://www.linkedin.com/in/ansharora28/",
             image: AnshArora,
-            presentationLink:
-              "https://docs.google.com/presentation/d/1aEVSYHcPHdxgBWZe40mNvEy770KbKmZF/",
+            presentationLink: "https://docs.google.com/presentation/d/1aEVSYHcPHdxgBWZe40mNvEy770KbKmZF/",
           },
         ],
       },
       {
-        title:
-          "The Role of Open Source in Driving Innovation and Collaboration",
+        title: "The Role of Open Source in Driving Innovation and Collaboration",
         segment: "CxO Panel",
         speakers: [
           {
@@ -697,8 +675,7 @@ export const CURRENT_SPEAKERS = [
           {
             name: "Chetan Sheladiya",
             position: "Founder & CEO",
-            company:
-              "Metizsoft Solutions Pvt. Ltd.  & Destinova AI Labs Pvt. Ltd.",
+            company: "Metizsoft Solutions Pvt. Ltd.  & Destinova AI Labs Pvt. Ltd.",
             presentationTitle: "",
             link: "https://www.linkedin.com/in/sheladiya-chetan/",
             image: ChetanSheladiya,
@@ -730,8 +707,7 @@ export const CURRENT_SPEAKERS = [
         ],
       },
       {
-        title:
-          "Building a Successful Open Source Community: Best Practices and Lessons Learned",
+        title: "Building a Successful Open Source Community: Best Practices and Lessons Learned",
         segment: "Community Panel",
         speakers: [
           {
@@ -773,8 +749,7 @@ export const CURRENT_SPEAKERS = [
         ],
       },
       {
-        title:
-          "Specialized mini-conference tracks that run parallel to the main conference",
+        title: "Specialized mini-conference tracks that run parallel to the main conference",
         segment: "Devrooms",
         speakers: [
           {
@@ -783,8 +758,7 @@ export const CURRENT_SPEAKERS = [
             company: "Impulsive Web",
             tags: ["Google Developer Expert: AI"],
             event: "Devrooms",
-            presentationTitle:
-              "Gemini CLI: The All-Round Developer Friend in the Terminal",
+            presentationTitle: "Gemini CLI: The All-Round Developer Friend in the Terminal",
             link: "https://www.linkedin.com/in/akajammythakkar/",
             image: JayThakkar,
           },
@@ -793,8 +767,7 @@ export const CURRENT_SPEAKERS = [
             position: "Developer Advocate",
             company: "Elastic India",
             event: "Devrooms",
-            presentationTitle:
-              "Hands-On Workshop: Data Ingestion, ES|QL Processing, and Nginx Dashboards with Elasticsearch",
+            presentationTitle: "Hands-On Workshop: Data Ingestion, ES|QL Processing, and Nginx Dashboards with Elasticsearch",
             link: "https://www.linkedin.com/in/somdevsupport/",
             image: Someshwaran,
           },
@@ -821,8 +794,7 @@ export const CURRENT_SPEAKERS = [
         position: "Community manager & Maintainer",
         company: "Gluu Inc",
         event: "Open Source with AI: Workshop",
-        presentationTitle:
-          "How to Start an Open Source Project & Manage like a Pro",
+        presentationTitle: "How to Start an Open Source Project & Manage like a Pro",
         link: "https://www.linkedin.com/in/dhavaltdesai/",
         image: DhavalDesai,
       },
@@ -844,8 +816,7 @@ export const OUR_SPEAKERS = [
     position: "Founder & CEO",
     company: "KrishaWeb",
     event: "Keynote",
-    presentationTitle:
-      "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
+    presentationTitle: "The Future of Open Source: Trends, Opportunities, and Emerging Technologies",
     link: "https://www.linkedin.com/in/parthjpandya/",
     image: ParthPandya,
   },
@@ -881,8 +852,7 @@ export const OUR_SPEAKERS = [
     position: "Cloud Head & Solutions Architect",
     company: "Linearloop",
     event: "Open Source Security",
-    presentationTitle:
-      "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
+    presentationTitle: "Building Secure Foundations: An Open-Source Approach to Kubernetes Secrets",
     link: "https://www.linkedin.com/in/sonichetan/",
     image: ChetanSoni,
   },
@@ -891,8 +861,7 @@ export const OUR_SPEAKERS = [
     position: "Developer Advocate",
     company: "Elastic India",
     event: "Open Data",
-    presentationTitle:
-      "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
+    presentationTitle: "From Guesswork to Flamegraphs: eBPF Profiling with DevFiler",
     link: "https://www.linkedin.com/in/somdevsupport/",
     image: Someshwaran,
   },
@@ -901,8 +870,7 @@ export const OUR_SPEAKERS = [
     position: "Program and Partnerships Manager",
     company: "FOSS United",
     event: "Open Source Community",
-    presentationTitle:
-      "Significance of Open Source Projects and its sustainability",
+    presentationTitle: "Significance of Open Source Projects and its sustainability",
     link: "https://www.linkedin.com/in/ansharora28/",
     image: AnshArora,
   },
@@ -988,8 +956,7 @@ export const OUR_SPEAKERS = [
     company: "Impulsive Web",
     tags: ["Google Developer Expert: AI"],
     event: "Devrooms",
-    presentationTitle:
-      "Gemini CLI: The All-Round Developer Friend in the Terminal",
+    presentationTitle: "Gemini CLI: The All-Round Developer Friend in the Terminal",
     link: "https://www.linkedin.com/in/akajammythakkar/",
     image: JayThakkar,
   },
@@ -1036,8 +1003,7 @@ export const SPEAKERS: Speaker[] = [
     name: "Rishang Bhavsar",
     position: "Devops Engineer",
     company: "smartSense Consulting Solutions",
-    presentationTitle:
-      "How to start an Open Source Project and contribute on Github",
+    presentationTitle: "How to start an Open Source Project and contribute on Github",
     event: "2024 OSW × HacktoberFest",
     eventYear: 2024,
     image: RishangBhavsar,
@@ -1046,8 +1012,7 @@ export const SPEAKERS: Speaker[] = [
     name: "Krupa Galiya",
     position: "Sr. Data scientist",
     company: "PatternAI",
-    presentationTitle:
-      "Significance of Open Source Contribution and Community Engagement",
+    presentationTitle: "Significance of Open Source Contribution and Community Engagement",
     event: "2023 OSW × HacktoberFest",
     eventYear: 2023,
     image: KrupaGaliya,
@@ -1056,8 +1021,7 @@ export const SPEAKERS: Speaker[] = [
     name: "Viral Parmar",
     position: "Director",
     company: "ComExpo Cyber Security",
-    presentationTitle:
-      "How Can We Create Community Around Open Source Project And Get More Contribution",
+    presentationTitle: "How Can We Create Community Around Open Source Project And Get More Contribution",
     event: "2023 OSW × HacktoberFest",
     eventYear: 2023,
     image: ViralParmar,
@@ -1100,14 +1064,8 @@ export const TICKETS = [
     originalPrice: null,
     discountedPrice: "₹199",
     couponCode: "OSDLOVE",
-    description:
-      "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies. Use the below code to get flat 60% off.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-    ],
+    description: "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies. Use the below code to get flat 60% off.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies"],
     startsOn: "20th Sep 2025, 03:45AM (GMT+05:30)",
     popular: false,
     available: false,
@@ -1116,16 +1074,14 @@ export const TICKETS = [
       text: "Filling Fast",
       classes: "text-white bg-red-500",
     },
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56800",
     linkText: "Register Now",
   },
   {
     name: "Open Source Day 25 + Devfest Gandhinagar 25",
     price: "₹799",
     originalPrice: null,
-    description:
-      "Tickets include access for both Open Source Day and DevFest Gandhinagar with multiple perks.",
+    description: "Tickets include access for both Open Source Day and DevFest Gandhinagar with multiple perks.",
     features: [
       "Tickets include for Open Source Day:",
       "Full-access to conference",
@@ -1147,23 +1103,14 @@ export const TICKETS = [
       text: "Most Popular",
       classes: "text-white bg-green-600",
     },
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56934",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56934",
   },
   {
     name: "Community Fan",
     price: "₹999",
     originalPrice: null,
-    description:
-      "This ticket is for all community members who constantly support us and create a vibrant community.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Super Fan Goodies",
-      "Digital Certificate",
-    ],
+    description: "This ticket is for all community members who constantly support us and create a vibrant community.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Super Fan Goodies", "Digital Certificate"],
     availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
@@ -1171,35 +1118,24 @@ export const TICKETS = [
       text: "Most Preferred",
       classes: "text-white bg-blue-500",
     },
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56805",
   },
   {
     name: "Supporter Ticket",
     price: "₹1,999",
     originalPrice: null,
-    description:
-      "This ticket is for community members who support us and create a vibrant community.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Supporter Exclusive goodies",
-      "Digital Certificate",
-    ],
+    description: "This ticket is for community members who support us and create a vibrant community.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Supporter Exclusive goodies", "Digital Certificate"],
     availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56803",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56803",
   },
   {
     name: "Silver Ticket",
     price: "₹4,999",
     originalPrice: null,
-    description:
-      "This ticket is for community members who support us and create a vibrant community.",
+    description: "This ticket is for community members who support us and create a vibrant community.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -1214,8 +1150,7 @@ export const TICKETS = [
     availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56804",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56804",
   },
   {
     name: "Golden Ticket",
@@ -1238,8 +1173,7 @@ export const TICKETS = [
     availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56806",
   },
   {
     name: "Micro Sponsor",
@@ -1263,37 +1197,27 @@ export const TICKETS = [
     availableTill: "5th Oct 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56807",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56807",
     linkText: "Sold Out",
   },
   {
     name: "Early Bird Ticket",
     price: "₹199",
     originalPrice: null,
-    description:
-      "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies, and early bird discount.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Early Bird Discount",
-    ],
+    description: "Tickets include full-access to conference, lunch, keynotes, panels, OSD goodies, and early bird discount.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Early Bird Discount"],
     availableTill: "20th Sep 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
     fillingFast: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56932",
     linkText: "Sold Out",
   },
   {
     name: "Open Source with AI Workshop + OSD Conference",
     price: "₹699",
     originalPrice: null,
-    description:
-      "Use coupon code OSDWSHOP25 and get Flat 30% OFF. Access to hands-on workshop and conference.",
+    description: "Use coupon code OSDWSHOP25 and get Flat 30% OFF. Access to hands-on workshop and conference.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -1313,8 +1237,7 @@ export const TICKETS = [
     availableTill: "26th Sep 2025, 06:00 PM (GMT+05:30)",
     popular: false,
     available: false,
-    konfhubUrl:
-      "https://konfhub.com/checkout/open-source-day-2025?ticketId=56933",
+    konfhubUrl: "https://konfhub.com/checkout/open-source-day-2025?ticketId=56933",
     couponCode: "OSDWSHOP25",
     discountedPrice: "₹499",
     linkText: "Sold Out",
@@ -1323,8 +1246,7 @@ export const TICKETS = [
 
 export const VENUE = {
   name: "Silver Oak University",
-  address:
-    "Silver Oak University, 370/371, near Bhavik Publication, Gota Gam, Gota, Ahmedabad, Gujarat 382481",
+  address: "Silver Oak University, 370/371, near Bhavik Publication, Gota Gam, Gota, Ahmedabad, Gujarat 382481",
   description:
     "Silver Oak University (SOU) is premier private university carrying forward the legacy of Silver Oak Group of Institutes. As a reflection to its motto,“Gyanam Param Bhushanam” meaning Knowledge is the highest virtue, SOU delivers engaging learning experience through futuristic curriculum, advanced technological interface, eminent faculty, industry academia bonding, career planning and counseling and ample career opportunities. This state-of-the-art campus provides an inspiring and dynamic environment, perfect for fostering innovation and collaboration among tech enthusiasts.",
   capacity: "500+ attendees across multiple halls",
@@ -1362,16 +1284,8 @@ export const FOOTER = {
 export const META = {
   defaultTitle: "Open Source Day 2025 - Celebrate Innovation",
   titleTemplate: "%s | Open Source Day 2025",
-  description:
-    "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
-  keywords: [
-    "open source",
-    "conference",
-    "developers",
-    "technology",
-    "innovation",
-    "community",
-  ],
+  description: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
+  keywords: ["open source", "conference", "developers", "technology", "innovation", "community"],
   author: "OpenSource Weekend",
   twitterCard: "summary_large_image",
 };
@@ -1887,21 +1801,14 @@ export const TEAM = {
     {
       id: 2,
       name: "Nirav Shah",
-      roles: [
-        "Director at Eternal Web Private Limited",
-        "AWS Community Builder",
-      ],
+      roles: ["Director at Eternal Web Private Limited", "AWS Community Builder"],
       linkedin: "https://www.linkedin.com/in/nirav-eternal/",
       image: NiravShah,
     },
     {
       id: 3,
       name: "Santosh Yadav",
-      roles: [
-        "Staff Engineer at Celonis",
-        "Google Developer Expert",
-        "GitHub Star",
-      ],
+      roles: ["Staff Engineer at Celonis", "Google Developer Expert", "GitHub Star"],
       linkedin: "https://www.linkedin.com/in/santoshyadavdev/",
       image: SantoshYadav,
     },
@@ -1917,34 +1824,21 @@ export const TEAM = {
     {
       id: 1,
       name: "Mehul Patel",
-      roles: [
-        "Sr. DevOps Engineer",
-        "Mozilla Reps Council",
-        "Docker Captain",
-        "AWS Community Builder",
-        "Google Developer Expert",
-      ],
+      roles: ["Sr. DevOps Engineer", "Mozilla Reps Council", "Docker Captain", "AWS Community Builder", "Google Developer Expert"],
       linkedin: "https://www.linkedin.com/in/nomadicmehul/",
       image: MehulPatel,
     },
     {
       id: 2,
       name: "Ashish Tiwari",
-      roles: [
-        "Principal Solutions Architect",
-        "Search Specialist @ Elastic India",
-      ],
+      roles: ["Principal Solutions Architect", "Search Specialist @ Elastic India"],
       linkedin: "https://www.linkedin.com/in/ashishtiwari93/",
       image: AshishTiwari,
     },
     {
       id: 3,
       name: "Prathamesh Chavan",
-      roles: [
-        "AI Engineering Manager at Red Hat",
-        "Mozilla Reps Council",
-        "3X Wrangler at MozFest",
-      ],
+      roles: ["AI Engineering Manager at Red Hat", "Mozilla Reps Council", "3X Wrangler at MozFest"],
       linkedin: "https://www.linkedin.com/in/prathameshpchavan/",
       image: PrathameshChavan,
     },
@@ -1965,13 +1859,7 @@ export const TEAM = {
     {
       id: 6,
       name: "Kalyan Prasad",
-      roles: [
-        "Lead Data Scientist",
-        "Open Source & Community Advocate",
-        "Chair PyConf Hyderabad",
-        "Co-chair PyCon India",
-        "Kaggle4X contributor",
-      ],
+      roles: ["Lead Data Scientist", "Open Source & Community Advocate", "Chair PyConf Hyderabad", "Co-chair PyCon India", "Kaggle4X contributor"],
       linkedin: "https://www.linkedin.com/in/itskpflow/",
       image: KalyanPrasad,
     },
@@ -2013,10 +1901,7 @@ export const TEAM = {
     {
       id: 2,
       name: "Neel Shah",
-      roles: [
-        "Developer Advocate at Middleware",
-        "Co-organizer at Open Source Weekend",
-      ],
+      roles: ["Developer Advocate at Middleware", "Co-organizer at Open Source Weekend"],
       linkedin: "https://www.linkedin.com/in/neelcshah/",
       image: NeelShah,
     },
@@ -2044,10 +1929,7 @@ export const TEAM = {
     {
       id: 6,
       name: "Jignesh Gadhavi",
-      roles: [
-        "Sr. DevOps Engineer at Yellow Panther",
-        "Co-organizer at GDG Cloud Gandhinagar",
-      ],
+      roles: ["Sr. DevOps Engineer at Yellow Panther", "Co-organizer at GDG Cloud Gandhinagar"],
       linkedin: "https://www.linkedin.com/in/jigneshkumar-gadhavi/",
       image: JigneshGadhavi,
     },
@@ -2319,17 +2201,7 @@ export const PastEvent = [
   {
     year: "2025",
     title: "OpenSourceWeekend: Product Collective (May 2025)",
-    images: [
-      OSWMay_1,
-      OSWMay_2,
-      OSWMay_3,
-      OSWMay_4,
-      OSWMay_5,
-      OSWMay_6,
-      OSWMay_7,
-      OSWMay_8,
-      OSWMay_9,
-    ],
+    images: [OSWMay_1, OSWMay_2, OSWMay_3, OSWMay_4, OSWMay_5, OSWMay_6, OSWMay_7, OSWMay_8, OSWMay_9],
   },
   {
     year: "2025",
@@ -2339,54 +2211,16 @@ export const PastEvent = [
   {
     year: "2024",
     title: "2024 OpenSourceWeekend × Hacktoberfest",
-    images: [
-      OSW24_1,
-      OSW24_2,
-      OSW24_3,
-      OSW24_4,
-      OSW24_5,
-      OSW24_6,
-      OSW24_7,
-      OSW24_8,
-      OSW24_9,
-      OSW24_10,
-      OSW24_11,
-      OSW24_12,
-      OSW24_13,
-      OSW24_14,
-      OSW24_15,
-    ],
+    images: [OSW24_1, OSW24_2, OSW24_3, OSW24_4, OSW24_5, OSW24_6, OSW24_7, OSW24_8, OSW24_9, OSW24_10, OSW24_11, OSW24_12, OSW24_13, OSW24_14, OSW24_15],
   },
   {
     year: "2023",
     title: "Open Source Talks (June 2023)",
-    images: [
-      OSWJune23_1,
-      OSWJune23_2,
-      OSWJune23_3,
-      OSWJune23_4,
-      OSWJune23_5,
-      OSWJune23_6,
-      OSWJune23_7,
-      OSWJune23_8,
-      OSWJune23_9,
-      OSWJune23_10,
-    ],
+    images: [OSWJune23_1, OSWJune23_2, OSWJune23_3, OSWJune23_4, OSWJune23_5, OSWJune23_6, OSWJune23_7, OSWJune23_8, OSWJune23_9, OSWJune23_10],
   },
   {
     year: "2023",
     title: "2023 OpenSourceWeekend × Hacktoberfest",
-    images: [
-      OSW23_1,
-      OSW23_2,
-      OSW23_3,
-      OSW23_4,
-      OSW23_5,
-      OSW23_6,
-      OSW23_7,
-      OSW23_8,
-      OSW23_9,
-      OSW23_10,
-    ],
+    images: [OSW23_1, OSW23_2, OSW23_3, OSW23_4, OSW23_5, OSW23_6, OSW23_7, OSW23_8, OSW23_9, OSW23_10],
   },
 ];

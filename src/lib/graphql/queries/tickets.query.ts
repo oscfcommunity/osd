@@ -1,5 +1,5 @@
+import { graphqlClient } from "@/lib/graphql/graphql.ts";
 import { gql } from "graphql-request";
-import { graphqlClient } from "../graphql";
 
 const query = gql`
   query GetTickets {
