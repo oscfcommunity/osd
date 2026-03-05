@@ -12,8 +12,7 @@ import OSWBlack from "@/assets/icons/OSWBlack.svg";
 export const SITE = {
   title: "2026 OpenSourceDay",
   shortTitle: "OSD2026",
-  description:
-    "OpenSourceDay 2026 - Join us for the next chapter of open source innovation, learning, and community building.",
+  description: "OpenSourceDay 2026 - Join us for the next chapter of open source innovation, learning, and community building.",
   website: "https://osd.opensourceweekend.org",
   ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: OSDGreen,
@@ -30,8 +29,7 @@ export const EVENT = {
   shortName: "OSD2026",
   date: "TBA",
   location: "Ahmedabad, Gujarat, India",
-  tagline:
-    "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
+  tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
     "Open Source Day 2026 is a community-driven event celebrating the power of open source software. Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.",
   stats: {
@@ -84,8 +82,7 @@ export const NAVIGATION = {
 export const CALLS_2026 = [
   {
     title: "Call for Speakers",
-    description:
-      "Share your knowledge & inspire the community with a talk or workshop.",
+    description: "Share your knowledge & inspire the community with a talk or workshop.",
     href: "/cfspk",
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
@@ -93,8 +90,7 @@ export const CALLS_2026 = [
   },
   {
     title: "Call for Volunteers",
-    description:
-      "Help us make OSD 2026 an unforgettable experience for everyone.",
+    description: "Help us make OSD 2026 an unforgettable experience for everyone.",
     href: "/cfv",
     emoji: "🙌",
     color: "from-emerald-500 to-green-600",
@@ -110,8 +106,7 @@ export const CALLS_2026 = [
   },
   {
     title: "Call for Community Partners",
-    description:
-      "Partner with us to amplify the open source movement together.",
+    description: "Partner with us to amplify the open source movement together.",
     href: "/cfc",
     emoji: "🌐",
     color: "from-sky-500 to-blue-600",
@@ -353,60 +348,61 @@ export const OUR_SPEAKERS = [
 
 export const TICKETS = [
   {
+    name: "Super Early Bird Ticket",
+    price: "₹350",
+    originalPrice: 350,
+    description: "Super Early Bird pricing with full conference access. Limited availability!",
+    features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies", "Super Early Bird Discount"],
+    popular: false,
+    available: true,
+    alert: {
+      text: "Most Awaited",
+      classes: "text-white bg-green-500",
+    },
+    konfhubUrl: "/purchase",
+    linkText: "Register",
+  },
+  {
     name: "Early Bird Ticket",
-    price: "Coming Soon",
-    originalPrice: null,
-    description:
-      "Early bird pricing with full conference access. Limited availability!",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-      "Early Bird Discount",
-    ],
+    price: "₹450",
+    originalPrice: 450,
+    description: "Early bird pricing with full conference access. Limited availability!",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies", "Early Bird Discount"],
     popular: false,
     available: false,
     alert: {
       text: "Coming Soon",
       classes: "text-white bg-green-500",
     },
-    konfhubUrl: "#",
+    konfhubUrl: "",
     linkText: "Coming Soon",
   },
   {
     name: "Regular Ticket",
-    price: "Coming Soon",
-    originalPrice: null,
-    description:
-      "Full conference access including lunch, keynotes, panels, and OSD goodies.",
-    features: [
-      "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
-      "OSD Goodies",
-    ],
+    price: "₹700",
+    originalPrice: 700,
+    description: "Full conference access including lunch, keynotes, panels, and OSD goodies.",
+    features: ["Full-access to conference", "Lunch", "Keynotes, Panels", "OSD Goodies"],
     popular: true,
     available: false,
     alert: {
       text: "Most Popular",
       classes: "text-white bg-green-600",
     },
-    konfhubUrl: "#",
+    konfhubUrl: "",
     linkText: "Coming Soon",
   },
   {
     name: "Community Fan",
-    price: "Coming Soon",
-    originalPrice: null,
-    description:
-      "For community members who support us and want exclusive perks.",
+    price: "₹999",
+    originalPrice: 999,
+    description: "This ticket for all our community people who constantly support us and create a vibrant community.",
     features: [
       "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
+      "Breakfast & Lunch",
+      "Keynotes, Panels, Workshops",
       "OSD Goodies",
-      "Super Fan Goodies",
+      "Super Fan Goodies (Tshirts etc)",
       "Digital Certificate",
     ],
     popular: false,
@@ -415,34 +411,33 @@ export const TICKETS = [
       text: "Most Preferred",
       classes: "text-white bg-blue-500",
     },
-    konfhubUrl: "#",
-    linkText: "Coming Soon",
+    konfhubUrl: "/purchase",
+    linkText: "Register",
   },
   {
     name: "Supporter Ticket",
-    price: "Coming Soon",
-    originalPrice: null,
-    description:
-      "Support the open source movement and get exclusive goodies and networking opportunities.",
+    price: "₹1,999",
+    originalPrice: 1999,
+    description: "This ticket for all our community people who constantly support us and create a vibrant community.",
     features: [
       "Full-access to conference",
-      "Lunch",
-      "Keynotes, Panels",
+      "Breakfast, Lunch & High-Tea with Speakers and Organizers on the event day ",
+      "Keynotes, Panels, Workshop",
       "OSD Goodies",
-      "Supporter Exclusive goodies",
+      "Supporter Exclusive goodies (Including Token of Apprecation,Tshirt etc.)",
       "Digital Certificate",
+      "Priority Pass",
     ],
     popular: false,
     available: false,
-    konfhubUrl: "#",
-    linkText: "Coming Soon",
+    konfhubUrl: "/purchase",
+    linkText: "Register",
   },
   {
-    name: "Golden Ticket",
-    price: "Coming Soon",
-    originalPrice: null,
-    description:
-      "Premium ticket with exclusive benefits, networking dinner, and appreciation memento.",
+    name: "Silver Ticket",
+    price: "₹4,999",
+    originalPrice: 4999,
+    description: "This ticket for all our community people who constantly support us and create a vibrant community.",
     features: [
       "Full-access to conference",
       "Lunch",
@@ -456,8 +451,58 @@ export const TICKETS = [
     ],
     popular: false,
     available: false,
-    konfhubUrl: "#",
-    linkText: "Coming Soon",
+    konfhubUrl: "/purchase",
+    linkText: "Register",
+    extra:
+      "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
+  },
+  {
+    name: "Golden Ticket",
+    price: "₹9,999",
+    originalPrice: 9999,
+    description: "This ticket for all our community people who constantly support us and create a vibrant community.",
+    features: [
+      "Full-access to conference",
+      "Breakfast, Lunch & High-Tea with Speakers and Organizers on the event day ",
+      "Keynotes, Panels, Workshop",
+      "OSD Goodies",
+      "Golden Ticket Exclusive goodies",
+      "Digital Certificate",
+      "Networking Dinner with Speakers, sponsors, organizers and some special industry invitees",
+      "Shout-out on Social Media",
+      "Shout out during the event",
+      "Appreciation Memento from OSD",
+    ],
+    popular: false,
+    available: false,
+    konfhubUrl: "",
+    linkText: "Sold Out",
+    extra:
+      "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
+  },
+  {
+    name: "Micro Sponsor (Pack of 3 Golden Ticket)",
+    price: "₹29,999",
+    originalPrice: 29999,
+    description: "This ticket for all our community people who constantly support us and create a vibrant community. (Ideal for CEO , CTO , CXO of companies)",
+    features: [
+      "Full-access to conference",
+      "Breakfast, Lunch & High-Tea with Speakers and Organizers on the event day ",
+      "Keynotes, Panels, Workshop",
+      "OSD Goodies",
+      "Golden Ticket Exclusive goodies",
+      "Digital Certificate",
+      "Networking Dinner with Speakers, sponsors, organizers and some special industry invitees",
+      "Shout-out on Social Media",
+      "Shout out during the event",
+      "Appreciation Memento from OSD",
+    ],
+    popular: false,
+    available: false,
+    konfhubUrl: "",
+    linkText: "Sold Out",
+    extra:
+      "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
 ];
 
