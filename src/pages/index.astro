@@ -147,10 +147,13 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
         {[
-          { value: 1000, suffix: "+", label: "Expected Attendees" },
-          { value: 80, suffix: "+", label: "Community Partners" },
-          { value: 30, suffix: "+", label: "Expert Speakers" },
-          { value: 15, suffix: "+", label: "Technical Sessions" },
+          { value: 600, suffix: "+", label: "Expected Attendees" },
+          { value: 100, suffix: "+", label: "Community Partners" },
+          { value: 50, suffix: "+", label: "Expert Speakers" },
+          { value: 20, suffix: "+", label: "Technical Sessions" },
+          { value: 10, suffix: "+", label: "Panel Discussions" },
+          { value: 5, suffix: "+", label: "Workshops" },
+          { value: 100, suffix: "+", label: "Open Source Project Contribution" },
         ].map(({ value, suffix, label }) => (
           <div class="flex flex-col items-center py-10 px-6 bg-white">
             <div class="text-4xl md:text-5xl font-black gradient-text mb-2">

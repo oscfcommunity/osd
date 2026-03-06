@@ -15,11 +15,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative min-h-[75vh] flex items-center justify-center bg-white"
-      style={{ overflow: "visible" }}
-    >
+    <div ref={sectionRef} className="relative min-h-[75vh] flex items-center justify-center bg-white" style={{ overflow: "visible" }}>
       {/* Animated Background Blobs — clipped via a wrapping div so they don't overflow page */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 -right-4 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
@@ -46,8 +42,7 @@ const Hero = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            India's largest open source conference. 1000+ developers, builders
-            &amp; maintainers — one unforgettable day.
+            India's largest open source conference. 1000+ developers, builders &amp; maintainers — one unforgettable day.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -56,18 +51,8 @@ const Hero = () => {
               className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gray-900 rounded-full hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
             >
               Get Involved
-              <svg
-                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
+              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </a>
             <a
@@ -81,9 +66,9 @@ const Hero = () => {
 
         {/* Hashtag Footer */}
         <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap justify-center gap-6 opacity-40">
-          <div className="text-xl font-bold text-gray-400">#OSD2026</div>
-          <div className="text-xl font-bold text-gray-400">#OpenSource</div>
-          <div className="text-xl font-bold text-gray-400">#Ahmedabad</div>
+          <div className="text-xl font-bold text-gray-400">#OSDIn2026</div>
+          <div className="text-xl font-bold text-gray-400">#OSDIndia2026</div>
+          <div className="text-xl font-bold text-gray-400">#OpenSourceDay</div>
         </div>
       </div>
     </div>
