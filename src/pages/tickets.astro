@@ -12,11 +12,11 @@ console.log(JSON.stringify(ticketsData, null, 2));
   <!-- Hero -->
   <PageHero
     client:load
-    badge="REGISTRATION COMING SOON"
+    badge="REGISTRATION STARTED"
     title="OSD 2026"
     titleGradient="TICKETS"
     subtitle="Secure your spot at India's biggest open source conference. Pricing and registration go live soon."
-    primaryCta={{ text: "See Ticket Tiers", href: "#ticket-tiers", external: false }}
+    primaryCta={{ text: "Buy Now", href: "/purchase", external: false }}
   />
 
   <!-- Ticket Tiers -->
@@ -50,14 +50,22 @@ console.log(JSON.stringify(ticketsData, null, 2));
                   </li>
                 ))}
               </ul>
-              <a
-                href={ticket.konfhubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={`block w-full py-3 rounded-full font-bold text-sm transition-all ${ticket.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
-              >
-                {ticket.linkText || "Coming Soon"}
-              </a>
+              {ticket.available ? (
+                <a
+                  href={ticket.konfhubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`block w-full py-3 rounded-full font-bold text-sm transition-all ${ticket.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+                >
+                  {ticket.linkText || "Coming Soon"}
+                </a>
+              ) : (
+                <button
+                  class={`block w-full py-3 rounded-full font-bold text-sm transition-all ${ticket.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+                >
+                  {ticket.linkText || "Coming Soon"}
+                </button>
+              )}
               {ticket?.extra ? <p class="text-gray-500 text-sm my-5 text-left">{ticket.extra}</p> : null}
             </div>
           ))
