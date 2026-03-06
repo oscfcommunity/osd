@@ -455,8 +455,8 @@ export const NAVIGATION = {
     { name: "Past Events", href: "/2025/past-events" },
   ],
   cta: {
-    text: "Gallery",
-    url: "/2025/gallery",
+    text: "OSD 2026",
+    url: "/",
   },
 };
 

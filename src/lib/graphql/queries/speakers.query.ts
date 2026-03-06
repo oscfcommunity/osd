@@ -1,11 +1,12 @@
 import { graphqlClient } from "@/lib/graphql/graphql.ts";
 import { gql } from "graphql-request";
+import type { SpeakersQueryResponse } from "@/types/speakers.types.ts";
 
 const query = gql`
   query GetSpeakers {
     speakers(status: PUBLISHED) {
       documentId
-      currentSpeakers {
+      ourSpeakers {
         id
         title
         segment
@@ -60,4 +61,4 @@ const query = gql`
   }
 `;
 
-export const speakersData = await graphqlClient.request(query);
+export const speakersData = await graphqlClient.request<SpeakersQueryResponse>(query);

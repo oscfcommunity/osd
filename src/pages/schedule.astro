@@ -1,138 +1,563 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
-import { eventSchedule, workshopSchedule } from "@/config/config";
-import CalendarClock from "@/assets/icons/calendarClock.svg";
-import LayoutList from "@/assets/icons/layoutList.svg";
+import { eventSchedule, workshopSchedule } from "@/config/config.ts";
 import PageHero from "@/components/PageHero.jsx";
 
-const eventColorMap: Record<string, string> = {
-  registration: "border-blue-100 bg-blue-50 text-blue-700",
-  opening: "border-green-100 bg-green-50 text-green-700",
-  keynote: "border-yellow-100 bg-yellow-50 text-yellow-700",
-  talk: "border-green-100 bg-green-50 text-green-700",
-  break: "border-gray-100 bg-gray-50 text-gray-500",
-  "Closing Keynote": "border-yellow-100 bg-yellow-50 text-yellow-700",
-  Closing: "border-orange-100 bg-orange-50 text-orange-700",
-  Social: "border-pink-100 bg-pink-50 text-pink-700",
+// ── Type-to-style map ──────────────────────────────────────────────────────
+const typeStyles: Record<string, { pill: string; bar: string; label: string }> = {
+  registration:              { pill: "bg-blue-50   text-blue-700   border-blue-100",   bar: "bg-blue-400",   label: "Registration" },
+  opening:                   { pill: "bg-green-50  text-green-700  border-green-100",  bar: "bg-green-400",  label: "Opening" },
+  activity:                  { pill: "bg-purple-50 text-purple-700 border-purple-100", bar: "bg-purple-400", label: "Activity" },
+  keynote:                   { pill: "bg-yellow-50 text-yellow-700 border-yellow-100", bar: "bg-yellow-400", label: "Keynote" },
+  talk:                      { pill: "bg-green-50  text-green-700  border-green-100",  bar: "bg-green-400",  label: "Talk" },
+  break:                     { pill: "bg-gray-50   text-gray-500   border-gray-100",   bar: "bg-gray-300",   label: "Break" },
+  "closing keynote":         { pill: "bg-amber-50  text-amber-700  border-amber-100",  bar: "bg-amber-400",  label: "Closing Keynote" },
+  closing:                   { pill: "bg-orange-50 text-orange-700 border-orange-100", bar: "bg-orange-400", label: "Closing" },
+  social:                    { pill: "bg-pink-50   text-pink-700   border-pink-100",   bar: "bg-pink-400",   label: "Social" },
+  workshop:                  { pill: "bg-teal-50   text-teal-700   border-teal-100",   bar: "bg-teal-400",   label: "Workshop" },
+  panel:                     { pill: "bg-indigo-50 text-indigo-700 border-indigo-100", bar: "bg-indigo-400", label: "Panel" },
+  "devroom (parallel)":      { pill: "bg-violet-50 text-violet-700 border-violet-100", bar: "bg-violet-400", label: "Devroom" },
+  "cxo panel discussion":    { pill: "bg-lime-50   text-lime-700   border-lime-100",   bar: "bg-lime-400",   label: "CXO Panel" },
+  "community panel discussion": { pill: "bg-green-50 text-green-700 border-green-100", bar: "bg-green-500", label: "Community Panel" },
 };
-const getEventColor = (type: string) =>
-  eventColorMap[type] ?? "border-green-100 bg-green-50 text-green-700";
+const getStyle = (type: string) =>
+  typeStyles[type.toLowerCase()] ?? { pill: "bg-green-50 text-green-700 border-green-100", bar: "bg-green-400", label: type };
 
-const workshopColorMap: Record<string, string> = {
-  workshop: "border-teal-100 bg-teal-50 text-teal-700",
-  break: "border-gray-100 bg-gray-50 text-gray-500",
-  panel: "border-indigo-100 bg-indigo-50 text-indigo-700",
-  closing: "border-orange-100 bg-orange-50 text-orange-700",
-  activity: "border-purple-100 bg-purple-50 text-purple-700",
-};
-const getWorkshopColor = (type: string) =>
-  workshopColorMap[type] ?? "border-green-100 bg-green-50 text-green-700";
+
 ---
 
 <Layout title="Schedule — Open Source Day 2026" activePath="/schedule">
+
   <!-- Hero -->
   <PageHero client:load
     badge="BEING PLANNED"
     title="OSD 2026"
     titleGradient="SCHEDULE"
-    subtitle="The OSD 2026 schedule is being crafted. The CFP is open — be part of the lineup."
+    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda — tap + on any session."
     primaryCta={{ text: "Apply to Speak", href: "/cfspk", external: true }}
     secondaryCta={{ text: "View 2025 Schedule", href: "/2025/schedule" }}
   />
 
-  <!-- Main Conference Schedule -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Main <span class="gradient-text">Conference</span></h2>
-        <p class="text-gray-500">A full day packed with talks, workshops, panels, and networking</p>
+  <!-- ══════════════════════════════════════════════════════════════════════
+       MY AGENDA — floating trigger button (bottom-right)
+  ════════════════════════════════════════════════════════════════════════ -->
+  <!-- ═══ FAB ═══════════════════════════════════════════════════════════ -->
+  <div id="agenda-fab"
+    class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 cursor-pointer select-none"
+    onclick="window.toggleAgenda()"
+  >
+    <div class="relative group">
+      <span class="absolute inset-0 rounded-full bg-green-400 opacity-30 animate-ping"></span>
+      <div class="relative flex items-center gap-2 sm:gap-2.5 bg-gray-900 hover:bg-gray-800 text-white pl-3.5 pr-4 sm:pl-4 sm:pr-5 py-2.5 sm:py-3 rounded-full shadow-2xl transition-all duration-200 hover:scale-105">
+        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+        </svg>
+        <span class="text-sm font-bold hidden xs:inline sm:inline">My Schedule</span>
+        <span class="text-xs font-bold sm:hidden">Schedule</span>
+        <span id="agenda-count"
+          class="hidden absolute -top-2 -right-2 w-5 h-5 bg-green-500 text-white text-xs font-black rounded-full items-center justify-center shadow-lg">
+          0
+        </span>
       </div>
-      <div class="space-y-2">
-        {eventSchedule.map((item) => {
-          const color = getEventColor(item.type);
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       MY AGENDA — side drawer panel
+  ════════════════════════════════════════════════════════════════════════ -->
+  <!-- Backdrop -->
+  <div id="agenda-backdrop"
+    class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden transition-opacity duration-300"
+    style="opacity:0"
+    onclick="window.toggleAgenda()">
+  </div>
+
+  <!-- Drawer -->
+  <div id="agenda-drawer"
+    class="fixed top-0 right-0 h-full w-full sm:max-w-sm bg-white z-[60] shadow-2xl flex flex-col transition-transform duration-300 ease-out"
+    style="transform:translateX(100%)">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-gray-50">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-green-500 flex items-center justify-center">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-black text-gray-900 text-base leading-none">My Schedule</div>
+          <div id="agenda-subtitle" class="text-xs text-gray-400 mt-0.5">0 sessions tracked</div>
+        </div>
+      </div>
+      <button onclick="window.toggleAgenda()"
+        class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors shrink-0"
+        title="Close">
+        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Session list -->
+    <div id="agenda-list" class="flex-1 overflow-y-auto px-4 py-4 space-y-2" style="display:none">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Empty state -->
+    <div id="agenda-empty" class="flex-1 flex flex-col items-center justify-center text-center px-8 py-12">
+      <div class="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-4">
+        <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+        </svg>
+      </div>
+      <p class="font-bold text-gray-900 mb-1">Nothing tracked yet</p>
+      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Track It</span> on any session to build your personal schedule.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="px-4 py-4 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
+      <!-- Close button -->
+      <button onclick="window.toggleAgenda()"
+        class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm bg-gray-900 text-white hover:bg-gray-700 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+        Close Panel
+      </button>
+     
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       MAIN CONFERENCE — PARALLEL TRACK GRID
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="py-12 md:py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-8 md:mb-12">
+        <h2 class="text-2xl md:text-4xl font-black text-gray-900 mb-3">
+          Main <span class="gradient-text">Conference</span>
+        </h2>
+        <p class="text-gray-500 mb-2 text-sm md:text-base">A full day of talks, panels, workshops &amp; networking</p>
+        <p class="text-xs text-gray-400 italic">* Preview schedule — officially announced closer to the event</p>
+      </div>
+
+      <!-- Track legend -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8 md:mb-10">
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-4 py-2 rounded-full bg-gray-50 border border-gray-100 text-xs font-semibold">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-green-400 inline-block shrink-0"></span>Main Auditorium</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-violet-400 inline-block shrink-0"></span>Secondary Hall (Devroom)</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
+        {eventSchedule.map((session, i) => {
+          const s = getStyle(session.type);
+          const isParallelLeft  = session.isPanelLeft;
+          const isParallelRight = session.isPanelRight;
+          const isFullWidth     = !isParallelLeft && !isParallelRight;
+          const sid = `conf-${i}`;
+
           return (
-            <div class="flex gap-4 items-start">
-              <div class="w-28 shrink-0 text-right pt-3">
-                <span class="text-xs text-gray-400 font-mono">{item.time}</span>
-              </div>
-              <div class="w-px bg-gray-200 self-stretch mx-2"></div>
-              <div class={`flex-1 border rounded-xl p-3 ${color} flex items-center gap-3`}>
-                <div class="w-4 h-4 shrink-0 opacity-60"><CalendarClock /></div>
-                <div>
-                  <div class="font-semibold text-sm">{item.title}</div>
-                  {item.speaker && <div class="text-xs opacity-60">{item.speaker}</div>}
-                  <div class="text-xs opacity-50 capitalize">{item.type} · {item.room}</div>
+            <div
+              id={`card-${sid}`}
+              data-session-id={sid}
+              data-title={session.title}
+              data-time={session.time}
+              data-speaker={session.speaker || ""}
+              data-room={session.room || ""}
+              data-type={session.type}
+              data-track="Main Conference"
+              class={[
+                "group relative bg-white border border-gray-100 rounded-2xl overflow-hidden",
+                "transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-green-200",
+                isFullWidth     ? "md:col-span-2" : "",
+                isParallelLeft  ? "md:col-span-1 md:row-span-2" : "",
+                isParallelRight ? "md:col-span-1" : "",
+              ].filter(Boolean).join(" ")}
+            >
+              <div class={`absolute left-0 top-0 bottom-0 w-1 ${s.bar}`}></div>
+              <div class="p-5 pl-6 h-full flex flex-col justify-between gap-3">
+
+                <!-- Top: time + pills -->
+                <div class="flex items-start justify-between gap-2 flex-wrap">
+                  <span class="text-green-600 font-bold text-xs sm:text-sm font-mono leading-tight min-w-fit">{session.time}</span>
+                  <div class="flex items-center gap-1.5 flex-wrap justify-end">
+                    <span class={`text-xs font-bold px-2 py-0.5 rounded-full border ${s.pill} whitespace-nowrap`}>{s.label}</span>
+                    {isParallelLeft  && <span class="text-xs font-bold px-2 py-0.5 rounded-full border bg-violet-50 text-violet-700 border-violet-100 whitespace-nowrap">Parallel</span>}
+                    {isParallelRight && <span class="text-xs font-bold px-2 py-0.5 rounded-full border bg-gray-50 text-gray-500 border-gray-100 whitespace-nowrap">Main Hall</span>}
+                  </div>
                 </div>
+
+                <!-- Middle: title + speaker -->
+                <div class="flex-1">
+                  <h3 class={`font-bold text-gray-900 mb-1 leading-snug group-hover:text-green-700 transition-colors ${
+                    isFullWidth ? "text-sm sm:text-base md:text-lg" : "text-sm md:text-base"
+                  }`}>
+                    {session.title}
+                  </h3>
+                  {session.speaker && <p class="text-gray-500 text-xs font-medium">by {session.speaker}</p>}
+                </div>
+
+                <!-- Bottom: room + Track It button -->
+                <div class="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 pt-1">
+                  {session.room && (
+                    <span class="flex items-center gap-1 text-xs text-gray-400">
+                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                      </svg>
+                      {session.room}
+                    </span>
+                  )}
+                  <button
+                    data-add-btn={sid}
+                    onclick={`window.toggleSession('${sid}')`}
+                    class="agenda-add-btn w-full xs:w-auto md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 xs:py-1.5 md:px-3 md:py-1 rounded-full text-xs font-bold border border-gray-300 bg-white text-gray-600 hover:border-green-500 hover:text-green-700 hover:bg-green-50 transition-all duration-200 ml-auto shrink-0"
+                  >
+                    <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    <span class="btn-label">Track It</span>
+                  </button>
+                </div>
+
               </div>
             </div>
           );
         })}
       </div>
-      <p class="text-center text-gray-400 text-xs mt-6">* Preview schedule. Official schedule announced closer to the event.</p>
     </div>
   </section>
 
-  <!-- Workshop Track -->
-  <section class="py-20 px-4 bg-gray-50">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Workshop <span class="gradient-text">Track</span></h2>
-        <p class="text-gray-500">Hands-on sessions running parallel to the main conference</p>
-      </div>
-      <div class="space-y-2">
-        {workshopSchedule.map((item) => {
-          const color = getWorkshopColor(item.type);
-          return (
-            <div class="flex gap-4 items-start">
-              <div class="w-28 shrink-0 text-right pt-3">
-                <span class="text-xs text-gray-400 font-mono">{item.time}</span>
-              </div>
-              <div class="w-px bg-gray-200 self-stretch mx-2"></div>
-              <div class={`flex-1 border rounded-xl p-3 ${color} flex items-center gap-3`}>
-                <div class="w-4 h-4 shrink-0 opacity-60"><LayoutList /></div>
-                <div>
-                  <div class="font-semibold text-sm">{item.title}</div>
-                  {item.speaker && <div class="text-xs opacity-60">{item.speaker}</div>}
-                  <div class="text-xs opacity-50 capitalize">{item.type}</div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  <!-- Session Tracks -->
-  <section class="py-20 px-4 bg-white">
+  <!-- ══════════════════════════════════════════════════════════════════════
+       WORKSHOP TRACK
+  ════════════════════════════════════════════════════════════════════════ -->
+  <section class="py-12 md:py-20 px-4 bg-gray-50">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Session <span class="gradient-text">Tracks</span></h2>
-        <p class="text-gray-500">Multiple tracks running throughout the day</p>
+      <div class="text-center mb-8 md:mb-12">
+        <h2 class="text-2xl md:text-4xl font-black text-gray-900 mb-3">
+          Workshop <span class="gradient-text">Track</span>
+        </h2>
+        <p class="text-gray-500 text-sm md:text-base">Hands-on sessions running in parallel to the main conference</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {[
-          { title: "Keynotes", desc: "Opening & closing keynotes from industry leaders in the open source world.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 0 1 6 0v8.25a3 3 0 0 1-3 3Z" />` },
-          { title: "Workshops & Devrooms", desc: "Parallel hands-on sessions and devrooms across multiple tracks.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l5.653-4.655m5.585-5.585.06-.06a.968.968 0 0 1 1.37 0l.17.17a.968.968 0 0 1 0 1.37l-.06.06" />` },
-          { title: "Community Panels", desc: "Curated panel discussions on open source community, business, and tech.", icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />` },
-        ].map(({ title, desc, icon }) => (
-          <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-7 rounded-2xl transition-all duration-300">
-            <div class="w-10 h-10 mb-4 text-green-600">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" set:html={icon}></svg>
+
+      <!-- Same card grid as Main Conference -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        {workshopSchedule.map((item, i) => {
+          const s = getStyle(item.type);
+          const sid = `workshop-${i}`;
+          return (
+            <div
+              id={`card-${sid}`}
+              class="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-green-200"
+            >
+              <!-- Left color bar -->
+              <div class={`absolute left-0 top-0 bottom-0 w-1 ${s.bar}`}></div>
+
+              <div class="p-5 pl-6 h-full flex flex-col justify-between gap-4">
+
+                <!-- Top: time + pill -->
+                <div class="flex items-start justify-between gap-2 flex-wrap">
+                  <span class="text-green-600 font-bold text-sm font-mono leading-tight min-w-fit">{item.time}</span>
+                  <span class={`text-xs font-bold px-2.5 py-1 rounded-full border ${s.pill} whitespace-nowrap shrink-0`}>{s.label}</span>
+                </div>
+
+                <!-- Middle: title + speaker -->
+                <div class="flex-1">
+                  <h3 class="font-bold text-gray-900 text-base leading-snug group-hover:text-green-700 transition-colors">{item.title}</h3>
+                  {item.speaker && <p class="text-gray-500 text-xs mt-0.5 font-medium">by {item.speaker}</p>}
+                </div>
+
+                <!-- Bottom: Track It -->
+                <div class="flex items-center justify-end">
+                  <button
+                    data-add-btn={sid}
+                    onclick={`window.toggleSession('${sid}')`}
+                    data-title={item.title}
+                    data-time={item.time}
+                    data-speaker={item.speaker || ""}
+                    data-room=""
+                    data-type={item.type}
+                    data-track="Workshop"
+                    class="agenda-add-btn w-full md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 md:px-3 md:py-1 rounded-full text-xs font-bold border border-gray-300 bg-white text-gray-600 hover:border-green-500 hover:text-green-700 hover:bg-green-50 transition-all duration-200 shrink-0"
+                  >
+                    <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    <span class="btn-label">Track It</span>
+                  </button>
+                </div>
+
+              </div>
             </div>
-            <h3 class="font-bold text-gray-900 mb-2">{title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </section>
+
 
   <!-- Bottom CTA -->
-  <section class="py-16 px-4 bg-gray-50 text-center">
-    <h3 class="text-xl font-bold text-gray-900 mb-2">Want to be <span class="gradient-text">notified</span> when schedule is out?</h3>
-    <p class="text-gray-500 mb-2">Follow us or reach out at</p>
-    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold">opensourceweekend@gmail.com</a>
+  <section class="py-16 px-4 bg-white text-center">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Want to be <span class="gradient-text">notified</span> when the schedule is out?</h3>
+    <p class="text-gray-500 mb-3 text-sm">Follow us or get in touch directly</p>
+    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold text-sm">
+      opensourceweekend@gmail.com
+    </a>
   </section>
+
 </Layout>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     MY AGENDA — client-side logic
+════════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* drawer open state */
+  #agenda-drawer.open  { transform: translateX(0) !important; }
+  #agenda-backdrop.open { opacity: 1 !important; }
+
+  /* Add button added state */
+  .agenda-add-btn.is-added {
+    border-color: #22c55e;
+    background-color: #22c55e;
+    color: #ffffff;
+  }
+  .agenda-add-btn.is-added:hover {
+    background-color: #ef4444;
+    border-color: #ef4444;
+    color: #ffffff;
+  }
+
+  /* Slide-in animation for drawer items */
+  @keyframes slideInItem {
+    from { opacity: 0; transform: translateX(16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Card pulse on add */
+  @keyframes addedPulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+  .card-added { animation: addedPulse 0.5s ease-out; }
+</style>
+
+<script is:inline>
+/* ── Storage key ─────────────────────────────────────────────────── */
+const STORAGE_KEY = 'osd2026-agenda';
+
+/* ── Helpers ─────────────────────────────────────────────────────── */
+const getAgenda = () => {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+  catch { return []; }
+};
+const saveAgenda = (items) => localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+
+/* ── Build the drawer list ───────────────────────────────────────── */
+function renderAgenda() {
+  const items = getAgenda();
+  const list   = document.getElementById('agenda-list');
+  const empty  = document.getElementById('agenda-empty');
+  const count  = document.getElementById('agenda-count');
+  const subtitle = document.getElementById('agenda-subtitle');
+
+  // Sort by time string
+  items.sort((a, b) => a.time.localeCompare(b.time));
+
+  // Update count badge
+  if (items.length > 0) {
+    count.style.display = 'flex';
+    count.classList.remove('hidden');
+  } else {
+    count.style.display = '';
+    count.classList.add('hidden');
+  }
+  count.textContent = items.length;
+  subtitle.textContent = `${items.length} session${items.length !== 1 ? 's' : ''} tracked`;
+
+  // Empty state toggle
+  empty.style.display = items.length === 0 ? 'flex' : 'none';
+  list.style.display  = items.length > 0  ? 'block' : 'none';
+
+  // Render items — all styles are inline to avoid Tailwind purge
+  list.innerHTML = '';
+  items.forEach(item => {
+    const el = document.createElement('div');
+    el.style.cssText = [
+      'display:flex', 'align-items:flex-start', 'gap:10px',
+      'background:#f9fafb', 'border:1px solid #f3f4f6',
+      'border-radius:12px', 'padding:12px 10px 12px 12px',
+      'margin-bottom:8px', 'transition:background 0.2s,border-color 0.2s',
+      'animation:slideInItem 0.25s ease-out both'
+    ].join(';');
+    el.onmouseenter = () => { el.style.background='#f0fdf4'; el.style.borderColor='#bbf7d0'; };
+    el.onmouseleave = () => { el.style.background='#f9fafb'; el.style.borderColor='#f3f4f6'; };
+
+    // Build inner HTML using DOM (100% reliable, no CSS purge issues)
+    const inner = document.createElement('div');
+    inner.style.cssText = 'flex:1;min-width:0';
+
+    // Time + track row
+    const meta = document.createElement('div');
+    meta.style.cssText = 'display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px';
+    const timeEl = document.createElement('span');
+    timeEl.style.cssText = 'color:#16a34a;font-weight:700;font-size:11px;font-family:monospace';
+    timeEl.textContent = item.time;
+    const trackEl = document.createElement('span');
+    trackEl.style.cssText = 'font-size:10px;color:#6b7280;background:#fff;border:1px solid #e5e7eb;padding:1px 6px;border-radius:999px';
+    trackEl.textContent = item.track;
+    meta.appendChild(timeEl);
+    meta.appendChild(trackEl);
+
+    // Title
+    const titleEl = document.createElement('div');
+    titleEl.style.cssText = 'font-weight:700;color:#111827;font-size:13px;line-height:1.45;margin-bottom:3px;word-wrap:break-word';
+    titleEl.textContent = item.title;
+
+    inner.appendChild(meta);
+    inner.appendChild(titleEl);
+
+    // Speaker
+    if (item.speaker) {
+      const spEl = document.createElement('div');
+      spEl.style.cssText = 'font-size:11px;color:#6b7280;margin-bottom:1px';
+      spEl.textContent = 'by ' + item.speaker;
+      inner.appendChild(spEl);
+    }
+    // Room
+    if (item.room) {
+      const roomEl = document.createElement('div');
+      roomEl.style.cssText = 'font-size:11px;color:#9ca3af';
+      roomEl.textContent = '📍 ' + item.room;
+      inner.appendChild(roomEl);
+    }
+
+    // Remove button
+    const btn = document.createElement('button');
+    btn.title = 'Remove';
+    btn.style.cssText = 'flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:2px;transition:background 0.15s,border-color 0.15s';
+    btn.onmouseenter = () => { btn.style.background='#fef2f2'; btn.style.borderColor='#fca5a5'; };
+    btn.onmouseleave = () => { btn.style.background='#fff'; btn.style.borderColor='#e5e7eb'; };
+    btn.onclick = () => window.removeSession(item.id);
+    btn.innerHTML = `<svg width="12" height="12" fill="none" stroke="#f87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
+
+    el.appendChild(inner);
+    el.appendChild(btn);
+    list.appendChild(el);
+  });
+}
+
+/* ── Sync all add buttons to reflect current agenda ─────────────── */
+function syncButtons() {
+  const agenda = getAgenda();
+  const addedIds = new Set(agenda.map(i => i.id));
+
+  document.querySelectorAll('[data-add-btn]').forEach(btn => {
+    const sid = btn.dataset.addBtn;
+    const isAdded = addedIds.has(sid);
+    btn.classList.toggle('is-added', isAdded);
+
+    const icon = btn.querySelector('.add-icon');
+    const label = btn.querySelector('.btn-label');
+    if (isAdded) {
+      icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>`;
+      label.textContent = 'Tracked ✓';
+    } else {
+      icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>`;
+      label.textContent = 'Track It';
+    }
+  });
+}
+
+/* ── Toggle a session (called from onclick on conference cards) ──── */
+window.toggleSession = function(sid) {
+  // Read session data from data attributes on the card
+  const card = document.getElementById(`card-${sid}`);
+  let title, time, speaker, room, type, track;
+
+  if (card && card.dataset.title) {
+    // Conference card has data-* attrs
+    title   = card.dataset.title;
+    time    = card.dataset.time;
+    speaker = card.dataset.speaker;
+    room    = card.dataset.room;
+    type    = card.dataset.type;
+    track   = card.dataset.track;
+  } else {
+    // Workshop card — read from button's onclick args via a secondary lookup
+    const btn = document.querySelector(`[data-add-btn="${sid}"]`);
+    // Fallback: parse from nearby DOM
+    const wrapper = btn?.closest('[id]') || btn?.closest('.flex-1');
+    title   = wrapper?.querySelector('h3')?.textContent?.trim() || sid;
+    time    = wrapper?.querySelector('.font-mono')?.textContent?.trim() || '';
+    speaker = wrapper?.querySelector('p')?.textContent?.replace(/^by\s*/,'').trim() || '';
+    room    = '';
+    type    = 'workshop';
+    track   = 'Workshop';
+  }
+
+  const agenda = getAgenda();
+  const existingIdx = agenda.findIndex(i => i.id === sid);
+
+  if (existingIdx >= 0) {
+    // Remove
+    agenda.splice(existingIdx, 1);
+  } else {
+    // Add
+    agenda.push({ id: sid, title, time, speaker, room, type, track });
+    // Flash the card
+    const cardEl = document.getElementById(`card-${sid}`);
+    if (cardEl) {
+      cardEl.classList.add('card-added');
+      setTimeout(() => cardEl.classList.remove('card-added'), 600);
+    }
+  }
+
+  saveAgenda(agenda);
+  syncButtons();
+  renderAgenda();
+};
+
+/* ── Remove from drawer ─────────────────────────────────────────── */
+window.removeSession = function(sid) {
+  const agenda = getAgenda().filter(i => i.id !== sid);
+  saveAgenda(agenda);
+  syncButtons();
+  renderAgenda();
+};
+
+
+/* ── Open / close drawer ────────────────────────────────────────── */
+let agendaOpen = false;
+window.toggleAgenda = function() {
+  agendaOpen = !agendaOpen;
+  const drawer   = document.getElementById('agenda-drawer');
+  const backdrop = document.getElementById('agenda-backdrop');
+
+  if (agendaOpen) {
+    backdrop.classList.remove('hidden');
+    // Force reflow before adding open class so transition fires
+    backdrop.offsetHeight;
+    drawer.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  } else {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => backdrop.classList.add('hidden'), 320);
+  }
+};
+
+/* ── Init ───────────────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  renderAgenda();
+  syncButtons();
+});
+</script>

@@ -1,5 +1,6 @@
 import { graphqlClient } from "@/lib/graphql/graphql.ts";
 import { gql } from "graphql-request";
+import type { SponsorsQueryResponse } from "@/types/sponsors.types.ts";
 
 const query = gql`
   query GetSponsors {
@@ -22,4 +23,4 @@ const query = gql`
   }
 `;
 
-export const sponsorsData = await graphqlClient.request(query);
+export const sponsorsData = await graphqlClient.request<SponsorsQueryResponse>(query);

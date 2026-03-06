@@ -2,6 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import PageHero from "@/components/PageHero.jsx";
+import { PastEvent } from "@/config/config.ts";
+
+// OSD 2025 photos — use first event group (May 2025 or latest)
+const osd2025Photos = PastEvent[0]?.images?.slice(0, 4) ?? [];
 ---
 
 <Layout title="Past Events — Open Source Day" activePath="/past-events">
@@ -17,10 +21,10 @@ import PageHero from "@/components/PageHero.jsx";
   <!-- OSD 2025 Highlight -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
-      <div class="flex items-center gap-3 mb-10">
-        <div class="h-px flex-1 bg-gray-200"></div>
-        <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Most Recent</span>
-        <div class="h-px flex-1 bg-gray-200"></div>
+      <div class="flex items-center gap-4 mb-10">
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent to-green-200"></div>
+        <span class="text-xs font-bold text-green-700 uppercase tracking-widest px-4 py-1.5 rounded-full border border-green-200 bg-green-50 whitespace-nowrap">Most Recent</span>
+        <div class="h-px flex-1 bg-gradient-to-l from-transparent to-green-200"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div>
@@ -31,7 +35,7 @@ import PageHero from "@/components/PageHero.jsx";
           </p>
           <div class="grid grid-cols-3 gap-4 mb-8">
             {[["1000+", "Attendees"], ["30+", "Sessions"], ["80+", "Partners"]].map(([num, label]) => (
-              <div class="border border-gray-100 rounded-2xl p-4 text-center">
+              <div class="border border-gray-100 rounded-2xl p-4 text-center hover:border-green-100 transition-colors">
                 <div class="text-2xl font-black gradient-text">{num}</div>
                 <div class="text-gray-500 text-xs mt-1">{label}</div>
               </div>
@@ -39,55 +43,123 @@ import PageHero from "@/components/PageHero.jsx";
           </div>
           <a href="/2025/" class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-6 py-3 rounded-full transition-all hover:scale-105">
             Visit OSD 2025 Site
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
           </a>
         </div>
         <div class="grid grid-cols-2 gap-3">
-          {[1, 2, 3, 4].map((i) => (
-            <div class="bg-gray-50 border border-gray-100 rounded-2xl aspect-square flex items-center justify-center">
-              <div class="text-center">
-                <div class="w-10 h-10 mx-auto mb-2 text-gray-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-                  </svg>
-                </div>
-                <p class="text-gray-400 text-xs">Photo {i}</p>
-              </div>
+          {osd2025Photos.length > 0 ? osd2025Photos.map((img: any) => (
+            <div class="rounded-2xl overflow-hidden aspect-square bg-gray-50 border border-gray-100">
+              <img src={img.src} alt="OSD 2025" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
             </div>
+          )) : [1,2,3,4].map((i) => (
+            <div class="bg-gray-50 border border-gray-100 rounded-2xl aspect-square flex items-center justify-center text-gray-300 text-xs">Photo {i}</div>
           ))}
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Timeline -->
+  <!-- The Journey — Accordion -->
   <section class="py-20 px-4 bg-gray-50">
     <div class="max-w-4xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">The <span class="gradient-text">Journey</span></h2>
-        <p class="text-gray-500">Open Source Day has been growing every year</p>
+        <p class="text-gray-500">Open Source Day has been growing every year — click each year to explore</p>
       </div>
-      <div class="space-y-4">
-        {[
-          { year: "2026", title: "Open Source Day 2026", desc: "TBA · Ahmedabad, Gujarat", upcoming: true },
-          { year: "2025", title: "Open Source Day 2025", desc: "Silver Oak University · 1000+ attendees · 30+ sessions", href: "/2025/" },
-          { year: "2024", title: "Open Source Day 2024", desc: "Another milestone year for the open source community" },
-          { year: "2023", title: "Open Source Day 2023", desc: "Growing the community across Gujarat and beyond" },
-          { year: "2022", title: "Open Source Day 2022", desc: "Back in person after the pandemic, stronger than ever" },
-        ].map((e) => (
-          <div class={`border rounded-2xl p-5 flex items-center gap-4 transition-all ${e.upcoming ? "border-green-200 bg-white" : "border-gray-100 bg-white hover:border-green-100"}`}>
-            <div class={`text-3xl font-black shrink-0 ${e.upcoming ? "gradient-text" : "text-gray-300"}`}>{e.year}</div>
+
+      <div class="space-y-3" id="journey-accordion">
+
+        <!-- 2026 upcoming -->
+        <div class="border border-green-200 bg-white rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-4 p-5">
+            <div class="text-3xl font-black gradient-text shrink-0">2026</div>
             <div class="flex-1">
-              <div class="font-bold text-gray-900">{e.title}</div>
-              <div class="text-gray-500 text-sm">{e.desc}</div>
+              <div class="font-bold text-gray-900">Open Source Day 2026</div>
+              <div class="text-gray-500 text-sm">TBA · Ahmedabad, Gujarat</div>
             </div>
-            {e.href && (
-              <a href={e.href} class="text-sm font-semibold text-green-600 hover:underline shrink-0">View →</a>
-            )}
-            {e.upcoming && (
-              <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full shrink-0">Upcoming</span>
-            )}
+            <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full shrink-0">Upcoming</span>
           </div>
-        ))}
+        </div>
+
+        <!-- 2025 OSD -->
+        <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden accordion-item">
+          <button class="accordion-trigger w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors">
+            <div class="text-3xl font-black text-gray-300 shrink-0">2025</div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900">Open Source Day 2025</div>
+              <div class="text-gray-500 text-sm">Silver Oak University · 1000+ attendees · 30+ sessions</div>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+              <a href="/2025/" class="text-sm font-semibold text-green-600 hover:underline" onclick="event.stopPropagation()">View →</a>
+              <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+          </button>
+          <div class="accordion-panel hidden px-5 pb-5">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {PastEvent.filter(e => e.year === "2025").flatMap(e => e.images).slice(0, 8).map((img: any) => (
+                <div class="rounded-xl overflow-hidden aspect-square bg-gray-100">
+                  <img src={img.src} alt="OSD 2025" loading="lazy" class="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden accordion-item">
+          <button class="accordion-trigger w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors">
+            <div class="text-3xl font-black text-gray-300 shrink-0">2024</div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900">OpenSourceWeekend × Hacktoberfest 2024</div>
+              <div class="text-gray-500 text-sm">Growing the open source community across Gujarat</div>
+            </div>
+            <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-panel hidden px-5 pb-5">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {PastEvent.filter(e => e.year === "2024").flatMap(e => e.images).slice(0, 8).map((img: any) => (
+                <div class="rounded-xl overflow-hidden aspect-square bg-gray-100">
+                  <img src={img.src} alt="OSD 2024" loading="lazy" class="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden accordion-item">
+          <button class="accordion-trigger w-full flex items-center gap-4 p-5 text-left hover:bg-gray-50 transition-colors">
+            <div class="text-3xl font-black text-gray-300 shrink-0">2023</div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900">Open Source Talks & Hacktoberfest 2023</div>
+              <div class="text-gray-500 text-sm">Two events — building the open source foundation</div>
+            </div>
+            <svg class="accordion-chevron w-5 h-5 text-gray-400 transition-transform duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="accordion-panel hidden px-5 pb-5">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {PastEvent.filter(e => e.year === "2023").flatMap(e => e.images).slice(0, 8).map((img: any) => (
+                <div class="rounded-xl overflow-hidden aspect-square bg-gray-100">
+                  <img src={img.src} alt="OSD 2023" loading="lazy" class="w-full h-full object-cover" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- 2022 -->
+        <div class="border border-gray-100 bg-white rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-4 p-5">
+            <div class="text-3xl font-black text-gray-300 shrink-0">2022</div>
+            <div class="flex-1">
+              <div class="font-bold text-gray-900">Open Source Day 2022</div>
+              <div class="text-gray-500 text-sm">Back in person after the pandemic, stronger than ever</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -101,9 +173,33 @@ import PageHero from "@/components/PageHero.jsx";
         class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105">
         Join WhatsApp Community
       </a>
-      <a href="#get-involved" class="inline-flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-900 transition-colors">
-        Get Involved
+      <a href="/" class="inline-flex items-center gap-2 font-semibold text-gray-500 hover:text-gray-900 transition-colors">
+        Get Involved →
       </a>
     </div>
   </section>
+
 </Layout>
+
+<script>
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion-item');
+      const panel = item?.querySelector('.accordion-panel');
+      const chevron = trigger.querySelector('.accordion-chevron');
+      const isOpen = !panel?.classList.contains('hidden');
+
+      // Close all
+      document.querySelectorAll('.accordion-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.accordion-chevron').forEach(c => c.classList.remove('rotate-180'));
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        panel?.classList.remove('hidden');
+        chevron?.classList.add('rotate-180');
+      }
+    });
+  });
+</script>
+
+

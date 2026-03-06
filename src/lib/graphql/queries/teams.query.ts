@@ -1,5 +1,6 @@
 import { graphqlClient } from "@/lib/graphql/graphql.ts";
 import { gql } from "graphql-request";
+import type { TeamsQueryResponse } from "@/types/teams.types.ts";
 
 const query = gql`
   query GetTeams {
@@ -27,4 +28,4 @@ const query = gql`
   }
 `;
 
-export const teamsData = await graphqlClient.request(query);
+export const teamsData = await graphqlClient.request<TeamsQueryResponse>(query);

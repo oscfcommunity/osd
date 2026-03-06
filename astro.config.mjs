@@ -27,6 +27,7 @@ const REDIRECTS = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://osd.opensourceweekend.org",
+  output: "static",
   redirects: REDIRECTS,
   vite: {
     // @ts-ignore

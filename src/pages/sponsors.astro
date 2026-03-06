@@ -2,9 +2,26 @@
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import PageHero from "@/components/PageHero.jsx";
+import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
+import type { SponsorGroup } from "@/types/sponsors.types.ts";
+import { env } from "@/lib/env.ts";
 
-import { sponsorsData } from "@/lib/graphql/queries/sponsors.query";
-console.log(JSON.stringify(sponsorsData, null, 2));
+const rawGroups: SponsorGroup[] = sponsorsData?.sponsors?.[0]?.sponsors ?? [];
+
+const groups = rawGroups.map((group) => ({
+  ...group,
+  sponsors: group.sponsors.map((s) => ({
+    ...s,
+    logoUrl: s.logo?.url ? `${env.STRAPI_BASE_URL}${s.logo.url}`: null,
+  })),
+}));
+
+const STATS = [
+  { value: "1000+", label: "Attendees" },
+  { value: "30+", label: "Sessions" },
+  { value: "80+", label: "Partners" },
+  { value: "5 yrs", label: "Running" },
+];
 
 const TIERS = [
   {
@@ -32,7 +49,6 @@ const TIERS = [
       "Social media shoutouts (3×)",
     ],
     popular: true,
-    // popular styling applied via border/CTA only — no scale
     cta: "Become a Sponsor",
   },
   {
@@ -47,21 +63,6 @@ const TIERS = [
     popular: false,
     cta: "Contact Us",
   },
-];
-
-const STATS = [
-  { value: "1000+", label: "Attendees" },
-  { value: "30+", label: "Sessions" },
-  { value: "80+", label: "Partners" },
-  { value: "5 yrs", label: "Running" },
-];
-
-const DUMMY_GOLD    = ["Gold Sponsor A", "Gold Sponsor B", "Gold Sponsor C"];
-const DUMMY_SILVER  = ["Silver A", "Silver B", "Silver C", "Silver D"];
-const DUMMY_COMMUNITY = [
-  "Event Partner", "Venue Partner", "Media Partner", "Tech Partner",
-  "Community A",  "Community B",  "Community C",  "Community D",
-  "Community E",  "Community F",  "Community G",  "Community H",
 ];
 ---
 
@@ -89,8 +90,85 @@ const DUMMY_COMMUNITY = [
     </div>
   </section>
 
-  <!-- Sponsorship Tiers -->
-  <section class="py-20 px-4 bg-white">
+  <!-- ═══════════════ CURRENT SPONSORS (real data) ═══════════════ -->
+  {groups.length > 0 && (
+    <section class="py-20 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <!-- Section header -->
+        <div class="text-center mb-14">
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+            Sponsors &amp; <span class="gradient-text">Community Partners</span>
+          </h2>
+          <p class="text-gray-500">We're grateful for the support of our partners.</p>
+        </div>
+
+        {groups.map((group) => (
+          <div class="mb-14 last:mb-0">
+            <!-- Section divider with title -->
+            <div class="flex items-center gap-4 mb-8">
+              <div class="h-px flex-1 bg-gradient-to-r from-transparent to-green-200"></div>
+              <span class="text-xs font-bold text-green-700 uppercase tracking-widest px-3 py-1 rounded-full border border-green-200 bg-green-50">
+                {group.title}
+              </span>
+              <div class="h-px flex-1 bg-gradient-to-l from-transparent to-green-200"></div>
+            </div>
+
+            <!-- Sponsor logo grid -->
+            <div class={`grid gap-5 ${
+              group.sponsors.length === 1
+                ? "grid-cols-1 max-w-xs mx-auto"
+                : group.sponsors.length === 2
+                ? "grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto"
+                : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+            }`}>
+              {group.sponsors.map((sponsor) => (
+                <a
+                  href={sponsor.website && sponsor.website !== "#" ? sponsor.website : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`group relative bg-white border border-gray-100 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-green-200 ${sponsor.website && sponsor.website !== "#" ? "cursor-pointer" : "cursor-default"}`}
+                >
+                  <!-- Subtle top accent -->
+                  <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+
+                  {sponsor.logoUrl ? (
+                    <img
+                      src={sponsor.logoUrl}
+                      alt={`${sponsor.name} logo`}
+                      loading="lazy"
+                      class="max-h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                      <span class="text-green-700 font-black text-xl">
+                        {sponsor.name.charAt(0)}
+                      </span>
+                    </div>
+                  )}
+
+                  <span class="text-sm font-semibold text-gray-600 group-hover:text-green-700 transition-colors text-center">
+                    {sponsor.name}
+                  </span>
+
+                  {sponsor.website && sponsor.website !== "#" && (
+                    <span class="text-xs text-gray-300 group-hover:text-green-400 flex items-center gap-1 transition-colors">
+                      <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                      Visit website
+                    </span>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ═══════════════ SPONSORSHIP TIERS ═══════════════ -->
+  <section class="py-20 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
@@ -142,69 +220,8 @@ const DUMMY_COMMUNITY = [
     </div>
   </section>
 
-  <!-- Current Partners (placeholder) -->
-  <section class="py-20 px-4 bg-gray-50">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
-          Our <span class="gradient-text">Partners</span>
-        </h2>
-        <p class="text-gray-500">Organizations powering OSD 2026</p>
-      </div>
-
-      <!-- Gold -->
-      <div class="mb-10">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="h-px flex-1 bg-gray-200"></div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Gold Sponsors</span>
-          <div class="h-px flex-1 bg-gray-200"></div>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {DUMMY_GOLD.map((label) => (
-            <div class="h-24 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
-              <span class="text-gray-300 text-sm font-medium">{label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Silver -->
-      <div class="mb-10">
-        <div class="flex items-center gap-3 mb-5">
-          <div class="h-px flex-1 bg-gray-200"></div>
-          <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Silver Sponsors</span>
-          <div class="h-px flex-1 bg-gray-200"></div>
-        </div>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {DUMMY_SILVER.map((label) => (
-            <div class="h-20 border-2 border-dashed border-gray-200 rounded-2xl flex items-center justify-center bg-white hover:border-green-200 transition-colors">
-              <span class="text-gray-300 text-sm font-medium">{label}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Community Partners -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-5xl mx-auto text-center">
-      <h3 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
-        Community <span class="gradient-text">Partners</span>
-      </h3>
-      <p class="text-gray-500 mb-10">Communities that amplify open source with us</p>
-      <div class="flex flex-wrap justify-center gap-3">
-        {DUMMY_COMMUNITY.map((p) => (
-          <div class="border border-gray-200 rounded-full px-5 py-2 text-gray-500 text-sm font-medium bg-gray-50 hover:border-green-300 hover:text-green-700 hover:bg-green-50 transition-all">
-            {p}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- Bottom CTA -->
-  <section class="py-16 px-4 bg-gray-50 text-center border-t border-gray-100">
+  <section class="py-16 px-4 bg-white text-center border-t border-gray-100">
     <h3 class="text-2xl font-black text-gray-900 mb-3">
       Interested in <span class="gradient-text">sponsoring?</span>
     </h3>

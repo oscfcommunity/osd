@@ -64,7 +64,6 @@ export const HERO = {
 
 export const NAVIGATION = {
   items: [
-    { name: "Home", href: "/" },
     { name: "Speakers", href: "/speakers" },
     { name: "Schedule", href: "/schedule" },
     { name: "Team", href: "/team" },
