@@ -373,7 +373,7 @@ export const TICKETS = [
       text: "Coming Soon",
       classes: "text-white bg-green-500",
     },
-    konfhubUrl: "",
+    konfhubUrl: "/purchase",
     linkText: "Coming Soon",
   },
   {
@@ -388,7 +388,7 @@ export const TICKETS = [
       text: "Most Popular",
       classes: "text-white bg-green-600",
     },
-    konfhubUrl: "",
+    konfhubUrl: "/purchase",
     linkText: "Coming Soon",
   },
   {
@@ -474,7 +474,7 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: false,
+    available: true,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
@@ -501,7 +501,7 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: false,
+    available: true,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
