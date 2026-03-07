@@ -71,24 +71,55 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {CALLS_2026.map((call) => (
-          <a
-            href={call.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col"
-          >
-            <div class="w-11 h-11 bg-green-50 border border-green-100 rounded-xl mb-5 flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:scale-110 transition-all duration-300">
-              {call.emoji}
+          <div class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col">
+            <!-- Header: Icon + Badge -->
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-11 h-11 bg-green-50 border border-green-100 rounded-xl flex items-center justify-center text-xl group-hover:bg-green-500 group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                {call.emoji}
+              </div>
+              <span class={`text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wide border ${
+                call.badge === "Open"
+                  ? "bg-green-50 text-green-700 border-green-100"
+                  : "bg-red-50 text-red-700 border-red-100"
+              }`}>
+                {call.badge}
+              </span>
             </div>
-            <h3 class="text-lg font-bold text-gray-900 mb-2">{call.title}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed flex-1">{call.description}</p>
-            <div class="mt-5 flex items-center text-sm font-semibold text-green-600 group-hover:text-green-700">
+
+            <!-- Title -->
+            <h3 class="text-lg font-bold text-gray-900 mb-3">{call.title}</h3>
+
+            <!-- Description -->
+            <p class="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{call.description}</p>
+
+            <!-- Deadline -->
+            <div class="text-sm text-gray-600 mb-6 pb-6 border-b border-gray-100">
+              <span class="font-semibold">Deadline:</span> {call.deadline}
+            </div>
+
+            <!-- CTA -->
+            {
+              call.enable ? <a
+              href={call.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 group-hover:shadow-md"
+            >
               Apply Now
-              <svg class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </div>
-          </a>
+            </a> : <button
+              class="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 group-hover:shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+            >
+              Apply Now
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+            }
+          </div>
         ))}
       </div>
 
@@ -178,7 +209,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
           ))}
         </div>
       </div>
- 
+
     </div>
   </section>
 
@@ -393,12 +424,31 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 
         <div class="flex flex-col gap-3 mb-auto">
           {TICKETS.slice(0, 3).map((t) => (
-            <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
+            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex flex-col gap-4">
+
+            <div class="flex justify-between items-center">
               <div>
                 <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
                 <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
               </div>
               <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
+            </div>
+            {t.available ? (
+                <a
+                  href={t.konfhubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all text-center ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+                >
+                  {t.linkText || "Coming Soon"}
+                </a>
+              ) : (
+                <button
+                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
+                >
+                  {t.linkText || "Coming Soon"}
+                </button>
+              )}
             </div>
           ))}
         </div>

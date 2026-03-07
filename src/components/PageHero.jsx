@@ -3,9 +3,9 @@ import { useEffect, useRef } from "react";
 /**
  * PageHero — shared hero for all inner pages.
  * Mirrors Hero.jsx design exactly; only content differs via props.
- * @param {{ badge: string, title: string, titleGradient: string, subtitle: string, primaryCta: { text: string, href: string, external?: boolean }, secondaryCta?: { text: string, href: string, external?: boolean } }} props
+ * @param {{ badge: string, title: string, titleGradient: string, subtitle: string, primaryCta: { text: string, href: string, external?: boolean }, secondaryCta?: { text: string, href: string, external?: boolean }, ctaNote?: string }} props
  */
-const PageHero = ({ badge, title, titleGradient, subtitle, primaryCta, secondaryCta }) => {
+const PageHero = ({ badge, title, titleGradient, subtitle, primaryCta, secondaryCta, ctaNote }) => {
   const sectionRef = useRef(null);
   const hashTagList = ["#OSDIn2026", "#OSDIndia2026", "#OpenSourceDay"];
   useEffect(() => {
@@ -71,6 +71,12 @@ const PageHero = ({ badge, title, titleGradient, subtitle, primaryCta, secondary
               </a>
             )}
           </div>
+
+          {ctaNote && (
+            <div class="text-gray-600 mt-6 pt-6 border-t border-gray-200 w-full">
+              <span class="font-semibold">Deadline:</span> {ctaNote}
+            </div>
+          )}
         </div>
 
         {/* Hashtag footer — mirrors Hero.jsx */}
