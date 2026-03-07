@@ -145,38 +145,40 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Building <span class="gradient-text">Impact</span> in 2026</h2>
         <p class="text-lg text-gray-500">What we're aiming for — bigger and better than ever</p>
       </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
-        {[
-          { value: 600, suffix: "+", label: "Expected Attendees" },
-          { value: 100, suffix: "+", label: "Community Partners" },
-          { value: 50, suffix: "+", label: "Expert Speakers" },
-          { value: 20, suffix: "+", label: "Technical Sessions" },
-          { value: 10, suffix: "+", label: "Panel Discussions" },
-          { value: 5, suffix: "+", label: "Workshops" },
-          { value: 100, suffix: "+", label: "Open Source Project Contribution" },
-        ].map(({ value, suffix, label }) => (
-          <div class="flex flex-col items-center py-10 px-6 bg-white">
-            <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
-              <Counter target={value} client:visible />{suffix}
+      <div class="rounded-2xl overflow-hidden border border-gray-100">
+        <!-- First row: 4 items -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100">
+          {[
+            { value: 600, suffix: "+", label: "Expected Attendees" },
+            { value: 100, suffix: "+", label: "Community Partners" },
+            { value: 50, suffix: "+", label: "Expert Speakers" },
+            { value: 20, suffix: "+", label: "Technical Sessions" },
+          ].map(({ value, suffix, label }) => (
+            <div class="flex flex-col items-center py-10 px-6 bg-white">
+              <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
+                <Counter target={value} client:visible />{suffix}
+              </div>
+              <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
             </div>
-            <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <!-- Second row: 3 items centered -->
+        <div class="flex flex-wrap justify-center gap-px  border-t border-gray-100">
+          {[
+            { value: 10, suffix: "+", label: "Panel Discussions" },
+            { value: 5, suffix: "+", label: "Workshops" },
+            { value: 100, suffix: "+", label: "Open Source Project Contribution" },
+          ].map(({ value, suffix, label }) => (
+            <div class="flex flex-col items-center py-10 px-6 bg-white w-1/2 md:w-1/4">
+              <div class="text-4xl md:text-5xl font-black gradient-text mb-2">
+                <Counter target={value} client:visible />{suffix}
+              </div>
+              <div class="text-sm text-gray-500 font-medium text-center">{label}</div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div class="grid grid-cols-3 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100 mt-px">
-        <div class="flex flex-col items-center py-10 px-6 bg-white">
-          <div class="text-4xl md:text-5xl font-black gradient-text mb-2"><Counter target={3} client:visible />+</div>
-          <div class="text-sm text-gray-500 font-medium text-center">Panel Discussions</div>
-        </div>
-        <div class="flex flex-col items-center py-10 px-6 bg-white">
-          <div class="text-4xl md:text-5xl font-black gradient-text mb-2"><Counter target={6} client:visible />+</div>
-          <div class="text-sm text-gray-500 font-medium text-center">Workshops</div>
-        </div>
-        <div class="flex flex-col items-center py-10 px-6 bg-white">
-          <div class="text-4xl md:text-5xl font-black gradient-text mb-2">1</div>
-          <div class="text-sm text-gray-500 font-medium text-center">Full Day Event</div>
-        </div>
-      </div>
+ 
     </div>
   </section>
 
@@ -371,7 +373,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         <div class="text-gray-500 text-sm mb-6">{VENUE.address}</div>
         <div class="flex items-center gap-2 text-sm text-gray-400 mb-auto">
           <CalendarClock class="w-4 h-4" />
-          TBA · Ahmedabad, Gujarat
+          04 April 2026 · Ahmedabad, Gujarat
         </div>
         <a href="/venue" class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
           Venue Details
@@ -390,7 +392,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         </div>
 
         <div class="flex flex-col gap-3 mb-auto">
-          {TICKETS.slice(0, 2).map((t) => (
+          {TICKETS.slice(0, 3).map((t) => (
             <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border border-gray-100">
               <div>
                 <div class="font-semibold text-gray-900 text-sm">{t.name}</div>

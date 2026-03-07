@@ -26,42 +26,63 @@ const STATS = [
 const TIERS = [
   {
     name: "Platinum",
+    price: "$6000",
     tagline: "Maximum visibility & reach",
     perks: [
-      "Headline keynote slot (45 min)",
-      "Logo on all materials & stage",
-      "Premium exhibition booth",
-      "20 complimentary passes",
-      "Dedicated social campaign",
-      "Post-event blog feature",
+      "✅ Booth Space",
+      "🎤 Technical Speaking Slot — 30–45 min",
+      "🏷️ Logo on Digital Collateral, Website & Email Marketing, Merchandise, Certificates, Flex banner/Standee, Registration desk & Marketing kit in goodie bag + Brand video (2 min)",
+      "🎟️ 20 Complimentary Event Passes",
+      "🎁 Guest Momento & Goodies",
+      "📣 3 Exclusive Social Media Posts",
     ],
     popular: false,
-    cta: "Contact Us",
+    cta: "Contact Organizers",
   },
   {
     name: "Gold",
+    price: "$3500",
     tagline: "Best value — most popular",
     perks: [
-      "Speaking slot (20 min talk)",
-      "Logo on website, stage & materials",
-      "Exhibition booth",
-      "10 complimentary passes",
-      "Social media shoutouts (3×)",
+      "❌ No Booth Space",
+      "🎤 Technical Speaking Slot — 10–15 min",
+      "🏷️ Logo on Digital Collateral, Website & Email Marketing, Merchandise, Certificates, Flex banner/Standee & logo on goodie bag",
+      "🎟️ 10 Complimentary Event Passes",
+      "🎁 Guest Momento & Goodies",
+      "📣 2 Exclusive Social Media Posts",
     ],
     popular: true,
     cta: "Become a Sponsor",
   },
   {
     name: "Silver",
-    tagline: "Essential sponsorship",
+    price: "$2500",
+    tagline: "Strong brand presence",
     perks: [
-      "Logo on website & backdrop",
-      "Social media mention (1×)",
-      "Shared booth space",
-      "5 complimentary passes",
+      "❌ No Booth Space",
+      "🎤 Technical Speaking Slot — 8–10 min",
+      "🏷️ Logo on Digital Collateral, Website, Merchandise, Certificates, Flex banner/Standee & logo on goodie bag",
+      "🎟️ 5 Complimentary Event Passes",
+      "🎁 Guest Momento & Goodies",
+      "📣 1 Exclusive Social Media Post",
     ],
     popular: false,
-    cta: "Contact Us",
+    cta: "Contact Organizers",
+  },
+  {
+    name: "Bronze",
+    price: "$1200",
+    tagline: "Great entry-level sponsorship",
+    perks: [
+      "❌ No Booth Space",
+      "🎤 Technical Speaking Slot — 2–5 min",
+      "🏷️ Logo on Digital Collateral, Website, Merchandise, Certificates, Flex banner/Standee",
+      "🎟️ 2 Complimentary Event Passes",
+      "🎁 Guest Momento & Goodies",
+      "📣 Combined Social Media Post",
+    ],
+    popular: false,
+    cta: "Contact Organizers",
   },
 ];
 ---
@@ -89,6 +110,8 @@ const TIERS = [
       ))}
     </div>
   </section>
+
+
 
   <!-- ═══════════════ CURRENT SPONSORS (real data) ═══════════════ -->
   {groups.length > 0 && (
@@ -177,9 +200,9 @@ const TIERS = [
         <p class="text-gray-500">Pick a tier that fits your goals</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
         {TIERS.map((tier) => (
-          <div class={`relative bg-white rounded-2xl p-8 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${tier.popular ? "border-2 border-green-300" : "border border-gray-200"}`}>
+          <div class={`relative bg-white rounded-2xl p-7 flex flex-col transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${tier.popular ? "border-2 border-green-400 shadow-md" : "border border-gray-200"}`}>
 
             {tier.popular && (
               <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
@@ -187,17 +210,13 @@ const TIERS = [
               </div>
             )}
 
-            <h3 class="text-2xl font-black text-gray-900 mt-2 mb-1">{tier.name}</h3>
+            <h3 class="text-xl font-black text-gray-900 mt-2 mb-0.5">{tier.name}</h3>
+            <div class="text-2xl font-black gradient-text mb-1">{tier.price}</div>
             <p class="text-gray-400 text-sm mb-6">{tier.tagline}</p>
 
             <ul class="space-y-3 mb-8 flex-1">
               {tier.perks.map((perk) => (
-                <li class="flex items-start gap-2.5 text-sm text-gray-600">
-                  <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                  {perk}
-                </li>
+                <li class="text-sm text-gray-600 leading-snug">{perk}</li>
               ))}
             </ul>
 
@@ -213,10 +232,185 @@ const TIERS = [
         ))}
       </div>
 
+      <!-- ── Exclusive Sponsorship Opportunities ── -->
+      <div class="mt-8 relative bg-gray-900 rounded-2xl p-8 md:p-10 border border-gray-800 overflow-hidden">
+        <!-- Decorative gradient blob -->
+        <div class="absolute -top-10 -right-10 w-56 h-56 bg-green-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-10 -left-10 w-56 h-56 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+          <div>
+            <span class="inline-block text-xs font-bold text-green-400 uppercase tracking-widest border border-green-500/40 bg-green-500/10 px-3 py-1 rounded-full mb-3">Add-On</span>
+            <h3 class="text-2xl md:text-3xl font-black text-white mb-1">Exclusive Sponsorship Opportunities</h3>
+            <p class="text-gray-400 text-sm max-w-lg">Supercharge your presence at OSD 2026 with targeted add-on sponsorships. Mix and match to build a package that fits your brand.</p>
+          </div>
+          <a
+            href="/cfs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="shrink-0 inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold text-sm px-6 py-3 rounded-full transition-all hover:scale-105"
+          >
+            Contact Organizers
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+        </div>
+
+        <div class="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {[
+            { icon: "👕", label: "T-shirt Sponsor" },
+            { icon: "🪪", label: "Lanyard + ID Card / Badge Sponsor" },
+            { icon: "🎒", label: "Goodie Bag / Kit Sponsor" },
+            { icon: "🏅", label: "Speaker Token of Appreciation Kit" },
+            { icon: "📱", label: "Social Media Contest" },
+            { icon: "🎁", label: "Giveaway Goodies" },
+            { icon: "🍽️", label: "F&B Lunch / Dinner Sponsor" },
+            { icon: "🥗", label: "Speaker Dinner Sponsor" },
+            { icon: "💼", label: "Exclusive CXO Panel" },
+            { icon: "🧑‍💻", label: "Sponsored Workshop" },
+            { icon: "📋", label: "Job Fair" },
+            { icon: "🤳", label: "Selfie Booth" },
+          ].map(({ icon, label }) => (
+            <div class="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/40 rounded-xl px-4 py-3 transition-all duration-200 group">
+              <span class="text-lg shrink-0">{icon}</span>
+              <span class="text-sm text-gray-300 group-hover:text-white font-medium transition-colors leading-tight">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
       <p class="text-center text-gray-400 text-sm mt-8">
         Custom packages available —{" "}
         <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline">reach out to discuss</a>.
       </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WHY SPONSOR? ═══════════════ -->
+  <section class="py-24 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Header -->
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
+          Why <span class="gradient-text">Sponsor OSD 2026?</span>
+        </h2>
+        <p class="text-gray-500 max-w-2xl mx-auto">
+          We offer a variety of sponsorship packages tailored to your needs. By becoming a sponsor, you gain valuable exposure to a highly targeted audience of tech professionals actively seeking open source solutions.
+        </p>
+      </div>
+
+      <!-- 6 Reason Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {[
+          {
+            icon: "📡",
+            title: "Brand Exposure",
+            desc: "Showcase your brand to a diverse audience of tech enthusiasts and industry professionals through extensive event branding and promotion across multiple channels.",
+          },
+          {
+            icon: "🎯",
+            title: "Lead Generation",
+            desc: "Connect with potential clients, partners, and top talent through direct interactions at your exhibition booth, during networking sessions, and through our event app.",
+          },
+          {
+            icon: "🎙️",
+            title: "Thought Leadership",
+            desc: "Share your expertise through speaking engagements and panel discussions, positioning your company as a thought leader in the Open Source ecosystem.",
+          },
+          {
+            icon: "🖥️",
+            title: "Product Demonstration",
+            desc: "Demonstrate your latest products and services to a captive audience, providing hands-on experiences and live demonstrations to showcase your solutions effectively.",
+          },
+          {
+            icon: "🤝",
+            title: "Corporate Social Responsibility",
+            desc: "Highlight your commitment to supporting the tech community and fostering innovation by contributing to a prestigious event that encourages learning and collaboration.",
+          },
+          {
+            icon: "🔗",
+            title: "Brand Association",
+            desc: "Associate your brand with Open Source — one of the most respected and innovative communities in the tech industry, reinforcing your company's innovative and forward-thinking image.",
+          },
+        ].map(({ icon, title, desc }) => (
+          <div class="group bg-gray-50 hover:bg-white border border-gray-100 hover:border-green-200 rounded-2xl p-7 flex flex-col gap-4 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <div class="w-12 h-12 bg-white group-hover:bg-green-50 border border-gray-100 group-hover:border-green-200 rounded-xl flex items-center justify-center text-2xl transition-all duration-300 shadow-sm">
+              {icon}
+            </div>
+            <div>
+              <h3 class="font-black text-gray-900 text-lg mb-1.5">{title}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Sponsorship Opportunities + Diverse Audience — two-column block -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Left: Sponsorship Benefits -->
+        <div class="bg-green-50 border border-green-100 rounded-2xl p-8">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-green-500 rounded-xl flex items-center justify-center text-white text-lg">💡</div>
+            <h3 class="text-xl font-black text-gray-900">Sponsorship Benefits</h3>
+          </div>
+          <p class="text-gray-600 text-sm mb-5 leading-relaxed">
+            Sponsorship benefits include:
+          </p>
+          <ul class="space-y-3">
+            {[
+              "Brand recognition and logo placement on all event materials (website, signage, etc.)",
+              "Speaking opportunities to showcase your expertise and solutions",
+              "Networking opportunities with potential customers and partners",
+              "Access to a pool of talented Open Source developers",
+              "Target audience reach",
+              "Collaboration opportunity",
+            ].map((item) => (
+              <li class="flex items-start gap-2.5 text-sm text-gray-700">
+                <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Right: Diverse Audience -->
+        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-8 relative overflow-hidden">
+          <div class="absolute -top-8 -right-8 w-40 h-40 bg-green-500/10 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="relative flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-green-500/20 border border-green-500/30 rounded-xl flex items-center justify-center text-lg">🌐</div>
+            <h3 class="text-xl font-black text-white">Diverse Audience</h3>
+          </div>
+          <p class="text-gray-400 text-sm mb-5 leading-relaxed">
+            Open Source Day 2026 attracts a diverse audience, including:
+          </p>
+          <ul class="space-y-2.5">
+            {[
+              "CEOs / CTOs",
+              "Software Developers",
+              "IT Professionals",
+              "System Administrators",
+              "Architects",
+              "Data Scientists",
+              "Business Decision-Makers",
+              "Students & Aspiring Developers",
+            ].map((person) => (
+              <li class="flex items-center gap-2.5 text-sm text-gray-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0"></span>
+                {person}
+              </li>
+            ))}
+          </ul>
+          <p class="relative mt-6 text-xs text-gray-500 italic border-t border-gray-700 pt-4">
+            This audience represents a significant growth opportunity for companies offering Open Source solutions and services.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
 

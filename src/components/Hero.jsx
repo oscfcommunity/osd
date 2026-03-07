@@ -32,7 +32,7 @@ const Hero = () => {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
             </span>
-            <span>TBA · AHMEDABAD</span>
+            <span>04 April 2026 · AHMEDABAD</span>
           </div>
 
           {/* Title — pb-4 prevents italic descender clipping */}

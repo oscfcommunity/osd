@@ -352,14 +352,14 @@ export const TICKETS = [
     originalPrice: 350,
     description: "Super Early Bird pricing with full conference access. Limited availability!",
     features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies", "Super Early Bird Discount"],
-    popular: false,
+    popular: true,
     available: true,
     alert: {
       text: "Most Awaited",
       classes: "text-white bg-green-500",
     },
     konfhubUrl: "/purchase",
-    linkText: "Register",
+    linkText: "Register Now",
   },
   {
     name: "Early Bird Ticket",
@@ -382,7 +382,7 @@ export const TICKETS = [
     originalPrice: 700,
     description: "Full conference access including lunch, keynotes, panels, and OSD goodies.",
     features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies"],
-    popular: true,
+    popular: false,
     available: false,
     alert: {
       text: "Most Popular",
@@ -411,7 +411,7 @@ export const TICKETS = [
       classes: "text-white bg-blue-500",
     },
     konfhubUrl: "/purchase",
-    linkText: "Register",
+    linkText: "Register Now",
   },
   {
     name: "Supporter Ticket",
@@ -430,7 +430,7 @@ export const TICKETS = [
     popular: false,
     available: true,
     konfhubUrl: "/purchase",
-    linkText: "Register",
+    linkText: "Register Now",
   },
   {
     name: "Silver Ticket",
@@ -452,7 +452,7 @@ export const TICKETS = [
     popular: false,
     available: true,
     konfhubUrl: "/purchase",
-    linkText: "Register",
+    linkText: "Register Now",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
@@ -476,7 +476,7 @@ export const TICKETS = [
     popular: false,
     available: false,
     konfhubUrl: "",
-    linkText: "Sold Out",
+    linkText: "Contact Organizers",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
@@ -503,7 +503,7 @@ export const TICKETS = [
     popular: false,
     available: false,
     konfhubUrl: "",
-    linkText: "Sold Out",
+    linkText: "Contact Organizers",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
