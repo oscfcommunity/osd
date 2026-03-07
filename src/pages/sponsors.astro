@@ -85,6 +85,21 @@ const TIERS = [
     cta: "Contact Organizers",
   },
 ];
+
+const exclusiveSponsorshipOpportunity  = [
+  { icon: "👕", label: "T-shirt Sponsor" },
+  { icon: "🪪", label: "Lanyard + ID Card / Badge Sponsor" },
+  { icon: "🎒", label: "Goodie Bag / Kit Sponsor" },
+  { icon: "🏅", label: "Speaker Token of Appreciation Kit" },
+  { icon: "📱", label: "Social Media Contest" },
+  { icon: "🎁", label: "Giveaway Goodies" },
+  { icon: "🍽️", label: "F&B Lunch / Dinner Sponsor" },
+  { icon: "🥗", label: "Speaker Dinner Sponsor" },
+  { icon: "💼", label: "Exclusive CXO Panel" },
+  { icon: "🧑‍💻", label: "Sponsored Workshop" },
+  { icon: "📋", label: "Job Fair" },
+  { icon: "🤳", label: "Selfie Booth" },
+];
 ---
 
 <Layout title="Sponsors — Open Source Day 2026" activePath="/sponsors">
@@ -258,20 +273,7 @@ const TIERS = [
         </div>
 
         <div class="relative grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          {[
-            { icon: "👕", label: "T-shirt Sponsor" },
-            { icon: "🪪", label: "Lanyard + ID Card / Badge Sponsor" },
-            { icon: "🎒", label: "Goodie Bag / Kit Sponsor" },
-            { icon: "🏅", label: "Speaker Token of Appreciation Kit" },
-            { icon: "📱", label: "Social Media Contest" },
-            { icon: "🎁", label: "Giveaway Goodies" },
-            { icon: "🍽️", label: "F&B Lunch / Dinner Sponsor" },
-            { icon: "🥗", label: "Speaker Dinner Sponsor" },
-            { icon: "💼", label: "Exclusive CXO Panel" },
-            { icon: "🧑‍💻", label: "Sponsored Workshop" },
-            { icon: "📋", label: "Job Fair" },
-            { icon: "🤳", label: "Selfie Booth" },
-          ].map(({ icon, label }) => (
+          {exclusiveSponsorshipOpportunity.map(({ icon, label }) => (
             <div class="flex items-center gap-2.5 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-green-500/40 rounded-xl px-4 py-3 transition-all duration-200 group">
               <span class="text-lg shrink-0">{icon}</span>
               <span class="text-sm text-gray-300 group-hover:text-white font-medium transition-colors leading-tight">{label}</span>

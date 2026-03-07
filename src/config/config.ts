@@ -475,7 +475,7 @@ export const TICKETS = [
     ],
     popular: false,
     available: false,
-    konfhubUrl: "",
+    konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
@@ -502,7 +502,7 @@ export const TICKETS = [
     ],
     popular: false,
     available: false,
-    konfhubUrl: "",
+    konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",

@@ -7,7 +7,7 @@ import { useEffect, useRef } from "react";
  */
 const PageHero = ({ badge, title, titleGradient, subtitle, primaryCta, secondaryCta }) => {
   const sectionRef = useRef(null);
-
+  const hashTagList = ["#OSDIn2026", "#OSDIndia2026", "#OpenSourceDay"];
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
@@ -75,9 +75,9 @@ const PageHero = ({ badge, title, titleGradient, subtitle, primaryCta, secondary
 
         {/* Hashtag footer — mirrors Hero.jsx */}
         <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap justify-center gap-6 opacity-40">
-          <div className="text-xl font-bold text-gray-400">#OSDIn2026</div>
-          <div className="text-xl font-bold text-gray-400">#OSDIndia2026</div>
-          <div className="text-xl font-bold text-gray-400">#OpenSourceDay</div>
+          {hashTagList.map((tag) => (
+            <div className="text-xl font-bold text-gray-400">{tag}</div>
+          ))}
         </div>
       </div>
     </div>
