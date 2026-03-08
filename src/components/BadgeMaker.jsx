@@ -99,143 +99,224 @@ const BadgeMaker = () => {
     const ctx = canvas.getContext("2d");
     const width = 800;
     const height = 1000;
-
     canvas.width = width;
     canvas.height = height;
 
-    // Clear canvas
     ctx.clearRect(0, 0, width, height);
 
-    // Create gradient background
-    const gradient = ctx.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, currentTemplate.color);
-    gradient.addColorStop(1, currentTemplate.color + "80");
+    /* -------------------------
+      Pick Template Dynamically
+  -------------------------- */
+    const template = templates.find((t) => t.id === currentTemplate.id) || templates[1]; // default attendee
+    const gradientColors = template.bgGradient.match(/#([0-9a-f]{6}|[0-9a-f]{3})/gi) || [template.color, template.color];
 
-    ctx.fillStyle = gradient;
+    /* -------------------------
+      Gradient Background + Glow
+  -------------------------- */
+    const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+    bgGradient.addColorStop(0, gradientColors[0]);
+    bgGradient.addColorStop(1, gradientColors[1]);
+    ctx.fillStyle = bgGradient;
     ctx.fillRect(0, 0, width, height);
 
-    // Add geometric shapes for visual appeal
-    ctx.fillStyle = "rgba(255, 255, 255, 0.10)";
-    ctx.beginPath();
-    ctx.moveTo(0, height * 0.7);
-    ctx.quadraticCurveTo(width * 0.3, height * 0.3, width, height * 0.5);
-    ctx.quadraticCurveTo(width * 0.7, height * 0.8, 0, height);
-    ctx.closePath();
-    ctx.fill();
+    // Subtle radial glow behind avatar
+    const glowGradient = ctx.createRadialGradient(width / 2, 370, 120, width / 2, 370, 300);
+    glowGradient.addColorStop(0, "rgba(255,255,255,0.15)");
+    glowGradient.addColorStop(1, "transparent");
+    ctx.fillStyle = glowGradient;
+    ctx.fillRect(0, 0, width, height);
 
-    // Subtle dark overlay strip for text contrast (left side)
-    const overlayGradient = ctx.createLinearGradient(0, 0, 400, 0);
-    overlayGradient.addColorStop(0, "rgba(0,0,0,0.30)");
-    overlayGradient.addColorStop(1, "rgba(0,0,0,0.00)");
-    ctx.fillStyle = overlayGradient;
-    ctx.fillRect(0, 0, 420, height);
+    /* -------------------------
+      Grid Layer
+  -------------------------- */
+    const gridSpacing = 80;
+    ctx.strokeStyle = "rgba(255,255,255,0.1)";
+    ctx.lineWidth = 1;
+    for (let x = 0; x < width; x += gridSpacing) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+    for (let y = 0; y < height; y += gridSpacing) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(width, y);
+      ctx.stroke();
+    }
 
-    // Add user image if uploaded
+    /* -------------------------
+      Neural Network Layer (Glowing)
+  -------------------------- */
+    const drawNeuralNetwork = (ctx, width, height, nodes = 40) => {
+      const points = [];
+      for (let i = 0; i < nodes; i++) {
+        points.push({ x: Math.random() * width, y: Math.random() * height });
+      }
+
+      ctx.strokeStyle = "rgba(255,255,255,0.5)";
+      ctx.lineWidth = 1;
+      ctx.shadowColor = template.color;
+      ctx.shadowBlur = 8;
+
+      for (let i = 0; i < nodes; i++) {
+        for (let j = i + 1; j < nodes; j++) {
+          const dx = points[i].x - points[j].x;
+          const dy = points[i].y - points[j].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < 200) {
+            ctx.beginPath();
+            ctx.moveTo(points[i].x, points[i].y);
+            ctx.lineTo(points[j].x, points[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      ctx.shadowBlur = 0;
+    };
+    drawNeuralNetwork(ctx, width, height);
+
+    /* -------------------------
+      Top Title
+  -------------------------- */
+    ctx.fillStyle = "#fff";
+    ctx.font = "800 54px Inter";
+    ctx.textAlign = "center";
+    ctx.shadowColor = "rgba(0,0,0,0.5)";
+    ctx.shadowBlur = 6;
+    ctx.fillText("Open Source Day", width / 2, 120);
+    ctx.shadowBlur = 0;
+
+    /* -------------------------
+      Logo Top-left
+  -------------------------- */
+    try {
+      const logoUrl = typeof BRANDING.logos.green === "string" ? BRANDING.logos.green : BRANDING.logos.green?.src || BRANDING.logos.green;
+
+      if (logoUrl) {
+        const logo = new Image();
+        logo.onload = () => {
+          const maxW = 160;
+          const maxH = 70;
+          let w = logo.width;
+          let h = logo.height;
+          const scale = Math.min(maxW / w, maxH / h);
+          w *= scale;
+          h *= scale;
+          ctx.drawImage(logo, 50, 50, w, h);
+        };
+        logo.src = logoUrl;
+      }
+    } catch {}
+
+    /* -------------------------
+      Centered Avatar with Neon Ring
+  -------------------------- */
+    const avatarSize = 240;
+    const avatarX = width / 2 - avatarSize / 2;
+    const avatarY = 250;
+
     if (uploadedImage) {
       const img = new Image();
       img.onload = () => {
-        const imgSize = 200 * imageScale;
-        const imgX = width - 250 + imagePosition.x;
-        const imgY = height - 370 + imagePosition.y;
-
-        // Create circular clipping path
         ctx.save();
+        ctx.shadowColor = "rgba(255,255,255,0.25)";
+        ctx.shadowBlur = 30;
         ctx.beginPath();
-        ctx.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2);
+        ctx.arc(width / 2, avatarY + avatarSize / 2, avatarSize / 2, 0, Math.PI * 2);
         ctx.clip();
-
-        ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
+        ctx.drawImage(img, avatarX, avatarY, avatarSize, avatarSize);
         ctx.restore();
 
-        // Add border to image
-        ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
-        ctx.lineWidth = 4;
+        // Neon ring
+        ctx.save();
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = template.color;
+        ctx.shadowColor = template.color;
+        ctx.shadowBlur = 20;
         ctx.beginPath();
-        ctx.arc(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2, 0, Math.PI * 2);
+        ctx.arc(width / 2, avatarY + avatarSize / 2, avatarSize / 2 + 10, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.restore();
+
+        // White border
+        ctx.lineWidth = 6;
+        ctx.strokeStyle = "#fff";
+        ctx.beginPath();
+        ctx.arc(width / 2, avatarY + avatarSize / 2, avatarSize / 2, 0, Math.PI * 2);
         ctx.stroke();
       };
       img.src = uploadedImage;
     }
 
-    // Add text content
-    ctx.fillStyle = "#ffffff";
-    ctx.textAlign = "left";
-    ctx.shadowColor = "rgba(0,0,0,0.25)";
-    ctx.shadowBlur = 8;
-
-    // Role badge pill
-    const roleText = currentTemplate.title.toUpperCase();
-    ctx.font = "bold 28px Inter, sans-serif";
-    const rolePaddingX = 18;
-    const rolePaddingY = 10;
-    const roleMetrics = ctx.measureText(roleText);
-    const roleWidth = roleMetrics.width + rolePaddingX * 2;
-    const roleHeight = 40 + rolePaddingY * 2 - 20; // visual tweak
-    const roleX = 50;
-    const roleY = 80;
-    // rounded rect
-    ctx.save();
+    /* -------------------------
+      User Name
+  -------------------------- */
+    ctx.fillStyle = "#fff";
+    ctx.font = "700 64px Inter";
+    ctx.textAlign = "center";
+    ctx.shadowColor = "rgba(0,0,0,0.5)";
+    ctx.shadowBlur = 6;
+    ctx.fillText(userName, width / 2, avatarY + avatarSize + 80);
     ctx.shadowBlur = 0;
-    ctx.fillStyle = "rgba(255,255,255,0.18)";
-    const r = 14;
+
+    /* -------------------------
+      Role Pill with Gradient
+  -------------------------- */
+    const roleText = template.title.toUpperCase();
+    ctx.font = "600 20px Inter";
+    const roleWidth = ctx.measureText(roleText).width + 40;
+    const roleHeight = 40;
+    const pillX = width / 2 - roleWidth / 2;
+    const pillY = avatarY + avatarSize + 100;
+    const radius = 20;
+
+    ctx.fillStyle = "rgba(255,255,255,0.15)";
+    ctx.shadowColor = "rgba(0,0,0,0.3)";
+    ctx.shadowBlur = 10;
     ctx.beginPath();
-    ctx.moveTo(roleX + r, roleY);
-    ctx.lineTo(roleX + roleWidth - r, roleY);
-    ctx.quadraticCurveTo(roleX + roleWidth, roleY, roleX + roleWidth, roleY + r);
-    ctx.lineTo(roleX + roleWidth, roleY + roleHeight - r);
-    ctx.quadraticCurveTo(roleX + roleWidth, roleY + roleHeight, roleX + roleWidth - r, roleY + roleHeight);
-    ctx.lineTo(roleX + r, roleY + roleHeight);
-    ctx.quadraticCurveTo(roleX, roleY + roleHeight, roleX, roleY + roleHeight - r);
-    ctx.lineTo(roleX, roleY + r);
-    ctx.quadraticCurveTo(roleX, roleY, roleX + r, roleY);
+    ctx.moveTo(pillX + radius, pillY);
+    ctx.lineTo(pillX + roleWidth - radius, pillY);
+    ctx.quadraticCurveTo(pillX + roleWidth, pillY, pillX + roleWidth, pillY + radius);
+    ctx.lineTo(pillX + roleWidth, pillY + roleHeight - radius);
+    ctx.quadraticCurveTo(pillX + roleWidth, pillY + roleHeight, pillX + roleWidth - radius, pillY + roleHeight);
+    ctx.lineTo(pillX + radius, pillY + roleHeight);
+    ctx.quadraticCurveTo(pillX, pillY + roleHeight, pillX, pillY + roleHeight - radius);
+    ctx.lineTo(pillX, pillY + radius);
+    ctx.quadraticCurveTo(pillX, pillY, pillX + radius, pillY);
     ctx.closePath();
     ctx.fill();
-    ctx.restore();
-    ctx.fillStyle = "#ffffff";
-    ctx.fillText(roleText, roleX + rolePaddingX, roleY + rolePaddingY + 24);
+    ctx.shadowBlur = 0;
 
-    // Event name prominent
-    ctx.font = "800 54px Inter, sans-serif";
-    ctx.fillText(EVENT.name, 50, 180);
+    const textGradient = ctx.createLinearGradient(pillX, 0, pillX + roleWidth, 0);
+    textGradient.addColorStop(0, "white");
+    textGradient.addColorStop(1, "white");
+    ctx.fillStyle = textGradient;
+    ctx.fillText(roleText, width / 2, pillY + 26);
 
-    // User name (if provided)
-    if (userName.trim()) {
-      ctx.font = "600 34px Inter, sans-serif";
-      ctx.fillText(userName, 50, 235);
-    }
-
-    // Date and Location
-    ctx.font = "500 24px Inter, sans-serif";
-    ctx.fillText(EVENT.date, 50, 290);
-    ctx.font = "500 22px Inter, sans-serif";
-    const location = EVENT.location;
-    const locationLines = [];
-    // wrap simple if too long
-    const maxWidth = 680;
-    let remaining = location;
-    while (remaining.length) {
-      let i = remaining.length;
-      while (i > 0 && ctx.measureText(remaining.slice(0, i)).width > maxWidth) i--;
-      // backtrack to last space
-      let cut = i;
-      while (cut > 0 && remaining[cut] !== " ") cut--;
-      if (cut <= 0) cut = i;
-      locationLines.push(remaining.slice(0, cut).trim());
-      remaining = remaining.slice(cut).trim();
-      if (locationLines.length > 2) break;
-    }
-    locationLines.forEach((line, idx) => ctx.fillText(line, 50, 325 + idx * 26));
-
-    // Hashtags and site URL at bottom
+    /* -------------------------
+      Event Details Bottom-left
+  -------------------------- */
     ctx.textAlign = "left";
-    ctx.font = "600 20px Inter, sans-serif";
-    ctx.fillText("#OpenSourceDay #OSD2026", 50, height - 70);
-    ctx.font = "500 18px Inter, sans-serif";
-    ctx.fillText(SITE.website.replace(/^https?:\/\//, ""), 50, height - 40);
+    ctx.font = "500 26px Inter";
+    ctx.fillStyle = "rgba(255,255,255,0.85)";
+    ctx.fillText(EVENT.date, 50, height - 140);
+    ctx.font = "500 24px Inter";
+    ctx.fillText(EVENT.location, 50, height - 100);
 
-    // OSD Green logo at bottom-right (if available)
+    /* -------------------------
+      Website Bottom-left
+  -------------------------- */
+    ctx.font = "500 18px Inter";
+    ctx.fillStyle = "rgba(255,255,255,0.7)";
+    ctx.fillText(SITE.website.replace(/^https?:\/\//, ""), 50, height - 50);
+
+    /* -------------------------
+      Logo Bottom-right
+  -------------------------- */
     try {
       const logoUrl2 = typeof BRANDING.logos.main === "string" ? BRANDING.logos.main : BRANDING.logos.main?.src || BRANDING.logos.main;
+
       if (logoUrl2) {
         const logoImg2 = new Image();
         logoImg2.onload = () => {
@@ -244,24 +325,16 @@ const BadgeMaker = () => {
           let drawW2 = logoImg2.width;
           let drawH2 = logoImg2.height;
           const scale2 = Math.min(maxLogoWidth2 / drawW2, maxLogoHeight2 / drawH2);
-          drawW2 = Math.floor(drawW2 * scale2);
-          drawH2 = Math.floor(drawH2 * scale2);
-          const pad2 = 30;
-          ctx.save();
-          ctx.shadowColor = "rgba(0,0,0,0.15)";
-          ctx.shadowBlur = 4;
-          ctx.drawImage(logoImg2, width - drawW2 - pad2, height - drawH2 - pad2, drawW2, drawH2);
-          ctx.restore();
+          drawW2 *= scale2;
+          drawH2 *= scale2;
+          ctx.globalAlpha = 0.85;
+          ctx.drawImage(logoImg2, width - drawW2 - 30, height - drawH2 - 30, drawW2, drawH2);
+          ctx.globalAlpha = 1;
         };
         logoImg2.src = logoUrl2;
       }
     } catch (_) {}
-
-    // Add some decorative elements (top-right)
-    ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
-    ctx.fillRect(width - 220, 56, 170, 4);
-    ctx.fillRect(width - 220, 68, 110, 2);
-  }, [selectedTemplate, uploadedImage, imagePosition, imageScale, currentTemplate, userName]);
+  }, [selectedTemplate, uploadedImage, userName, currentTemplate, templates]);
 
   React.useEffect(() => {
     drawBadge();
