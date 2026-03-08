@@ -27,7 +27,7 @@ export const BRANDING = {
 export const EVENT = {
   name: "Open Source Day 2026",
   shortName: "OSD2026",
-  date: "TBA",
+  date: "04 April 2026",
   location: "Ahmedabad, Gujarat, India",
   tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
@@ -71,6 +71,7 @@ export const NAVIGATION = {
     { name: "Sponsors", href: "/sponsors" },
     { name: "Venue", href: "/venue" },
     { name: "Past Events", href: "/past-events" },
+    { name: "Badge", href: "/badge" },
   ],
   cta: {
     text: "OSD 2025",
@@ -534,6 +535,7 @@ export const VENUE = {
     "Professional A/V equipment",
     "Accessible facilities",
   ],
+  date: "04 April 2026",
 };
 
 // Reuse 2025 sponsor data as placeholders
