@@ -198,12 +198,12 @@ const BadgeMaker = () => {
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Base Background Fill (Deep Zinc/Cyber dark)
-    ctx.fillStyle = "#09090b";
+    // 1. Base Background Fill (Light)
+    ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, width, height);
 
     // 2. Tech Grid Pattern
-    ctx.strokeStyle = "rgba(255,255,255,0.03)";
+    ctx.strokeStyle = "rgba(0,0,0,0.03)";
     ctx.lineWidth = 1;
     const gridSize = 40;
     for (let x = 0; x <= width; x += gridSize) {
@@ -228,7 +228,7 @@ const BadgeMaker = () => {
         nodes.push({ x: random() * width, y: random() * height });
       }
 
-      ctx.strokeStyle = "rgba(255,255,255,0.06)";
+      ctx.strokeStyle = "rgba(0,0,0,0.06)";
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let i = 0; i < numNodes; i++) {
@@ -245,7 +245,7 @@ const BadgeMaker = () => {
       ctx.stroke();
 
       // Draw node dots
-      ctx.fillStyle = "rgba(255,255,255,0.15)";
+      ctx.fillStyle = "rgba(0,0,0,0.15)";
       nodes.forEach(node => {
         ctx.beginPath();
         ctx.arc(node.x, node.y, 2.5, 0, Math.PI * 2);
@@ -257,18 +257,18 @@ const BadgeMaker = () => {
     // 3. Radial Glows for depth
     const topGlow = ctx.createRadialGradient(width / 2, 350, 0, width / 2, 350, 600);
     topGlow.addColorStop(0, `${currentTemplate.color}26`); // 15% opacity
-    topGlow.addColorStop(1, "transparent");
+    topGlow.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = topGlow;
     ctx.fillRect(0, 0, width, height);
 
     const bottomGlow = ctx.createRadialGradient(width / 2, height, 0, width / 2, height, 600);
     bottomGlow.addColorStop(0, `${currentTemplate.color}14`); // 8% opacity
-    bottomGlow.addColorStop(1, "transparent");
+    bottomGlow.addColorStop(1, "rgba(255,255,255,0)");
     ctx.fillStyle = bottomGlow;
     ctx.fillRect(0, 0, width, height);
 
     // 4. Border Accents
-    ctx.strokeStyle = "rgba(255,255,255,0.08)";
+    ctx.strokeStyle = "rgba(0,0,0,0.08)";
     ctx.lineWidth = 2;
     ctx.strokeRect(20, 20, width - 40, height - 40);
 
@@ -307,11 +307,11 @@ const BadgeMaker = () => {
       ctx.drawImage(logoObj, (width - drawW) / 2, 50, drawW, drawH);
       ctx.restore();
     } else {
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#111827";
       ctx.font = "800 48px 'Space Grotesk'";
       ctx.textAlign = "center";
       ctx.shadowBlur = 10;
-      ctx.shadowColor = "rgba(0,0,0,0.5)";
+      ctx.shadowColor = "rgba(0,0,0,0.1)";
       ctx.fillText("OPEN SOURCE DAY", width / 2, 100);
       ctx.shadowBlur = 0;
     }
@@ -357,8 +357,8 @@ const BadgeMaker = () => {
       ctx.restore();
     };
 
-    drawNodesIcon(60, 160, "rgba(255,255,255,0.4)");
-    drawCodeIcon(width - 60, 160, "rgba(255,255,255,0.4)");
+    drawNodesIcon(60, 160, "rgba(0,0,0,0.4)");
+    drawCodeIcon(width - 60, 160, "rgba(0,0,0,0.4)");
 
     // 7. Avatar Section
     const avatarY = 440;
@@ -371,7 +371,7 @@ const BadgeMaker = () => {
     // Thin outer ring
     ctx.beginPath();
     ctx.arc(0, 0, avatarSize / 2 + 35, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(255,255,255,0.05)";
+    ctx.strokeStyle = "rgba(0,0,0,0.05)";
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -404,7 +404,7 @@ const BadgeMaker = () => {
       ctx.save();
       ctx.beginPath();
       ctx.arc(width / 2, avatarY, avatarSize / 2, 0, Math.PI * 2);
-      ctx.strokeStyle = "rgba(255,255,255,0.15)";
+      ctx.strokeStyle = "rgba(0,0,0,0.1)";
       ctx.lineWidth = 4;
       ctx.stroke();
       ctx.restore();
@@ -413,13 +413,13 @@ const BadgeMaker = () => {
       ctx.save();
       ctx.beginPath();
       ctx.arc(width / 2, avatarY, avatarSize / 2, 0, Math.PI * 2);
-      ctx.fillStyle = "#18181b"; // zinc-900
+      ctx.fillStyle = "#f3f4f6"; // gray-100
       ctx.fill();
-      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      ctx.strokeStyle = "rgba(0,0,0,0.05)";
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      ctx.fillStyle = "rgba(255,255,255,0.2)";
+      ctx.fillStyle = "rgba(0,0,0,0.3)";
       ctx.font = "400 24px 'JetBrains Mono'";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -437,7 +437,7 @@ const BadgeMaker = () => {
       fontSize -= 4;
       ctx.font = `800 ${fontSize}px 'Space Grotesk'`;
     }
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#111827";
     ctx.textAlign = "center";
     ctx.fillText(nameText.toUpperCase(), width / 2, nameY);
 
@@ -456,7 +456,7 @@ const BadgeMaker = () => {
         displayStr = `@ ${companyText}`;
       }
 
-      ctx.fillStyle = "rgba(255,255,255,0.7)";
+      ctx.fillStyle = "rgba(0,0,0,0.6)";
       ctx.font = "600 24px 'Space Grotesk'";
       ctx.fillText(displayStr, width / 2, compY);
     } else {
@@ -486,7 +486,7 @@ const BadgeMaker = () => {
     const bottomY = height - 160;
 
     // Tech Divider
-    ctx.strokeStyle = "rgba(255,255,255,0.1)";
+    ctx.strokeStyle = "rgba(0,0,0,0.1)";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(50, bottomY - 40);
@@ -494,23 +494,23 @@ const BadgeMaker = () => {
     ctx.stroke();
 
     ctx.textAlign = "left";
-    ctx.fillStyle = "rgba(255,255,255,0.5)";
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
     ctx.font = "500 16px 'JetBrains Mono'";
     ctx.fillText("> SYS.DATE", 50, bottomY);
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#111827";
     ctx.font = "500 22px 'Space Grotesk'";
     ctx.fillText("04 APRIL 2026", 50, bottomY + 28);
 
-    ctx.fillStyle = "rgba(255,255,255,0.5)";
+    ctx.fillStyle = "rgba(0,0,0,0.5)";
     ctx.font = "500 16px 'JetBrains Mono'";
     ctx.fillText("> LOCATION", 50, bottomY + 75);
-    ctx.fillStyle = "#ffffff";
+    ctx.fillStyle = "#111827";
     ctx.font = "500 22px 'Space Grotesk'";
     ctx.fillText("AHMEDABAD, IN", 50, bottomY + 103);
 
     // Barcode signature
     const drawBarcode = (x, y, w, h) => {
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "#111827";
       let currX = x;
       let seed = 1234;
       for (let i = 0; i < nameText.length; i++) seed += nameText.charCodeAt(i);
@@ -535,7 +535,7 @@ const BadgeMaker = () => {
     ctx.fillStyle = currentTemplate.color;
     ctx.font = "600 14px 'JetBrains Mono'";
     ctx.fillText(`ID: OSD-2026-${currentTemplate.id.slice(0, 3).toUpperCase()}`, width - 50, bottomY + 60);
-    ctx.fillStyle = "rgba(255,255,255,0.3)";
+    ctx.fillStyle = "rgba(0,0,0,0.4)";
     ctx.font = "500 12px 'Space Grotesk'";
     ctx.fillText("AUTHORIZED ACCESS ONLY", width - 50, bottomY + 80);
 
