@@ -86,6 +86,8 @@ export const CALLS_2026 = [
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
     badge: "Open",
+    deadline: "15th March 2026",
+    enable: true,
   },
   {
     title: "Call for Volunteers",
@@ -93,7 +95,9 @@ export const CALLS_2026 = [
     href: "/cfv",
     emoji: "🙌",
     color: "from-emerald-500 to-green-600",
-    badge: "Open",
+    badge: "CLOSED",
+    deadline: "CLOSED",
+    enable: false,
   },
   {
     title: "Call for Sponsors",
@@ -102,6 +106,8 @@ export const CALLS_2026 = [
     emoji: "🤝",
     color: "from-amber-500 to-orange-600",
     badge: "Open",
+    deadline: "31st March 2026",
+    enable: true,
   },
   {
     title: "Call for Community Partners",
@@ -110,6 +116,8 @@ export const CALLS_2026 = [
     emoji: "🌐",
     color: "from-sky-500 to-blue-600",
     badge: "Open",
+    deadline: "31st March 2026",
+    enable: true,
   },
   {
     title: "Call for Evangelists",
@@ -118,6 +126,8 @@ export const CALLS_2026 = [
     emoji: "📣",
     color: "from-pink-500 to-rose-600",
     badge: "Open",
+    deadline: "21st March 2026",
+    enable: true,
   },
 ];
 
@@ -373,7 +383,7 @@ export const TICKETS = [
       text: "Coming Soon",
       classes: "text-white bg-green-500",
     },
-    konfhubUrl: "",
+    konfhubUrl: "/purchase",
     linkText: "Coming Soon",
   },
   {
@@ -388,7 +398,7 @@ export const TICKETS = [
       text: "Most Popular",
       classes: "text-white bg-green-600",
     },
-    konfhubUrl: "",
+    konfhubUrl: "/purchase",
     linkText: "Coming Soon",
   },
   {
@@ -474,7 +484,7 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: false,
+    available: true,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
@@ -501,7 +511,7 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: false,
+    available: true,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
     linkText: "Contact Organizers",
     extra:
@@ -672,35 +682,51 @@ export const COMMUNITY_PARTNERS = [
 ];
 
 // Past event images — reuse from 2025 assets
-import OSWMay_1 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_012.webp";
-import OSWMay_2 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_119 (1).webp";
-import OSWMay_3 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_299.webp";
-import OSWMay_4 from "@/assets/PastEvents/OSW-may/Image_20250504_135008_924 (1).webp";
 
 import OSWApril_1 from "@/assets/PastEvents/OSW-april/20250405_114037.webp";
 import OSWApril_2 from "@/assets/PastEvents/OSW-april/20250405_123827.webp";
 import OSWApril_3 from "@/assets/PastEvents/OSW-april/20250405_140515.webp";
 import OSWApril_4 from "@/assets/PastEvents/OSW-april/20250405_142305.webp";
 
-import OSW24_1 from "@/assets/PastEvents/OSW-24/20241013_094101.webp";
+import OSW24_1 from "@/assets/PastEvents/OSW-24/20241013_111739.webp";
 import OSW24_2 from "@/assets/PastEvents/OSW-24/20241013_094102.webp";
 import OSW24_3 from "@/assets/PastEvents/OSW-24/20241013_094249.webp";
 import OSW24_4 from "@/assets/PastEvents/OSW-24/20241013_102037.webp";
 import OSW24_5 from "@/assets/PastEvents/OSW-24/20241013_102246.webp";
+import OSW24_6 from "@/assets/PastEvents/OSW-24/20241013_102037.webp";
+import OSW24_7 from "@/assets/PastEvents/OSW-24/20241013_124553.webp";
+import OSW24_8 from "@/assets/PastEvents/OSW-24/PXL_20241013_082514049.webp";
+
+import OSWMAY_1 from "@/assets/PastEvents/OSW-may/Image_20250504_135007_012.webp";
+import OSWMAY_2 from "@/assets/PastEvents/OSW-may/Image_20250504_135032_445.webp";
 
 import OSWJune23_1 from "@/assets/PastEvents/OSW-june-23/IMG20230625102644.webp";
-import OSWJune23_2 from "@/assets/PastEvents/OSW-june-23/IMG20230625121634.webp";
 import OSWJune23_3 from "@/assets/PastEvents/OSW-june-23/IMG20230625121639.webp";
+import OSWJune23_4 from "@/assets/PastEvents/OSW-june-23/IMG_8038.webp";
 
 import OSW23_1 from "@/assets/PastEvents/OSW-23/IMG_0759.webp";
 import OSW23_2 from "@/assets/PastEvents/OSW-23/IMG_0761.webp";
 import OSW23_3 from "@/assets/PastEvents/OSW-23/IMG_0767.webp";
 
+import OSD2025_1 from "@/assets/PastEvents/OSD-25/20251005_095801.jpg";
+import OSD2025_2 from "@/assets/PastEvents/OSD-25/20251005_160054.jpg";
+import OSD2025_3 from "@/assets/PastEvents/OSD-25/20251005_160718.jpg";
+import OSD2025_4 from "@/assets/PastEvents/OSD-25/20251005_094301.jpg";
+import OSD2025_5 from "@/assets/PastEvents/OSD-25/20251005_100037.jpg";
+import OSD2025_6 from "@/assets/PastEvents/OSD-25/20251005_100149.jpg";
+import OSD2025_7 from "@/assets/PastEvents/OSD-25/20251005_122529.jpg";
+import OSD2025_8 from "@/assets/PastEvents/OSD-25/20251005_160011.jpg";
+
 export const PastEvent = [
   {
     year: "2025",
+    title: "Open Source Day 2025",
+    images: [OSD2025_1, OSD2025_2, OSD2025_3, OSD2025_4],
+  },
+  {
+    year: "2025",
     title: "OpenSourceWeekend: Product Collective (May 2025)",
-    images: [OSWMay_1, OSWMay_2, OSWMay_3, OSWMay_4],
+    images: [OSD2025_5, OSD2025_6, OSD2025_7, OSD2025_8],
   },
   {
     year: "2025",
@@ -710,12 +736,12 @@ export const PastEvent = [
   {
     year: "2024",
     title: "2024 OpenSourceWeekend × Hacktoberfest",
-    images: [OSW24_1, OSW24_2, OSW24_3, OSW24_4, OSW24_5],
+    images: [OSW24_1, OSW24_2, OSW24_3, OSW24_4, OSW24_5, OSW24_6, OSW24_7, OSW24_8],
   },
   {
     year: "2023",
     title: "Open Source Talks (June 2023)",
-    images: [OSWJune23_1, OSWJune23_2, OSWJune23_3],
+    images: [OSWJune23_1, OSWJune23_4, OSWJune23_3, OSWMAY_1, OSWMAY_2, OSWMAY_1],
   },
   {
     year: "2023",
