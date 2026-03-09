@@ -22,6 +22,8 @@ const REDIRECTS = {
   // call for evangelists
   "/evangelize": "https://forms.gle/3RCMnSiKfbq58o246",
   "/cfe": "/evangelize",
+  // call for booth
+  "/cfb": "https://forms.gle/KqF7erECvK12CkFr7",
 };
 
 // https://astro.build/config

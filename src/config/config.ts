@@ -129,6 +129,16 @@ export const CALLS_2026 = [
     deadline: "21st March 2026",
     enable: true,
   },
+  {
+    title: "Call for Booth",
+    description: "Showcase your project, product, or community with a booth at OSD 2026.",
+    href: "/cfb",
+    emoji: "🏢",
+    color: "from-gray-500 to-gray-600",
+    badge: "Open",
+    deadline: "31st March 2026",
+    enable: true,
+  },
 ];
 
 export const eventSchedule = [
