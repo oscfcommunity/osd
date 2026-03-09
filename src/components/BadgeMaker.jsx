@@ -97,6 +97,48 @@ const BackgroundGraphics = ({ color }) => (
       <div className="text-9xl font-mono" style={{ color: color }}>&lt;/&gt;</div>
     </div>
 
+    {/* Gandhinagar Skyline Vector */}
+    <div className="absolute bottom-0 left-0 right-0 w-full opacity-[0.07] pointer-events-none z-0 flex justify-center mt-auto" style={{ color: color }}>
+      <svg viewBox="0 0 1440 320" className="w-full h-auto max-h-[30vh] object-cover object-bottom" preserveAspectRatio="xMidYMax slice" fill="currentColor">
+        {/* Mahatma Mandir (Left) */}
+        <path d="M100,320 L250,220 L400,220 L550,320 Z" fillOpacity="0.8" />
+        <rect x="270" y="240" width="110" height="80" fillOpacity="0.4" />
+        <path d="M150,320 L270,260 L380,260 L500,320 Z" fillOpacity="0.5" />
+
+        {/* Dandi Kutir / Salt Mound (Center-Left) */}
+        <path d="M500,320 L600,150 L660,150 L760,320 Z" fillOpacity="0.9" />
+        <path d="M540,320 L610,200 L650,200 L720,320 Z" fill="#fff" fillOpacity="0.2" />
+
+        {/* Gujarat Legislative Assembly (Center) */}
+        <rect x="750" y="160" width="160" height="160" fillOpacity="0.8" />
+        <rect x="730" y="180" width="200" height="140" fillOpacity="0.6" />
+        <path d="M800,160 C800,100 860,100 860,160 Z" fillOpacity="0.9" />
+        <rect x="805" y="130" width="50" height="30" fillOpacity="0.4" />
+        <rect x="825" y="60" width="10" height="70" fillOpacity="0.8" />
+        <circle cx="830" cy="50" r="10" fillOpacity="0.9" />
+
+        {/* Modern Buildings (Right) */}
+        <rect x="980" y="140" width="80" height="180" fillOpacity="0.7" />
+        <rect x="1000" y="90" width="40" height="50" fillOpacity="0.8" />
+        <path d="M1000,90 L1020,40 L1040,90 Z" fillOpacity="0.9" />
+
+        <rect x="1100" y="180" width="60" height="140" fillOpacity="0.6" />
+        <rect x="1120" y="120" width="20" height="60" fillOpacity="0.7" />
+
+        <rect x="1200" y="200" width="90" height="120" fillOpacity="0.8" />
+        <path d="M1200,200 L1245,150 L1290,200 Z" fillOpacity="0.5" />
+
+        <rect x="50" y="240" width="70" height="80" fillOpacity="0.7" />
+        <rect x="20" y="200" width="40" height="120" fillOpacity="0.6" />
+
+        <rect x="1320" y="220" width="80" height="100" fillOpacity="0.7" />
+        <rect x="1350" y="180" width="30" height="40" fillOpacity="0.8" />
+
+        {/* Base Line */}
+        <rect x="0" y="315" width="1440" height="5" fillOpacity="1" />
+      </svg>
+    </div>
+
     {/* Bottom/Secondary Glow */}
     <div
       className="absolute bottom-[-10%] left-[80%] -translate-x-1/2 w-[800px] h-[600px] opacity-[0.15] pointer-events-none transition-colors duration-700 mix-blend-multiply"
@@ -288,10 +330,50 @@ const BadgeMaker = () => {
     drawCorner(width - 20, height - 20, false, false);
 
     // Load assets in parallel
-    const [logoObj, imgObj] = await Promise.all([
+    const svgString = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" width="1440" height="320">
+        <g fill="${currentTemplate.color}">
+          <path d="M100,320 L250,220 L400,220 L550,320 Z" fill-opacity="0.8" />
+          <rect x="270" y="240" width="110" height="80" fill-opacity="0.4" />
+          <path d="M150,320 L270,260 L380,260 L500,320 Z" fill-opacity="0.5" />
+          <path d="M500,320 L600,150 L660,150 L760,320 Z" fill-opacity="0.9" />
+          <path d="M540,320 L610,200 L650,200 L720,320 Z" fill="#ffffff" fill-opacity="0.2" />
+          <rect x="750" y="160" width="160" height="160" fill-opacity="0.8" />
+          <rect x="730" y="180" width="200" height="140" fill-opacity="0.6" />
+          <path d="M800,160 C800,100 860,100 860,160 Z" fill-opacity="0.9" />
+          <rect x="805" y="130" width="50" height="30" fill-opacity="0.4" />
+          <rect x="825" y="60" width="10" height="70" fill-opacity="0.8" />
+          <circle cx="830" cy="50" r="10" fill-opacity="0.9" />
+          <rect x="980" y="140" width="80" height="180" fill-opacity="0.7" />
+          <rect x="1000" y="90" width="40" height="50" fill-opacity="0.8" />
+          <path d="M1000,90 L1020,40 L1040,90 Z" fill-opacity="0.9" />
+          <rect x="1100" y="180" width="60" height="140" fill-opacity="0.6" />
+          <rect x="1120" y="120" width="20" height="60" fill-opacity="0.7" />
+          <rect x="1200" y="200" width="90" height="120" fill-opacity="0.8" />
+          <path d="M1200,200 L1245,150 L1290,200 Z" fill-opacity="0.5" />
+          <rect x="50" y="240" width="70" height="80" fill-opacity="0.7" />
+          <rect x="20" y="200" width="40" height="120" fill-opacity="0.6" />
+          <rect x="1320" y="220" width="80" height="100" fill-opacity="0.7" />
+          <rect x="1350" y="180" width="30" height="40" fill-opacity="0.8" />
+          <rect x="0" y="315" width="1440" height="5" fill-opacity="1" />
+        </g>
+      </svg>
+    `;
+    const svgUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgString);
+
+    const [logoObj, imgObj, skylineObj] = await Promise.all([
       loadImage(typeof BRANDING.logos.main === "string" ? BRANDING.logos.main : BRANDING.logos.main?.src),
-      loadImage(uploadedImage)
+      loadImage(uploadedImage),
+      loadImage(svgUrl)
     ]);
+
+    if (skylineObj) {
+      ctx.save();
+      ctx.globalAlpha = 0.07;
+      const drawH = width / 4.5;
+      ctx.drawImage(skylineObj, 0, height - drawH, width, drawH);
+      ctx.restore();
+    }
 
     // 5. Logo placement (Top Center)
     if (logoObj) {
@@ -506,7 +588,7 @@ const BadgeMaker = () => {
     ctx.fillText("> LOCATION", 50, bottomY + 75);
     ctx.fillStyle = "#111827";
     ctx.font = "500 22px 'Space Grotesk'";
-    ctx.fillText("AHMEDABAD, IN", 50, bottomY + 103);
+    ctx.fillText("GANDHINAGAR, IN", 50, bottomY + 103);
 
     // Barcode signature
     const drawBarcode = (x, y, w, h) => {
@@ -795,7 +877,7 @@ const BadgeMaker = () => {
             <div className="relative w-full max-w-[450px] aspect-[800/1150]">
               <canvas
                 ref={canvasRef}
-                className="w-full h-full rounded-[2rem] shadow-2xl transition-all duration-500"
+                className="w-full h-full rounded-none shadow-2xl transition-all duration-500"
                 style={{
                   boxShadow: `0 25px 50px -12px rgba(0,0,0,0.5)`,
                   border: `1px solid ${currentTemplate.color}30`
