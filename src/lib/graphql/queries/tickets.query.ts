@@ -18,6 +18,8 @@ const query = gql`
         fillingFast
         konfhubUrl
         linkText
+        extra
+        featureTitle
         alert {
           id
           text
