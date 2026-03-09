@@ -29,7 +29,7 @@ console.log(JSON.stringify(ticketsResponse, null, 2));
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
-          ticketsResponse.map((ticket) => (
+          ticketsResponse.map((ticket: any) => (
             <div
               class={`relative border-2 rounded-2xl p-6 text-center hover:shadow-lg transition-all hover:-translate-y-1 bg-white ${ticket.popular ? "border-green-300 scale-105" : "border-gray-200"}`}
             >
@@ -43,7 +43,7 @@ console.log(JSON.stringify(ticketsResponse, null, 2));
               <p class="text-gray-500 text-sm mb-5">{ticket.description}</p>
               {ticket?.featureTitle && <p class="text-gray-900 font-semibold text-sm mb-2 text-left">{ticket?.featureTitle}</p>}
               <ul class="text-left space-y-2 text-sm text-gray-600 mb-6">
-                {ticket?.features?.map((f) => (
+                {ticket?.features?.map((f: any) => (
                   <li class="flex items-start gap-2">
                     <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />

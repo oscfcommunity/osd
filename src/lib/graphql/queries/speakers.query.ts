@@ -6,7 +6,7 @@ const query = gql`
   query GetSpeakers {
     speakers(status: PUBLISHED) {
       documentId
-      ourSpeakers(pagination: { limit: 1000 }) {
+      ourSpeakers {
         id
         title
         segment
@@ -32,7 +32,7 @@ const query = gql`
         }
       }
 
-      pastSpeaker(pagination: { limit: 1000 }) {
+      pastSpeaker {
         id
         title
         segment
