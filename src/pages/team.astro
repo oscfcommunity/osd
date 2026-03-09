@@ -13,6 +13,7 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
   ...group,
   teams: group.teams.map((member) => ({
     ...member,
+    roles: (member.roles || []).filter(r => r && r.role && r.role.trim() !== ""),
     imageUrl: member.image?.url
       ? member.image.url.startsWith("http")
         ? member.image.url
