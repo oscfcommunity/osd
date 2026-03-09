@@ -6,10 +6,10 @@ const query = gql`
   query GetSponsors {
     sponsors {
       documentId
-      sponsors {
+      sponsors(pagination: { limit: 1000 }) {
         id
         title
-        sponsors {
+        sponsors(pagination: { limit: 1000 }) {
           id
           number
           name
