@@ -38,14 +38,14 @@ const templates = [
 ];
 
 const BackgroundGraphics = ({ color }) => (
-  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+  <div className="absolute inset-0 pointer-events-none overflow-hidden mix-blend-multiply opacity-60">
     {/* Tech Grid Background (CSS) */}
     <div
       className="absolute inset-0"
       style={{
         backgroundImage: `
-          linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
-          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px)
+          linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)
         `,
         backgroundSize: "60px 60px"
       }}
@@ -89,17 +89,17 @@ const BackgroundGraphics = ({ color }) => (
       </svg>
     </div>
 
-    <div className="absolute top-[75%] right-[5%] opacity-[0.03]">
+    <div className="absolute top-[75%] right-[5%] opacity-[0.05]">
       <div className="text-9xl font-mono" style={{ color: color }}>{`{}`}</div>
     </div>
 
-    <div className="absolute top-[5%] right-[25%] opacity-[0.03]">
+    <div className="absolute top-[5%] right-[25%] opacity-[0.05]">
       <div className="text-9xl font-mono" style={{ color: color }}>&lt;/&gt;</div>
     </div>
 
     {/* Bottom/Secondary Glow */}
     <div
-      className="absolute bottom-[-10%] left-[80%] -translate-x-1/2 w-[800px] h-[600px] opacity-[0.08] pointer-events-none transition-colors duration-700"
+      className="absolute bottom-[-10%] left-[80%] -translate-x-1/2 w-[800px] h-[600px] opacity-[0.15] pointer-events-none transition-colors duration-700 mix-blend-multiply"
       style={{
         background: `radial-gradient(circle, ${color} 0%, transparent 60%)`,
         filter: "blur(100px)"
@@ -611,12 +611,12 @@ const BadgeMaker = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-slate-200 py-16 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-gray-50 py-16 relative overflow-hidden font-sans">
       <BackgroundGraphics color={currentTemplate.color} />
 
       {/* Background Ambience */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] opacity-[0.15] pointer-events-none transition-colors duration-700"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] opacity-[0.1] pointer-events-none transition-colors duration-700 mix-blend-multiply"
         style={{
           background: `radial-gradient(circle, ${currentTemplate.color} 0%, transparent 70%)`,
           filter: "blur(80px)"
@@ -625,10 +625,10 @@ const BadgeMaker = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             Delegate <span style={{ color: currentTemplate.color }}>Pass</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
             Generate your personalized, high-tech lanyard ID for Open Source Day 2026.
           </p>
         </div>
@@ -638,9 +638,9 @@ const BadgeMaker = () => {
           <div className="lg:col-span-5 space-y-8">
 
             {/* Step 1: Identity */}
-            <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 shadow-2xl">
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                <span className="bg-slate-800 text-slate-300 w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+            <div className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-6 shadow-xl">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                <span className="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border border-gray-200">1</span>
                 <span>Identification</span>
               </h2>
               <div className="space-y-4">
@@ -649,7 +649,7 @@ const BadgeMaker = () => {
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder="Enter your name"
-                  className="w-full bg-[#1e293b] text-white px-5 py-4 border border-slate-700 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-slate-500"
+                  className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
                 <input
@@ -657,7 +657,7 @@ const BadgeMaker = () => {
                   value={userRole}
                   onChange={(e) => setUserRole(e.target.value)}
                   placeholder="Your Role (Optional)"
-                  className="w-full bg-[#1e293b] text-white px-5 py-4 border border-slate-700 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-slate-500"
+                  className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
                 <input
@@ -665,16 +665,16 @@ const BadgeMaker = () => {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Company / Community (Optional)"
-                  className="w-full bg-[#1e293b] text-white px-5 py-4 border border-slate-700 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-slate-500"
+                  className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
               </div>
             </div>
 
             {/* Step 2: Access Level */}
-            <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 shadow-2xl">
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                <span className="bg-slate-800 text-slate-300 w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+            <div className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-6 shadow-xl">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                <span className="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border border-gray-200">2</span>
                 <span>Access Level</span>
               </h2>
               <div className="grid grid-cols-1 gap-3">
@@ -683,17 +683,17 @@ const BadgeMaker = () => {
                     key={template.id}
                     onClick={() => setSelectedTemplate(template.id)}
                     className={`relative overflow-hidden p-4 rounded-xl border transition-all duration-300 flex items-center space-x-4 ${selectedTemplate === template.id
-                      ? `bg-[#1e293b] border-[color:var(--t-color)] shadow-[0_0_15px_var(--t-glow)]`
-                      : "bg-[#1e293b]/50 border-slate-700/50 hover:border-slate-500 hover:bg-[#1e293b]"
+                      ? `bg-gray-50 border-[color:var(--t-color)] shadow-[0_4px_15px_var(--t-glow)]`
+                      : "bg-white border-gray-200 hover:border-gray-300 hover:bg-gray-50 shadow-sm"
                       }`}
                     style={{
                       '--t-color': template.color,
-                      '--t-glow': `${template.color}30`, // 30 in hex opacity
+                      '--t-glow': `${template.color}30`,
                     }}
                   >
-                    <div className="w-4 h-4 rounded-full shadow-inner" style={{ backgroundColor: template.color }}></div>
+                    <div className="w-4 h-4 rounded-full shadow-md" style={{ backgroundColor: template.color }}></div>
                     <div className="text-left">
-                      <div className="font-semibold text-white tracking-wide">{template.title}</div>
+                      <div className="font-semibold text-gray-900 tracking-wide">{template.title}</div>
                     </div>
                   </button>
                 ))}
@@ -701,30 +701,30 @@ const BadgeMaker = () => {
             </div>
 
             {/* Step 3: Biometrics */}
-            <div className="bg-[#0f172a]/80 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 shadow-2xl">
-              <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                <span className="bg-slate-800 text-slate-300 w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+            <div className="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl p-6 shadow-xl">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
+                <span className="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border border-gray-200">3</span>
                 <span>Biometric Data</span>
               </h2>
 
               {!uploadedImage ? (
                 <div
-                  className="border-2 border-dashed border-slate-700/50 rounded-xl p-8 text-center bg-[#1e293b]/30 hover:bg-[#1e293b]/60 transition-colors cursor-pointer group"
+                  className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-gray-50 hover:bg-gray-100 transition-colors cursor-pointer group"
                   onClick={() => fileInputRef.current?.click()}
                 >
-                  <div className="text-slate-500 mb-4 group-hover:text-slate-400 transition-colors">
+                  <div className="text-gray-400 mb-4 group-hover:text-gray-500 transition-colors">
                     <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                   </div>
-                  <p className="text-slate-400 text-sm font-medium">Click to scan image</p>
+                  <p className="text-gray-500 text-sm font-medium">Click to scan image</p>
                   <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
                 </div>
               ) : (
                 <div className="space-y-4">
                   {isCropping && (
                     <div className="w-full">
-                      <div className="relative w-full h-[300px] bg-black rounded-xl overflow-hidden shadow-inner border border-slate-800">
+                      <div className="relative w-full h-[300px] bg-black rounded-xl overflow-hidden shadow-inner border border-gray-200">
                         <Cropper
                           image={uploadedImage}
                           crop={crop}
@@ -742,14 +742,14 @@ const BadgeMaker = () => {
                           min={1} max={3} step={0.1}
                           value={zoom}
                           onChange={(e) => setZoom(Number(e.target.value))}
-                          className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer"
+                          className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                         />
                         <div className="flex space-x-3 w-full">
-                          <button className="flex-1 bg-slate-800 text-white px-4 py-3 rounded-xl hover:bg-slate-700 transition" onClick={() => setIsCropping(false)}>
+                          <button className="flex-1 bg-gray-200 text-gray-800 font-semibold px-4 py-3 rounded-xl hover:bg-gray-300 transition" onClick={() => setIsCropping(false)}>
                             Cancel
                           </button>
                           <button
-                            className="flex-1 text-black font-semibold px-4 py-3 rounded-xl transition"
+                            className="flex-1 text-white font-semibold px-4 py-3 rounded-xl transition hover:opacity-90"
                             style={{ backgroundColor: currentTemplate.color }}
                             onClick={async () => {
                               const croppedImg = await getCroppedImg(uploadedImage, croppedAreaPixels);
@@ -767,7 +767,7 @@ const BadgeMaker = () => {
                   {!isCropping && (
                     <button
                       onClick={() => setUploadedImage(null)}
-                      className="w-full bg-red-500/10 text-red-500 px-4 py-3 rounded-xl border border-red-500/20 hover:bg-red-500/20 transition-colors"
+                      className="w-full bg-red-50 text-red-600 font-medium px-4 py-3 rounded-xl border border-red-200 hover:bg-red-100 transition-colors"
                     >
                       Clear Data
                     </button>
@@ -784,7 +784,7 @@ const BadgeMaker = () => {
                 ref={canvasRef}
                 className="w-full h-full rounded-[2rem] shadow-2xl transition-all duration-500"
                 style={{
-                  boxShadow: `0 25px 50px -12px rgba(0,0,0,0.5), 0 0 40px ${currentTemplate.bgColor}`,
+                  boxShadow: `0 25px 50px -12px rgba(0,0,0,0.5)`,
                   border: `1px solid ${currentTemplate.color}30`
                 }}
               />
@@ -794,8 +794,8 @@ const BadgeMaker = () => {
             <div className="w-full max-w-[450px] mt-8 grid grid-cols-2 gap-4">
               <button
                 onClick={downloadBadge}
-                className="col-span-2 py-4 rounded-xl font-bold flex items-center justify-center space-x-2 transition-all transform hover:scale-[1.02]"
-                style={{ backgroundColor: currentTemplate.color, color: "#000" }}
+                className="col-span-2 py-4 rounded-xl font-bold flex items-center justify-center space-x-2 transition-all transform hover:scale-[1.02] text-white shadow-md hover:shadow-lg"
+                style={{ backgroundColor: currentTemplate.color }}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
                 <span>Export Pass</span>
@@ -803,7 +803,7 @@ const BadgeMaker = () => {
 
               <button
                 onClick={copyToClipboard}
-                className="col-span-1 bg-slate-800 text-white py-3 rounded-xl font-medium hover:bg-slate-700 transition flex items-center justify-center space-x-2 border border-slate-700/50"
+                className="col-span-1 bg-white text-gray-700 font-semibold py-3 rounded-xl hover:bg-gray-50 transition flex items-center justify-center space-x-2 border border-gray-200 shadow-sm hover:shadow"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
                 <span>Copy</span>
@@ -811,7 +811,7 @@ const BadgeMaker = () => {
 
               <button
                 onClick={() => shareToSocial("twitter")}
-                className="col-span-1 bg-[#1DA1F2]/10 text-[#1DA1F2] border border-[#1DA1F2]/20 py-3 rounded-xl font-medium hover:bg-[#1DA1F2]/20 transition flex items-center justify-center space-x-2"
+                className="col-span-1 bg-[#1DA1F2]/10 text-[#1DA1F2] border border-[#1DA1F2]/20 py-3 rounded-xl font-semibold hover:bg-[#1DA1F2]/20 transition flex items-center justify-center space-x-2 shadow-sm"
               >
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" /></svg>
                 <span>Share</span>
