@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import PageHero from "@/components/PageHero.jsx";
-import { PastEvent } from "@/config/config.ts";
+import { PastEvent, SITE } from "@/config/config.ts";
 
 // OSD 2025 photos — use first event group (May 2025 or latest)
 const osd2025Photos = PastEvent[0]?.images?.slice(0, 4) ?? [];
@@ -95,7 +95,7 @@ const osd2025Photos = PastEvent[0]?.images?.slice(0, 4) ?? [];
             <div class="text-3xl font-black gradient-text shrink-0">2026</div>
             <div class="flex-1">
               <div class="font-bold text-gray-900">Open Source Day 2026</div>
-              <div class="text-gray-500 text-sm">TBA · Ahmedabad, Gujarat</div>
+              <div class="text-gray-500 text-sm">TBA · {SITE.city}, Gujarat</div>
             </div>
             <span class="text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full shrink-0">Upcoming</span>
           </div>

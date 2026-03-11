@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
-import { CALLS_2026, VENUE, TICKETS } from "@/config/config.ts";
+import { CALLS_2026, VENUE, TICKETS, SITE } from "@/config/config.ts";
 import Hero from "@/components/Hero.jsx";
 import Counter from "@/components/Counter.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
@@ -139,7 +139,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         </div>
         <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">About <span class="gradient-text">Open Source Day</span></h2>
         <p class="text-lg text-gray-500 max-w-3xl mx-auto">
-          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in Ahmedabad.
+          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in {SITE.city}.
         </p>
       </div>
 
@@ -404,7 +404,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         <div class="text-gray-500 text-sm mb-6">{VENUE.address}</div>
         <div class="flex items-center gap-2 text-sm text-gray-400 mb-auto">
           <CalendarClock class="w-4 h-4" />
-          04 April 2026 · Ahmedabad, Gujarat
+          04 April 2026 · {SITE.city}, Gujarat
         </div>
         <a href="/venue" class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
           Venue Details

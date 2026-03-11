@@ -16,6 +16,7 @@ export const SITE = {
   website: "https://osd.opensourceweekend.org",
   ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: OSDGreen,
+  city: "Gandhinagar",
 };
 
 export const BRANDING = {
@@ -28,7 +29,7 @@ export const EVENT = {
   name: "Open Source Day 2026",
   shortName: "OSD2026",
   date: "TBA",
-  location: "Ahmedabad, Gujarat, India",
+  location: "Gandhinagar, Gujarat, India",
   tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
     "Open Source Day 2026 is a community-driven event celebrating the power of open source software. Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.",
@@ -531,9 +532,9 @@ export const TICKETS = [
 
 export const VENUE = {
   name: "To Be Announced",
-  address: "Ahmedabad, Gujarat, India",
+  address: "Gandhinagar, Gujarat, India",
   description:
-    "The OSD 2026 venue is being finalized. We'll be hosting the event at a premier institution in Ahmedabad that provides a dynamic environment for innovation and collaboration.",
+    "The OSD 2026 venue is being finalized. We'll be hosting the event at a premier institution in Gandhinagar that provides a dynamic environment for innovation and collaboration.",
   capacity: "600+ attendees",
   googleMapsLink: "#",
   facilities: [
