@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BadgeTemplate } from './BadgeTemplate.tsx';
-import { Upload, ChevronLeft, RefreshCw, Loader2, Maximize, Smartphone, Monitor } from 'lucide-react';
+import { Upload, RefreshCw, Loader2, Maximize, Smartphone, Monitor } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Cropper from 'react-easy-crop';
 import { getCroppedImg } from '@/lib/cropImage.ts';
-import { Twitter, Linkedin, Share2, Image as ImageIcon, FileText } from 'lucide-react';
+import { X, Linkedin, Share2, Image as ImageIcon, FileText } from 'lucide-react';
 
 const OSD_LOGO = "/icons/OSDGreen.svg";
 const ROLES = ["Attendee", "Speaker", "Volunteer"];
@@ -38,7 +38,7 @@ export default function OSDBadgeCreator() {
         }
     };
 
-    const onCropComplete = (croppedArea: any, croppedAreaPixels: any) => {
+    const onCropComplete = (_croppedArea: any, croppedAreaPixels: any) => {
         setCroppedAreaPixels(croppedAreaPixels);
     };
 
@@ -239,7 +239,7 @@ export default function OSDBadgeCreator() {
                                     onClick={() => handleShare('twitter')}
                                     className="py-3 bg-[#00acee]/10 text-[#00acee] rounded-xl font-bold text-[11px] flex items-center justify-center gap-2 hover:bg-[#00acee]/20 transition-all"
                                 >
-                                    <Twitter className="w-4 h-4" /> Twitter
+                                    <X className="w-4 h-4" /> Twitter
                                 </button>
                                 <button
                                     onClick={() => handleShare('linkedin')}
