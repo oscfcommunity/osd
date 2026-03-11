@@ -5,6 +5,7 @@ import PageHero from "@/components/PageHero.jsx";
 import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import type { SponsorGroup } from "@/types/sponsors.types.ts";
 import { env } from "@/lib/env.ts";
+import { Image } from "astro:assets";
 
 const rawGroups: SponsorGroup[] = sponsorsData?.sponsors?.[0]?.sponsors ?? [];
 
@@ -164,17 +165,18 @@ const exclusiveSponsorshipOpportunity  = [
                   href={sponsor.website && sponsor.website !== "#" ? sponsor.website : undefined}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`group relative bg-white border border-gray-100 rounded-2xl p-8 flex flex-col items-center justify-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-green-200 ${sponsor.website && sponsor.website !== "#" ? "cursor-pointer" : "cursor-default"}`}
+                  class={`group relative bg-white border border-gray-100 rounded-2xl p-8 grid grid-flow-row items-center justify-center gap-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-green-200 ${sponsor.website && sponsor.website !== "#" ? "cursor-pointer" : "cursor-default"}`}
                 >
                   <!-- Subtle top accent -->
                   <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                   {sponsor.logoUrl ? (
-                    <img
+                    <Image
+                      width={250}
+                      height={80}
                       src={sponsor.logoUrl}
                       alt={`${sponsor.name} logo`}
-                      loading="lazy"
-                      class="max-h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                      class="object-contain transition-transform duration-300 group-hover:scale-105 aspect-video"
                     />
                   ) : (
                     <div class="w-16 h-16 rounded-xl bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
