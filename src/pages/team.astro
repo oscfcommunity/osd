@@ -106,17 +106,17 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
                       {member.name}
                     </h3>
                     {member.roles.length > 0 && (
-                      <div class="flex flex-wrap gap-1">
+                      <div class="flex flex-col gap-1 text-left items-stretch">
                         <!-- Primary role as badge -->
-                        <span class="text-xs px-2 py-0.5 rounded-full font-semibold bg-green-50 text-green-700 border border-green-100 leading-snug">
+                        <p class="text-xs px-2 py-2 rounded-sm font-semibold bg-green-50 text-green-700 border border-green-300">
                           {member?.roles[0]?.role?.trim()}
-                        </span>
+                        </p>
                         <!-- Extra roles as plain text -->
-                        {member?.roles?.slice(1).map((r) => (
-                          <span class="text-xs text-gray-400 leading-snug self-center">
-                            · {r?.role?.trim()}
-                          </span>
-                        ))}
+                          {member?.roles?.slice(1).map((r, index) => (
+                            <p class="text-xs text-gray-400 leading-snug">
+                              {r?.role?.trim()}
+                            </p>
+                          ))}
                       </div>
                     )}
                   </div>

@@ -34,7 +34,7 @@ const getStyle = (type: string) =>
     badge="BEING PLANNED"
     title="OSD 2026"
     titleGradient="SCHEDULE"
-    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda — tap + on any session."
+    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda tap + on any session."
     primaryCta={{ text: "Apply to Speak", href: "/cfspk", external: true }}
     secondaryCta={{ text: "View 2025 Schedule", href: "/2025/schedule" }}
   />
@@ -116,7 +116,7 @@ const getStyle = (type: string) =>
         </svg>
       </div>
       <p class="font-bold text-gray-900 mb-1">Nothing tracked yet</p>
-      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Track It</span> on any session to build your personal schedule.</p>
+      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Add to Schedule</span> on any session to build your personal schedule.</p>
     </div>
 
     <!-- Footer -->
@@ -129,7 +129,7 @@ const getStyle = (type: string) =>
         </svg>
         Close Panel
       </button>
-     
+
     </div>
   </div>
 
@@ -203,7 +203,7 @@ const getStyle = (type: string) =>
                   {session.speaker && <p class="text-gray-500 text-xs font-medium">by {session.speaker}</p>}
                 </div>
 
-                <!-- Bottom: room + Track It button -->
+                <!-- Bottom: room + Add to Schedule button -->
                 <div class="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 pt-1">
                   {session.room && (
                     <span class="flex items-center gap-1 text-xs text-gray-400">
@@ -222,7 +222,7 @@ const getStyle = (type: string) =>
                     <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
                     </svg>
-                    <span class="btn-label">Track It</span>
+                    <span class="btn-label">Add to Schedule</span>
                   </button>
                 </div>
 
@@ -273,7 +273,7 @@ const getStyle = (type: string) =>
                   {item.speaker && <p class="text-gray-500 text-xs mt-0.5 font-medium">by {item.speaker}</p>}
                 </div>
 
-                <!-- Bottom: Track It -->
+                <!-- Bottom: Add to Schedule -->
                 <div class="flex items-center justify-end">
                   <button
                     data-add-btn={sid}
@@ -289,7 +289,7 @@ const getStyle = (type: string) =>
                     <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
                     </svg>
-                    <span class="btn-label">Track It</span>
+                    <span class="btn-label">Add to Schedule</span>
                   </button>
                 </div>
 
@@ -470,7 +470,7 @@ function syncButtons() {
       label.textContent = 'Tracked ✓';
     } else {
       icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>`;
-      label.textContent = 'Track It';
+      label.textContent = 'Add to Schedule';
     }
   });
 }

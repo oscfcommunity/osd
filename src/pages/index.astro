@@ -431,24 +431,19 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
                 <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
                 <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
               </div>
-              <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
-            </div>
-            {t.available ? (
-                <a
+              {t.available ?
+              <a
                   href={t.konfhubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all text-center ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
-                >
-                  {t.linkText || "Coming Soon"}
-                </a>
-              ) : (
-                <button
-                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
-                >
-                  {t.linkText || "Coming Soon"}
-                </button>
-              )}
+                  class="font-bold bg-green-500 px-6 py-2 text-white text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.price}
+                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+          </a> :
+                <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>}
+
+            </div>
             </div>
           ))}
         </div>
