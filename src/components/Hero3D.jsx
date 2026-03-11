@@ -1,6 +1,6 @@
 import React, { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Environment, Float, Preload, ContactShadows, Text, SpotLight, Text3D, Center } from '@react-three/drei';
+import { Environment, Float, Preload, ContactShadows, Text, SpotLight, Text3D, Center, PerformanceMonitor } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
 
@@ -88,7 +88,7 @@ function Mascot() {
 }
 
 // --- Floating Abstract Elements ---
-function FloatingElements({ count = 30 }) {
+function FloatingElements({ count = 30, isLowPerf = false }) {
     const meshRef = useRef();
 
     const dummy = useMemo(() => new THREE.Object3D(), []);
@@ -142,12 +142,12 @@ function FloatingElements({ count = 30 }) {
             <octahedronGeometry args={[0.5, 0]} />
             <meshPhysicalMaterial
                 color="#a7f3d0"
-                transmission={0.8}
+                transmission={isLowPerf ? 0 : 0.8}
                 opacity={0.8}
                 transparent={true}
                 roughness={0.2}
                 metalness={0.1}
-                clearcoat={1}
+                clearcoat={isLowPerf ? 0 : 1}
             />
         </instancedMesh>
     );
@@ -228,6 +228,11 @@ function MascotWrapper() {
 
 export default function Hero3D() {
     const containerRef = useRef();
+    const [dpr, setDpr] = useState(1.5);
+    const [isLowPerf, setIsLowPerf] = useState(false);
+
+    // Determine initial mobile state for particle count to save CPU on phones
+    const isMobileInitial = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
     useEffect(() => {
         // Reveal animation for the container
@@ -244,9 +249,17 @@ export default function Hero3D() {
             <div className="absolute inset-0 z-0">
                 <Canvas
                     camera={{ position: [0, 0, 10], fov: 45 }}
-                    dpr={[1, 2]} // Better resolution for retina screens
+                    dpr={dpr}
                     performance={{ min: 0.5 }}
                 >
+                    <PerformanceMonitor
+                        onIncline={() => setDpr(2)}
+                        onDecline={() => {
+                            setDpr(1);
+                            setIsLowPerf(true);
+                        }}
+                    />
+
                     {/* Lighting */}
                     <ambientLight intensity={0.5} />
                     <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
@@ -254,15 +267,15 @@ export default function Hero3D() {
                     <directionalLight position={[0, 5, 5]} intensity={1.5} color="#ffffff" />
 
                     {/* Environment for reflective materials */}
-                    <Environment preset="apartment" />
+                    <Environment preset="apartment" resolution={256} />
 
                     {/* Scene Elements */}
                     <MascotWrapper />
 
-                    <FloatingElements count={50} />
+                    <FloatingElements count={isMobileInitial ? 20 : 50} isLowPerf={isLowPerf} />
 
                     {/* Ground Shadow */}
-                    <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={20} blur={2} far={4.5} />
+                    <ContactShadows position={[0, -3.5, 0]} opacity={0.4} scale={20} blur={2} far={4.5} resolution={256} />
 
                     {/* Performance Optimization */}
                     <Preload all />
