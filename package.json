@@ -13,6 +13,8 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/react": "^4.3.0",
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.5.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/vite": "^4.1.13",
     "@types/react": "^19.1.12",
@@ -25,6 +27,7 @@
     "react-dom": "^19.1.1",
     "react-easy-crop": "^5.5.2",
     "tailwindcss": "^4.1.13",
+    "three": "^0.183.2",
     "typescript": "^5.9.2",
     "wrangler": "^4.34.0"
   }

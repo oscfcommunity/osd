@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 import { CALLS_2026, VENUE, TICKETS } from "@/config/config.ts";
-import Hero from "@/components/Hero.jsx";
+import Hero3D from "@/components/Hero3D.jsx";
 import Counter from "@/components/Counter.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
 import MarqueeLogos from "@/components/MarqueeLogos.jsx";
@@ -49,7 +49,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
-  <Hero client:load />
+  <Hero3D client:load />
   <ScrollAnimations client:load />
 
   <!-- ─── GET INVOLVED ─── -->
