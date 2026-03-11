@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { BadgeTemplate } from './BadgeTemplate.tsx';
+import { BadgeTemplate } from './BadgeTemplate';
 import { Upload, ChevronLeft, RefreshCw, Loader2, Maximize, Smartphone, Monitor } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import Cropper from 'react-easy-crop';
-import { getCroppedImg } from '@/lib/cropImage.ts';
+import { getCroppedImg } from '@/lib/cropImage';
 import { Twitter, Linkedin, Share2, Image as ImageIcon, FileText } from 'lucide-react';
 
 const OSD_LOGO = "/icons/OSDGreen.svg";

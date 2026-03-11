@@ -185,7 +185,7 @@ export const BadgeTemplate: React.FC<BadgeTemplateProps> = ({
                         color: '#CBD5E1', // Much brighter for URL
                         fontFamily: 'var(--font-mono)',
                         fontWeight: 600
-                    }}>Get yours at osd.opensourceweekend.org/badges</p>
+                    }}>Get yours at osd.opensourceweekend.org</p>
                 </div>
 
                 {/* Right Side Info (DevFest style) */}
