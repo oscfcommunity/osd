@@ -207,7 +207,25 @@ const HeroContent = () => {
     );
 };
 
+// --- Responsive Components ---
+function MascotWrapper() {
+    const { viewport } = useThree();
+    const isMobile = viewport.width < 6;
+
+    // On mobile, center the mascot, move it slightly up and back, and scale it down.
+    // On desktop, keep the original position [3, 0, 0]
+    const position = isMobile ? [0, 3.2, -1] : [3, 0, 0];
+    const scale = isMobile ? 0.7 : 1;
+
+    return (
+        <group position={position} scale={scale}>
+            <Mascot />
+        </group>
+    );
+}
+
 // --- Main 3D Hero Component ---
+
 export default function Hero3D() {
     const containerRef = useRef();
 
@@ -239,9 +257,7 @@ export default function Hero3D() {
                     <Environment preset="apartment" />
 
                     {/* Scene Elements */}
-                    <group position={[3, 0, 0]}> {/* Offset mascot to the right on larger screens */}
-                        <Mascot />
-                    </group>
+                    <MascotWrapper />
 
                     <FloatingElements count={50} />
 
