@@ -1,5 +1,4 @@
-// React import removed as it is unused
-
+import React from "react";
 
 export default function CountdownTimer() {
   return (

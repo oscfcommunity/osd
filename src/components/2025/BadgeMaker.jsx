@@ -7,8 +7,8 @@ const BadgeMaker = () => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [imagePosition, setImagePosition] = useState({ x: -350, y: -180 });
   const [imageScale, setImageScale] = useState(2);
-  // dragging states removed as they are unused
-
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [userName, setUserName] = useState("");
   const [canNativeShare, setCanNativeShare] = useState(false);
   const canvasRef = useRef(null);
@@ -57,8 +57,22 @@ const BadgeMaker = () => {
     }
   };
 
-  // handleMouseDown and handleMouseMove removed as they are unused
+  const handleMouseDown = (e) => {
+    if (!uploadedImage) return;
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - imagePosition.x,
+      y: e.clientY - imagePosition.y,
+    });
+  };
 
+  const handleMouseMove = (e) => {
+    if (!isDragging || !uploadedImage) return;
+    setImagePosition({
+      x: e.clientX - dragStart.x,
+      y: e.clientY - dragStart.y,
+    });
+  };
 
   const getCroppedImg = (imageSrc, pixelCrop) => {
     return new Promise((resolve, reject) => {
@@ -293,7 +307,7 @@ const BadgeMaker = () => {
         };
         logoImg2.src = logoUrl2;
       }
-    } catch (_) { }
+    } catch (_) {}
 
     // Add some decorative elements (top-right)
     ctx.fillStyle = "rgba(255, 255, 255, 0.28)";
@@ -336,11 +350,11 @@ const BadgeMaker = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // dataUrl removed as it is unused
-
+    const dataUrl = canvas.toDataURL();
     const baseText = userName.trim()
-      ? `${userName} is ${currentTemplate.title.toLowerCase()} at ${EVENT.name
-      }!`
+      ? `${userName} is ${currentTemplate.title.toLowerCase()} at ${
+          EVENT.name
+        }!`
       : `I'm ${currentTemplate.title.toLowerCase()} at ${EVENT.name}!`;
 
     const fullText = `${baseText} Join us on ${EVENT.date} at ${EVENT.location}. #OpenSourceDay2025 #OSD2025`;
@@ -479,10 +493,11 @@ const BadgeMaker = () => {
                   <button
                     key={template.id}
                     onClick={() => setSelectedTemplate(template.id)}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 ${selectedTemplate === template.id
-                      ? "border-green-500 bg-green-50"
-                      : "border-gray-200 hover:border-gray-300"
-                      }`}
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 ${
+                      selectedTemplate === template.id
+                        ? "border-green-500 bg-green-50"
+                        : "border-gray-200 hover:border-gray-300"
+                    }`}
                   >
                     <div className="flex items-center space-x-3">
                       <div
@@ -563,7 +578,7 @@ const BadgeMaker = () => {
                           aspect={1} // square crop (good for circular avatar)
                           onCropChange={setCrop}
                           onZoomChange={setZoom}
-                          onCropComplete={(_croppedArea, croppedAreaPixels) =>
+                          onCropComplete={(croppedArea, croppedAreaPixels) =>
                             setCroppedAreaPixels(croppedAreaPixels)
                           }
                         />
@@ -647,10 +662,11 @@ const BadgeMaker = () => {
                 <button
                   onClick={downloadBadge}
                   disabled={userName.trim() === ""}
-                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${userName.trim() === ""
-                    ? "bg-green-300 text-white cursor-not-allowed"
-                    : "bg-green-600 text-white hover:bg-green-700"
-                    }`}
+                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                    userName.trim() === ""
+                      ? "bg-green-300 text-white cursor-not-allowed"
+                      : "bg-green-600 text-white hover:bg-green-700"
+                  }`}
                 >
                   <svg
                     className="w-5 h-5"
@@ -671,10 +687,11 @@ const BadgeMaker = () => {
                 <button
                   onClick={copyToClipboard}
                   disabled={userName.trim() === ""}
-                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${userName.trim() === ""
-                    ? "bg-blue-300 text-white cursor-not-allowed"
-                    : "bg-blue-600 text-white hover:bg-blue-700"
-                    }`}
+                  className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                    userName.trim() === ""
+                      ? "bg-blue-300 text-white cursor-not-allowed"
+                      : "bg-blue-600 text-white hover:bg-blue-700"
+                  }`}
                 >
                   <svg
                     className="w-5 h-5"
@@ -696,10 +713,11 @@ const BadgeMaker = () => {
                   <button
                     onClick={() => shareToSocial("native")}
                     disabled={userName.trim() === ""}
-                    className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${userName.trim() === ""
-                      ? "bg-purple-300 text-white cursor-not-allowed"
-                      : "bg-purple-600 text-white hover:bg-purple-700"
-                      }`}
+                    className={`w-full py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 ${
+                      userName.trim() === ""
+                        ? "bg-purple-300 text-white cursor-not-allowed"
+                        : "bg-purple-600 text-white hover:bg-purple-700"
+                    }`}
                   >
                     <svg
                       className="w-5 h-5"
@@ -722,30 +740,33 @@ const BadgeMaker = () => {
                   <button
                     onClick={() => shareToSocial("twitter")}
                     disabled={userName.trim() === ""}
-                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${userName.trim() === ""
-                      ? "bg-blue-300 text-white cursor-not-allowed"
-                      : "bg-blue-500 text-white hover:bg-blue-600"
-                      }`}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-300 text-white cursor-not-allowed"
+                        : "bg-blue-500 text-white hover:bg-blue-600"
+                    }`}
                   >
                     Twitter
                   </button>
                   <button
                     onClick={() => shareToSocial("linkedin")}
                     disabled={userName.trim() === ""}
-                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${userName.trim() === ""
-                      ? "bg-blue-400 text-white cursor-not-allowed"
-                      : "bg-blue-700 text-white hover:bg-blue-800"
-                      }`}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-400 text-white cursor-not-allowed"
+                        : "bg-blue-700 text-white hover:bg-blue-800"
+                    }`}
                   >
                     LinkedIn
                   </button>
                   <button
                     onClick={() => shareToSocial("facebook")}
                     disabled={userName.trim() === ""}
-                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${userName.trim() === ""
-                      ? "bg-blue-500 text-white cursor-not-allowed"
-                      : "bg-blue-600 text-white hover:bg-blue-700"
-                      }`}
+                    className={`py-2 px-3 rounded-lg transition-colors text-sm ${
+                      userName.trim() === ""
+                        ? "bg-blue-500 text-white cursor-not-allowed"
+                        : "bg-blue-600 text-white hover:bg-blue-700"
+                    }`}
                   >
                     Facebook
                   </button>

@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 
 const images = [
   {
@@ -80,8 +80,9 @@ export default function VenueGallery() {
 
       {/* Lightbox */}
       <div
-        className={`fixed inset-0 z-50 ${isOpen ? "flex" : "hidden"
-          } items-center justify-center bg-white/70 backdrop-blur-sm`}
+        className={`fixed inset-0 z-50 ${
+          isOpen ? "flex" : "hidden"
+        } items-center justify-center bg-white/70 backdrop-blur-sm`}
         role="dialog"
         aria-modal="true"
         aria-labelledby="lightbox-caption"
