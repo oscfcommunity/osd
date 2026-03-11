@@ -68,7 +68,6 @@ export const NAVIGATION = {
     { name: "Schedule", href: "/schedule" },
     { name: "Team", href: "/team" },
     { name: "Tickets", href: "/tickets" },
-    { name: "Badges", href: "/badges" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Venue", href: "/venue" },
     { name: "Past Events", href: "/past-events" },
