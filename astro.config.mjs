@@ -31,6 +31,9 @@ export default defineConfig({
   site: "https://osd.opensourceweekend.org",
   output: "static",
   redirects: REDIRECTS,
+  image: {
+    domains: ["cms.opensourceweekend.org"],
+  },
   vite: {
     // @ts-ignore
     plugins: [tailwindcss()],
