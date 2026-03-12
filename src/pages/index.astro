@@ -16,6 +16,7 @@ import CalendarClock from "@/assets/icons/calendarClock.svg";
 import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import { speakersData } from "@/lib/graphql/queries/speakers.query.ts";
 import { env } from "@/lib/env.ts";
+import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
 
 // ── helpers ──────────────────────────────────────────────────────────
 function strapiImg(url: string | null | undefined): string | null {
@@ -47,6 +48,10 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
     imageUrl: strapiImg(s.image?.url),
     linkedinUrl: s.link?.trim() || null,
   }));
+
+// ── tickets ─────────────────────────────────────────────────────────
+const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
+
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
@@ -426,27 +431,30 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         </div>
 
         <div class="flex flex-col gap-3 mb-auto">
-          {TICKETS.slice(0, 3).map((t) => (
+          {ticketsResponse.slice(0, 3).map((t:any) => (
             <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex flex-col gap-4">
 
-            <div class="flex justify-between items-center">
-              <div>
-                <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
-                <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
-              </div>
-              {t.available ?
-              <a
-                  href={t.konfhubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="font-bold bg-green-500 px-6 py-2 text-white text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.price}
-                  <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-          </a> :
-                <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>}
+                <div class="flex justify-between items-center">
+                  <div>
+                    <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
+                    <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
+                  </div>
+                    {t.available ?
+                        <a
+                            href={t.konfhubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="font-bold bg-green-500 px-6 py-2 text-white text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.price}
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a> :
+                        <button
+                            class="font-bold bg-gray-100 px-6 py-2 text-gray-500 text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.linkText}
+                        </button>
+                    }
 
-            </div>
+                </div>
             </div>
           ))}
         </div>
