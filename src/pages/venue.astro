@@ -5,6 +5,7 @@ import { VENUE } from "@/config/config";
 import LocationIcon from "@/assets/icons/location.svg";
 import CalendarClock from "@/assets/icons/calendarClock.svg";
 import PageHero from "@/components/PageHero.jsx";
+import Mascot02 from "@/assets/Mascot/Group 02.svg";
 ---
 
 <Layout title="Venue — Open Source Day 2026" activePath="/venue">
@@ -43,8 +44,11 @@ import PageHero from "@/components/PageHero.jsx";
           </div>
         </div>
         <!-- Map placeholder -->
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl h-72 flex items-center justify-center">
-          <div class="text-center">
+        <div class="relative bg-gray-50 border border-gray-100 rounded-2xl h-72 flex items-center justify-center">
+          <div class="absolute -top-10 -right-10 w-24 h-24 opacity-80" style="animation: bounce 3s infinite;">
+            <Mascot02 class="w-full h-full object-contain" />
+          </div>
+          <div class="text-center relative z-10">
             <div class="w-12 h-12 mx-auto mb-3 text-green-400"><LocationIcon /></div>
             <p class="text-gray-500 font-semibold">Map coming soon</p>
             <p class="text-gray-400 text-sm mt-1">Venue TBA · Ahmedabad, Gujarat</p>
