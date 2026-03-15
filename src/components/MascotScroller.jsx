@@ -101,19 +101,23 @@ export default function MascotScroller() {
     const ctx = canvas.getContext("2d");
     const dpr = window.devicePixelRatio || 1;
 
-    // Size canvas to container maintaining aspect ratio with object-fit: cover
+    // Size canvas to container maintaining 16:9
     const w = canvas.parentElement.clientWidth;
     const h = canvas.parentElement.clientHeight;
     const imgAspect = img.naturalWidth / img.naturalHeight;
     const containerAspect = w / h;
 
     let drawW, drawH, dx, dy;
+
+    // Always use object-fit: cover behavior.
     if (containerAspect > imgAspect) {
-      drawH = h;
-      drawW = drawH * imgAspect;
-    } else {
+      // Container is wider than image aspect ratio: fit width and crop height.
       drawW = w;
       drawH = drawW / imgAspect;
+    } else {
+      // Container is taller than image aspect ratio (e.g. mobile portrait): fit height and crop width.
+      drawH = h;
+      drawW = drawH * imgAspect;
     }
     dx = (w - drawW) / 2;
     dy = (h - drawH) / 2;
@@ -127,20 +131,30 @@ export default function MascotScroller() {
     ctx.fillRect(0, 0, w, h);
     ctx.drawImage(img, dx, dy, drawW, drawH);
 
+    // ─────────────────────────────────────────────────────────
     // Overlay OSD logo to hide the Veo watermark at bottom right of the image
-    const logoW = Math.max(70, drawW * 0.055); // increased size
-    const logoH = logoW;
-    const paddingX = Math.max(15, drawW * 0.015);
-    const paddingY = Math.max(15, drawH * 0.02);
+    // Sizing relative to the VISIBLE screen width (w), rather than the potentially heavily-scaled
+    // video frame (drawW) - this prevents it becoming massive on mobile tall screens.
 
-    // "Veo" is at the bottom right of the original frame
+    const isMobile = containerAspect < 1; // Basic portrait check
+    const scaleFactor = isMobile ? h : w; // Use height as scale base on mobile as it dominates
+
+    // Calculate logo size keeping it reasonable on both mobile and desktop
+    const logoW = drawW * (isMobile ? 0.05 : 0.06);
+    const logoH = logoW;
+
+    // Padding to position perfectly over Veo
+    const paddingX = drawW * 0.005;
+    const paddingY = drawH * 0.02;
+
+    // "Veo" is at the bottom right of the ORIGINAL frame
     const logoX = dx + drawW - logoW - paddingX;
     const logoY = dy + drawH - logoH - paddingY;
 
     // Draw a dark pill/circle to completely mask the "Veo" text
     ctx.fillStyle = BG_COLOR;
     ctx.beginPath();
-    ctx.arc(logoX + logoW / 2, logoY + logoH / 2, logoW / 2 + 10, 0, 2 * Math.PI);
+    ctx.arc(logoX + logoW / 2, logoY + logoH / 2, logoW / 2 + drawW * 0.008, 0, 2 * Math.PI);
     ctx.fill();
 
     if (logoRef.current && logoRef.current.complete) {
