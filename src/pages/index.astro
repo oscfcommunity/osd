@@ -15,6 +15,7 @@ import CalendarClock from "@/assets/icons/calendarClock.svg";
 import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import { speakersData } from "@/lib/graphql/queries/speakers.query.ts";
 import { env } from "@/lib/env.ts";
+import MascotScroller from "@/components/MascotScroller.jsx";
 
 // ── helpers ──────────────────────────────────────────────────────────
 function strapiImg(url: string | null | undefined): string | null {
@@ -49,6 +50,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
+  <MascotScroller client:load />
   <Hero client:load />
   <ScrollAnimations client:load />
 
