@@ -54,7 +54,7 @@ export const HERO = {
   buttons: {
     primary: {
       text: "Join Community",
-      url: "https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir",
+      url: "https://chat.whatsapp.com/EazGR2r9TChE7a1rLzBxV8?mode=gi_t",
     },
     secondary: {
       text: "Explore OSD 2025",
@@ -531,12 +531,14 @@ export const TICKETS = [
 ];
 
 export const VENUE = {
-  name: "To Be Announced",
+  name: "DAIICT - DAU (Dhirubhai Ambani University)",
   address: "Gandhinagar, Gujarat, India",
+  date: "04 April 2026",
   description:
-    "The OSD 2026 venue is being finalized. We'll be hosting the event at a premier institution in Gandhinagar that provides a dynamic environment for innovation and collaboration.",
+    "Full day event with multiple tracks at DAIICT - DAU, Gandhinagar.",
   capacity: "600+ attendees",
-  googleMapsLink: "#",
+  format: "Full day event · Multiple tracks",
+  googleMapsLink: "https://maps.app.goo.gl/G8zTiuN7oZp1x8qu9",
   facilities: [
     "Large auditorium with 500+ seats",
     "Multiple workshop rooms",

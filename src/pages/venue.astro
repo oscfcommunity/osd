@@ -10,74 +10,111 @@ import "@/styles/2025/global.css";
   <!-- Hero -->
   <PageHero
     client:load
-    badge="VENUE ANNOUNCEMENT COMING SOON"
+    badge="VENUE CONFIRMED"
     title="OSD 2026"
     titleGradient="VENUE"
-    subtitle=`We'll be in ${SITE.city}, Gujarat for another epic edition. The exact venue will be announced soon.`
-    `
-    primaryCta={{ text: "Get Notified", href: "https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir", external: true }}
+    subtitle="Finally we have an amazing venue for Open Source Day. We are bringing #OSD26 to a legendary campus in Gandhinagar. Lush greenery, massive spaces, and pure open-source energy. 🌿💻"
+    primaryCta={{ text: "View Schedule", href: "/schedule" }}
     secondaryCta={{ text: "View 2025 Venue", href: "/2025/venue" }}
   />
 
-  <!-- Location Info -->
+  <!-- Venue Details -->
   <section class="py-20 px-4 bg-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
-        <div>
-          <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6">Event <span class="gradient-text">Location</span></h2>
-          <div class="space-y-3">
-            {
-              [
-                { label: "City", value: `${SITE.city}, Gujarat, India` },
-                { label: "Venue", value: VENUE.name },
-                { label: "Date", value: "TBA" },
-                { label: "Format", value: "Full day event (8 AM – 6 PM)" },
-                { label: "Capacity", value: VENUE.capacity },
-              ].map(({ label, value }) => (
-                <div class="flex items-start gap-3 border border-gray-100 bg-white hover:border-green-100 p-4 rounded-2xl transition-all">
-                  <div class="w-5 h-5 mt-0.5 text-green-600 shrink-0">
-                    <LocationIcon />
-                  </div>
-                  <div>
-                    <div class="font-bold text-gray-900 text-sm">{label}</div>
-                    <div class="text-gray-500 text-sm">{value}</div>
-                  </div>
-                </div>
-              ))
-            }
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div class="rounded-3xl border border-gray-100 p-8 bg-white shadow-sm">
+        <h2 class="text-4xl font-black text-green-600 mb-8">Venue Details</h2>
+
+        <div class="mb-6">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
+              <LocationIcon class="w-5 h-5" />
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">Location</h3>
+              <p class="text-gray-700 font-semibold ">
+                <a href={VENUE.googleMapsLink} target="_blank" rel="noreferrer noopener" class="text-green-600 hover:text-green-700 hover:no-underline transition">
+                  {VENUE.name}
+                </a>
+              </p>
+              <p class="text-gray-500 text-sm">{VENUE.address}</p>
+            </div>
           </div>
         </div>
-        <!-- Map placeholder -->
-        <div class="bg-gray-50 border border-gray-100 rounded-2xl h-72 flex items-center justify-center">
-          <div class="text-center">
-            <div class="w-12 h-12 mx-auto mb-3 text-green-400"><LocationIcon /></div>
-            <p class="text-gray-500 font-semibold">Map coming soon</p>
-            <p class="text-gray-400 text-sm mt-1">Venue TBA · {SITE.city}, Gujarat</p>
+
+        <div class="mb-6">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 9h10m-7 4h4m-5 5h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">Date & Time</h3>
+              <p class="text-gray-700 font-semibold">{VENUE.date} · 9:00 AM - 6:00 PM</p>
+              <p class="text-gray-500 text-sm">{VENUE.format}</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M5 14h14M7 18h10"/></svg>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold">Accessibility</h3>
+              <ul class="list-disc text-gray-500 text-sm ml-5">
+                <li>Wheelchair accessible venue</li>
+                <li>Public transport connectivity</li>
+                <li>Parking facilities available</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Facilities -->
-      <div>
-        <div class="flex items-center gap-3 mb-8">
-          <div class="h-px flex-1 bg-gray-200"></div>
-          <span class="text-sm font-bold text-gray-400 uppercase tracking-widest">Facilities</span>
-          <div class="h-px flex-1 bg-gray-200"></div>
+      <div class="rounded-3xl border border-gray-100 p-8 bg-white shadow-sm">
+        <h2 class="text-4xl font-black text-green-600 mb-8">Venue Features</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">A</span> Main Auditorium (600 seats)
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">A</span> Amphitheatre
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">L</span> Lawns and Open Event Grounds
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">S</span> Seminar and Workshop Rooms
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">H</span> High-Speed Campus WiFi
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">L</span> Library & Learning Resources
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">C</span> Cafeteria & Food Court
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">P</span> Parking & Accessible Facilities
+          </div>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-          {
-            VENUE.facilities.map((f) => (
-              <div class="flex items-center gap-3 border border-gray-100 bg-white p-4 rounded-2xl hover:border-green-100 transition-all">
-                <div class="w-5 h-5 text-green-500 shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                  </svg>
-                </div>
-                <span class="text-gray-700 text-sm">{f}</span>
-              </div>
-            ))
-          }
-        </div>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto mt-10">
+      <div class="rounded-2xl border border-gray-100 overflow-hidden h-[420px]">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.4973993967537!2d72.62634057516976!3d23.188536979057695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDhirubhai%20Ambani%20University!5e0!3m2!1sen!2sin!4v1773815481392!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="text-right mt-3">
+        <a
+          href={VENUE.googleMapsLink}
+          target="_blank"
+          rel="noreferrer noopener"
+          class="inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-900"
+        >
+          Open in Google Maps
+        </a>
       </div>
     </div>
   </section>
