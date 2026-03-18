@@ -87,7 +87,7 @@ export const CALLS_2026 = [
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
     badge: "Open",
-    deadline: "15th March 2026",
+    deadline: "25th March 2026",
     enable: true,
   },
   {
@@ -534,8 +534,7 @@ export const VENUE = {
   name: "DAIICT - DAU (Dhirubhai Ambani University)",
   address: "Gandhinagar, Gujarat, India",
   date: "04 April 2026",
-  description:
-    "Full day event with multiple tracks at DAIICT - DAU, Gandhinagar.",
+  description: "Full day event with multiple tracks at DAIICT - DAU, Gandhinagar.",
   capacity: "600+ attendees",
   format: "Full day event · Multiple tracks",
   googleMapsLink: "https://maps.app.goo.gl/G8zTiuN7oZp1x8qu9",
