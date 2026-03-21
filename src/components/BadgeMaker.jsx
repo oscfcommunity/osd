@@ -198,6 +198,22 @@ const BackgroundGraphics = ({ color }) => (
 );
 
 // ---------------------------------------------------------------------------
+// Mascot asset resolution
+//
+// import.meta.glob is resolved by Vite at build time — it statically analyses
+// the pattern and bundles every matching file.  The resulting map looks like:
+//   { '/src/assets/Mascot/Group 01.svg': 'processed-url', ... }
+//
+// We extract just the URL values so we can index into them at runtime without
+// knowing the exact filenames or count in advance.
+// ---------------------------------------------------------------------------
+
+const MASCOT_URLS = Object.values(import.meta.glob("/src/assets/Mascot/Group *.svg", { eager: true, query: "?url", import: "default" }));
+
+/** Returns a random URL from the pre-resolved mascot list. */
+const pickRandomMascot = () => (MASCOT_URLS.length > 0 ? MASCOT_URLS[Math.floor(Math.random() * MASCOT_URLS.length)] : null);
+
+// ---------------------------------------------------------------------------
 // Main component
 // ---------------------------------------------------------------------------
 
@@ -454,8 +470,7 @@ const BadgeMaker = () => {
 
     // 6. Load remote assets in parallel
     const svgDataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(buildSkylineSvg(currentTemplate.color));
-    const mascotNum = Math.floor(Math.random() * 10) + 1;
-    const mascotPath = `/src/assets/Mascot/Group ${String(mascotNum).padStart(2, "0")}.svg`;
+    const mascotPath = pickRandomMascot(); // resolved by Vite glob at build time
     const logoSrc = typeof BRANDING.logos.main === "string" ? BRANDING.logos.main : BRANDING.logos.main?.src;
 
     const [logoObj, imgObj, skylineObj, mascotObj] = await Promise.all([
