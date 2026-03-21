@@ -6,6 +6,7 @@ import { teamsData } from "@/lib/graphql/queries/teams.query.ts";
 import { env } from "@/lib/env.ts";
 import type { ResolvedTeamGroup, ResolvedTeamMember } from "@/types/teams.types.ts";
 import "@/styles/2025/global.css";
+import Mascot10 from "@/assets/Mascot/Group 10.svg";
 
 // Build full image URLs and resolve groups
 const rawGroups = teamsData?.teams?.[0]?.teams ?? [];
@@ -14,6 +15,7 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
   ...group,
   teams: group.teams.map((member) => ({
     ...member,
+    roles: (member.roles || []).filter(r => r && r.role && r.role.trim() !== ""),
     imageUrl: member.image?.url
       ? member.image.url.startsWith("http")
         ? member.image.url
@@ -136,7 +138,10 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
   <!-- Volunteer Roles -->
   <section class="py-20 px-4 bg-gray-50">
     <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 relative">
+        <div class="absolute -top-16 left-1/4 w-20 h-20 opacity-90" style="animation: bounce 4s infinite reverse;">
+          <Mascot10 class="w-full h-full object-contain" />
+        </div>
         <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Volunteer <span class="gradient-text">Roles</span></h2>
         <p class="text-gray-500">Find the role that fits your skills and passion</p>
       </div>

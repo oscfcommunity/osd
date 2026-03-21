@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero.jsx";
 import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import type { SponsorGroup } from "@/types/sponsors.types.ts";
 import { env } from "@/lib/env.ts";
-import { Image } from "astro:assets";
+import Mascot09 from "@/assets/Mascot/Group 09.svg";
 
 const rawGroups: SponsorGroup[] = sponsorsData?.sponsors?.[0]?.sponsors ?? [];
 
@@ -211,7 +211,10 @@ const exclusiveSponsorshipOpportunity  = [
   <!-- ═══════════════ SPONSORSHIP TIERS ═══════════════ -->
   <section class="py-20 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 relative">
+        <div class="absolute -top-12 right-1/4 w-16 h-16 opacity-80" style="animation: bounce 3s infinite;">
+          <Mascot09 class="w-full h-full object-contain" />
+        </div>
         <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">
           Sponsorship <span class="gradient-text">Tiers</span>
         </h2>

@@ -1,0 +1,9 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BadgeMakerComponent from "@/components/BadgeMaker.jsx";
+import "@/styles/2025/global.css";
+---
+
+<Layout title="Badge - Open Source Day 2026" activePath="/badge">
+  <BadgeMakerComponent client:only="react" />
+</Layout>
