@@ -372,59 +372,6 @@ import {
       </div>
     </div> -->
 
-    <!-- Current Speakers Preview -->
-    <div class="py-12 bg-green-50">
-      <div class="max-w-6xl mx-auto px-4 text-center mb-6">
-        <h3 class="text-2xl font-bold">Our Speakers</h3>
-      </div>
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
-          {
-            OUR_SPEAKERS.map((sp) => (
-              <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                <Image
-                  src={sp.image}
-                  alt={sp.name}
-                  class="w-24 h-24 rounded-full mx-auto object-cover object-top mb-4"
-                  loading="lazy"
-                  width={400}
-                />
-                <h4 class="font-semibold text-lg">{sp.name}</h4>
-                <div class="text-sm text-gray-600 mb-2">
-                  {sp.position} at {sp.company}
-                </div>
-                {Boolean(sp?.presentationTitle) && (
-                  <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
-                )}
-              </div>
-            ))
-          }
-        </div>
-
-        <!-- {
-          SPEAKERS.length > 3 && (
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {SPEAKERS.slice(3).map((sp) => (
-                <div class="bg-white p-6 rounded-lg shadow-sm text-center">
-                  <Image
-                    src={sp.image}
-                    alt={sp.name}
-                    class="w-24 h-24 rounded-full mx-auto object-cover mb-4"
-                    loading="lazy"
-                    width={400}
-                  />
-                  <h4 class="font-semibold text-lg">{sp.name}</h4>
-                  <div class="text-sm text-gray-600 mb-2">
-                    {sp.position} at {sp.company}
-                  </div>
-                  <p class="text-sm text-gray-700">{sp.presentationTitle}</p>
-                </div>
-              ))}
-            </div>
-          )
-        } -->
-      </div>
-    </div>
     <!-- Venue & Tickets -->
     <div class="py-8 bg-white">
       <div
