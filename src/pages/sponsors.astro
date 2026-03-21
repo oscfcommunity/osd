@@ -6,6 +6,7 @@ import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import type { SponsorGroup } from "@/types/sponsors.types.ts";
 import { env } from "@/lib/env.ts";
 import Mascot09 from "@/assets/Mascot/Group 09.svg";
+import { Image } from "astro:assets";
 
 const rawGroups: SponsorGroup[] = sponsorsData?.sponsors?.[0]?.sponsors ?? [];
 
