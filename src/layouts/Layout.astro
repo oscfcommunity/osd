@@ -14,13 +14,9 @@ export interface Props {
   activePath: string;
 }
 
-const {
-  title = SITE.title,
-  description = SITE.description,
-  ogImage = SITE.ogImage,
-  canonicalUrl = Astro.url,
-  activePath = "",
-} = Astro.props;
+const { title = SITE.title, description = SITE.description, ogImage = SITE.ogImage, canonicalUrl = Astro.url, activePath = "" } = Astro.props;
+
+// this commit is for building the site locally
 ---
 
 <!doctype html>
@@ -53,20 +49,13 @@ const {
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
     <!-- View Transition -->
     <ClientRouter />
 
     <!-- Google tag (gtag.js) -->
-    <script
-      is:inline
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-FF4C95VLBL"></script>
+    <script is:inline type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-FF4C95VLBL"></script>
     <script is:inline type="text/partytown">
       window.dataLayer = window.dataLayer || [];
       function gtag() {

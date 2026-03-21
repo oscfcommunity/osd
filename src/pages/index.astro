@@ -1,7 +1,8 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
-import { CALLS_2026, VENUE, TICKETS } from "@/config/config.ts";
+import { CALLS_2026, VENUE, TICKETS, SITE } from "@/config/config.ts";
 import Hero from "@/components/Hero.jsx";
 import Counter from "@/components/Counter.jsx";
 import ScrollAnimations from "@/components/ScrollAnimations.jsx";
@@ -16,6 +17,9 @@ import { sponsorsData } from "@/lib/graphql/queries/sponsors.query.ts";
 import { speakersData } from "@/lib/graphql/queries/speakers.query.ts";
 import { env } from "@/lib/env.ts";
 import MascotScroller from "@/components/MascotScroller.jsx";
+import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
+import Faq from "@components/Faq.astro";
+import Speaker from "@components/Speaker.astro";
 
 // ── helpers ──────────────────────────────────────────────────────────
 function strapiImg(url: string | null | undefined): string | null {
@@ -47,6 +51,10 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
     imageUrl: strapiImg(s.image?.url),
     linkedinUrl: s.link?.trim() || null,
   }));
+
+// ── tickets ─────────────────────────────────────────────────────────
+const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
+
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
@@ -137,11 +145,11 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
         <div class="mb-6 flex justify-center">
-          <img src="/icons/OSDGreen.svg" alt="Open Source Day Logo" class="w-14 h-14" loading="eager" />
+          <Image src="/icons/OSDGreen.svg" alt="Open Source Day Logo" class="w-14 h-14" loading="eager" width={56} height={56} />
         </div>
         <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">About <span class="gradient-text">Open Source Day</span></h2>
         <p class="text-lg text-gray-500 max-w-3xl mx-auto">
-          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in Ahmedabad.
+          Open Source Day 2026 is a community-driven conference celebrating the power of open source software. Join developers, maintainers, and builders for a full day of learning, collaboration, and innovation in {SITE.city}.
         </p>
       </div>
 
@@ -215,6 +223,110 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
     </div>
   </section>
 
+  <!-- ─── SPEAKERS PREVIEW ─── -->
+  <section class="py-24 px-4 bg-gray-50" id="speakers">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-bold border border-green-100 mb-6 shadow-sm">
+          🎤 Meet the Experts
+        </div>
+        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Our <span class="gradient-text">Speakers</span></h2>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+          Learn from industry leaders, open source maintainers, and tech innovators shaping the future of software
+        </p>
+      </div>
+
+      {allSpeakers.length > 0 ? (
+        <div class={`grid gap-5 sm:gap-6 ${
+          allSpeakers.slice(0, 8).length <= 3
+            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto"
+            : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        }`}>
+          {allSpeakers.slice(0, 8).map((speaker: any) => (
+            <div class="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-green-200 flex flex-col">
+
+              <!-- Top accent bar -->
+              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+
+              <!-- Photo area -->
+              <div class="relative w-full aspect-[4/5] bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden">
+                {speaker.imageUrl ? (
+                  <Image
+                    src={speaker.imageUrl}
+                    alt={speaker.name}
+                    loading="lazy"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pt-4 px-4"
+                    width={400}
+                    height={500}
+                  />
+                ) : (
+                  <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-6xl font-black text-green-200">
+                      {speaker.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
+
+                <!-- LinkedIn slide-up panel -->
+                {speaker.linkedinUrl && (
+                  <a
+                    href={speaker.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="absolute bottom-0 left-0 right-0 z-20 flex items-center gap-2.5 px-4 py-3
+                           bg-green-500 text-white
+                           translate-y-full group-hover:translate-y-0
+                           transition-transform duration-300 ease-out"
+                    aria-label={`${speaker.name} on LinkedIn`}
+                  >
+                    <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span class="text-xs font-bold">Connect on LinkedIn</span>
+                    <svg class="w-3.5 h-3.5 ml-auto" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+
+              <!-- Info -->
+              <div class="p-4 sm:p-5 flex flex-col flex-1 border-t border-gray-100">
+                <h3 class="font-black text-gray-900 text-sm sm:text-base leading-tight mb-0.5">
+                  {speaker.name}
+                </h3>
+                <p class="text-xs sm:text-sm text-gray-500 mb-3">
+                  {speaker.position?.trim() ?? ""}{speaker.position && speaker.company ? " at " : ""}{speaker.company?.trim()}
+                </p>
+                <!-- Event badge -->
+                {speaker.event && (
+                  <span class="inline-flex items-center gap-1.5 text-green-700 text-[0.6rem] font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-green-50 border border-green-200 self-start">
+                    <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shrink-0"></span>
+                    {speaker.event.trim()}
+                  </span>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-16 text-gray-400">
+          <p class="text-lg font-medium">Speaker announcements coming soon!</p>
+          <p class="text-sm mt-1">Stay tuned for our incredible lineup</p>
+        </div>
+      )}
+
+      <div class="text-center mt-12">
+        <a href="/speakers" class="inline-flex items-center gap-2 font-semibold text-gray-700 border-2 border-gray-900 px-6 py-3 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200">
+          View All Speakers
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── SPONSORS & PARTNERS ─── -->
   <section class="py-24 px-4 bg-gray-50" id="sponsors">
     <div class="max-w-6xl mx-auto">
@@ -237,7 +349,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 
               {group.sponsors.length > MARQUEE_THRESHOLD ? (
                 <div class="w-full">
-                  <MarqueeLogos client:load logos={group.sponsors} duration={80} height={100} itemMinWidth={220} />
+                  <MarqueeLogos client:load logos={group.sponsors} duration={80} height={150} itemMinWidth={320} />
                 </div>
               ) : (
                 <div class={`grid gap-5 ${
@@ -254,7 +366,9 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
                     >
                       <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       {sponsor.logoUrl ? (
-                        <img src={sponsor.logoUrl} alt={`${sponsor.name} logo`} loading="lazy" class="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+                        <div>
+                          <Image src={sponsor.logoUrl} alt={`${sponsor.name} logo`} loading="lazy" class="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" width={200} height={64} />
+                          </div>
                       ) : (
                         <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center">
                           <span class="text-green-700 font-black text-xl">{sponsor.name.charAt(0)}</span>
@@ -296,86 +410,9 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
       </div>
 
       {allSpeakers.length > 0 ? (
-        allSpeakers.length > MARQUEE_THRESHOLD ? (
-          <!-- Marquee for many speakers -->
-          <div class="w-full mb-10">
-            <MarqueeLogos
-              client:load
-              logos={allSpeakers.map((s: any) => ({ logo: s.imageUrl, name: s.name }))}
-              duration={60}
-              height={120}
-              itemMinWidth={120}
-            />
-          </div>
-        ) : (
           <!-- Grid for small number of speakers -->
-          <div class={`grid gap-5 mb-10 ${
-            allSpeakers.length === 1
-              ? "grid-cols-1 max-w-xs mx-auto"
-              : allSpeakers.length === 2
-              ? "grid-cols-1 sm:grid-cols-2 max-w-xl mx-auto"
-              : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
-          }`}>
-            {allSpeakers.map((sp: any) => (
-              <a
-                href={sp.linkedinUrl || undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-green-200 flex flex-col"
-              >
-                <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-green-400 to-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
-
-                <!-- Photo -->
-                <div class="relative w-full aspect-[4/5] bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden">
-                  {sp.imageUrl ? (
-                    <img
-                      src={sp.imageUrl}
-                      alt={sp.name}
-                      loading="lazy"
-                      class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div class="w-full h-full flex items-center justify-center">
-                      <span class="text-5xl font-black text-green-200">{sp.name.charAt(0)}</span>
-                    </div>
-                  )}
-
-                  {sp.event && (
-                    <div class="absolute top-3 left-3 z-20">
-                      <span class="bg-gray-900/90 text-white text-[0.6rem] font-black uppercase tracking-widest px-2.5 py-1 rounded-full">
-                        {sp.event.trim()}
-                      </span>
-                    </div>
-                  )}
-
-                  {sp.linkedinUrl && (
-                    <div class="absolute bottom-0 left-0 right-0 z-20 flex items-center gap-2.5 px-4 py-3
-                                bg-[#0A66C2] text-white
-                                translate-y-full group-hover:translate-y-0
-                                transition-transform duration-300 ease-out">
-                      <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                      <span class="text-xs font-bold">View on LinkedIn</span>
-                    </div>
-                  )}
-                </div>
-
-                <!-- Info -->
-                <div class="p-4 border-t border-gray-100">
-                  <h4 class="font-bold text-gray-900 text-sm leading-tight mb-0.5">{sp.name}</h4>
-                  <div class="text-xs text-gray-500">{sp.position}{sp.position && sp.company ? " · " : ""}{sp.company?.trim()}</div>
-                  {sp.event && (
-                    <span class="inline-block mt-2 px-2.5 py-0.5 bg-green-50 text-green-700 rounded-full text-[0.6rem] font-bold uppercase tracking-wide border border-green-100">
-                      {sp.event.trim()}
-                    </span>
-                  )}
-                </div>
-              </a>
-            ))}
-          </div>
-        )
-      ) : (
+          <Speaker speakers={allSpeakers} />
+        ) : (
         <p class="text-center text-gray-400 mb-10">Speaker announcements coming soon — <a href="/cfspk" class="text-green-600 hover:underline font-medium">apply to speak!</a></p>
       )}
 
@@ -406,7 +443,7 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         <div class="text-gray-500 text-sm mb-6">{VENUE.address}</div>
         <div class="flex items-center gap-2 text-sm text-gray-400 mb-auto">
           <CalendarClock class="w-4 h-4" />
-          04 April 2026 · Ahmedabad, Gujarat
+          04 April 2026 · {SITE.city}, Gujarat
         </div>
         <a href="/venue" class="mt-6 block text-center bg-gray-900 hover:bg-gray-800 text-white px-6 py-3 rounded-full font-bold text-sm transition-all hover:scale-105">
           Venue Details
@@ -425,32 +462,30 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
         </div>
 
         <div class="flex flex-col gap-3 mb-auto">
-          {TICKETS.slice(0, 3).map((t) => (
+          {ticketsResponse.slice(0, 3).map((t:any) => (
             <div class="p-3 bg-gray-50 rounded-xl border border-gray-100 flex flex-col gap-4">
 
-            <div class="flex justify-between items-center">
-              <div>
-                <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
-                <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
-              </div>
-              <div class="font-bold text-green-700 text-sm shrink-0 ml-2">{t.price}</div>
-            </div>
-            {t.available ? (
-                <a
-                  href={t.konfhubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all text-center ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
-                >
-                  {t.linkText || "Coming Soon"}
-                </a>
-              ) : (
-                <button
-                  class={`block w-full px-6 py-2 rounded-full font-bold text-sm transition-all ${t.popular ? "bg-gray-900 hover:bg-gray-800 text-white" : "border-2 border-gray-200 hover:border-gray-900 text-gray-700"}`}
-                >
-                  {t.linkText || "Coming Soon"}
-                </button>
-              )}
+                <div class="flex justify-between items-center">
+                  <div>
+                    <div class="font-semibold text-gray-900 text-sm">{t.name}</div>
+                    <div class="text-xs text-gray-400 mt-0.5">{t.description?.slice(0, 55)}…</div>
+                  </div>
+                    {t.available ?
+                        <a
+                            href={t.konfhubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="font-bold bg-green-500 px-6 py-2 text-white text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.linkText}
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a> :
+                        <button
+                            class="font-bold bg-gray-100 px-6 py-2 text-gray-500 text-sm shrink-0 ml-2 rounded-full inline-flex items-center gap-1">{t.linkText}
+                        </button>
+                    }
+
+                </div>
             </div>
           ))}
         </div>
@@ -461,15 +496,18 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
     </div>
   </section>
 
+  <!-- ─── FAQ ─── -->
+   <Faq />
+
   <!-- ─── COMMUNITY CTA ─── -->
-  <section class="py-24 px-4 bg-white">
+  <section class="py-24 px-4 bg-gray-50">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Ready to <span class="gradient-text">Join Us?</span></h2>
       <p class="text-lg text-gray-500 mb-10">
         Don't miss out on India's biggest open source community event. Join our WhatsApp community to stay updated!
       </p>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir" target="_blank" rel="noopener noreferrer"
+        <a href="https://chat.whatsapp.com/EazGR2r9TChE7a1rLzBxV8?mode=gi_t" target="_blank" rel="noopener noreferrer"
           class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
           Join WhatsApp Community
           <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

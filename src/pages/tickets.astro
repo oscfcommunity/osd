@@ -1,11 +1,11 @@
 ---
+import PageHero from "@/components/PageHero.jsx";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
-import { TICKETS } from "@/config/config.ts";
-import PageHero from "@/components/PageHero.jsx";
 
 import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
-console.log(JSON.stringify(ticketsData, null, 2));
+import Faq from "@components/Faq.astro";
+const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
 ---
 
 <Layout title="Tickets — Open Source Day 2026" activePath="/tickets">
@@ -15,7 +15,7 @@ console.log(JSON.stringify(ticketsData, null, 2));
     badge="REGISTRATION STARTED"
     title="OSD 2026"
     titleGradient="TICKETS"
-    subtitle="Secure your spot at India's biggest open source conference. Pricing and registration go live soon."
+    subtitle="Secure your spot at India's biggest open source conference. Ticket sales are live now!"
     primaryCta={{ text: "Buy Now", href: "/purchase", external: false }}
   />
 
@@ -28,7 +28,7 @@ console.log(JSON.stringify(ticketsData, null, 2));
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
-          TICKETS.map((ticket) => (
+          ticketsResponse.map((ticket: any) => (
             <div
               class={`relative border-2 rounded-2xl p-6 text-center hover:shadow-lg transition-all hover:-translate-y-1 bg-white ${ticket.popular ? "border-green-300 scale-105" : "border-gray-200"}`}
             >
@@ -42,12 +42,12 @@ console.log(JSON.stringify(ticketsData, null, 2));
               <p class="text-gray-500 text-sm mb-5">{ticket.description}</p>
               {ticket?.featureTitle && <p class="text-gray-900 font-semibold text-sm mb-2 text-left">{ticket?.featureTitle}</p>}
               <ul class="text-left space-y-2 text-sm text-gray-600 mb-6">
-                {ticket.features.map((f) => (
+                {ticket?.features?.map((f: any) => (
                   <li class="flex items-start gap-2">
                     <svg class="w-4 h-4 text-green-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
                     </svg>
-                    {f}
+                    {f?.featureText ?? "-"}
                   </li>
                 ))}
               </ul>
@@ -104,30 +104,7 @@ console.log(JSON.stringify(ticketsData, null, 2));
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Frequently Asked <span class="gradient-text">Questions</span></h2>
-      </div>
-      <div class="space-y-4">
-        {
-          [
-            { q: "When will tickets go on sale?", a: "Tickets are live now." },
-            { q: "Can I get a refund?", a: "Tickets are Non refundable and non transferable" },
-            { q: "Are student discounts available?", a: "No discount for students." },
-            { q: "What's included in the ticket?", a: "All tickets include conference access, lunch, keynotes, panels, and OSD goodies." },
-          ].map((faq) => (
-            <div class="border border-gray-100 bg-white hover:border-green-200 p-5 rounded-2xl transition-all">
-              <h4 class="font-bold text-gray-900 mb-2">{faq.q}</h4>
-              <p class="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
+  <Faq />
   <!-- Bottom CTA -->
   <section class="py-16 px-4 bg-gray-50 text-center">
     <h3 class="text-xl font-bold text-gray-900 mb-2">Questions about <span class="gradient-text">tickets?</span></h3>

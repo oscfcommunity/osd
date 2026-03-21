@@ -4,8 +4,7 @@ import { gql } from "graphql-request";
 const query = gql`
   query GetTickets {
     tickets {
-      documentId
-      tickets {
+      tickets(pagination: { limit: 1000 }) {
         id
         name
         description
@@ -19,10 +18,16 @@ const query = gql`
         fillingFast
         konfhubUrl
         linkText
+        extra
+        featureTitle
         alert {
           id
           text
           classes
+        }
+        features {
+          id
+          featureText
         }
       }
     }

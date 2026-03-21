@@ -11,7 +11,7 @@ const query = gql`
         title
         segment
 
-        speakers {
+        speakers(pagination: { limit: 1000 }) {
           id
           name
           position
@@ -37,7 +37,7 @@ const query = gql`
         title
         segment
 
-        speakers {
+        speakers(pagination: { limit: 1000 }) {
           id
           name
           position

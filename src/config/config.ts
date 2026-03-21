@@ -16,6 +16,7 @@ export const SITE = {
   website: "https://osd.opensourceweekend.org",
   ogImage: "https://osd.opensourceweekend.org/images/Viral_Parmar_Stage.jpg",
   icon: OSDGreen,
+  city: "Gandhinagar",
 };
 
 export const BRANDING = {
@@ -27,8 +28,8 @@ export const BRANDING = {
 export const EVENT = {
   name: "Open Source Day 2026",
   shortName: "OSD2026",
-  date: "04 April 2026",
-  location: "Ahmedabad, Gujarat, India",
+  date: "TBA",
+  location: "Gandhinagar, Gujarat, India",
   tagline: "Join the largest open source developer conference of the year. Learn, network, and contribute to the future of technology.",
   description:
     "Open Source Day 2026 is a community-driven event celebrating the power of open source software. Join developers, maintainers, and enthusiasts for a day of learning, collaboration, and innovation.",
@@ -53,7 +54,7 @@ export const HERO = {
   buttons: {
     primary: {
       text: "Join Community",
-      url: "https://chat.whatsapp.com/Fi50G9prGcH4b7891LrPir",
+      url: "https://chat.whatsapp.com/EazGR2r9TChE7a1rLzBxV8?mode=gi_t",
     },
     secondary: {
       text: "Explore OSD 2025",
@@ -87,7 +88,7 @@ export const CALLS_2026 = [
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
     badge: "Open",
-    deadline: "15th March 2026",
+    deadline: "25th March 2026",
     enable: true,
   },
   {
@@ -128,6 +129,16 @@ export const CALLS_2026 = [
     color: "from-pink-500 to-rose-600",
     badge: "Open",
     deadline: "21st March 2026",
+    enable: true,
+  },
+  {
+    title: "Call for Booth",
+    description: "Showcase your project, product, or community with a booth at OSD 2026.",
+    href: "/cfb",
+    emoji: "🏢",
+    color: "from-gray-500 to-gray-600",
+    badge: "Open",
+    deadline: "31st March 2026",
     enable: true,
   },
 ];
@@ -521,12 +532,13 @@ export const TICKETS = [
 ];
 
 export const VENUE = {
-  name: "To Be Announced",
-  address: "Ahmedabad, Gujarat, India",
-  description:
-    "The OSD 2026 venue is being finalized. We'll be hosting the event at a premier institution in Ahmedabad that provides a dynamic environment for innovation and collaboration.",
+  name: "DAIICT - DAU (Dhirubhai Ambani University)",
+  address: "Gandhinagar, Gujarat, India",
+  date: "04 April 2026",
+  description: "Full day event with multiple tracks at DAIICT - DAU, Gandhinagar.",
   capacity: "600+ attendees",
-  googleMapsLink: "#",
+  format: "Full day event · Multiple tracks",
+  googleMapsLink: "https://maps.app.goo.gl/G8zTiuN7oZp1x8qu9",
   facilities: [
     "Large auditorium with 500+ seats",
     "Multiple workshop rooms",

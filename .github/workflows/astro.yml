@@ -9,9 +9,6 @@ on:
   push:
     branches: ["main"]
 
-  repository_dispatch:
-    types: [strapi-update]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 

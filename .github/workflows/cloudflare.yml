@@ -1,0 +1,38 @@
+name: Redeploy on Strapi Update
+
+on:
+  repository_dispatch:
+    types: [strapi-update]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "osw-bot"
+          git config --global user.email "bot@opensourceweekend.org"
+
+      - name: Update rebuild file
+        run: |
+          echo "$(date)" > rebuild.txt
+          git add rebuild.txt
+          git commit -m "chore: rebuild triggered by webhook"
+
+      - name: Sync with remote
+        run: git pull origin main --rebase
+
+      - name: Push commit
+        run: git push origin HEAD:main

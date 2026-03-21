@@ -1,11 +1,11 @@
-# OpenSourceDay2025
+# OpenSourceDay2026
 
 We are organizing a one-day conference centered the "Open Source" theme.
 Conference focuses on Open Source: Technology, Products, Projects, Communities, Design, Data, AI, Web3, and Hardware.
 
 ## About Project
 
-The project is a simple static website for OpenSourceDay 2025.
+The project is a simple static website for OpenSourceDay 2026.
 
 1. It's in Astro, but you can use any library of your choice (React, Vue, Svelte, Solid, even Markdown)
 2. Styling is done via Tailwind.
@@ -27,3 +27,5 @@ We are simultaneously improving the accuracy of data (removing mock data) and im
 2. Install dependencies: `npm install`
 3. Run the development server: `npm run dev`
 
+##
+##

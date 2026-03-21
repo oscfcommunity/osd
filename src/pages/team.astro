@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import PageHero from "@/components/PageHero.jsx";
 import Layout from "@/layouts/Layout.astro";
 import { teamsData } from "@/lib/graphql/queries/teams.query.ts";
@@ -29,12 +30,11 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
   <!-- Hero -->
   <PageHero
     client:load
-    badge="VOLUNTEER APPLICATIONS OPEN"
+    badge="VOLUNTEER APPLICATIONS CLOSED"
     title="MEET THE"
     titleGradient="OSD 2026 TEAM"
     subtitle="Volunteers are the heartbeat of Open Source Day. Join the 2026 crew and help create something legendary."
-    primaryCta={{ text: "Apply to Volunteer", href: "/cfv", external: true }}
-    secondaryCta={{ text: "View 2025 Team", href: "/2025/team" }}
+    primaryCta={{ text: "View 2025 Team", href: "/2025/team" }}
   />
 
   <!-- ═══════════════ TEAM GROUPS (real data) ═══════════════ -->
@@ -77,11 +77,13 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
                   <!-- Photo area — portrait top half -->
                   <div class="relative w-full aspect-[4/5] bg-gradient-to-br from-green-50 to-emerald-100 overflow-hidden">
                     {member.imageUrl ? (
-                      <img
+                      <Image
                         src={member.imageUrl}
                         alt={member.name}
                         loading="lazy"
                         class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        width={400}
+                        height={500}
                       />
                     ) : (
                       <div class="absolute inset-0 flex items-center justify-center">
@@ -109,17 +111,17 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
                       {member.name}
                     </h3>
                     {member.roles.length > 0 && (
-                      <div class="flex flex-wrap gap-1">
+                      <div class="flex flex-col gap-1 text-left items-stretch">
                         <!-- Primary role as badge -->
-                        <span class="text-xs px-2 py-0.5 rounded-full font-semibold bg-green-50 text-green-700 border border-green-100 leading-snug">
-                          {member.roles[0].role.trim()}
-                        </span>
+                        <p class="text-xs px-2 py-2 rounded-sm font-semibold bg-green-50 text-green-700 border border-green-300">
+                          {member?.roles[0]?.role?.trim()}
+                        </p>
                         <!-- Extra roles as plain text -->
-                        {member.roles.slice(1).map((r) => (
-                          <span class="text-xs text-gray-400 leading-snug self-center">
-                            · {r.role.trim()}
-                          </span>
-                        ))}
+                          {member?.roles?.slice(1).map((r, index) => (
+                            <p class="text-xs text-gray-400 leading-snug">
+                              {r?.role?.trim()}
+                            </p>
+                          ))}
                       </div>
                     )}
                   </div>
@@ -182,14 +184,12 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
       We'd love to have you on board. Apply to volunteer or reach out to us directly.
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a
-        href="/cfv"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105"
+      <button
+        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all disabled:opacity-50"
+        disabled
       >
-        Apply to Volunteer
-      </a>
+        Apply to Volunteer (CLOSED)
+      </button>
       <a
         href="mailto:opensourceweekend@gmail.com"
         class="font-semibold text-gray-500 hover:text-gray-900 transition-colors"

@@ -6,11 +6,11 @@ const query = gql`
   query GetTeams {
     teams {
       documentId
-      teams {
+      teams(pagination: { limit: 1000 }) {
         id
         title
         description
-        teams {
+        teams(pagination: { limit: 1000 }) {
           id
           number
           name

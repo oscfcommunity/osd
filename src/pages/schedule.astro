@@ -35,7 +35,7 @@ const getStyle = (type: string) =>
     badge="BEING PLANNED"
     title="OSD 2026"
     titleGradient="SCHEDULE"
-    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda — tap + on any session."
+    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda tap + on any session."
     primaryCta={{ text: "Apply to Speak", href: "/cfspk", external: true }}
     secondaryCta={{ text: "View 2025 Schedule", href: "/2025/schedule" }}
   />
@@ -117,11 +117,32 @@ const getStyle = (type: string) =>
         </svg>
       </div>
       <p class="font-bold text-gray-900 mb-1">Nothing tracked yet</p>
-      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Track It</span> on any session to build your personal schedule.</p>
+      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Add to Schedule</span> on any session to build your personal schedule.</p>
     </div>
 
     <!-- Footer -->
     <div class="px-4 py-4 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
+
+      <!-- Export buttons — shown only when sessions exist -->
+      <div id="agenda-export-btns" class="hidden flex-col gap-2">
+        <!-- Download ICS -->
+        <button onclick="window.showCalendarPicker()"
+          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-green-500 text-white hover:bg-green-600 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+          Add to Calendar
+        </button>
+        <!-- Download as Note -->
+        <button onclick="window.downloadNote()"
+          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Download as Note 
+        </button>
+      </div>
+
       <!-- Close button -->
       <button onclick="window.toggleAgenda()"
         class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm bg-gray-900 text-white hover:bg-gray-700 transition-colors">
@@ -130,7 +151,86 @@ const getStyle = (type: string) =>
         </svg>
         Close Panel
       </button>
-     
+
+    </div>
+  </div>
+
+  <!-- ═══ CALENDAR PICKER MODAL ══════════════════════════════════ -->
+  <div id="cal-picker-backdrop"
+    class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[80] hidden items-end justify-center sm:items-center"
+    onclick="window.closeCalendarPicker()">
+    <div id="cal-picker-sheet"
+      onclick="event.stopPropagation()"
+      class="w-full sm:max-w-sm bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl p-6 pb-8 max-h-[90vh] overflow-y-auto"
+      style="transform:translateY(100%);transition:transform 0.3s ease-out">
+
+      <!-- ── View 1: Calendar picker ── -->
+      <div id="cal-view-picker">
+        <!-- Handle -->
+        <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5 sm:hidden"></div>
+        <h3 class="font-black text-gray-900 text-base mb-1">Add to Calendar</h3>
+        <p id="cal-picker-count" class="text-xs text-gray-400 mb-5">Opening your sessions…</p>
+
+        <!-- Google Calendar -->
+        <button onclick="window.openGoogleCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition-all mb-2 group">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" class="w-6 h-6 shrink-0" alt="Google Calendar" />
+          <div class="text-left">
+            <div class="font-bold text-sm text-gray-900 group-hover:text-blue-700">Google Calendar</div>
+            <div class="text-[0.65rem] text-gray-400">Tap each session to add individually</div>
+          </div>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <!-- Apple Calendar -->
+        <button onclick="window.openAppleCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-gray-300 hover:bg-gray-50 transition-all mb-2 group">
+          <svg class="w-6 h-6 shrink-0 text-gray-700" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="text-left">
+            <div class="font-bold text-sm text-gray-900 group-hover:text-gray-800">Apple Calendar</div>
+            <div class="text-[0.65rem] text-gray-400">iPhone, iPad & Mac — opens natively</div>
+          </div>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <!-- Outlook / Other -->
+        <button onclick="window.openOutlookCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-100 hover:bg-blue-50/50 transition-all mb-4 group">
+          <svg class="w-6 h-6 shrink-0 text-blue-600" viewBox="0 0 24 24" fill="currentColor"><path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.41.34-.74.22-.33.59-.52.37-.2.87-.2t.86.2q.35.21.57.55.22.34.32.75.1.42.1.86zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.01V2.62q0-.46.33-.8.33-.32.8-.32h15.74q.46 0 .8.33.32.33.32.8V12zm-7.85-3.86l-2.19 2.9-.97-.87q-.28-.25-.68-.05-.4.2-.28.76l.89 3.1q.25.87 1.1.6l4.75-1.7q.56-.2.32-.78-.25-.56-.75-.4l-2.08.74 1.97-2.62q.36-.48-.06-.88-.42-.4-.02-.8z"/></svg>
+          <div class="text-left">
+            <div class="font-bold text-sm text-gray-900 group-hover:text-blue-700">Outlook / Other</div>
+            <div class="text-[0.65rem] text-gray-400">Downloads .ics file to import</div>
+          </div>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+
+        <button onclick="window.closeCalendarPicker()"
+          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+          Cancel
+        </button>
+      </div>
+
+      <!-- ── View 2: Google Calendar session list ── -->
+      <div id="cal-view-gcal" style="display:none">
+        <div class="flex items-center gap-3 mb-4">
+          <button onclick="window.showCalPickerView('picker')"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shrink-0">
+            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <div>
+            <div class="font-black text-gray-900 text-sm">Google Calendar</div>
+            <div class="text-[0.65rem] text-gray-400">Tap a session to add it</div>
+          </div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" class="w-5 h-5 ml-auto shrink-0" alt="" />
+        </div>
+        <!-- Session links injected here by JS -->
+        <div id="gcal-session-list" class="space-y-2 mb-4"></div>
+        <button onclick="window.closeCalendarPicker()"
+          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+          Done
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -204,7 +304,7 @@ const getStyle = (type: string) =>
                   {session.speaker && <p class="text-gray-500 text-xs font-medium">by {session.speaker}</p>}
                 </div>
 
-                <!-- Bottom: room + Track It button -->
+                <!-- Bottom: room + Add to Schedule button -->
                 <div class="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 pt-1">
                   {session.room && (
                     <span class="flex items-center gap-1 text-xs text-gray-400">
@@ -223,7 +323,7 @@ const getStyle = (type: string) =>
                     <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
                     </svg>
-                    <span class="btn-label">Track It</span>
+                    <span class="btn-label">Add to Schedule</span>
                   </button>
                 </div>
 
@@ -277,7 +377,7 @@ const getStyle = (type: string) =>
                   {item.speaker && <p class="text-gray-500 text-xs mt-0.5 font-medium">by {item.speaker}</p>}
                 </div>
 
-                <!-- Bottom: Track It -->
+                <!-- Bottom: Add to Schedule -->
                 <div class="flex items-center justify-end">
                   <button
                     data-add-btn={sid}
@@ -293,7 +393,7 @@ const getStyle = (type: string) =>
                     <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
                     </svg>
-                    <span class="btn-label">Track It</span>
+                    <span class="btn-label">Add to Schedule</span>
                   </button>
                 </div>
 
@@ -389,6 +489,12 @@ function renderAgenda() {
   empty.style.display = items.length === 0 ? 'flex' : 'none';
   list.style.display  = items.length > 0  ? 'block' : 'none';
 
+  // Show/hide export buttons
+  const exportBtns = document.getElementById('agenda-export-btns');
+  if (exportBtns) {
+    exportBtns.style.display = items.length > 0 ? 'flex' : 'none';
+  }
+
   // Render items — all styles are inline to avoid Tailwind purge
   list.innerHTML = '';
   items.forEach(item => {
@@ -471,10 +577,10 @@ function syncButtons() {
     const label = btn.querySelector('.btn-label');
     if (isAdded) {
       icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>`;
-      label.textContent = 'Tracked ✓';
+      label.textContent = 'Added ✓';
     } else {
       icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>`;
-      label.textContent = 'Track It';
+      label.textContent = 'Add to Schedule';
     }
   });
 }
@@ -534,6 +640,184 @@ window.removeSession = function(sid) {
   saveAgenda(agenda);
   syncButtons();
   renderAgenda();
+};
+/* ── Calendar Picker ────────────────────────────────────────────── */
+// Shared ICS builder
+function buildICSContent() {
+  const items = getAgenda();
+  if (!items.length) return null;
+  const EVENT_DATE = '20260329';
+  function toICSTime(timeStr) {
+    const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (!match) return '090000';
+    let h = parseInt(match[1]);
+    const m = match[2];
+    const ampm = match[3].toUpperCase();
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    return String(h).padStart(2,'0') + m + '00';
+  }
+  function parseStartEnd(timeStr) {
+    const parts = timeStr.split(/\s*[–-]\s*/);
+    return { start: toICSTime(parts[0] || ''), end: toICSTime(parts[1] || parts[0] || '') };
+  }
+  const now = new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+  let ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//OSD 2026//My Schedule//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  items.sort((a,b) => a.time.localeCompare(b.time)).forEach((item, idx) => {
+    const { start, end } = parseStartEnd(item.time);
+    const desc = [item.speaker ? 'Speaker: '+item.speaker : '', item.track ? 'Track: '+item.track : ''].filter(Boolean).join('\\n');
+    ics.push('BEGIN:VEVENT',`UID:osd2026-${item.id}-${idx}@opensourceday.in`,`DTSTAMP:${now}`,
+      `DTSTART;TZID=Asia/Kolkata:${EVENT_DATE}T${start}`,`DTEND;TZID=Asia/Kolkata:${EVENT_DATE}T${end}`,
+      `SUMMARY:${item.title}`,`DESCRIPTION:${desc}`,`LOCATION:${item.room || 'Open Source Day 2026'}`,
+      'END:VEVENT');
+  });
+  ics.push('END:VCALENDAR');
+  return ics.join('\r\n');
+}
+
+window.showCalendarPicker = function() {
+  const items = getAgenda();
+  if (!items.length) return;
+  const backdrop = document.getElementById('cal-picker-backdrop');
+  const sheet    = document.getElementById('cal-picker-sheet');
+  const countEl  = document.getElementById('cal-picker-count');
+  countEl.textContent = `${items.length} session${items.length !== 1 ? 's' : ''} in your schedule`;
+  backdrop.classList.remove('hidden');
+  backdrop.style.display = 'flex';
+  // Trigger slide-up animation
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    sheet.style.transform = 'translateY(0)';
+  }));
+};
+
+window.closeCalendarPicker = function() {
+  const backdrop = document.getElementById('cal-picker-backdrop');
+  const sheet    = document.getElementById('cal-picker-sheet');
+  sheet.style.transform = 'translateY(100%)';
+  setTimeout(() => { backdrop.style.display = 'none'; backdrop.classList.add('hidden'); }, 320);
+};
+
+// Google Calendar — show all sessions as direct links (no popup blocker issues)
+window.openGoogleCalendar = function() {
+  const items = getAgenda().sort((a,b) => a.time.localeCompare(b.time));
+  const EVENT_DATE = '20260329';
+  function toGCalTime(timeStr) {
+    const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (!match) return '090000';
+    let h = parseInt(match[1]);
+    const m = match[2];
+    const ampm = match[3].toUpperCase();
+    if (ampm === 'PM' && h !== 12) h += 12;
+    if (ampm === 'AM' && h === 12) h = 0;
+    return String(h).padStart(2,'0') + m + '00';
+  }
+
+  const list = document.getElementById('gcal-session-list');
+  list.innerHTML = '';
+
+  items.forEach(item => {
+    const parts = item.time.split(/\s*[–-]\s*/);
+    const start = toGCalTime(parts[0] || '');
+    const end   = toGCalTime(parts[1] || parts[0] || '');
+    const dates = `${EVENT_DATE}T${start}/${EVENT_DATE}T${end}`;
+    const details = [item.speaker ? 'Speaker: '+item.speaker : '', item.track ? 'Track: '+item.track : '', 'osd.opensourceweekend.org/schedule'].filter(Boolean).join('%0A');
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(item.title)}&dates=${dates}&details=${details}&location=${encodeURIComponent(item.room || 'Open Source Day 2026, India')}&ctz=Asia%2FKolkata`;
+
+    const row = document.createElement('a');
+    row.href   = url;
+    row.target = '_blank';
+    row.rel    = 'noopener noreferrer';
+    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none;transition:background 0.15s,border-color 0.15s;';
+    row.onmouseenter = () => { row.style.background='#eff6ff'; row.style.borderColor='#bfdbfe'; };
+    row.onmouseleave = () => { row.style.background=''; row.style.borderColor='#e5e7eb'; };
+
+    // Time badge
+    const time = document.createElement('span');
+    time.style.cssText = 'font-size:10px;font-weight:700;color:#16a34a;font-family:monospace;white-space:nowrap;flex-shrink:0';
+    time.textContent = item.time;
+
+    // Title
+    const title = document.createElement('span');
+    title.style.cssText = 'font-size:12px;font-weight:600;color:#111827;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
+    title.textContent = item.title;
+
+    // Add icon
+    const icon = document.createElement('span');
+    icon.style.cssText = 'flex-shrink:0;font-size:11px;font-weight:700;color:#2563eb;white-space:nowrap';
+    icon.textContent = '+ Add';
+
+    row.appendChild(time);
+    row.appendChild(title);
+    row.appendChild(icon);
+    list.appendChild(row);
+  });
+
+  window.showCalPickerView('gcal');
+};
+
+window.showCalPickerView = function(view) {
+  document.getElementById('cal-view-picker').style.display = view === 'picker' ? 'block' : 'none';
+  document.getElementById('cal-view-gcal').style.display   = view === 'gcal'   ? 'block' : 'none';
+};
+
+// Apple Calendar — navigate to ICS so iOS/macOS intercepts it
+window.openAppleCalendar = function() {
+  const content = buildICSContent();
+  if (!content) return;
+  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  // On iOS/macOS, navigating to an .ics opens Calendar natively
+  window.location.href = url;
+  setTimeout(() => URL.revokeObjectURL(url), 3000);
+  window.closeCalendarPicker();
+};
+
+// Outlook / Other — force file download
+window.openOutlookCalendar = function() {
+  const content = buildICSContent();
+  if (!content) return;
+  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'osd2026-my-schedule.ics';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  window.closeCalendarPicker();
+};
+
+// Keep old name working as alias
+window.downloadICS = window.showCalendarPicker;
+
+/* ── Download as Note (plain text) ──────────────────────────────── */
+window.downloadNote = function() {
+  const items = getAgenda();
+  if (!items.length) return;
+
+  const lines = [
+    '╔══════════════════════════════════════╗',
+    '║   Open Source Day 2026 — My Schedule ║',
+    '╚══════════════════════════════════════╝',
+    '',
+  ];
+
+  items.sort((a,b) => a.time.localeCompare(b.time)).forEach(item => {
+    lines.push(`⏰ ${item.time}`);
+    lines.push(`📌 ${item.title}`);
+    if (item.speaker) lines.push(`   🎤 ${item.speaker}`);
+    if (item.room)    lines.push(`   📍 ${item.room}`);
+    if (item.track)   lines.push(`   🏷  ${item.track}`);
+    lines.push('');
+  });
+
+  lines.push('─────────────────────────────────────────');
+  lines.push('Generated from osd.opensourceweekend.org/schedule');
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'osd2026-my-schedule.txt';
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 };
 
 
