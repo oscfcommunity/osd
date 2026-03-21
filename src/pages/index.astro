@@ -19,6 +19,7 @@ import { env } from "@/lib/env.ts";
 import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
 import Faq from "@components/Faq.astro";
 import Speaker from "@components/Speaker.astro";
+import MascotScroller from "@/components/MascotScroller.jsx";
 
 // ── helpers ──────────────────────────────────────────────────────────
 function strapiImg(url: string | null | undefined): string | null {
@@ -57,6 +58,7 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
+  <MascotScroller client:load />
   <Hero client:load />
   <ScrollAnimations client:load />
 
