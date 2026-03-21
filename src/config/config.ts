@@ -547,7 +547,6 @@ export const VENUE = {
     "Professional A/V equipment",
     "Accessible facilities",
   ],
-  date: "04 April 2026",
 };
 
 // Reuse 2025 sponsor data as placeholders

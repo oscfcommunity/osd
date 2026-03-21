@@ -3,9 +3,9 @@
   "type": "module",
   "version": "0.0.2",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "dev": "node init && astro dev",
+    "start": "node init && astro dev",
+    "build": "node init && astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -21,6 +21,7 @@
     "graphql": "^16.13.1",
     "graphql-request": "^7.4.0",
     "gsap": "^3.13.0",
+    "heic2any": "^0.0.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-easy-crop": "^5.5.2",
