@@ -4,7 +4,7 @@ const TOTAL_FRAMES = 80;
 const BG_COLOR = "#161820";
 
 // Frame URL builder — served from /public/osd-hero-high/
-const frameUrl = (i) => `/osd-hero-high/${String(i + 1).padStart(5, "0")}.jpg`;
+const frameUrl = (i) => `/osd-hero-high/${String(i + 1).padStart(5, "0")}.webp`;
 
 // Copy overlay phases keyed by scroll progress
 const PHASES = [

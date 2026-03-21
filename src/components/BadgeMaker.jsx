@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { EVENT, SITE, BRANDING } from "@/config/config";
 import Cropper from "react-easy-crop";
+import heic2any from "heic2any";
 
 const loadImage = (src) => {
   return new Promise((resolve) => {
@@ -163,6 +164,7 @@ const BadgeMaker = () => {
 
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
+  const renderIdRef = useRef(0);
 
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
@@ -187,15 +189,26 @@ const BadgeMaker = () => {
 
   const currentTemplate = templates.find((t) => t.id === selectedTemplate) || templates[1];
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
+  const handleFileUpload = async (event) => {
+    let file = event.target.files[0];
+    if (!file) return;
+
+    try {
+      if (file.type === "image/heic" || file.type === "image/heif" || file.name.toLowerCase().endsWith(".heic") || file.name.toLowerCase().endsWith(".heif")) {
+        const convertedBlob = await heic2any({ blob: file, toType: "image/jpeg", quality: 0.8 });
+        const blobArray = Array.isArray(convertedBlob) ? convertedBlob : [convertedBlob];
+        file = new File(blobArray, file.name.replace(/\.heic|\.heif/gi, ".jpg"), { type: "image/jpeg" });
+      }
+
       const reader = new FileReader();
       reader.onload = (e) => {
         setUploadedImage(e.target.result);
         setIsCropping(true);
       };
       reader.readAsDataURL(file);
+    } catch (err) {
+      console.error("HEIC Conversion error:", err);
+      alert("Failed to process this image. Please try another copy or save as JPEG.");
     }
   };
 
@@ -216,6 +229,7 @@ const BadgeMaker = () => {
   };
 
   const drawBadge = useCallback(async () => {
+    const renderId = ++renderIdRef.current;
     const canvas = canvasRef.current;
     if (!canvas || !fontsLoaded) return;
     const ctx = canvas.getContext("2d");
@@ -371,6 +385,8 @@ const BadgeMaker = () => {
       loadImage(svgUrl),
       loadImage(mascotPath),
     ]);
+
+    if (renderId !== renderIdRef.current) return;
 
     if (skylineObj) {
       ctx.save();
@@ -562,15 +578,20 @@ const BadgeMaker = () => {
     if (companyText || roleInputText) {
       let displayStr = "";
       if (roleInputText && companyText) {
-        displayStr = `${roleInputText} @ ${companyText}`;
+        displayStr = `${roleInputText} @${companyText}`;
       } else if (roleInputText) {
         displayStr = roleInputText;
       } else {
-        displayStr = `@ ${companyText}`;
+        displayStr = `@${companyText}`;
       }
 
       ctx.fillStyle = "rgba(0,0,0,0.6)";
-      ctx.font = "600 24px 'Space Grotesk'";
+      let compFontSize = 24;
+      ctx.font = `600 ${compFontSize}px 'Space Grotesk'`;
+      while (ctx.measureText(displayStr).width > width - 100 && compFontSize > 14) {
+        compFontSize -= 1;
+        ctx.font = `600 ${compFontSize}px 'Space Grotesk'`;
+      }
       ctx.fillText(displayStr, width / 2, compY);
     } else {
       compY = nameY; // offset if no company/role
@@ -600,11 +621,11 @@ const BadgeMaker = () => {
     ctx.stroke();
 
     ctx.fillStyle = "#ffffff"; // Bold white text for contrast
-    ctx.fillText(roleText, width / 2, roleY);
+    ctx.fillText(roleText, width / 2, roleY + 2); // Shifted down 2px for visual center
 
     // 9.5 Extra Event Text Below Tag
     const osdY1 = roleY + 65;
-    ctx.font = `800 ${fontSize}px 'Space Grotesk'`;
+    ctx.font = `800 64px 'Space Grotesk'`;
 
     // Draw "OPEN SOURCE DAY"
     const osdText1 = "OPEN SOURCE DAY";
@@ -620,7 +641,7 @@ const BadgeMaker = () => {
     ctx.fillText(osdText1, width / 2, osdY1);
 
     // Draw "2026" below it
-    const osdY2 = osdY1 + fontSize * 1.1;
+    const osdY2 = osdY1 + 70; // 64 * 1.1 ≈ 70
     const osdText2 = "2026";
     const osdWidth2 = ctx.measureText(osdText2).width;
     const gradient2 = ctx.createLinearGradient(width / 2 - osdWidth2 / 2, osdY2, width / 2 + osdWidth2 / 2, osdY2);
@@ -713,21 +734,50 @@ const BadgeMaker = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const fullText = `${userName.trim() ? `${userName} is` : `I'm`} attending ${EVENT.name}! Join us on ${EVENT.date} #OpenSourceDay2026`;
+    const action = currentTemplate.title.toLowerCase();
+    const fullText = `I'm ${action} Open Source Day 2026! 🚀\n\nEveryone must join this incredible event to learn, build, and network with the open-source community. Let's shape the future together!\n\nGet your pass here:`;
+
     const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png"));
 
-    if (platform === "native" && typeof navigator !== "undefined" && navigator.share) {
+    if (typeof navigator !== "undefined" && navigator.canShare) {
       try {
         const file = new File([blob], `osd-2026-pass.png`, { type: "image/png" });
-        await navigator.share({
-          title: "My OSD 2026 Pass",
-          text: fullText,
-          files: [file],
-        });
-        return;
+        if (navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            title: "My OSD 2026 Pass",
+            text: fullText,
+            files: [file],
+          });
+          return;
+        }
       } catch (error) {
-        console.log("Native share failed");
+        console.log("Native share failed", error);
       }
+    }
+
+    let imageCopied = false;
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard && typeof ClipboardItem !== "undefined") {
+        await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
+        imageCopied = true;
+      }
+    } catch (e) {
+      console.log("Clipboard copy failed");
+    }
+
+    if (platform === "instagram") {
+      alert(
+        imageCopied ? "Badge copied to clipboard! Open Instagram to paste and share your story." : "Please download the image first to share on Instagram."
+      );
+      return;
+    }
+
+    if (imageCopied) {
+      alert(
+        "Your custom badge has been copied to your clipboard!\n\nTo attach it to your post:\n• Desktop: Press Ctrl+V / Cmd+V\n• Mobile: Long-press the text box and select 'Paste'"
+      );
+    } else {
+      alert("Since you're generating a custom image, please click 'Export Pass' to download it, then attach the image to your post!");
     }
 
     const currentHref = typeof window !== "undefined" ? window.location.href : "";
@@ -735,20 +785,8 @@ const BadgeMaker = () => {
       x: `https://twitter.com/intent/tweet?text=${encodeURIComponent(fullText)}&url=${encodeURIComponent(currentHref)}`,
       linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentHref)}`,
       facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentHref)}&quote=${encodeURIComponent(fullText)}`,
-      whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(fullText + " " + currentHref)}`,
+      whatsapp: `https://api.whatsapp.com/send?text=${encodeURIComponent(fullText + "\n" + currentHref)}`,
     };
-
-    if (platform === "instagram") {
-      try {
-        if (typeof navigator !== "undefined" && navigator.clipboard && typeof ClipboardItem !== "undefined") {
-          await navigator.clipboard.write([new ClipboardItem({ "image/png": blob })]);
-          alert("Badge copied to clipboard! Open Instagram to paste and share your story.");
-        }
-      } catch (e) {
-        alert("Please download the image first to share on Instagram.");
-      }
-      return;
-    }
 
     if (shareUrls[platform]) {
       window.open(shareUrls[platform], "_blank", "width=600,height=400");
@@ -769,6 +807,8 @@ const BadgeMaker = () => {
       alert("Failed to copy to clipboard. Please download the image instead.");
     }
   };
+
+  const isBadgeReady = !!uploadedImage && userName.trim().length > 0;
 
   return (
     <div className="min-h-screen bg-gray-50 py-16 relative overflow-hidden font-sans">
@@ -808,6 +848,7 @@ const BadgeMaker = () => {
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder="Enter your name"
+                  maxLength={30}
                   className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
@@ -816,6 +857,7 @@ const BadgeMaker = () => {
                   value={userRole}
                   onChange={(e) => setUserRole(e.target.value)}
                   placeholder="Your Role (Optional)"
+                  maxLength={20}
                   className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
@@ -824,6 +866,7 @@ const BadgeMaker = () => {
                   value={companyName}
                   onChange={(e) => setCompanyName(e.target.value)}
                   placeholder="Company / Community (Optional)"
+                  maxLength={30}
                   className="w-full bg-white text-gray-900 px-5 py-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-opacity-50 focus:border-transparent outline-none transition-all placeholder-gray-400 shadow-sm"
                   style={{ focusRing: currentTemplate.color }}
                 />
@@ -836,7 +879,7 @@ const BadgeMaker = () => {
                 <span className="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border border-gray-200">
                   2
                 </span>
-                <span>Access Level</span>
+                <span>Joining as</span>
               </h2>
               <div className="grid grid-cols-1 gap-3">
                 {templates.map((template) => (
@@ -868,7 +911,7 @@ const BadgeMaker = () => {
                 <span className="bg-gray-100 text-gray-600 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold border border-gray-200">
                   3
                 </span>
-                <span>Biometric Data</span>
+                <span>Upload your photo</span>
               </h2>
 
               {!uploadedImage ? (
@@ -886,7 +929,7 @@ const BadgeMaker = () => {
                       />
                     </svg>
                   </div>
-                  <p className="text-gray-500 text-sm font-medium">Click to scan image</p>
+                  <p className="text-gray-500 text-sm font-medium">Click to upload your photo</p>
                   <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileUpload} className="hidden" />
                 </div>
               ) : (
@@ -997,8 +1040,11 @@ const BadgeMaker = () => {
                 <span className="text-gray-500 font-medium text-sm tracking-wide">Share that you are attending:</span>
                 <div className="flex items-center justify-center gap-3">
                   <button
+                    disabled={!isBadgeReady}
                     onClick={() => shareToSocial("x")}
-                    className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center transition hover:scale-110 shadow-sm"
+                    className={`w-12 h-12 rounded-full bg-black text-white flex items-center justify-center transition shadow-sm ${
+                      isBadgeReady ? "hover:scale-110" : "opacity-50 cursor-not-allowed"
+                    }`}
                     title="Share on X"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1006,8 +1052,11 @@ const BadgeMaker = () => {
                     </svg>
                   </button>
                   <button
+                    disabled={!isBadgeReady}
                     onClick={() => shareToSocial("linkedin")}
-                    className="w-12 h-12 rounded-full bg-[#0077b5] text-white flex items-center justify-center transition hover:scale-110 shadow-sm"
+                    className={`w-12 h-12 rounded-full bg-[#0077b5] text-white flex items-center justify-center transition shadow-sm ${
+                      isBadgeReady ? "hover:scale-110" : "opacity-50 cursor-not-allowed"
+                    }`}
                     title="Share on LinkedIn"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1015,8 +1064,11 @@ const BadgeMaker = () => {
                     </svg>
                   </button>
                   <button
+                    disabled={!isBadgeReady}
                     onClick={() => shareToSocial("instagram")}
-                    className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white flex items-center justify-center transition hover:scale-110 shadow-sm"
+                    className={`w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#e6683c] to-[#bc1888] text-white flex items-center justify-center transition shadow-sm ${
+                      isBadgeReady ? "hover:scale-110" : "opacity-50 cursor-not-allowed"
+                    }`}
                     title="Copy for Instagram"
                   >
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -1024,8 +1076,11 @@ const BadgeMaker = () => {
                     </svg>
                   </button>
                   <button
+                    disabled={!isBadgeReady}
                     onClick={() => shareToSocial("whatsapp")}
-                    className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center transition hover:scale-110 shadow-sm"
+                    className={`w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center transition shadow-sm ${
+                      isBadgeReady ? "hover:scale-110" : "opacity-50 cursor-not-allowed"
+                    }`}
                     title="Share on WhatsApp"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1033,8 +1088,11 @@ const BadgeMaker = () => {
                     </svg>
                   </button>
                   <button
+                    disabled={!isBadgeReady}
                     onClick={() => shareToSocial("facebook")}
-                    className="w-12 h-12 rounded-full bg-[#1877f2] text-white flex items-center justify-center transition hover:scale-110 shadow-sm"
+                    className={`w-12 h-12 rounded-full bg-[#1877f2] text-white flex items-center justify-center transition shadow-sm ${
+                      isBadgeReady ? "hover:scale-110" : "opacity-50 cursor-not-allowed"
+                    }`}
                     title="Share on Facebook"
                   >
                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
