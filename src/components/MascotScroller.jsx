@@ -166,14 +166,31 @@ export default function MascotScroller() {
   useEffect(() => {
     if (!ready) return;
 
-    let gsap, ScrollTrigger;
+    let gsapAPI, lenis, tickerWrap;
 
     const init = async () => {
       const gsapMod = await import("gsap");
       const stMod = await import("gsap/ScrollTrigger");
-      gsap = gsapMod.gsap;
-      ScrollTrigger = stMod.ScrollTrigger;
+      const gsap = gsapMod.gsap;
+      const ScrollTrigger = stMod.ScrollTrigger;
+      gsapAPI = gsap;
       gsap.registerPlugin(ScrollTrigger);
+
+      // Initialize Lenis for smooth scrolling
+      const LenisMod = await import("lenis");
+      const Lenis = LenisMod.default || LenisMod.Lenis || LenisMod;
+      lenis = new (Lenis.default || Lenis)({
+        autoRaf: false, // using GSAP ticker
+      });
+
+      lenis.on("scroll", ScrollTrigger.update);
+
+      tickerWrap = (time) => {
+        lenis.raf(time * 1000);
+      };
+
+      gsap.ticker.add(tickerWrap);
+      gsap.ticker.lagSmoothing(0);
 
       const obj = { frame: 0, progress: 0 };
 
@@ -185,7 +202,7 @@ export default function MascotScroller() {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom bottom",
-          scrub: 1.2,
+          scrub: true,
           onUpdate: (self) => {
             const f = Math.round(obj.frame);
             if (f !== frameRef.current) {
@@ -206,6 +223,8 @@ export default function MascotScroller() {
 
     return () => {
       cancelAnimationFrame(rafRef.current);
+      if (lenis) lenis.destroy();
+      if (gsapAPI && tickerWrap) gsapAPI.ticker.remove(tickerWrap);
     };
   }, [ready]);
 
