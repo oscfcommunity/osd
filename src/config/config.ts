@@ -89,6 +89,7 @@ export const CALLS_2026 = [
     color: "from-violet-500 to-purple-600",
     badge: "Open",
     deadline: "25th March 2026",
+    travelGrant: true,
     enable: true,
   },
   {
@@ -98,7 +99,7 @@ export const CALLS_2026 = [
     emoji: "🙌",
     color: "from-emerald-500 to-green-600",
     badge: "CLOSED",
-    deadline: "CLOSED",
+    deadline: "Application Closed",
     enable: false,
   },
   {
@@ -127,9 +128,9 @@ export const CALLS_2026 = [
     href: "/cfe",
     emoji: "📣",
     color: "from-pink-500 to-rose-600",
-    badge: "Open",
-    deadline: "21st March 2026",
-    enable: true,
+    badge: "CLOSED",
+    deadline: "Application Closed",
+    enable: false,
   },
   {
     title: "Call for Booth",
