@@ -398,33 +398,6 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
     </div>
   </section>
 
-
-  <!-- ─── SPEAKERS PREVIEW ─── -->
-  <section class="py-24 px-4 bg-white" id="speakers">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-4">Our <span class="gradient-text">Speakers</span></h2>
-        <p class="text-lg text-gray-500">Our 2026 speaker lineup is coming together. Apply to share your expertise!</p>
-      </div>
-
-      {allSpeakers.length > 0 ? (
-          <!-- Grid for small number of speakers -->
-          <Speaker speakers={allSpeakers} />
-        ) : (
-        <p class="text-center text-gray-400 mb-10">Speaker announcements coming soon — <a href="/cfspk" class="text-green-600 hover:underline font-medium">apply to speak!</a></p>
-      )}
-
-      <div class="text-center">
-        <a href="/speakers" class="group inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-4 rounded-full transition-all duration-200 hover:scale-105">
-          View All Speakers
-          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <!-- ─── VENUE + TICKETS ─── -->
   <section class="py-24 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
