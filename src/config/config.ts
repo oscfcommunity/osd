@@ -88,8 +88,9 @@ export const CALLS_2026 = [
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
     badge: "Open",
-    deadline: "25th March 2026",
+    deadline: "Extended: 25th March 2026",
     enable: true,
+    extraInfo: "Travel Grants available",
   },
   {
     title: "Call for Volunteers",
@@ -97,8 +98,8 @@ export const CALLS_2026 = [
     href: "/cfv",
     emoji: "🙌",
     color: "from-emerald-500 to-green-600",
-    badge: "CLOSED",
-    deadline: "CLOSED",
+    badge: "Application Closed",
+    deadline: "",
     enable: false,
   },
   {
@@ -127,9 +128,9 @@ export const CALLS_2026 = [
     href: "/cfe",
     emoji: "📣",
     color: "from-pink-500 to-rose-600",
-    badge: "Open",
-    deadline: "21st March 2026",
-    enable: true,
+    badge: "Application Closed",
+    deadline: "",
+    enable: false,
   },
   {
     title: "Call for Booth",
@@ -400,7 +401,7 @@ export const TICKETS = [
   },
   {
     name: "Regular Ticket",
-    price: "₹700",
+    price: "₹560",
     originalPrice: 700,
     description: "Full conference access including lunch, keynotes, panels, and OSD goodies.",
     features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies"],

@@ -38,7 +38,12 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                 </div>
               )}
               <h3 class="font-black text-xl text-gray-900 mb-2 mt-2">{ticket.name}</h3>
-              <div class="text-3xl font-black gradient-text mb-3">{ticket.price}</div>
+              <div class="flex flex-col items-center mb-3">
+                {ticket.name === "Regular Ticket" && (
+                  <span class="text-sm text-gray-400 line-through font-bold">₹700</span>
+                )}
+                <div class="text-3xl font-black gradient-text">{ticket.price}</div>
+              </div>
               <p class="text-gray-500 text-sm mb-5">{ticket.description}</p>
               {ticket?.featureTitle && <p class="text-gray-900 font-semibold text-sm mb-2 text-left">{ticket?.featureTitle}</p>}
               <ul class="text-left space-y-2 text-sm text-gray-600 mb-6">
