@@ -39,12 +39,23 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
               )}
               <h3 class="font-black text-xl text-gray-900 mb-2 mt-2">{ticket.name}</h3>
               <div class="flex flex-col items-center mb-3">
-                {ticket.name === "Regular Ticket" && (
-                  <span class="text-sm text-gray-400 line-through font-bold">₹700</span>
+                {ticket.name === "Regular Ticket" ? (
+                  <>
+                    <span class="text-2xl text-gray-400 line-through font-bold">₹700</span>
+                    <div class="text-4xl font-black gradient-text">₹560</div>
+                  </>
+                ) : (
+                  <div class="text-3xl font-black gradient-text">{ticket.price}</div>
                 )}
-                <div class="text-3xl font-black gradient-text">{ticket.price}</div>
               </div>
               <p class="text-gray-500 text-sm mb-5">{ticket.description}</p>
+              {ticket.name === "Regular Ticket" && (
+                <div class="bg-green-50 border border-green-200 rounded-lg px-3 py-2 mb-4 text-left">
+                  <span class="text-sm font-medium text-green-800">
+                    This is another chance for you to avail the benefit use code <span class="font-bold">"OSDLOVE"</span> to get Flat discount 20% OFF on this Ticket
+                  </span>
+                </div>
+              )}
               {ticket?.featureTitle && <p class="text-gray-900 font-semibold text-sm mb-2 text-left">{ticket?.featureTitle}</p>}
               <ul class="text-left space-y-2 text-sm text-gray-600 mb-6">
                 {ticket?.features?.map((f: any) => (

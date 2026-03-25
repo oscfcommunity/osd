@@ -452,6 +452,13 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                         <span class="text-green-600">₹560</span>
                       </div>
                     )}
+                    {t.name === "Regular Ticket" && (
+                      <div class="bg-green-50 border border-green-200 rounded-lg px-2 py-1 mt-2 text-left">
+                        <span class="text-xs font-medium text-green-800">
+                          This is another chance for you to avail the benefit use code <span class="font-bold">"OSDLOVE"</span> to get Flat discount 20% OFF on this Ticket
+                        </span>
+                      </div>
+                    )}
                   </div>
                     {t.available ?
                         <a
