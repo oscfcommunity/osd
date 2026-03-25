@@ -11,6 +11,30 @@ import { TICKETS, eventEnded } from "@/config/2025/config";
   <!-- Heading Section -->
   <Heading title="Get Your Tickets" description="" />
 
+  <!-- Event Ended Banner -->
+  {
+    eventEnded && (
+      <div class="bg-amber-50 border-y-2 border-amber-400 py-5 px-4 text-center">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-3">
+          <span class="text-3xl" aria-hidden="true">
+            🎉
+          </span>
+          <div>
+            <p class="text-amber-800 font-bold text-xl">
+              Open Source Day 2025 has ended!
+            </p>
+            <p class="text-amber-700 text-sm mt-1">
+              Thank you to everyone who attended. Ticket sales are now closed.
+            </p>
+          </div>
+          <span class="text-3xl" aria-hidden="true">
+            🎉
+          </span>
+        </div>
+      </div>
+    )
+  }
+
   <!-- Pricing Cards -->
 
   <section class="py-5 px-4 bg-white">
