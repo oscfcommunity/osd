@@ -34,7 +34,7 @@ import { FOOTER, BRANDING, SITE, SOCIAL_LINKS, CONTACTS, NAVIGATION } from "../c
       <div>
         <h4 class="font-bold text-gray-900 mb-6 uppercase tracking-wider text-xs">Quick Links</h4>
         <ul class="space-y-3">
-          {NAVIGATION.items.slice(0, 5).map(item => (
+          {([...NAVIGATION.items.slice(0, 5), NAVIGATION.items.find(i => i.name === "Badge")].filter(Boolean) as typeof NAVIGATION.items).map(item => (
             <li>
               <a href={item.href} class="text-gray-500 hover:text-gray-900 text-sm font-medium transition-colors">
                 {item.name}

@@ -91,6 +91,7 @@ export const CALLS_2026 = [
     deadline: "25th March 2026",
     travelGrant: true,
     enable: true,
+    extraInfo: "Travel Grants available",
   },
   {
     title: "Call for Volunteers",
@@ -401,7 +402,7 @@ export const TICKETS = [
   },
   {
     name: "Regular Ticket",
-    price: "₹700",
+    price: "₹560",
     originalPrice: 700,
     description: "Full conference access including lunch, keynotes, panels, and OSD goodies.",
     features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies"],
