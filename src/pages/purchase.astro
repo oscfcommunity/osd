@@ -3,15 +3,14 @@ import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
 
 import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
-console.log(JSON.stringify(ticketsData, null, 2));
+// console.log(JSON.stringify(ticketsData, null, 2));
 ---
 
 <Layout title="Purchase — Open Source Day 2026" activePath="/purchase">
   <!-- Konfub Widget -->
   <section class="py-20 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
-      <iframe
-        src="https://konfhub.com/widget/open-source-day-2026?desc=true&secondaryBg=f8fafc&ticketBg=f8fafc&borderCl=f8fafc&bg=e4ffe9&fontColor=000000&ticketCl=000000&btnColor=22c55e&fontFamily=Hind&borderRadius=10&widget_type=standard&tickets=82195%2C82196%2C82197%2C82262%2C82264%2C82265"
+      <iframe src="https://konfhub.com/widget/open-source-day-2026?desc=true&secondaryBg=f8fafc&ticketBg=f8fafc&borderCl=f8fafc&bg=e4ffe9&fontColor=000000&ticketCl=000000&btnColor=22c55e&fontFamily=Hind&borderRadius=10&widget_type=standard&tickets=82196%2C82197%2C82262%2C82264%2C82265%2C82266"
         id="konfhub-widget"
         title="Register for Open Source Day 2026"
         width="100%"

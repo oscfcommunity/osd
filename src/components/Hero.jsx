@@ -57,6 +57,12 @@ const Hero = () => {
               </svg>
             </a>
             <a
+              href="/tickets"
+              className="group inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-green-600 rounded-full hover:bg-green-500 transition-all duration-200 hover:scale-105 shadow-lg shadow-green-200"
+            >
+              Buy Ticket Now
+            </a>
+            <a
               href="/2025/"
               className="group inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200 hover:scale-105"
             >

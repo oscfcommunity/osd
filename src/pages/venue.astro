@@ -4,6 +4,27 @@ import PageHero from "@/components/PageHero.jsx";
 import { SITE, VENUE } from "@/config/config.ts";
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
+
+
+const features = [
+  { icon: "🏛️", label: "Main Auditorium", desc: "600 seats" },
+  { icon: "🎭", label: "Amphitheatre", desc: "Open air stage" },
+  { icon: "🌿", label: "Lawns & Grounds", desc: "Open event area" },
+  { icon: "📚", label: "Seminar Rooms", desc: "Workshop spaces" },
+  { icon: "📶", label: "Campus WiFi", desc: "High-speed internet" },
+  { icon: "🍽️", label: "Cafeteria", desc: "Food & beverages" },
+  { icon: "📖", label: "Library", desc: "Learning resources" },
+  { icon: "🚗", label: "Parking", desc: "Ample facilities" },
+];
+
+const transport = [
+  { emoji: "✈️", label: "Airport", sub: "Sardar Vallabhbhai Patel Intl (AMD)", dist: "~25 km" },
+  { emoji: "🚉", label: "Railway Station", sub: "Gandhinagar Capital Station", dist: "~5 km" },
+  { emoji: "🚌", label: "GSRTC Bus", sub: "Gandhinagar Bus Stand", dist: "~4 km" },
+  { emoji: "🚇", label: "Metro (BRTS)", sub: "Infocity Circle", dist: "~2 km" },
+  { emoji: "🚗", label: "By Road", sub: "Accessible via SH-17 & NH-147", dist: "Ample parking" },
+  { emoji: "🛺", label: "Auto / Cab", sub: "Ola, Uber & local autos available", dist: "Available" },
+];
 ---
 
 <Layout title="Venue — Open Source Day 2026" activePath="/venue">
@@ -13,161 +34,201 @@ import "@/styles/2025/global.css";
     badge="VENUE CONFIRMED"
     title="OSD 2026"
     titleGradient="VENUE"
-    subtitle="Finally we have an amazing venue for Open Source Day. We are bringing #OSD26 to a legendary campus in Gandhinagar. Lush greenery, massive spaces, and pure open-source energy. 🌿💻"
+    subtitle="We are bringing #OSD26 to a legendary campus in Gandhinagar — DAIICT (Dhirubhai Ambani University). Lush greenery, massive spaces, and pure open-source energy. 🌿💻"
     primaryCta={{ text: "View Schedule", href: "/schedule" }}
     secondaryCta={{ text: "View 2025 Venue", href: "/2025/venue" }}
   />
 
-  <!-- Venue Details -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10">
-      <div class="rounded-3xl border border-gray-100 p-8 bg-white shadow-sm">
-        <h2 class="text-4xl font-black text-green-600 mb-8">Venue Details</h2>
 
-        <div class="mb-6">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
+  <!-- Photo Gallery -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10">
+        <span class="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-3 tracking-widest uppercase">The Venue</span>
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900">
+          A Glimpse of <span class="gradient-text">DAIICT</span>
+        </h2>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="flex flex-col md:flex-row gap-2 h-auto md:h-[480px]">
+
+        <!-- Left: Hero image -->
+        <div class="md:w-1/2 overflow-hidden rounded-2xl group relative">
+          <img
+            src="https://www.daiict.ac.in/sites/default/files/2021-04/Campus%2051.JPG"
+            alt="DAIICT Campus"
+            class="w-full h-64 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+        </div>
+
+        <!-- Right: 2x2 grid -->
+        <div class="md:w-1/2 grid grid-cols-2 gap-2">
+          {[
+            { src: "https://www.daiict.ac.in/sites/default/files/2021-04/Campus%2032.JPG", alt: "DAIICT Building" },
+            { src: "https://www.daiict.ac.in/sites/default/files/2021-04/Campus%2004.JPG", alt: "DAIICT Garden" },
+            { src: "https://www.daiict.ac.in/sites/default/files/2021-04/Campus%2019.JPG", alt: "DAIICT Grounds" },
+            { src: "https://www.daiict.ac.in/sites/default/files/2021-04/Campus%2027_2.JPG", alt: "DAIICT Lawn" },
+          ].map(({ src, alt }) => (
+            <div class="overflow-hidden rounded-2xl group relative">
+              <img
+                src={src}
+                alt={alt}
+                class="w-full h-36 md:h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Venue Details + Features -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden flex flex-col lg:flex-row">
+
+        <!-- Left: Details -->
+        <div class="lg:w-1/2 p-8 md:p-10 flex flex-col justify-center">
+          <h2 class="text-3xl font-black text-green-600 mb-7">Venue Details</h2>
+
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 mt-0.5">
               <LocationIcon class="w-5 h-5" />
             </div>
             <div>
-              <h3 class="text-lg font-bold">Location</h3>
-              <p class="text-gray-700 font-semibold ">
-                <a href={VENUE.googleMapsLink} target="_blank" rel="noreferrer noopener" class="text-green-600 hover:text-green-700 hover:no-underline transition">
-                  {VENUE.name}
-                </a>
-              </p>
-              <p class="text-gray-500 text-sm">{VENUE.address}</p>
+              <h3 class="font-bold text-gray-900 mb-1">Location</h3>
+              <a href={VENUE.googleMapsLink} target="_blank" rel="noreferrer noopener" class="text-green-600 font-semibold hover:underline transition">
+                {VENUE.name}
+              </a>
+              <p class="text-gray-500 text-sm mt-0.5">{VENUE.address}</p>
             </div>
           </div>
-        </div>
 
-        <div class="mb-6">
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 mt-0.5">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 9h10m-7 4h4m-5 5h6a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold">Date & Time</h3>
-              <p class="text-gray-700 font-semibold">{VENUE.date} · 9:00 AM - 6:00 PM</p>
+              <h3 class="font-bold text-gray-900 mb-1">Date &amp; Time</h3>
+              <p class="text-gray-700 font-semibold">{VENUE.date} · 9:00 AM – 6:00 PM</p>
               <p class="text-gray-500 text-sm">{VENUE.format}</p>
             </div>
           </div>
-        </div>
 
-        <div>
-          <div class="flex items-start gap-3">
-            <div class="w-10 h-10 rounded-lg bg-green-600 mt-1 text-white flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M5 14h14M7 18h10"/></svg>
+          <div class="flex items-start gap-4 mb-6">
+            <div class="w-10 h-10 rounded-xl bg-green-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             </div>
             <div>
-              <h3 class="text-lg font-bold">Accessibility</h3>
-              <ul class="list-disc text-gray-500 text-sm ml-5">
-                <li>Wheelchair accessible venue</li>
-                <li>Public transport connectivity</li>
-                <li>Parking facilities available</li>
-              </ul>
+              <h3 class="font-bold text-gray-900 mb-1">Capacity</h3>
+              <p class="text-gray-700 font-semibold">{VENUE.capacity}</p>
+              <p class="text-gray-500 text-sm">Wheelchair accessible · Parking available</p>
             </div>
           </div>
-        </div>
-      </div>
 
-      <div class="rounded-3xl border border-gray-100 p-8 bg-white shadow-sm">
-        <h2 class="text-4xl font-black text-green-600 mb-8">Venue Features</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700">
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">A</span> Main Auditorium (600 seats)
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">A</span> Amphitheatre
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">L</span> Lawns and Open Event Grounds
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">S</span> Seminar and Workshop Rooms
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">H</span> High-Speed Campus WiFi
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">L</span> Library & Learning Resources
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">C</span> Cafeteria & Food Court
-          </div>
-          <div class="flex items-center gap-3">
-            <span class="w-7 h-7 shrink-0 rounded-full bg-green-600 text-white flex items-center justify-center">P</span> Parking & Accessible Facilities
+          <a
+            href={VENUE.googleMapsLink}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="inline-flex items-center gap-2 font-bold text-sm text-white bg-green-600 hover:bg-green-700 px-5 py-2.5 rounded-full transition-all hover:scale-105 self-start mt-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657 13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg>
+            Get Directions
+          </a>
+        </div>
+
+        <!-- Divider -->
+        <div class="hidden lg:block w-px bg-gray-100"></div>
+
+        <!-- Right: Features -->
+        <div class="lg:w-1/2 p-8 md:p-10 bg-gray-50 flex flex-col justify-center">
+          <h2 class="text-3xl font-black text-green-600 mb-7">Venue Features</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {features.map(({ icon, label, desc }) => (
+              <div class="flex items-center gap-3 bg-white border border-gray-100 hover:border-green-200 hover:shadow-sm rounded-xl p-4 transition-all duration-200 group">
+                <span class="text-2xl">{icon}</span>
+                <div>
+                  <p class="font-semibold text-gray-900 text-sm group-hover:text-green-700 transition-colors">{label}</p>
+                  <p class="text-gray-400 text-xs">{desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="max-w-6xl mx-auto mt-10">
-      <div class="rounded-2xl border border-gray-100 overflow-hidden h-[420px]">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.4973993967537!2d72.62634057516976!3d23.188536979057695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDhirubhai%20Ambani%20University!5e0!3m2!1sen!2sin!4v1773815481392!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="text-right mt-3">
+  <!-- Transport & Connectivity -->
+  <section class="py-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-1">Getting <span class="gradient-text">There</span></h2>
+          <p class="text-gray-500">{SITE.city} is well-connected by air, rail, road &amp; metro</p>
+        </div>
         <a
           href={VENUE.googleMapsLink}
           target="_blank"
           rel="noreferrer noopener"
-          class="inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-900"
+          class="inline-flex items-center gap-2 text-sm font-bold text-white bg-gray-900 hover:bg-gray-800 px-5 py-2.5 rounded-full transition-all hover:scale-105 self-start sm:self-auto"
         >
-          Open in Google Maps
+          Open in Maps
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {transport.map(({ emoji, label, sub, dist }) => (
+          <div class="flex items-center gap-4 p-5 rounded-2xl border border-gray-100 bg-white hover:border-green-200 hover:shadow-md transition-all duration-200">
+            <span class="w-11 h-11 bg-green-500 rounded-xl flex items-center justify-center text-xl shrink-0">{emoji}</span>
+            <div>
+              <p class="font-semibold text-gray-900">{label}</p>
+              <p class="text-gray-500 text-xs mt-0.5">{sub}</p>
+              <span class="inline-block mt-1 px-2 py-0.5 text-xs bg-green-100 text-green-700 rounded-full font-medium">{dist}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section class="py-4 pb-16 px-4 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="rounded-2xl border border-gray-100 overflow-hidden shadow-md h-[420px]">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.4973993967537!2d72.62634057516976!3d23.188536979057695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2a3c9618d2c5%3A0xc54de484f986b1fa!2sDhirubhai%20Ambani%20University!5e0!3m2!1sen!2sin!4v1773815481392!5m2!1sen!2sin"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- OSD 2025 Reference CTA -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-6">
+        <div class="flex-1 text-center md:text-left">
+          <span class="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-3 tracking-widest uppercase">Previous Edition</span>
+          <h3 class="text-2xl font-black text-gray-900 mb-2">OSD 2025 was at <span class="gradient-text">Silver Oak University</span></h3>
+          <p class="text-gray-500 text-sm">Check out the 2025 venue details, photos, and everything that made it special.</p>
+        </div>
+        <a
+          href="/2025/venue"
+          class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105 shrink-0"
+        >
+          View 2025 Venue →
         </a>
       </div>
     </div>
-  </section>
-
-  <!-- Getting There -->
-  <section class="py-20 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Getting <span class="gradient-text">There</span></h2>
-        <p class="text-gray-500">{SITE.city} is well connected by air, rail, and road</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {
-          [
-            {
-              label: "By Air",
-              desc: `Sardar Vallabhbhai Patel International Airport (AMD) serves ${SITE.city}.`,
-              icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />`,
-            },
-            {
-              label: "By Train",
-              desc: `${SITE.city} Junction is well-connected to major cities across India.`,
-              icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />`,
-            },
-            {
-              label: "By Road",
-              desc: `Excellent connectivity from across ${SITE.city} and neighboring states. Ample parking.`,
-              icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V6.375a1.125 1.125 0 0 1 1.125-1.125h9.75c.621 0 1.125.504 1.125 1.125v11.25m-12 0v1.5a1.5 1.5 0 0 0 3 0v-1.5m9 0v1.5a1.5 1.5 0 0 0 3 0v-1.5m0-11.25h2.625c.62１ 0 １.１２５．５０４ １．１２５ １．１２５V１５m－１８．７５ ０h１８．７５" />`,
-            },
-          ].map(({ label, desc, icon }) => (
-            <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-7 rounded-2xl transition-all duration-300">
-              <div class="w-10 h-10 mb-4 text-green-600">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" set:html={icon} />
-              </div>
-              <h3 class="font-bold text-gray-900 mb-2">{label}</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- 2025 Reference -->
-  <section class="py-16 px-4 bg-white text-center">
-    <h3 class="text-2xl font-black text-gray-900 mb-3">OSD 2025 was at <span class="gradient-text">Silver Oak University</span></h3>
-    <p class="text-gray-500 mb-6 max-w-xl mx-auto">Check out the 2025 venue details and photos from the event.</p>
-    <a
-      href="/2025/venue"
-      class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105"
-    >
-      View 2025 Venue
-    </a>
   </section>
 
   <!-- Bottom CTA -->

@@ -38,16 +38,40 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                 </div>
               )}
               <h3 class="font-black text-xl text-gray-900 mb-2 mt-2">{ticket.name}</h3>
-              <div class="flex flex-col items-center mb-3">
-                {ticket.name === "Regular Ticket" ? (
-                  <>
-                    <span class="text-2xl text-gray-400 line-through font-bold">₹700</span>
-                    <div class="text-4xl font-black gradient-text">₹560</div>
-                  </>
-                ) : (
-                  <div class="text-3xl font-black gradient-text">{ticket.price}</div>
+              <div class="flex items-center justify-center gap-2 mb-1">
+                <div class="text-3xl font-black gradient-text">₹{ticket.price}</div>
+                {ticket.originalPrice && Number(ticket.price) < Number(ticket.originalPrice) && (
+                  <span class="text-lg text-gray-400 line-through font-semibold">₹{ticket.originalPrice}</span>
                 )}
               </div>
+              {ticket.originalPrice && Number(ticket.price) < Number(ticket.originalPrice) && (
+                <p class="text-green-600 text-xs font-semibold mb-1">
+                  Save {ticket.discountedPrice} on this ticket!
+                </p>
+              )}
+              {ticket.couponCode && (
+                <div class="inline-flex items-center gap-1.5 bg-green-50 border border-green-200 rounded-lg px-3 py-1.5 mb-3 mt-2">
+                  <svg class="w-3.5 h-3.5 text-green-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 14.25l6-6m4.5-3.493V21.75l-3.75-1.5-3.75 1.5-3.75-1.5-3.75 1.5V4.757c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0c1.1.128 1.907 1.077 1.907 2.185Z" />
+                  </svg>
+                  <span class="text-xs text-gray-500">Use code:</span>
+                  <code class="text-xs font-bold text-green-700 tracking-wide">{ticket.couponCode.trim()}</code>
+                  <button
+                    type="button"
+                    data-coupon={ticket.couponCode.trim()}
+                    onclick="(function(btn){var code=btn.getAttribute('data-coupon');navigator.clipboard.writeText(code).then(function(){var icon=btn.querySelector('.copy-icon');var check=btn.querySelector('.check-icon');icon.classList.add('hidden');check.classList.remove('hidden');setTimeout(function(){icon.classList.remove('hidden');check.classList.add('hidden');},1500);});})(this)"
+                    class="ml-1 text-gray-400 hover:text-green-600 transition-colors"
+                    title="Copy code"
+                  >
+                    <svg class="copy-icon w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                    </svg>
+                    <svg class="check-icon w-3.5 h-3.5 hidden text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
+                  </button>
+                </div>
+              )}
               <p class="text-gray-500 text-sm mb-5">{ticket.description}</p>
               {ticket.name === "Regular Ticket" && (
                 <div class="bg-green-50 border border-green-200 rounded-lg px-3 py-2 mb-4 text-left">

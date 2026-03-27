@@ -99,9 +99,19 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
             <p class="text-gray-500 text-sm leading-relaxed flex-1 mb-4">{call.description}</p>
 
             <!-- Deadline -->
-            <div class="text-sm text-gray-600 mb-6 pb-6 border-b border-gray-100 flex flex-col gap-1">
-              <div><span class="font-semibold">Deadline:</span> {call.enable ? (call.deadline || "TBA") : "Closed"}</div>
-              {call.extraInfo && <div class="text-green-600 font-bold text-xs uppercase tracking-wider">{call.extraInfo}</div>}
+            <div class="text-sm text-gray-600 mb-4 pb-4 border-b border-gray-100 space-y-1.5">
+              <div class="flex items-center gap-1.5">
+                <span class="font-semibold">Deadline:</span>
+                {call.deadline === "Application Closed"
+                  ? <span class="text-red-500 font-semibold">Application Closed</span>
+                  : <span>{call.deadline}</span>
+                }
+              </div>
+              {(call as any).travelGrant && (
+                <div class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 border border-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full">
+                  ✈️ Travel Grants available
+                </div>
+              )}
             </div>
 
             <!-- CTA -->
@@ -266,7 +276,7 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                 ) : (
                   <div class="w-full h-full flex items-center justify-center">
                     <span class="text-6xl font-black text-green-200">
-                      {speaker.name.charAt(0)}
+                      {speaker?.name?.charAt(0)}
                     </span>
                   </div>
                 )}
