@@ -87,7 +87,7 @@ const groups: ResolvedTeamGroup[] = rawGroups.map((group) => ({
                       />
                     ) : (
                       <div class="absolute inset-0 flex items-center justify-center">
-                        <span class="text-5xl font-black text-green-200 select-none">{member.name.charAt(0)}</span>
+                        <span class="text-5xl font-black text-green-200 select-none">{member?.name?.charAt(0)}</span>
                       </div>
                     )}
 

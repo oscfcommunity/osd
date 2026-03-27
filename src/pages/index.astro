@@ -266,7 +266,7 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                 ) : (
                   <div class="w-full h-full flex items-center justify-center">
                     <span class="text-6xl font-black text-green-200">
-                      {speaker.name.charAt(0)}
+                      {speaker?.name?.charAt(0)}
                     </span>
                   </div>
                 )}

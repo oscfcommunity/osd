@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/2025/Layout.astro";
 import "@/styles/2025/global.css";
-import AddToGoogleCalendar from "@components/2025/AddToGoogleCalendar";
+import AddToGoogleCalendar from "@components/2025/AddToGoogleCalendar.jsx";
 import Heading from "@components/2025/Heading.astro";
 
-import { eventSchedule, fullEvent, workshopSchedule } from "@/config/2025/config";
+import { eventSchedule, fullEvent, workshopSchedule } from "@/config/2025/config.ts";
 
 const getTypeColor = (type: string) => {
   const colorMap: Record<string, string> = {
@@ -212,8 +212,7 @@ const getTypeColor = (type: string) => {
                     <span
                       class={`px-3 py-1 rounded-full text-xs font-semibold border ${getTypeColor(session.type)}`}
                     >
-                      {session.type.charAt(0).toUpperCase() +
-                        session.type.slice(1)}
+                      {`${session?.type?.charAt(0)?.toUpperCase() ?? ''} ${session?.type?.slice(1) ?? ''}`}
                     </span>
                   </div>
                   <h3 class="text-xl font-bold text-black mb-1">
