@@ -54,6 +54,10 @@ const allSpeakers = ((speakersData as any)?.speakers?.[0]?.ourSpeakers ?? [])
 // ── tickets ─────────────────────────────────────────────────────────
 const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
 
+// ── call for 2026 ─────────────────────────────────────────────────────────
+const parsedCallsFor2026 = CALLS_2026.filter(i => i.enable);
+
+
 ---
 
 <Layout title="Open Source Day 2026" activePath="/">
@@ -78,7 +82,7 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {CALLS_2026.map((call) => (
+        {parsedCallsFor2026.map((call) => (
           <div class="group border border-gray-100 bg-white hover:border-green-200 hover:shadow-lg p-7 rounded-2xl transition-all duration-300 flex flex-col">
             <!-- Header: Icon + Badge -->
             <div class="flex items-center justify-between mb-6">
