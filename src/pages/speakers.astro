@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero.jsx";
 import { speakersData } from "@/lib/graphql/queries/speakers.query.ts";
 import { env } from "@/lib/env.ts";
 import type { ResolvedSpeaker, ResolvedSpeakerSection } from "@/types/speakers.types.ts";
-import { CALLS_2026 } from "@/config/config.ts";
+import { EVENT } from "@/config/config.ts";
 import Speaker from "@components/Speaker.astro";
 
 // ── helpers ──────────────────────────────────────────────────────────────────
@@ -37,23 +37,17 @@ const doc = speakersData?.speakers?.[0];
 const ourSpeakerSections: ResolvedSpeakerSection[] =
   (doc?.ourSpeakers ?? []).map(resolveSection);
 
-// ── Call for speaker data ─────────────────────────────────────────────────────────────────────
-
-// here first call is speaker that's why we use `0` here
-const deadline = CALLS_2026[0].deadline;
 ---
 
 <Layout title="Speakers — Open Source Day 2026" activePath="/speakers">
 
   <!-- Hero -->
   <PageHero client:load
-    badge="CFP OPEN — APPLY NOW"
+    badge={EVENT.date}
     title="OSD 2026"
     titleGradient="SPEAKERS"
     subtitle="Share your knowledge, your open source story, or your latest project with 600+ developers and builders."
-    primaryCta={{ text: "Submit a Talk Proposal", href: "/cfspk", external: true }}
-    secondaryCta={{ text: "View 2025 Speakers", href: "/2025/speakers" }}
-    ctaNote={deadline}
+    primaryCta={{ text: "Buy Tickets", href: "/tickets" }}
   />
 
   <!-- ═══ CURRENT SPEAKERS ══════════════════════════════════════════════════ -->

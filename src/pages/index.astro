@@ -107,11 +107,7 @@ const ticketsResponse = ticketsData?.tickets?.[0]?.tickets || [];
                   : <span>{call.deadline}</span>
                 }
               </div>
-              {(call as any).travelGrant && (
-                <div class="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 border border-blue-100 text-xs font-semibold px-2.5 py-1 rounded-full">
-                  ✈️ Travel Grants available
-                </div>
-              )}
+           
             </div>
 
             <!-- CTA -->

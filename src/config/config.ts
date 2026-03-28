@@ -87,10 +87,10 @@ export const CALLS_2026 = [
     href: "/cfspk",
     emoji: "🎤",
     color: "from-violet-500 to-purple-600",
-    badge: "Open",
-    deadline: "25th March 2026",
+    badge: "CLOSED",
+    deadline: "Application Closed",
     travelGrant: true,
-    enable: true,
+    enable: false,
     extraInfo: "Travel Grants available",
   },
   {
