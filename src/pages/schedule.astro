@@ -7,58 +7,73 @@ import Mascot01 from "@/assets/Mascot/Group 01.svg";
 
 // ── Type-to-style map ──────────────────────────────────────────────────────
 const typeStyles: Record<string, { pill: string; bar: string; label: string }> = {
-  registration:              { pill: "bg-blue-50   text-blue-700   border-blue-100",   bar: "bg-blue-400",   label: "Registration" },
-  opening:                   { pill: "bg-green-50  text-green-700  border-green-100",  bar: "bg-green-400",  label: "Opening" },
-  activity:                  { pill: "bg-purple-50 text-purple-700 border-purple-100", bar: "bg-purple-400", label: "Activity" },
-  keynote:                   { pill: "bg-yellow-50 text-yellow-700 border-yellow-100", bar: "bg-yellow-400", label: "Keynote" },
-  talk:                      { pill: "bg-green-50  text-green-700  border-green-100",  bar: "bg-green-400",  label: "Talk" },
-  break:                     { pill: "bg-gray-50   text-gray-500   border-gray-100",   bar: "bg-gray-300",   label: "Break" },
-  "closing keynote":         { pill: "bg-amber-50  text-amber-700  border-amber-100",  bar: "bg-amber-400",  label: "Closing Keynote" },
-  closing:                   { pill: "bg-orange-50 text-orange-700 border-orange-100", bar: "bg-orange-400", label: "Closing" },
-  social:                    { pill: "bg-pink-50   text-pink-700   border-pink-100",   bar: "bg-pink-400",   label: "Social" },
-  workshop:                  { pill: "bg-teal-50   text-teal-700   border-teal-100",   bar: "bg-teal-400",   label: "Workshop" },
-  panel:                     { pill: "bg-indigo-50 text-indigo-700 border-indigo-100", bar: "bg-indigo-400", label: "Panel" },
-  "devroom (parallel)":      { pill: "bg-violet-50 text-violet-700 border-violet-100", bar: "bg-violet-400", label: "Devroom" },
-  "cxo panel discussion":    { pill: "bg-lime-50   text-lime-700   border-lime-100",   bar: "bg-lime-400",   label: "CXO Panel" },
+  registration: { pill: "bg-blue-50   text-blue-700   border-blue-100", bar: "bg-blue-400", label: "Registration" },
+  opening: { pill: "bg-green-50  text-green-700  border-green-100", bar: "bg-green-400", label: "Opening" },
+  activity: { pill: "bg-purple-50 text-purple-700 border-purple-100", bar: "bg-purple-400", label: "Activity" },
+  keynote: { pill: "bg-yellow-50 text-yellow-700 border-yellow-100", bar: "bg-yellow-400", label: "Keynote" },
+  talk: { pill: "bg-green-50  text-green-700  border-green-100", bar: "bg-green-400", label: "Talk" },
+  break: { pill: "bg-gray-50   text-gray-500   border-gray-100", bar: "bg-gray-300", label: "Break" },
+  "closing keynote": { pill: "bg-amber-50  text-amber-700  border-amber-100", bar: "bg-amber-400", label: "Closing Keynote" },
+  closing: { pill: "bg-orange-50 text-orange-700 border-orange-100", bar: "bg-orange-400", label: "Closing" },
+  social: { pill: "bg-pink-50   text-pink-700   border-pink-100", bar: "bg-pink-400", label: "Social" },
+  workshop: { pill: "bg-teal-50   text-teal-700   border-teal-100", bar: "bg-teal-400", label: "Workshop" },
+  panel: { pill: "bg-indigo-50 text-indigo-700 border-indigo-100", bar: "bg-indigo-400", label: "Panel" },
+  "devroom (parallel)": { pill: "bg-violet-50 text-violet-700 border-violet-100", bar: "bg-violet-400", label: "Devroom" },
+  "cxo panel discussion": { pill: "bg-lime-50   text-lime-700   border-lime-100", bar: "bg-lime-400", label: "CXO Panel" },
   "community panel discussion": { pill: "bg-green-50 text-green-700 border-green-100", bar: "bg-green-500", label: "Community Panel" },
 };
-const getStyle = (type: string) =>
-  typeStyles[type.toLowerCase()] ?? { pill: "bg-green-50 text-green-700 border-green-100", bar: "bg-green-400", label: type };
+const getStyle = (type: string) => typeStyles[type.toLowerCase()] ?? { pill: "bg-green-50 text-green-700 border-green-100", bar: "bg-green-400", label: type };
 
+const formatSessionTime = (datetime: string) => {
+  if (!datetime) return "";
+  const match = datetime.match(/^\d{4}(\d{2})(\d{2})T(\d{2})(\d{2})/);
+  if (!match) return "";
 
+  let hours = Number(match[3]);
+  const minutes = match[4];
+  const period = hours >= 12 ? "PM" : "AM";
+  if (hours === 0) hours = 12;
+  if (hours > 12) hours -= 12;
+  return `${String(hours).padStart(2, "0")}:${minutes} ${period}`;
+};
+
+const formatSessionTimeRange = (start: string, end: string) => {
+  const startTime = formatSessionTime(start);
+  const endTime = formatSessionTime(end);
+  return startTime && endTime ? `${startTime} – ${endTime}` : "";
+};
 ---
 
 <Layout title="Schedule — Open Source Day 2026" activePath="/schedule">
-
   <!-- Hero -->
-  <PageHero client:load
-    badge="BEING PLANNED"
+  <PageHero
+    client:load
+    badge="SCHEDULE READY"
     title="OSD 2026"
-    titleGradient="SCHEDULE"
-    subtitle="The OSD 2026 schedule is being crafted. Build your personal agenda tap + on any session."
-    primaryCta={{ text: "Apply to Speak", href: "/cfspk", external: true }}
-    secondaryCta={{ text: "View 2025 Schedule", href: "/2025/schedule" }}
+    titleGradient="AGENDA"
+    subtitle="Your schedule is set — time to secure your ticket and join us!"
+    primaryCta={{ text: "Book Ticket", href: "/tickets" }}
   />
 
   <!-- ══════════════════════════════════════════════════════════════════════
        MY AGENDA — floating trigger button (bottom-right)
   ════════════════════════════════════════════════════════════════════════ -->
   <!-- ═══ FAB ═══════════════════════════════════════════════════════════ -->
-  <div id="agenda-fab"
-    class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 cursor-pointer select-none"
-    onclick="window.toggleAgenda()"
-  >
+  <div id="agenda-fab" class="fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 cursor-pointer select-none" onclick="window.toggleAgenda()">
     <div class="relative group">
       <span class="absolute inset-0 rounded-full bg-green-400 opacity-30 animate-ping"></span>
-      <div class="relative flex items-center gap-2 sm:gap-2.5 bg-gray-900 hover:bg-gray-800 text-white pl-3.5 pr-4 sm:pl-4 sm:pr-5 py-2.5 sm:py-3 rounded-full shadow-2xl transition-all duration-200 hover:scale-105">
+      <div
+        class="relative flex items-center gap-2 sm:gap-2.5 bg-gray-900 hover:bg-gray-800 text-white pl-3.5 pr-4 sm:pl-4 sm:pr-5 py-2.5 sm:py-3 rounded-full shadow-2xl transition-all duration-200 hover:scale-105"
+      >
         <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
         </svg>
         <span class="text-sm font-bold hidden xs:inline sm:inline">My Schedule</span>
         <span class="text-xs font-bold sm:hidden">Schedule</span>
-        <span id="agenda-count"
-          class="hidden absolute -top-2 -right-2 w-5 h-5 bg-green-500 text-white text-xs font-black rounded-full items-center justify-center shadow-lg">
+        <span
+          id="agenda-count"
+          class="hidden absolute -top-2 -right-2 w-5 h-5 bg-green-500 text-white text-xs font-black rounded-full items-center justify-center shadow-lg"
+        >
           0
         </span>
       </div>
@@ -69,24 +84,26 @@ const getStyle = (type: string) =>
        MY AGENDA — side drawer panel
   ════════════════════════════════════════════════════════════════════════ -->
   <!-- Backdrop -->
-  <div id="agenda-backdrop"
+  <div
+    id="agenda-backdrop"
     class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 hidden transition-opacity duration-300"
     style="opacity:0"
-    onclick="window.toggleAgenda()">
+    onclick="window.toggleAgenda()"
+  >
   </div>
 
   <!-- Drawer -->
-  <div id="agenda-drawer"
+  <div
+    id="agenda-drawer"
     class="fixed top-0 right-0 h-full w-full sm:max-w-sm bg-white z-[60] shadow-2xl flex flex-col transition-transform duration-300 ease-out"
-    style="transform:translateX(100%)">
-
+    style="transform:translateX(100%)"
+  >
     <!-- Header -->
     <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 bg-gray-50">
       <div class="flex items-center gap-3">
         <div class="w-8 h-8 rounded-xl bg-green-500 flex items-center justify-center">
           <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-              d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
           </svg>
         </div>
         <div>
@@ -94,11 +111,13 @@ const getStyle = (type: string) =>
           <div id="agenda-subtitle" class="text-xs text-gray-400 mt-0.5">0 sessions tracked</div>
         </div>
       </div>
-      <button onclick="window.toggleAgenda()"
+      <button
+        onclick="window.toggleAgenda()"
         class="w-9 h-9 rounded-full bg-gray-200 hover:bg-gray-300 flex items-center justify-center transition-colors shrink-0"
-        title="Close">
+        title="Close"
+      >
         <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
@@ -112,58 +131,74 @@ const getStyle = (type: string) =>
     <div id="agenda-empty" class="flex-1 flex flex-col items-center justify-center text-center px-8 py-12">
       <div class="w-16 h-16 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center mb-4">
         <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-            d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
         </svg>
       </div>
       <p class="font-bold text-gray-900 mb-1">Nothing tracked yet</p>
-      <p class="text-sm text-gray-400 leading-relaxed">Hit <span class="font-bold text-green-600">Add to Schedule</span> on any session to build your personal schedule.</p>
+      <p class="text-sm text-gray-400 leading-relaxed">
+        Hit <span class="font-bold text-green-600">Add to Schedule</span> on any session to build your personal schedule.
+      </p>
     </div>
 
     <!-- Footer -->
     <div class="px-4 py-4 border-t border-gray-100 bg-gray-50 flex flex-col gap-2">
-
       <!-- Export buttons — shown only when sessions exist -->
       <div id="agenda-export-btns" class="hidden flex-col gap-2">
         <!-- Download ICS -->
-        <button onclick="window.showCalendarPicker()"
-          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-green-500 text-white hover:bg-green-600 transition-colors">
+        <button
+          onclick="window.showCalendarPicker()"
+          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-green-500 text-white hover:bg-green-600 transition-colors"
+        >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
           </svg>
           Add to Calendar
         </button>
         <!-- Download as Note -->
-        <button onclick="window.downloadNote()"
-          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors">
+        <button
+          onclick="window.downloadNote()"
+          class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-bold text-sm bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 transition-colors"
+        >
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
           </svg>
-          Download as Note 
+          Download as Note
         </button>
       </div>
 
       <!-- Close button -->
-      <button onclick="window.toggleAgenda()"
-        class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm bg-gray-900 text-white hover:bg-gray-700 transition-colors">
+      <button
+        onclick="window.toggleAgenda()"
+        class="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm bg-gray-900 text-white hover:bg-gray-700 transition-colors"
+      >
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
         Close Panel
       </button>
-
     </div>
   </div>
 
   <!-- ═══ CALENDAR PICKER MODAL ══════════════════════════════════ -->
-  <div id="cal-picker-backdrop"
+  <div
+    id="cal-picker-backdrop"
     class="fixed inset-0 bg-black/50 backdrop-blur-sm z-[80] hidden items-end justify-center sm:items-center"
-    onclick="window.closeCalendarPicker()">
-    <div id="cal-picker-sheet"
+    onclick="window.closeCalendarPicker()"
+  >
+    <div
+      id="cal-picker-sheet"
       onclick="event.stopPropagation()"
       class="w-full sm:max-w-sm bg-white rounded-t-3xl sm:rounded-2xl shadow-2xl p-6 pb-8 max-h-[90vh] overflow-y-auto"
-      style="transform:translateY(100%);transition:transform 0.3s ease-out">
-
+      style="transform:translateY(100%);transition:transform 0.3s ease-out"
+    >
       <!-- ── View 1: Calendar picker ── -->
       <div id="cal-view-picker">
         <!-- Handle -->
@@ -172,40 +207,62 @@ const getStyle = (type: string) =>
         <p id="cal-picker-count" class="text-xs text-gray-400 mb-5">Opening your sessions…</p>
 
         <!-- Google Calendar -->
-        <button onclick="window.openGoogleCalendar()"
-          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition-all mb-2 group">
+        <button
+          onclick="window.openGoogleCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-200 hover:bg-blue-50 transition-all mb-2 group"
+        >
           <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Google_Calendar_icon_%282020%29.svg" class="w-6 h-6 shrink-0" alt="Google Calendar" />
           <div class="text-left">
             <div class="font-bold text-sm text-gray-900 group-hover:text-blue-700">Google Calendar</div>
             <div class="text-[0.65rem] text-gray-400">Tap each session to add individually</div>
           </div>
-          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg
+          >
         </button>
 
         <!-- Apple Calendar -->
-        <button onclick="window.openAppleCalendar()"
-          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-gray-300 hover:bg-gray-50 transition-all mb-2 group">
-          <svg class="w-6 h-6 shrink-0 text-gray-700" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        <button
+          onclick="window.openAppleCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-gray-300 hover:bg-gray-50 transition-all mb-2 group"
+        >
+          <svg class="w-6 h-6 shrink-0 text-gray-700" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+            ></path></svg
+          >
           <div class="text-left">
             <div class="font-bold text-sm text-gray-900 group-hover:text-gray-800">Apple Calendar</div>
             <div class="text-[0.65rem] text-gray-400">iPhone, iPad & Mac — opens natively</div>
           </div>
-          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg
+          >
         </button>
 
         <!-- Outlook / Other -->
-        <button onclick="window.openOutlookCalendar()"
-          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-100 hover:bg-blue-50/50 transition-all mb-4 group">
-          <svg class="w-6 h-6 shrink-0 text-blue-600" viewBox="0 0 24 24" fill="currentColor"><path d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.41.34-.74.22-.33.59-.52.37-.2.87-.2t.86.2q.35.21.57.55.22.34.32.75.1.42.1.86zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.01V2.62q0-.46.33-.8.33-.32.8-.32h15.74q.46 0 .8.33.32.33.32.8V12zm-7.85-3.86l-2.19 2.9-.97-.87q-.28-.25-.68-.05-.4.2-.28.76l.89 3.1q.25.87 1.1.6l4.75-1.7q.56-.2.32-.78-.25-.56-.75-.4l-2.08.74 1.97-2.62q.36-.48-.06-.88-.42-.4-.02-.8z"/></svg>
+        <button
+          onclick="window.openOutlookCalendar()"
+          class="w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border border-gray-100 hover:border-blue-100 hover:bg-blue-50/50 transition-all mb-4 group"
+        >
+          <svg class="w-6 h-6 shrink-0 text-blue-600" viewBox="0 0 24 24" fill="currentColor"
+            ><path
+              d="M7.88 12.04q0 .45-.11.87-.1.41-.33.74-.22.33-.58.52-.37.2-.87.2t-.85-.2q-.35-.21-.57-.55-.22-.33-.33-.75-.1-.42-.1-.86t.1-.87q.1-.41.34-.74.22-.33.59-.52.37-.2.87-.2t.86.2q.35.21.57.55.22.34.32.75.1.42.1.86zM24 12v9.38q0 .46-.33.8-.33.32-.8.32H7.13q-.46 0-.8-.33-.32-.33-.32-.8V18H1q-.41 0-.7-.3-.3-.29-.3-.7V7q0-.41.3-.7Q.58 6 1 6h6.01V2.62q0-.46.33-.8.33-.32.8-.32h15.74q.46 0 .8.33.32.33.32.8V12zm-7.85-3.86l-2.19 2.9-.97-.87q-.28-.25-.68-.05-.4.2-.28.76l.89 3.1q.25.87 1.1.6l4.75-1.7q.56-.2.32-.78-.25-.56-.75-.4l-2.08.74 1.97-2.62q.36-.48-.06-.88-.42-.4-.02-.8z"
+            ></path></svg
+          >
           <div class="text-left">
             <div class="font-bold text-sm text-gray-900 group-hover:text-blue-700">Outlook / Other</div>
             <div class="text-[0.65rem] text-gray-400">Downloads .ics file to import</div>
           </div>
-          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          <svg class="w-4 h-4 text-gray-300 ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg
+          >
         </button>
 
-        <button onclick="window.closeCalendarPicker()"
-          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+        <button
+          onclick="window.closeCalendarPicker()"
+          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+        >
           Cancel
         </button>
       </div>
@@ -213,9 +270,13 @@ const getStyle = (type: string) =>
       <!-- ── View 2: Google Calendar session list ── -->
       <div id="cal-view-gcal" style="display:none">
         <div class="flex items-center gap-3 mb-4">
-          <button onclick="window.showCalPickerView('picker')"
-            class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shrink-0">
-            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          <button
+            onclick="window.showCalPickerView('picker')"
+            class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 transition-colors shrink-0"
+          >
+            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg
+            >
           </button>
           <div>
             <div class="font-black text-gray-900 text-sm">Google Calendar</div>
@@ -225,12 +286,13 @@ const getStyle = (type: string) =>
         </div>
         <!-- Session links injected here by JS -->
         <div id="gcal-session-list" class="space-y-2 mb-4"></div>
-        <button onclick="window.closeCalendarPicker()"
-          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors">
+        <button
+          onclick="window.closeCalendarPicker()"
+          class="w-full py-2.5 rounded-xl text-sm font-bold text-gray-500 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+        >
           Done
         </button>
       </div>
-
     </div>
   </div>
 
@@ -238,183 +300,442 @@ const getStyle = (type: string) =>
        MAIN CONFERENCE — PARALLEL TRACK GRID
   ════════════════════════════════════════════════════════════════════════ -->
   <section class="py-12 md:py-20 px-4 bg-white">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-8 md:mb-12">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
         <h2 class="text-2xl md:text-4xl font-black text-gray-900 mb-3">
-          Main <span class="gradient-text">Conference</span>
+          Conference <span class="gradient-text">Schedule</span>
         </h2>
-        <p class="text-gray-500 mb-2 text-sm md:text-base">A full day of talks, panels, workshops &amp; networking</p>
-        <p class="text-xs text-gray-400 italic">* Preview schedule — officially announced closer to the event</p>
+        <p class="text-gray-500 mb-2 text-sm md:text-base">08:00 AM - 05:30 PM • Multiple parallel tracks running throughout the day</p>
       </div>
 
-      <!-- Track legend -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-8 md:mb-10">
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 px-4 py-2 rounded-full bg-gray-50 border border-gray-100 text-xs font-semibold">
-          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-green-400 inline-block shrink-0"></span>Main Auditorium</span>
-          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-violet-400 inline-block shrink-0"></span>Secondary Hall (Devroom)</span>
+      <!-- ══════════════════════════════════════════════════════════════════════
+           TRACK FILTERS
+      ════════════════════════════════════════════════════════════════════════ -->
+      <div class="mb-10">
+        <div class="text-center mb-6">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Filter by Track</h3>
+          <p class="text-sm text-gray-600">Select tracks to view sessions from specific areas of interest</p>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            onclick="filterByTrack('all')"
+            id="filter-all"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-green-500 text-white border-2 border-green-500 transition-all hover:bg-green-600 active-filter"
+          >
+            All Tracks
+          </button>
+          <button
+            onclick="filterByTrack('Main Track')"
+            id="filter-main"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-green-500 transition-all"
+          >
+            Main Track (LT1)
+          </button>
+          <button
+            onclick="filterByTrack('AI Track')"
+            id="filter-ai"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-blue-500 transition-all"
+          >
+            AI Track (LT2)
+          </button>
+          <button
+            onclick="filterByTrack('Community Track')"
+            id="filter-community"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-purple-500 transition-all"
+          >
+            Community Track (LT3)
+          </button>
+          <button
+            onclick="filterByTrack('Emerging Track')"
+            id="filter-emerging"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-orange-500 transition-all"
+          >
+            Emerging Track (CEP 102)
+          </button>
+          <button
+            onclick="filterByTrack('DevRoom/Workshop')"
+            id="filter-devroom"
+            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-teal-500 transition-all"
+          >
+            DevRoom/Workshop (CEP 110)
+          </button>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 auto-rows-fr">
-        {eventSchedule.map((session, i) => {
-          const s = getStyle(session.type);
-          const isParallelLeft  = session.isPanelLeft;
-          const isParallelRight = session.isPanelRight;
-          const isFullWidth     = !isParallelLeft && !isParallelRight;
-          const sid = `conf-${i}`;
-
-          return (
-            <div
-              id={`card-${sid}`}
-              data-session-id={sid}
-              data-title={session.title}
-              data-time={session.time}
-              data-speaker={session.speaker || ""}
-              data-room={session.room || ""}
-              data-type={session.type}
-              data-track="Main Conference"
-              class={[
-                "group relative bg-white border border-gray-100 rounded-2xl overflow-hidden",
-                "transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-green-200",
-                isFullWidth     ? "md:col-span-2" : "",
-                isParallelLeft  ? "md:col-span-1 md:row-span-2" : "",
-                isParallelRight ? "md:col-span-1" : "",
-              ].filter(Boolean).join(" ")}
-            >
-              <div class={`absolute left-0 top-0 bottom-0 w-1 ${s.bar}`}></div>
-              <div class="p-5 pl-6 h-full flex flex-col justify-between gap-3">
-
-                <!-- Top: time + pills -->
-                <div class="flex items-start justify-between gap-2 flex-wrap">
-                  <span class="text-green-600 font-bold text-xs sm:text-sm font-mono leading-tight min-w-fit">{session.time}</span>
-                  <div class="flex items-center gap-1.5 flex-wrap justify-end">
-                    <span class={`text-xs font-bold px-2 py-0.5 rounded-full border ${s.pill} whitespace-nowrap`}>{s.label}</span>
-                    {isParallelLeft  && <span class="text-xs font-bold px-2 py-0.5 rounded-full border bg-violet-50 text-violet-700 border-violet-100 whitespace-nowrap">Parallel</span>}
-                    {isParallelRight && <span class="text-xs font-bold px-2 py-0.5 rounded-full border bg-gray-50 text-gray-500 border-gray-100 whitespace-nowrap">Main Hall</span>}
+      <!-- Schedule Grid Table with Merged Cells for All-Track Sessions -->
+      <div class="hidden sm:block">
+        <div class="overflow-x-auto border border-gray-200 rounded-xl bg-white shadow-md">
+          <table class="w-full border-collapse table-fixed">
+            <colgroup>
+              <col style="width: 110px;" />
+              <col style="width: 18%;" />
+              <col style="width: 18%;" />
+              <col style="width: 18%;" />
+              <col style="width: 18%;" />
+              <col style="width: 18%;" />
+            </colgroup>
+            <!-- Header Row -->
+            <thead>
+              <tr class="bg-gradient-to-r from-green-600 to-green-700 text-white">
+                <th data-track="time" class="px-4 py-4 text-left font-bold text-sm w-24 border-r border-green-500">Time</th>
+                <th data-track="Main Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                  <div class="flex flex-col items-center gap-1">
+                    <span>Main Track</span>
+                    <span class="text-xs font-normal text-green-100">LT1</span>
                   </div>
-                </div>
+                </th>
+                <th data-track="AI Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                  <div class="flex flex-col items-center gap-1">
+                    <span>AI Track</span>
+                    <span class="text-xs font-normal text-green-100">LT2</span>
+                  </div>
+                </th>
+                <th data-track="Community Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                  <div class="flex flex-col items-center gap-1">
+                    <span>Community Track</span>
+                    <span class="text-xs font-normal text-green-100">LT3</span>
+                  </div>
+                </th>
+                <th data-track="Emerging Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                  <div class="flex flex-col items-center gap-1">
+                    <span>Emerging Track</span>
+                    <span class="text-xs font-normal text-green-100">CEP 102</span>
+                  </div>
+                </th>
+                <th data-track="DevRoom/Workshop" class="px-4 py-4 text-center font-bold text-sm">
+                  <div class="flex flex-col items-center gap-1">
+                    <span>DevRoom/Workshop</span>
+                    <span class="text-xs font-normal text-green-100">CEP 110</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
 
-                <!-- Middle: title + speaker -->
-                <div class="flex-1">
-                  <h3 class={`font-bold text-gray-900 mb-1 leading-snug group-hover:text-green-700 transition-colors ${
-                    isFullWidth ? "text-sm sm:text-base md:text-lg" : "text-sm md:text-base"
-                  }`}>
-                    {session.title}
-                  </h3>
-                  {session.speaker && <p class="text-gray-500 text-xs font-medium">by {session.speaker}</p>}
-                </div>
+            <!-- Body -->
+            <tbody>
+              {
+                (() => {
+                  const timeSlots = [
+                    "08:00 AM – 09:30 AM",
+                    "09:30 AM – 10:00 AM",
+                    "10:00 AM – 10:15 AM",
+                    "10:15 AM – 10:45 AM",
+                    "10:45 AM – 11:30 AM",
+                    "11:30 AM – 12:15 PM",
+                    "12:15 PM – 01:00 PM",
+                    "01:00 PM – 02:00 PM",
+                    "02:00 PM – 02:45 PM",
+                    "02:45 PM – 03:30 PM",
+                    "03:30 PM – 04:15 PM",
+                    "04:15 PM – 05:00 PM",
+                    "05:00 PM – 05:30 PM",
+                  ];
+                  const tracks = ["Main Track", "AI Track", "Community Track", "Emerging Track", "DevRoom/Workshop"];
 
-                <!-- Bottom: room + Add to Schedule button -->
-                <div class="flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2 pt-1">
-                  {session.room && (
-                    <span class="flex items-center gap-1 text-xs text-gray-400">
-                      <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      </svg>
-                      {session.room}
-                    </span>
-                  )}
-                  <button
-                    data-add-btn={sid}
-                    onclick={`window.toggleSession('${sid}')`}
-                    class="agenda-add-btn w-full xs:w-auto md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 xs:py-1.5 md:px-3 md:py-1 rounded-full text-xs font-bold border border-gray-300 bg-white text-gray-600 hover:border-green-500 hover:text-green-700 hover:bg-green-50 transition-all duration-200 ml-auto shrink-0"
-                  >
-                    <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
-                    </svg>
-                    <span class="btn-label">Add to Schedule</span>
-                  </button>
-                </div>
+                  const rowSpanTracker = /** @type {{[key: string]: number;}} */ ({});
 
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </section>
+                  const rows = timeSlots.map((time, timeIdx) => {
+                    // Get all sessions for this time slot (including row span handling)
+                    const sessionsByTrack: any = {};
 
-  <!-- ══════════════════════════════════════════════════════════════════════
-       WORKSHOP TRACK
-  ════════════════════════════════════════════════════════════════════════ -->
-  <section class="py-12 md:py-20 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-8 md:mb-12 relative">
-        <div class="absolute -top-10 left-12 w-20 h-20 opacity-90 hidden md:block" style="animation: bounce 4s infinite reverse;">
-          <Mascot01 class="w-full h-full object-contain" />
+                    tracks.forEach((track) => {
+                      // Track occupied by previous row span
+                      if ((rowSpanTracker as any)[track] > 0) {
+                        sessionsByTrack[track] = { skipCell: true };
+                        (rowSpanTracker as any)[track] -= 1;
+                        return;
+                      }
+
+                      const found = eventSchedule.find((s: any) => s.time === time && s.track === track);
+                      if (!found) {
+                        sessionsByTrack[track] = { empty: true };
+                        return;
+                      }
+
+                      if ((found as any).isContinuation) {
+                        // We should not display this, it's part of an ongoing rowSpan from previous slot.
+                        sessionsByTrack[track] = { skipCell: true };
+                        return;
+                      }
+
+                      const rowSpan = found.rowspan || 1;
+                      if (rowSpan > 1) {
+                        (rowSpanTracker as any)[track] = rowSpan - 1;
+                      }
+
+                      sessionsByTrack[track] = { session: found, rowSpan };
+                    });
+
+                    // Check for a full all-track event to render as one merged cell
+                    const allTrackCandidate = tracks.map((track) => sessionsByTrack[track].session).filter(Boolean);
+                    const isAllTrack =
+                      allTrackCandidate.length === 5 && allTrackCandidate.every((s: any) => s.isForAllTracks && s.title === allTrackCandidate[0].title);
+
+                    const cellList: any[] = [];
+
+                    // Special 10:15 row: merge first 4 track Opening Keynote cards into one, keep DevRoom workshop as separate cell
+                    const isOpeningKeynoteRow = time === "10:15 AM – 10:45 AM";
+                    const openingGroupTracks = ["Main Track", "AI Track", "Community Track", "Emerging Track"];
+                    const hasOpening4 =
+                      isOpeningKeynoteRow &&
+                      openingGroupTracks.every((track) => {
+                        const s = sessionsByTrack[track];
+                        return s.session && s.session.title === "Opening Keynote" && s.session.isForAllTracks;
+                      });
+
+                    if (hasOpening4) {
+                      const mergedSession = sessionsByTrack["Main Track"].session;
+                      cellList.push({
+                        session: mergedSession,
+                        tracksInMerge: [...openingGroupTracks],
+                        isMerged: true,
+                        rowSpan: 1,
+                      });
+
+                      const devRoomEntry = sessionsByTrack["DevRoom/Workshop"];
+                      if (devRoomEntry.skipCell) {
+                        cellList.push({ skipCell: true });
+                      } else if (devRoomEntry.empty || !devRoomEntry.session) {
+                        cellList.push({ empty: true });
+                      } else {
+                        cellList.push({
+                          session: devRoomEntry.session,
+                          tracksInMerge: ["DevRoom/Workshop"],
+                          isMerged: false,
+                          rowSpan: devRoomEntry.rowSpan || 1,
+                        });
+                      }
+                    } else if (isAllTrack) {
+                      const mergedSession = allTrackCandidate[0];
+                      cellList.push({
+                        session: mergedSession,
+                        tracksInMerge: [...tracks],
+                        isMerged: true,
+                        rowSpan: mergedSession.rowspan || 1,
+                      });
+                    } else {
+                      tracks.forEach((track) => {
+                        const entry = sessionsByTrack[track];
+                        if (entry.skipCell) {
+                          cellList.push({ skipCell: true });
+                        } else if (entry.empty || !entry.session) {
+                          cellList.push({ empty: true });
+                        } else {
+                          cellList.push({
+                            session: entry.session,
+                            tracksInMerge: [track],
+                            isMerged: false,
+                            rowSpan: entry.rowSpan || 1,
+                          });
+                        }
+                      });
+                    }
+
+                    const workshopCell = cellList.find((c) => c.session && c.session.type === "workshop" && c.rowSpan > 1 && c.session.start && c.session.end);
+                    const displayTime = workshopCell ? formatSessionTimeRange(workshopCell.session.start, workshopCell.session.end) : time.split(" – ")[0];
+
+                    return { time, timeIdx, cells: cellList, displayTime };
+                  });
+
+                  return rows.map((row: any) => (
+                    <tr class={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${row.timeIdx % 2 === 0 ? "bg-white" : "bg-gray-25"}`}>
+                      <td class="px-4 py-4 font-bold text-sm text-green-600 font-mono bg-gray-50 border-r border-gray-200 align-top">
+                        {row.time.split(" – ")[0]}
+                      </td>
+                      {row.cells.map((cell: any) => {
+                        if (cell.skipCell) {
+                          return null;
+                        }
+
+                        if (cell.empty) {
+                          return <td class="px-3 py-4 border-r border-gray-200 text-center text-gray-300 text-xs align-top">—</td>;
+                        }
+
+                        const session = cell.session;
+                        const s = getStyle(session.type);
+                        const sessionId = `session-grid-${eventSchedule.indexOf(session)}`;
+                        const trackLabel = cell.isMerged
+                          ? cell.tracksInMerge.length === 5
+                            ? "All Tracks"
+                            : `${cell.tracksInMerge.length} Tracks`
+                          : cell.tracksInMerge[0];
+                        const trackData = cell.isMerged ? cell.tracksInMerge.join(",") : cell.tracksInMerge[0];
+
+                        const sessionTimeText = session.start && session.end ? formatSessionTimeRange(session.start, session.end) : session.time;
+
+                        const isContinuing = session.isContinuation || session.rowspan > 1;
+                        const rowspanAttr = cell.rowSpan > 1 ? cell.rowSpan : undefined;
+
+                        return (
+                          <td
+                            data-track={trackLabel}
+                            data-tracks={trackData}
+                            data-original-rowspan={rowspanAttr || 1}
+                            data-colspan={cell.isMerged ? cell.tracksInMerge.length : 1}
+                            rowspan={rowspanAttr}
+                            colspan={cell.isMerged ? cell.tracksInMerge.length : 1}
+                            class={`px-3 py-3 ${cell.isMerged ? "" : "border-r"} border-gray-200 align-top schedule-item`}
+                          >
+                            <div
+                              class={`${cell.isMerged ? "bg-gradient-to-r from-blue-50 to-white border border-blue-200" : "bg-gradient-to-br from-white to-gray-50 border border-gray-200"} rounded-lg p-3 hover:shadow-md transition-all relative group ${isContinuing ? "min-h-[160px]" : "min-h-[120px]"}`}
+                            >
+                              <div class={`absolute left-0 top-0 bottom-0 ${cell.isMerged ? "w-1.5" : "w-1"} ${s.bar} rounded-l-lg`} />
+
+                              <div class="pl-2">
+                                <div class="flex items-center gap-2 mb-2 flex-wrap">
+                                  <span class={`inline-block text-xs font-bold px-2 py-0.5 rounded-full border ${s.pill}`}>{s.label}</span>
+                                  {cell.isMerged && (
+                                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-200">
+                                      {trackLabel}
+                                    </span>
+                                  )}
+                                </div>
+
+                                <h4 class="font-bold text-gray-900 text-xs leading-tight mb-1">{session.title}</h4>
+
+                                {sessionTimeText && <p class="text-gray-500 text-xs mb-1">{sessionTimeText}</p>}
+
+                                <p class="text-gray-600 text-xs mb-1.5">by {session.speaker}</p>
+
+                                <p class="text-gray-500 text-xs mb-2.5 flex items-center gap-1.5">
+                                  <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                                    />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  </svg>
+                                  <span class="truncate text-xs">{session.room}</span>
+                                </p>
+
+                                <button
+                                  data-add-btn={sessionId}
+                                  onclick={`window.toggleSession('${sessionId}')`}
+                                  data-title={session.title}
+                                  data-time={session.time}
+                                  data-speaker={session.speaker}
+                                  data-room={session.room}
+                                  data-type={session.type}
+                                  data-track={trackLabel}
+                                  class={`agenda-add-btn w-full flex items-center justify-center gap-1 px-2 py-1.5 rounded text-xs font-bold transition-all ${
+                                    cell.isMerged
+                                      ? "border border-blue-300 bg-white text-blue-700 hover:bg-blue-50"
+                                      : "border border-gray-300 bg-white text-gray-600 hover:border-green-500 hover:text-green-700 hover:bg-green-50"
+                                  }`}
+                                >
+                                  <svg class="add-icon w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+                                  </svg>
+                                  <span class="btn-label">Add to Schedule</span>
+                                </button>
+                              </div>
+                            </div>
+                          </td>
+                        );
+                      })}
+                    </tr>
+                  ));
+                })()
+              }
+            </tbody>
+          </table>
         </div>
-        <h2 class="text-2xl md:text-4xl font-black text-gray-900 mb-3">
-          Workshop <span class="gradient-text">Track</span>
-        </h2>
-        <p class="text-gray-500 text-sm md:text-base">Hands-on sessions running in parallel to the main conference</p>
       </div>
 
-      <!-- Same card grid as Main Conference -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        {workshopSchedule.map((item, i) => {
-          const s = getStyle(item.type);
-          const sid = `workshop-${i}`;
-          return (
-            <div
-              id={`card-${sid}`}
-              class="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 hover:border-green-200"
-            >
-              <!-- Left color bar -->
-              <div class={`absolute left-0 top-0 bottom-0 w-1 ${s.bar}`}></div>
+      <!-- Mobile schedule cards -->
+      <div class="sm:hidden space-y-3">
+        {
+          (() => {
+            const uniqueItems: any[] = [];
+            const seenKeys = new Set();
+            for (const session of eventSchedule) {
+              if ((session as any).isContinuation) continue;
+              const key = session.isForAllTracks ? `${session.title}__${session.time}__ALL` : `${session.title}__${session.track}__${session.time}`;
+              if (seenKeys.has(key)) continue;
+              seenKeys.add(key);
+              uniqueItems.push(session);
+            }
+            return uniqueItems.map((session: any, i: number) => {
+              const sstyle = getStyle(session.type);
 
-              <div class="p-5 pl-6 h-full flex flex-col justify-between gap-4">
+              // For multi-slot sessions (rowspan > 1), find the continuation to get the end time
+              let sessionTimeText = session.time;
+              if (session.start && session.end) {
+                sessionTimeText = formatSessionTimeRange(session.start, session.end);
+              } else if (session.rowspan && session.rowspan > 1) {
+                // Look for continuation entry with matching title and track to get the end time
+                const continuation = eventSchedule.find((c: any) => c.isContinuation && c.title === session.title && c.track === session.track && c.end);
+                if (continuation && session.start && continuation.end) {
+                  sessionTimeText = formatSessionTimeRange(session.start, continuation.end);
+                }
+              }
 
-                <!-- Top: time + pill -->
-                <div class="flex items-start justify-between gap-2 flex-wrap">
-                  <span class="text-green-600 font-bold text-sm font-mono leading-tight min-w-fit">{item.time}</span>
-                  <span class={`text-xs font-bold px-2.5 py-1 rounded-full border ${s.pill} whitespace-nowrap shrink-0`}>{s.label}</span>
-                </div>
+              const cardTrack = session.isForAllTracks ? "All Tracks" : session.track;
 
-                <!-- Middle: title + speaker -->
-                <div class="flex-1">
-                  <h3 class="font-bold text-gray-900 text-base leading-snug group-hover:text-green-700 transition-colors">{item.title}</h3>
-                  {item.speaker && <p class="text-gray-500 text-xs mt-0.5 font-medium">by {item.speaker}</p>}
-                </div>
+              return (
+                <div class="mobile-session-card border border-gray-200 rounded-xl p-4 bg-white shadow-sm" data-track={cardTrack}>
+                  <div class="flex justify-between items-start gap-2 mb-2 flex-wrap">
+                    <span class="text-xs font-bold text-green-600 font-mono">{sessionTimeText}</span>
+                    <span class={`text-xs font-semibold px-2 py-1 rounded ${sstyle.pill}`}>{sstyle.label}</span>
+                  </div>
 
-                <!-- Bottom: Add to Schedule -->
-                <div class="flex items-center justify-end">
+                  <h4 class="font-bold text-gray-900 text-base mb-1">{session.title}</h4>
+                  {session.speaker && <p class="text-gray-600 text-xs mb-1.5">by {session.speaker}</p>}
+                  <p class="text-gray-500 text-xs mb-2">{session.room}</p>
+                  <p class="text-xs text-gray-400 mb-1">{cardTrack}</p>
+                  {/* {session.isForAllTracks && (
+                <span class="inline-flex items-center px-2 py-1 text-[10px] font-semibold rounded-full bg-blue-100 text-blue-700 border border-blue-200">
+                  Repeated session (All Tracks)
+                </span>
+              )} */}
+                  <div class="h-2" />
+
                   <button
-                    data-add-btn={sid}
-                    onclick={`window.toggleSession('${sid}')`}
-                    data-title={item.title}
-                    data-time={item.time}
-                    data-speaker={item.speaker || ""}
-                    data-room=""
-                    data-type={item.type}
-                    data-track="Workshop"
-                    class="agenda-add-btn w-full md:w-auto flex items-center justify-center gap-1.5 px-3 py-2 md:px-3 md:py-1 rounded-full text-xs font-bold border border-gray-300 bg-white text-gray-600 hover:border-green-500 hover:text-green-700 hover:bg-green-50 transition-all duration-200 shrink-0"
+                    data-add-btn={`mobile-${i}`}
+                    data-title={session.title}
+                    data-time={sessionTimeText}
+                    data-speaker={session.speaker}
+                    data-room={session.room}
+                    data-type={session.type}
+                    data-track={cardTrack}
+                    onclick={`window.toggleSession('mobile-${i}')`}
+                    class="agenda-add-btn w-full py-2 rounded-lg border border-gray-300 text-xs font-bold text-gray-700 hover:bg-green-50 transition-all flex items-center justify-center gap-2"
                   >
-                    <svg class="add-icon w-3.5 h-3.5 md:w-3 md:h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+                    <svg class="add-icon w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
                     </svg>
                     <span class="btn-label">Add to Schedule</span>
                   </button>
                 </div>
-
-              </div>
-            </div>
-          );
-        })}
+              );
+            });
+          })()
+        }
       </div>
+
+      <!-- Empty state -->
+      {
+        eventSchedule.length === 0 && (
+          <div class="flex flex-col items-center justify-center py-16">
+            <svg class="w-12 h-12 text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+            </svg>
+            <p class="text-gray-500 text-sm">No sessions scheduled yet</p>
+          </div>
+        )
+      }
     </div>
   </section>
-
 
   <!-- Bottom CTA -->
-  <section class="py-16 px-4 bg-white text-center">
-    <h3 class="text-xl font-bold text-gray-900 mb-2">Want to be <span class="gradient-text">notified</span> when the schedule is out?</h3>
-    <p class="text-gray-500 mb-3 text-sm">Follow us or get in touch directly</p>
-    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold text-sm">
-      opensourceweekend@gmail.com
-    </a>
+  <section class="py-16 pb-12 px-4 bg-white text-center">
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Questions about the <span class="gradient-text">schedule</span>?</h3>
+    <p class="text-gray-500 mb-3 text-sm">Get in touch with us directly</p>
+    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold text-sm"> opensourceweekend@gmail.com </a>
   </section>
-
 </Layout>
 
 <!-- ════════════════════════════════════════════════════════════════════════
@@ -422,8 +743,12 @@ const getStyle = (type: string) =>
 ════════════════════════════════════════════════════════════════════════ -->
 <style>
   /* drawer open state */
-  #agenda-drawer.open  { transform: translateX(0) !important; }
-  #agenda-backdrop.open { opacity: 1 !important; }
+  #agenda-drawer.open {
+    transform: translateX(0) !important;
+  }
+  #agenda-backdrop.open {
+    opacity: 1 !important;
+  }
 
   /* Add button added state */
   .agenda-add-btn.is-added {
@@ -439,413 +764,583 @@ const getStyle = (type: string) =>
 
   /* Slide-in animation for drawer items */
   @keyframes slideInItem {
-    from { opacity: 0; transform: translateX(16px); }
-    to   { opacity: 1; transform: translateX(0); }
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   /* Card pulse on add */
   @keyframes addedPulse {
-    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
-    70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
-    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    0% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5);
+    }
+    70% {
+      box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    }
   }
-  .card-added { animation: addedPulse 0.5s ease-out; }
+  .card-added {
+    animation: addedPulse 0.5s ease-out;
+  }
 </style>
 
 <script is:inline>
-/* ── Storage key ─────────────────────────────────────────────────── */
-const STORAGE_KEY = 'osd2026-agenda';
+  /* ── Storage key ─────────────────────────────────────────────────── */
+  const STORAGE_KEY = "osd2026-agenda";
 
-/* ── Helpers ─────────────────────────────────────────────────────── */
-const getAgenda = () => {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
-  catch { return []; }
-};
-const saveAgenda = (items) => localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-
-/* ── Build the drawer list ───────────────────────────────────────── */
-function renderAgenda() {
-  const items = getAgenda();
-  const list   = document.getElementById('agenda-list');
-  const empty  = document.getElementById('agenda-empty');
-  const count  = document.getElementById('agenda-count');
-  const subtitle = document.getElementById('agenda-subtitle');
-
-  // Sort by time string
-  items.sort((a, b) => a.time.localeCompare(b.time));
-
-  // Update count badge
-  if (items.length > 0) {
-    count.style.display = 'flex';
-    count.classList.remove('hidden');
-  } else {
-    count.style.display = '';
-    count.classList.add('hidden');
-  }
-  count.textContent = items.length;
-  subtitle.textContent = `${items.length} session${items.length !== 1 ? 's' : ''} tracked`;
-
-  // Empty state toggle
-  empty.style.display = items.length === 0 ? 'flex' : 'none';
-  list.style.display  = items.length > 0  ? 'block' : 'none';
-
-  // Show/hide export buttons
-  const exportBtns = document.getElementById('agenda-export-btns');
-  if (exportBtns) {
-    exportBtns.style.display = items.length > 0 ? 'flex' : 'none';
-  }
-
-  // Render items — all styles are inline to avoid Tailwind purge
-  list.innerHTML = '';
-  items.forEach(item => {
-    const el = document.createElement('div');
-    el.style.cssText = [
-      'display:flex', 'align-items:flex-start', 'gap:10px',
-      'background:#f9fafb', 'border:1px solid #f3f4f6',
-      'border-radius:12px', 'padding:12px 10px 12px 12px',
-      'margin-bottom:8px', 'transition:background 0.2s,border-color 0.2s',
-      'animation:slideInItem 0.25s ease-out both'
-    ].join(';');
-    el.onmouseenter = () => { el.style.background='#f0fdf4'; el.style.borderColor='#bbf7d0'; };
-    el.onmouseleave = () => { el.style.background='#f9fafb'; el.style.borderColor='#f3f4f6'; };
-
-    // Build inner HTML using DOM (100% reliable, no CSS purge issues)
-    const inner = document.createElement('div');
-    inner.style.cssText = 'flex:1;min-width:0';
-
-    // Time + track row
-    const meta = document.createElement('div');
-    meta.style.cssText = 'display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px';
-    const timeEl = document.createElement('span');
-    timeEl.style.cssText = 'color:#16a34a;font-weight:700;font-size:11px;font-family:monospace';
-    timeEl.textContent = item.time;
-    const trackEl = document.createElement('span');
-    trackEl.style.cssText = 'font-size:10px;color:#6b7280;background:#fff;border:1px solid #e5e7eb;padding:1px 6px;border-radius:999px';
-    trackEl.textContent = item.track;
-    meta.appendChild(timeEl);
-    meta.appendChild(trackEl);
-
-    // Title
-    const titleEl = document.createElement('div');
-    titleEl.style.cssText = 'font-weight:700;color:#111827;font-size:13px;line-height:1.45;margin-bottom:3px;word-wrap:break-word';
-    titleEl.textContent = item.title;
-
-    inner.appendChild(meta);
-    inner.appendChild(titleEl);
-
-    // Speaker
-    if (item.speaker) {
-      const spEl = document.createElement('div');
-      spEl.style.cssText = 'font-size:11px;color:#6b7280;margin-bottom:1px';
-      spEl.textContent = 'by ' + item.speaker;
-      inner.appendChild(spEl);
+  /* ── Helpers ─────────────────────────────────────────────────────── */
+  const getAgenda = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    } catch {
+      return [];
     }
-    // Room
-    if (item.room) {
-      const roomEl = document.createElement('div');
-      roomEl.style.cssText = 'font-size:11px;color:#9ca3af';
-      roomEl.textContent = '📍 ' + item.room;
-      inner.appendChild(roomEl);
-    }
+  };
+  const saveAgenda = (items) => localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
 
-    // Remove button
-    const btn = document.createElement('button');
-    btn.title = 'Remove';
-    btn.style.cssText = 'flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:2px;transition:background 0.15s,border-color 0.15s';
-    btn.onmouseenter = () => { btn.style.background='#fef2f2'; btn.style.borderColor='#fca5a5'; };
-    btn.onmouseleave = () => { btn.style.background='#fff'; btn.style.borderColor='#e5e7eb'; };
-    btn.onclick = () => window.removeSession(item.id);
-    btn.innerHTML = `<svg width="12" height="12" fill="none" stroke="#f87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
+  /* ── Build the drawer list ───────────────────────────────────────── */
+  function renderAgenda() {
+    const items = getAgenda();
+    const list = document.getElementById("agenda-list");
+    const empty = document.getElementById("agenda-empty");
+    const count = document.getElementById("agenda-count");
+    const subtitle = document.getElementById("agenda-subtitle");
 
-    el.appendChild(inner);
-    el.appendChild(btn);
-    list.appendChild(el);
-  });
-}
+    // Sort by time string
+    items.sort((a, b) => a.time.localeCompare(b.time));
 
-/* ── Sync all add buttons to reflect current agenda ─────────────── */
-function syncButtons() {
-  const agenda = getAgenda();
-  const addedIds = new Set(agenda.map(i => i.id));
-
-  document.querySelectorAll('[data-add-btn]').forEach(btn => {
-    const sid = btn.dataset.addBtn;
-    const isAdded = addedIds.has(sid);
-    btn.classList.toggle('is-added', isAdded);
-
-    const icon = btn.querySelector('.add-icon');
-    const label = btn.querySelector('.btn-label');
-    if (isAdded) {
-      icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>`;
-      label.textContent = 'Added ✓';
+    // Update count badge
+    if (items.length > 0) {
+      count.style.display = "flex";
+      count.classList.remove("hidden");
     } else {
-      icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>`;
-      label.textContent = 'Add to Schedule';
+      count.style.display = "";
+      count.classList.add("hidden");
     }
-  });
-}
+    count.textContent = items.length;
+    subtitle.textContent = `${items.length} session${items.length !== 1 ? "s" : ""} tracked`;
 
-/* ── Toggle a session (called from onclick on conference cards) ──── */
-window.toggleSession = function(sid) {
-  // Read session data from data attributes on the card
-  const card = document.getElementById(`card-${sid}`);
-  let title, time, speaker, room, type, track;
+    // Empty state toggle
+    empty.style.display = items.length === 0 ? "flex" : "none";
+    list.style.display = items.length > 0 ? "block" : "none";
 
-  if (card && card.dataset.title) {
-    // Conference card has data-* attrs
-    title   = card.dataset.title;
-    time    = card.dataset.time;
-    speaker = card.dataset.speaker;
-    room    = card.dataset.room;
-    type    = card.dataset.type;
-    track   = card.dataset.track;
-  } else {
-    // Workshop card — read from button's onclick args via a secondary lookup
+    // Show/hide export buttons
+    const exportBtns = document.getElementById("agenda-export-btns");
+    if (exportBtns) {
+      exportBtns.style.display = items.length > 0 ? "flex" : "none";
+    }
+
+    // Render items — all styles are inline to avoid Tailwind purge
+    list.innerHTML = "";
+    items.forEach((item) => {
+      const el = document.createElement("div");
+      el.style.cssText = [
+        "display:flex",
+        "align-items:flex-start",
+        "gap:10px",
+        "background:#f9fafb",
+        "border:1px solid #f3f4f6",
+        "border-radius:12px",
+        "padding:12px 10px 12px 12px",
+        "margin-bottom:8px",
+        "transition:background 0.2s,border-color 0.2s",
+        "animation:slideInItem 0.25s ease-out both",
+      ].join(";");
+      el.onmouseenter = () => {
+        el.style.background = "#f0fdf4";
+        el.style.borderColor = "#bbf7d0";
+      };
+      el.onmouseleave = () => {
+        el.style.background = "#f9fafb";
+        el.style.borderColor = "#f3f4f6";
+      };
+
+      // Build inner HTML using DOM (100% reliable, no CSS purge issues)
+      const inner = document.createElement("div");
+      inner.style.cssText = "flex:1;min-width:0";
+
+      // Time + track row
+      const meta = document.createElement("div");
+      meta.style.cssText = "display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:5px";
+      const timeEl = document.createElement("span");
+      timeEl.style.cssText = "color:#16a34a;font-weight:700;font-size:11px;font-family:monospace";
+      timeEl.textContent = item.time;
+      const trackEl = document.createElement("span");
+      trackEl.style.cssText = "font-size:10px;color:#6b7280;background:#fff;border:1px solid #e5e7eb;padding:1px 6px;border-radius:999px";
+      trackEl.textContent = item.track;
+      meta.appendChild(timeEl);
+      meta.appendChild(trackEl);
+
+      // Title
+      const titleEl = document.createElement("div");
+      titleEl.style.cssText = "font-weight:700;color:#111827;font-size:13px;line-height:1.45;margin-bottom:3px;word-wrap:break-word";
+      titleEl.textContent = item.title;
+
+      inner.appendChild(meta);
+      inner.appendChild(titleEl);
+
+      // Speaker
+      if (item.speaker) {
+        const spEl = document.createElement("div");
+        spEl.style.cssText = "font-size:11px;color:#6b7280;margin-bottom:1px";
+        spEl.textContent = "by " + item.speaker;
+        inner.appendChild(spEl);
+      }
+      // Room
+      if (item.room) {
+        const roomEl = document.createElement("div");
+        roomEl.style.cssText = "font-size:11px;color:#9ca3af";
+        roomEl.textContent = "📍 " + item.room;
+        inner.appendChild(roomEl);
+      }
+
+      // Remove button
+      const btn = document.createElement("button");
+      btn.title = "Remove";
+      btn.style.cssText =
+        "flex-shrink:0;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid #e5e7eb;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:2px;transition:background 0.15s,border-color 0.15s";
+      btn.onmouseenter = () => {
+        btn.style.background = "#fef2f2";
+        btn.style.borderColor = "#fca5a5";
+      };
+      btn.onmouseleave = () => {
+        btn.style.background = "#fff";
+        btn.style.borderColor = "#e5e7eb";
+      };
+      btn.onclick = () => window.removeSession(item.id);
+      btn.innerHTML = `<svg width="12" height="12" fill="none" stroke="#f87171" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>`;
+
+      el.appendChild(inner);
+      el.appendChild(btn);
+      list.appendChild(el);
+    });
+  }
+
+  /* ── Sync all add buttons to reflect current agenda ─────────────── */
+  function syncButtons() {
+    const agenda = getAgenda();
+    const addedIds = new Set(agenda.map((i) => i.id));
+
+    document.querySelectorAll("[data-add-btn]").forEach((btn) => {
+      const sid = btn.dataset.addBtn;
+      const isAdded = addedIds.has(sid);
+      btn.classList.toggle("is-added", isAdded);
+
+      const icon = btn.querySelector(".add-icon");
+      const label = btn.querySelector(".btn-label");
+      if (isAdded) {
+        if (icon) {
+          icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>`;
+        }
+        if (label) {
+          label.textContent = "Added ✓";
+        } else {
+          btn.textContent = "Added ✓";
+        }
+      } else {
+        if (icon) {
+          icon.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>`;
+        }
+        if (label) {
+          label.textContent = "Add to Schedule";
+        } else {
+          btn.textContent = "+ Add to Schedule";
+        }
+      }
+    });
+  }
+
+  /* ── Toggle a session (called from onclick on conference cards) ──── */
+  window.toggleSession = function (sid) {
+    // Find the button and read data from it
     const btn = document.querySelector(`[data-add-btn="${sid}"]`);
-    // Fallback: parse from nearby DOM
-    const wrapper = btn?.closest('[id]') || btn?.closest('.flex-1');
-    title   = wrapper?.querySelector('h3')?.textContent?.trim() || sid;
-    time    = wrapper?.querySelector('.font-mono')?.textContent?.trim() || '';
-    speaker = wrapper?.querySelector('p')?.textContent?.replace(/^by\s*/,'').trim() || '';
-    room    = '';
-    type    = 'workshop';
-    track   = 'Workshop';
-  }
+    if (!btn) return;
 
-  const agenda = getAgenda();
-  const existingIdx = agenda.findIndex(i => i.id === sid);
+    // Read session data from button's data attributes
+    const title = btn.dataset.title;
+    const time = btn.dataset.time;
+    const speaker = btn.dataset.speaker;
+    const room = btn.dataset.room;
+    const type = btn.dataset.type;
+    const track = btn.dataset.track;
 
-  if (existingIdx >= 0) {
-    // Remove
-    agenda.splice(existingIdx, 1);
-  } else {
-    // Add
-    agenda.push({ id: sid, title, time, speaker, room, type, track });
-    // Flash the card
-    const cardEl = document.getElementById(`card-${sid}`);
-    if (cardEl) {
-      cardEl.classList.add('card-added');
-      setTimeout(() => cardEl.classList.remove('card-added'), 600);
+    const agenda = getAgenda();
+    const existingIdx = agenda.findIndex((i) => i.id === sid);
+
+    if (existingIdx >= 0) {
+      // Remove
+      agenda.splice(existingIdx, 1);
+    } else {
+      // Add
+      agenda.push({ id: sid, title, time, speaker, room, type, track });
+      // Flash the card
+      const cardEl = btn.closest(".session-card");
+      if (cardEl) {
+        cardEl.classList.add("card-added");
+        setTimeout(() => cardEl.classList.remove("card-added"), 600);
+      }
     }
+
+    saveAgenda(agenda);
+    syncButtons();
+    renderAgenda();
+  };
+
+  /* ── Remove from drawer ─────────────────────────────────────────── */
+  window.removeSession = function (sid) {
+    const agenda = getAgenda().filter((i) => i.id !== sid);
+    saveAgenda(agenda);
+    syncButtons();
+    renderAgenda();
+  };
+  /* ── Calendar Picker ────────────────────────────────────────────── */
+  // Shared ICS builder
+  function buildICSContent() {
+    const items = getAgenda();
+    if (!items.length) return null;
+    const EVENT_DATE = "20260404";
+    function toICSTime(timeStr) {
+      const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!match) return "090000";
+      let h = parseInt(match[1]);
+      const m = match[2];
+      const ampm = match[3].toUpperCase();
+      if (ampm === "PM" && h !== 12) h += 12;
+      if (ampm === "AM" && h === 12) h = 0;
+      return String(h).padStart(2, "0") + m + "00";
+    }
+    function parseStartEnd(timeStr) {
+      const parts = timeStr.split(/\s*[–-]\s*/);
+      return { start: toICSTime(parts[0] || ""), end: toICSTime(parts[1] || parts[0] || "") };
+    }
+    const now = new Date().toISOString().replace(/[-:]/g, "").split(".")[0] + "Z";
+    let ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//OSD 2026//My Schedule//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH"];
+    items
+      .sort((a, b) => a.time.localeCompare(b.time))
+      .forEach((item, idx) => {
+        const { start, end } = parseStartEnd(item.time);
+        const desc = [item.speaker ? "Speaker: " + item.speaker : "", item.track ? "Track: " + item.track : ""].filter(Boolean).join("\\n");
+        ics.push(
+          "BEGIN:VEVENT",
+          `UID:osd2026-${item.id}-${idx}@opensourceday.in`,
+          `DTSTAMP:${now}`,
+          `DTSTART;TZID=Asia/Kolkata:${EVENT_DATE}T${start}`,
+          `DTEND;TZID=Asia/Kolkata:${EVENT_DATE}T${end}`,
+          `SUMMARY:${item.title}`,
+          `DESCRIPTION:${desc}`,
+          `LOCATION:${item.room || "Open Source Day 2026"}`,
+          "END:VEVENT"
+        );
+      });
+    ics.push("END:VCALENDAR");
+    return ics.join("\r\n");
   }
 
-  saveAgenda(agenda);
-  syncButtons();
-  renderAgenda();
-};
+  window.showCalendarPicker = function () {
+    const items = getAgenda();
+    if (!items.length) return;
+    const backdrop = document.getElementById("cal-picker-backdrop");
+    const sheet = document.getElementById("cal-picker-sheet");
+    const countEl = document.getElementById("cal-picker-count");
+    countEl.textContent = `${items.length} session${items.length !== 1 ? "s" : ""} in your schedule`;
+    backdrop.classList.remove("hidden");
+    backdrop.style.display = "flex";
+    // Trigger slide-up animation
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        sheet.style.transform = "translateY(0)";
+      })
+    );
+  };
 
-/* ── Remove from drawer ─────────────────────────────────────────── */
-window.removeSession = function(sid) {
-  const agenda = getAgenda().filter(i => i.id !== sid);
-  saveAgenda(agenda);
-  syncButtons();
-  renderAgenda();
-};
-/* ── Calendar Picker ────────────────────────────────────────────── */
-// Shared ICS builder
-function buildICSContent() {
-  const items = getAgenda();
-  if (!items.length) return null;
-  const EVENT_DATE = '20260329';
-  function toICSTime(timeStr) {
-    const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (!match) return '090000';
-    let h = parseInt(match[1]);
-    const m = match[2];
-    const ampm = match[3].toUpperCase();
-    if (ampm === 'PM' && h !== 12) h += 12;
-    if (ampm === 'AM' && h === 12) h = 0;
-    return String(h).padStart(2,'0') + m + '00';
-  }
-  function parseStartEnd(timeStr) {
-    const parts = timeStr.split(/\s*[–-]\s*/);
-    return { start: toICSTime(parts[0] || ''), end: toICSTime(parts[1] || parts[0] || '') };
-  }
-  const now = new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
-  let ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//OSD 2026//My Schedule//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
-  items.sort((a,b) => a.time.localeCompare(b.time)).forEach((item, idx) => {
-    const { start, end } = parseStartEnd(item.time);
-    const desc = [item.speaker ? 'Speaker: '+item.speaker : '', item.track ? 'Track: '+item.track : ''].filter(Boolean).join('\\n');
-    ics.push('BEGIN:VEVENT',`UID:osd2026-${item.id}-${idx}@opensourceday.in`,`DTSTAMP:${now}`,
-      `DTSTART;TZID=Asia/Kolkata:${EVENT_DATE}T${start}`,`DTEND;TZID=Asia/Kolkata:${EVENT_DATE}T${end}`,
-      `SUMMARY:${item.title}`,`DESCRIPTION:${desc}`,`LOCATION:${item.room || 'Open Source Day 2026'}`,
-      'END:VEVENT');
+  window.closeCalendarPicker = function () {
+    const backdrop = document.getElementById("cal-picker-backdrop");
+    const sheet = document.getElementById("cal-picker-sheet");
+    sheet.style.transform = "translateY(100%)";
+    setTimeout(() => {
+      backdrop.style.display = "none";
+      backdrop.classList.add("hidden");
+    }, 320);
+  };
+
+  // Google Calendar — show all sessions as direct links (no popup blocker issues)
+  window.openGoogleCalendar = function () {
+    const items = getAgenda().sort((a, b) => a.time.localeCompare(b.time));
+    const EVENT_DATE = "20260404";
+    function toGCalTime(timeStr) {
+      const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+      if (!match) return "090000";
+      let h = parseInt(match[1]);
+      const m = match[2];
+      const ampm = match[3].toUpperCase();
+      if (ampm === "PM" && h !== 12) h += 12;
+      if (ampm === "AM" && h === 12) h = 0;
+      return String(h).padStart(2, "0") + m + "00";
+    }
+
+    const list = document.getElementById("gcal-session-list");
+    list.innerHTML = "";
+
+    items.forEach((item) => {
+      const parts = item.time.split(/\s*[–-]\s*/);
+      const start = toGCalTime(parts[0] || "");
+      const end = toGCalTime(parts[1] || parts[0] || "");
+      const dates = `${EVENT_DATE}T${start}/${EVENT_DATE}T${end}`;
+      const details = [item.speaker ? "Speaker: " + item.speaker : "", item.track ? "Track: " + item.track : "", "osd.opensourceweekend.org/schedule"]
+        .filter(Boolean)
+        .join("%0A");
+      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(item.title)}&dates=${dates}&details=${details}&location=${encodeURIComponent(item.room || "Open Source Day 2026, India")}&ctz=Asia%2FKolkata`;
+
+      const row = document.createElement("a");
+      row.href = url;
+      row.target = "_blank";
+      row.rel = "noopener noreferrer";
+      row.style.cssText =
+        "display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none;transition:background 0.15s,border-color 0.15s;";
+      row.onmouseenter = () => {
+        row.style.background = "#eff6ff";
+        row.style.borderColor = "#bfdbfe";
+      };
+      row.onmouseleave = () => {
+        row.style.background = "";
+        row.style.borderColor = "#e5e7eb";
+      };
+
+      // Time badge
+      const time = document.createElement("span");
+      time.style.cssText = "font-size:10px;font-weight:700;color:#16a34a;font-family:monospace;white-space:nowrap;flex-shrink:0";
+      time.textContent = item.time;
+
+      // Title
+      const title = document.createElement("span");
+      title.style.cssText = "font-size:12px;font-weight:600;color:#111827;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap";
+      title.textContent = item.title;
+
+      // Add icon
+      const icon = document.createElement("span");
+      icon.style.cssText = "flex-shrink:0;font-size:11px;font-weight:700;color:#2563eb;white-space:nowrap";
+      icon.textContent = "+ Add";
+
+      row.appendChild(time);
+      row.appendChild(title);
+      row.appendChild(icon);
+      list.appendChild(row);
+    });
+
+    window.showCalPickerView("gcal");
+  };
+
+  window.showCalPickerView = function (view) {
+    document.getElementById("cal-view-picker").style.display = view === "picker" ? "block" : "none";
+    document.getElementById("cal-view-gcal").style.display = view === "gcal" ? "block" : "none";
+  };
+
+  // Apple Calendar — navigate to ICS so iOS/macOS intercepts it
+  window.openAppleCalendar = function () {
+    const content = buildICSContent();
+    if (!content) return;
+    const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    // On iOS/macOS, navigating to an .ics opens Calendar natively
+    window.location.href = url;
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
+    window.closeCalendarPicker();
+  };
+
+  // Outlook / Other — force file download
+  window.openOutlookCalendar = function () {
+    const content = buildICSContent();
+    if (!content) return;
+    const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "osd2026-my-schedule.ics";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    window.closeCalendarPicker();
+  };
+
+  // Keep old name working as alias
+  window.downloadICS = window.showCalendarPicker;
+
+  /* ── Download as Note (plain text) ──────────────────────────────── */
+  window.downloadNote = function () {
+    const items = getAgenda();
+    if (!items.length) return;
+
+    const lines = ["╔══════════════════════════════════════╗", "║   Open Source Day 2026 — My Schedule ║", "╚══════════════════════════════════════╝", ""];
+
+    items
+      .sort((a, b) => a.time.localeCompare(b.time))
+      .forEach((item) => {
+        lines.push(`⏰ ${item.time}`);
+        lines.push(`📌 ${item.title}`);
+        if (item.speaker) lines.push(`   🎤 ${item.speaker}`);
+        if (item.room) lines.push(`   📍 ${item.room}`);
+        if (item.track) lines.push(`   🏷  ${item.track}`);
+        lines.push("");
+      });
+
+    lines.push("─────────────────────────────────────────");
+    lines.push("Generated from osd.opensourceweekend.org/schedule");
+
+    const blob = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "osd2026-my-schedule.txt";
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
+  /* ── Filter by Track ────────────────────────────────────────────── */
+  window.filterByTrack = function (track) {
+    // Update active filter button
+    document.querySelectorAll('[id^="filter-"]').forEach((btn) => {
+      btn.classList.remove("active-filter", "bg-green-500", "text-white", "border-green-500");
+      btn.classList.add("bg-white", "text-gray-700", "border-gray-300");
+    });
+
+    const trackToId = {
+      all: "filter-all",
+      "Main Track": "filter-main",
+      "AI Track": "filter-ai",
+      "Community Track": "filter-community",
+      "Emerging Track": "filter-emerging",
+      "DevRoom/Workshop": "filter-devroom",
+    };
+
+    const activeBtn = document.getElementById(trackToId[track] || "filter-all");
+    if (activeBtn) {
+      activeBtn.classList.add("active-filter");
+      activeBtn.classList.remove("bg-white", "text-gray-700", "border-gray-300");
+      activeBtn.classList.add("bg-green-500", "text-white", "border-green-500");
+    }
+
+    const banner = document.getElementById("selected-track-banner");
+    if (banner) {
+      if (track === "all") {
+        banner.textContent = "Showing: All Tracks";
+        banner.classList.add("hidden");
+      } else {
+        banner.textContent = `Showing: ${track}`;
+        banner.classList.remove("hidden");
+      }
+    }
+
+    // Header visibility and full-width selected track heading
+    const allTh = Array.from(document.querySelectorAll("thead th"));
+    const timeTh = allTh.find((th) => th.getAttribute("data-track") === "time");
+    const trackThs = allTh.filter((th) => th.getAttribute("data-track") && th.getAttribute("data-track") !== "time");
+
+    if (track === "all") {
+      allTh.forEach((th) => {
+        th.style.display = "";
+        if (th.getAttribute("data-track") !== "time") {
+          th.colSpan = 1;
+        }
+      });
+    } else {
+      allTh.forEach((th) => {
+        const thTrack = th.getAttribute("data-track");
+        if (thTrack === "time") {
+          th.style.display = "";
+          th.colSpan = 1;
+        } else if (thTrack === track) {
+          th.style.display = "";
+          th.colSpan = 5;
+        } else {
+          th.style.display = "none";
+        }
+      });
+    }
+
+    document.querySelectorAll("tbody tr").forEach((row) => {
+      let hasVisibleSession = false;
+
+      row.querySelectorAll("td").forEach((td, index) => {
+        if (index === 0) {
+          // time column handled at end
+          return;
+        }
+        const tdTracks = td.getAttribute("data-tracks") || td.getAttribute("data-track") || "";
+        if (!tdTracks) {
+          td.style.display = "none";
+          return;
+        }
+
+        const normalizedTracks = tdTracks.split(",").map((t) => t.trim());
+        const isMatch = track === "all" || normalizedTracks.includes(track) || normalizedTracks.includes("All Tracks");
+
+        td.style.display = isMatch ? "" : "none";
+
+        // Fix rowspan layout breaking when hiding rows
+        if (track === "all") {
+          const origSpan = td.getAttribute("data-original-rowspan");
+          if (origSpan && origSpan !== "1") {
+            td.setAttribute("rowspan", origSpan);
+          }
+        } else {
+          if (td.hasAttribute("rowspan") && td.getAttribute("rowspan") !== "1") {
+            td.setAttribute("rowspan", "1");
+          }
+        }
+
+        if (isMatch) hasVisibleSession = true;
+      });
+
+      const timeCell = row.querySelector("td:first-child");
+      if (timeCell) {
+        timeCell.style.display = hasVisibleSession ? "" : "none";
+      }
+      row.style.display = hasVisibleSession ? "" : "none";
+    });
+
+    // Mobile cards filter
+    document.querySelectorAll(".mobile-session-card").forEach((card) => {
+      if (track === "all") {
+        card.style.display = "";
+        return;
+      }
+
+      const cardTrack = card.getAttribute("data-track");
+      card.style.display = cardTrack === "All Tracks" || cardTrack === track ? "" : "none";
+    });
+  };
+
+  /* ── Open / close drawer ────────────────────────────────────────── */
+  let agendaOpen = false;
+  window.toggleAgenda = function () {
+    agendaOpen = !agendaOpen;
+    const drawer = document.getElementById("agenda-drawer");
+    const backdrop = document.getElementById("agenda-backdrop");
+
+    if (agendaOpen) {
+      backdrop.classList.remove("hidden");
+      // Force reflow before adding open class so transition fires
+      backdrop.offsetHeight;
+      drawer.classList.add("open");
+      backdrop.classList.add("open");
+      document.body.style.overflow = "hidden";
+    } else {
+      drawer.classList.remove("open");
+      backdrop.classList.remove("open");
+      document.body.style.overflow = "";
+      setTimeout(() => backdrop.classList.add("hidden"), 320);
+    }
+  };
+
+  /* ── Init ───────────────────────────────────────────────────────── */
+  document.addEventListener("DOMContentLoaded", () => {
+    renderAgenda();
+    syncButtons();
   });
-  ics.push('END:VCALENDAR');
-  return ics.join('\r\n');
-}
-
-window.showCalendarPicker = function() {
-  const items = getAgenda();
-  if (!items.length) return;
-  const backdrop = document.getElementById('cal-picker-backdrop');
-  const sheet    = document.getElementById('cal-picker-sheet');
-  const countEl  = document.getElementById('cal-picker-count');
-  countEl.textContent = `${items.length} session${items.length !== 1 ? 's' : ''} in your schedule`;
-  backdrop.classList.remove('hidden');
-  backdrop.style.display = 'flex';
-  // Trigger slide-up animation
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    sheet.style.transform = 'translateY(0)';
-  }));
-};
-
-window.closeCalendarPicker = function() {
-  const backdrop = document.getElementById('cal-picker-backdrop');
-  const sheet    = document.getElementById('cal-picker-sheet');
-  sheet.style.transform = 'translateY(100%)';
-  setTimeout(() => { backdrop.style.display = 'none'; backdrop.classList.add('hidden'); }, 320);
-};
-
-// Google Calendar — show all sessions as direct links (no popup blocker issues)
-window.openGoogleCalendar = function() {
-  const items = getAgenda().sort((a,b) => a.time.localeCompare(b.time));
-  const EVENT_DATE = '20260329';
-  function toGCalTime(timeStr) {
-    const match = timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
-    if (!match) return '090000';
-    let h = parseInt(match[1]);
-    const m = match[2];
-    const ampm = match[3].toUpperCase();
-    if (ampm === 'PM' && h !== 12) h += 12;
-    if (ampm === 'AM' && h === 12) h = 0;
-    return String(h).padStart(2,'0') + m + '00';
-  }
-
-  const list = document.getElementById('gcal-session-list');
-  list.innerHTML = '';
-
-  items.forEach(item => {
-    const parts = item.time.split(/\s*[–-]\s*/);
-    const start = toGCalTime(parts[0] || '');
-    const end   = toGCalTime(parts[1] || parts[0] || '');
-    const dates = `${EVENT_DATE}T${start}/${EVENT_DATE}T${end}`;
-    const details = [item.speaker ? 'Speaker: '+item.speaker : '', item.track ? 'Track: '+item.track : '', 'osd.opensourceweekend.org/schedule'].filter(Boolean).join('%0A');
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(item.title)}&dates=${dates}&details=${details}&location=${encodeURIComponent(item.room || 'Open Source Day 2026, India')}&ctz=Asia%2FKolkata`;
-
-    const row = document.createElement('a');
-    row.href   = url;
-    row.target = '_blank';
-    row.rel    = 'noopener noreferrer';
-    row.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid #e5e7eb;text-decoration:none;transition:background 0.15s,border-color 0.15s;';
-    row.onmouseenter = () => { row.style.background='#eff6ff'; row.style.borderColor='#bfdbfe'; };
-    row.onmouseleave = () => { row.style.background=''; row.style.borderColor='#e5e7eb'; };
-
-    // Time badge
-    const time = document.createElement('span');
-    time.style.cssText = 'font-size:10px;font-weight:700;color:#16a34a;font-family:monospace;white-space:nowrap;flex-shrink:0';
-    time.textContent = item.time;
-
-    // Title
-    const title = document.createElement('span');
-    title.style.cssText = 'font-size:12px;font-weight:600;color:#111827;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap';
-    title.textContent = item.title;
-
-    // Add icon
-    const icon = document.createElement('span');
-    icon.style.cssText = 'flex-shrink:0;font-size:11px;font-weight:700;color:#2563eb;white-space:nowrap';
-    icon.textContent = '+ Add';
-
-    row.appendChild(time);
-    row.appendChild(title);
-    row.appendChild(icon);
-    list.appendChild(row);
-  });
-
-  window.showCalPickerView('gcal');
-};
-
-window.showCalPickerView = function(view) {
-  document.getElementById('cal-view-picker').style.display = view === 'picker' ? 'block' : 'none';
-  document.getElementById('cal-view-gcal').style.display   = view === 'gcal'   ? 'block' : 'none';
-};
-
-// Apple Calendar — navigate to ICS so iOS/macOS intercepts it
-window.openAppleCalendar = function() {
-  const content = buildICSContent();
-  if (!content) return;
-  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  // On iOS/macOS, navigating to an .ics opens Calendar natively
-  window.location.href = url;
-  setTimeout(() => URL.revokeObjectURL(url), 3000);
-  window.closeCalendarPicker();
-};
-
-// Outlook / Other — force file download
-window.openOutlookCalendar = function() {
-  const content = buildICSContent();
-  if (!content) return;
-  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url; a.download = 'osd2026-my-schedule.ics';
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-  window.closeCalendarPicker();
-};
-
-// Keep old name working as alias
-window.downloadICS = window.showCalendarPicker;
-
-/* ── Download as Note (plain text) ──────────────────────────────── */
-window.downloadNote = function() {
-  const items = getAgenda();
-  if (!items.length) return;
-
-  const lines = [
-    '╔══════════════════════════════════════╗',
-    '║   Open Source Day 2026 — My Schedule ║',
-    '╚══════════════════════════════════════╝',
-    '',
-  ];
-
-  items.sort((a,b) => a.time.localeCompare(b.time)).forEach(item => {
-    lines.push(`⏰ ${item.time}`);
-    lines.push(`📌 ${item.title}`);
-    if (item.speaker) lines.push(`   🎤 ${item.speaker}`);
-    if (item.room)    lines.push(`   📍 ${item.room}`);
-    if (item.track)   lines.push(`   🏷  ${item.track}`);
-    lines.push('');
-  });
-
-  lines.push('─────────────────────────────────────────');
-  lines.push('Generated from osd.opensourceweekend.org/schedule');
-
-  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href = url; a.download = 'osd2026-my-schedule.txt';
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-};
-
-
-/* ── Open / close drawer ────────────────────────────────────────── */
-let agendaOpen = false;
-window.toggleAgenda = function() {
-  agendaOpen = !agendaOpen;
-  const drawer   = document.getElementById('agenda-drawer');
-  const backdrop = document.getElementById('agenda-backdrop');
-
-  if (agendaOpen) {
-    backdrop.classList.remove('hidden');
-    // Force reflow before adding open class so transition fires
-    backdrop.offsetHeight;
-    drawer.classList.add('open');
-    backdrop.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  } else {
-    drawer.classList.remove('open');
-    backdrop.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => backdrop.classList.add('hidden'), 320);
-  }
-};
-
-/* ── Init ───────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  renderAgenda();
-  syncButtons();
-});
 </script>
