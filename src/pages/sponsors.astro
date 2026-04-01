@@ -113,8 +113,7 @@ const exclusiveSponsorshipOpportunity  = [
     title="OSD 2026"
     titleGradient="SPONSORS"
     subtitle="Support India's biggest open source event and get your brand in front of 600+ developers and builders."
-    primaryCta={{ text: "Become a Sponsor", href: "/cfs", external: true }}
-    secondaryCta={{ text: "Community Partner", href: "/cfc", external: true }}
+    primaryCta={{ text: "Book Ticket", href: "/tickets" }}
   />
 
   <!-- Stats -->
@@ -210,7 +209,7 @@ const exclusiveSponsorshipOpportunity  = [
   )}
 
   <!-- ═══════════════ SPONSORSHIP TIERS ═══════════════ -->
-  <section class="py-20 px-4 bg-gray-50">
+  <section class="py-20 px-4 bg-gray-50 hidden!">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12 relative">
         <div class="absolute -top-12 right-1/4 w-16 h-16 opacity-80" style="animation: bounce 3s infinite;">
@@ -297,7 +296,7 @@ const exclusiveSponsorshipOpportunity  = [
   </section>
 
   <!-- ═══════════════ WHY SPONSOR? ═══════════════ -->
-  <section class="py-24 px-4 bg-white">
+  <section class="py-24 px-4 bg-gray-50">
     <div class="max-w-6xl mx-auto">
 
       <!-- Header -->
@@ -432,10 +431,10 @@ const exclusiveSponsorshipOpportunity  = [
       We'd love to partner with you. Drop us a line and let's make it happen.
     </p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="/cfs" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 hover:bg-gray-800 px-8 py-3 rounded-full transition-all hover:scale-105">
-        Apply to Sponsor
-      </a>
+      <button disabled
+        class="inline-flex items-center gap-2 font-bold text-white bg-gray-900 px-8 py-3 rounded-full transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+        Apply to Sponsor (CLOSED)
+      </button>
       <a href="mailto:opensourceweekend@gmail.com"
         class="font-semibold text-gray-500 hover:text-gray-900 transition-colors">
         opensourceweekend@gmail.com
