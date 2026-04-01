@@ -64,8 +64,8 @@ const parsedCallsFor2026 = CALLS_2026.filter(i => i.enable);
   <Hero client:load />
   <ScrollAnimations client:load />
 
-  <!-- ─── GET INVOLVED ─── -->
-  <section class="py-24 px-4 bg-white" id="get-involved">
+  <!-- ─── GET INVOLVED - hidden due to all calls ended ─── -->
+  <section class="py-24 px-4 bg-white hidden!" id="get-involved">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-bold border border-green-100 mb-6 shadow-sm">
@@ -111,7 +111,7 @@ const parsedCallsFor2026 = CALLS_2026.filter(i => i.enable);
                   : <span>{call.deadline}</span>
                 }
               </div>
-           
+
             </div>
 
             <!-- CTA -->

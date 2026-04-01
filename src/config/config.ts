@@ -111,7 +111,7 @@ export const CALLS_2026 = [
     color: "from-amber-500 to-orange-600",
     badge: "Open",
     deadline: "31st March 2026",
-    enable: true,
+    enable: false,
   },
   {
     title: "Call for Community Partners",
@@ -121,7 +121,7 @@ export const CALLS_2026 = [
     color: "from-sky-500 to-blue-600",
     badge: "Open",
     deadline: "31st March 2026",
-    enable: true,
+    enable: false,
   },
   {
     title: "Call for Evangelists",
@@ -141,7 +141,7 @@ export const CALLS_2026 = [
     color: "from-gray-500 to-gray-600",
     badge: "Open",
     deadline: "31st March 2026",
-    enable: true,
+    enable: false,
   },
 ];
 
