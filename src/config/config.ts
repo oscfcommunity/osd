@@ -149,88 +149,75 @@ export const eventSchedule = [
   // 08:00 – 09:30 - Registration & Welcome Kit (All Tracks)
   { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "Main Track", room: "LT1", isForAllTracks: true },
   { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "DevRoom/Workshop", room: "CEP 110", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 
-  // 09:30 – 10:00 - Warm Up Activity & Icebreaker (All Tracks)
-  { time: "09:30 AM – 10:00 AM", title: "Warm Up Activity & Icebreaker", speaker: "TBD", type: "activity", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "09:30 AM – 10:00 AM", title: "Warm Up Activity & Icebreaker", speaker: "TBD", type: "activity", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "09:30 AM – 10:00 AM", title: "Warm Up Activity & Icebreaker", speaker: "TBD", type: "activity", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "09:30 AM – 10:00 AM", title: "Warm Up Activity & Icebreaker", speaker: "TBD", type: "activity", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
-  { time: "09:30 AM – 10:00 AM", title: "Warm Up Activity & Icebreaker", speaker: "TBD", type: "activity", track: "DevRoom/Workshop", room: "CEP 110", isForAllTracks: true },
+  // 09:30 – 09:45 - Welcome Note (All Tracks)
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "Main Track", room: "LT1", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "AI Track", room: "LT2", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 
-  // 10:00 – 10:15 - Welcome Note (All Tracks)
-  { time: "10:00 AM – 10:15 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "10:00 AM – 10:15 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "10:00 AM – 10:15 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "10:00 AM – 10:15 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
-  { time: "10:00 AM – 10:15 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "DevRoom/Workshop", room: "CEP 110", isForAllTracks: true },
+  // 09:45 – 10:15 - Opening Keynote (All Tracks)
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "Main Track", room: "LT1", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "AI Track", room: "LT2", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 
-  // 10:15 – 10:45 - Opening Keynote (LT1-LT3-CEP102), + DevRoom 1 starts
-  { time: "10:15 AM – 10:45 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "10:15 AM – 10:45 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "10:15 AM – 10:45 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "10:15 AM – 10:45 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
-  { time: "10:15 AM – 10:45 AM", title: "Workshop/DevRoom - 1", speaker: "TBD", type: "workshop", track: "DevRoom/Workshop", room: "CEP 110", start: "20260329T101500", end: "20260329T113000", rowspan: 2 },
+  // 10:30 – 11:15
+  { time: "10:30 AM – 11:15 AM", title: "Building Visual Agent Experiences Using MCP Apps", speaker: "Ashita Prasad", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "10:30 AM – 11:15 AM", title: "Handling Memory in AI Agents using open source MemGPT", speaker: "Nikhilesh Tayal", type: "talk", track: "AI Track", room: "LT2" },
+  { time: "10:30 AM – 11:15 AM", title: "Service Mesh Patterns for Multi-Cluster Kubernetes Environments", speaker: "Sayed Imran", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T103000", end: "20260401T120000" },
+  { time: "10:30 AM – 11:15 AM", title: "Give Your Coding Agent a Perpetual Sandbox for Isolated Execution", speaker: "Vikram Vaswani", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T103000", end: "20260401T120000" },
 
-  // 10:45 – 11:30 - Main/AI/Community Technical Session, Emerging Workshop 5 starts
-  { time: "10:45 AM – 11:30 AM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
-  { time: "10:45 AM – 11:30 AM", title: "Technical Session", speaker: "TBD", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "10:45 AM – 11:30 AM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Community Track", room: "LT3" },
-  { time: "10:45 AM – 11:30 AM", title: "Workshop - 5", speaker: "TBD", type: "workshop", track: "Emerging Track", room: "CEP 102", start: "20260329T104500", end: "20260329T121500", rowspan: 2 },
+  // 11:15 – 12:00
+  { time: "11:15 AM – 12:00 PM", title: "Speaking the Same Language: an open approach to data", speaker: "Someshwaran Kumar", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "11:15 AM – 12:00 PM", title: "Lessons from building a devtool community", speaker: "Srihari Thyagarajan", type: "talk", track: "AI Track", room: "LT2" },
 
-  // 11:30 – 12:15 - Main Technical, AI/Community CXO, Emerging continues, DevRoom 2 starts
-  { time: "11:30 AM – 12:15 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
-  { time: "11:30 AM – 12:15 PM", title: "CXO Panel Discussion", speaker: "TBD", type: "cxo panel discussion", track: "AI Track", room: "LT2" },
-  { time: "11:30 AM – 12:15 PM", title: "CXO Panel Discussion", speaker: "TBD", type: "cxo panel discussion", track: "Community Track", room: "LT3" },
-  { time: "11:30 AM – 12:15 PM", title: "Workshop - 5", speaker: "TBD", type: "workshop", track: "Emerging Track", room: "CEP 102", start: "20260329T104500", end: "20260329T121500", rowspan: 2 },
-  { time: "11:30 AM – 12:15 PM", title: "Workshop/DevRoom - 2", speaker: "TBD", type: "workshop", track: "DevRoom/Workshop", room: "CEP 110", start: "20260329T113000", end: "20260329T130000", rowspan: 2 },
+  // 12:00 – 12:45
+  { time: "12:00 PM – 12:45 PM", title: "CXO Panel Discussion - The Role of Open Source in Driving Innovation and Collaboration", speaker: "TBD", type: "cxo panel discussion", track: "Main Track", room: "LT1" },
+  { time: "12:00 PM – 12:45 PM", title: "Lunch", speaker: "OSD", type: "break", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
+  { time: "12:00 PM – 12:45 PM", title: "Chainlink Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", start: "20260401T120000", end: "20260401T133000" },
+  { time: "12:00 PM – 12:45 PM", title: "Building Intelligent AI Agent Workflows from Scratch", speaker: "Dr. Nikunj Tahilramani", type: "workshop", track: "CEP 110", room: "CEP 110", start: "20260401T120000", end: "20260401T133000" },
 
-  // 12:15 – 01:00 - Main CXO, AI/Community Lunch, Emerging Technical, DevRoom 2 continues
-  { time: "12:15 PM – 01:00 PM", title: "CXO Panel Discussion", speaker: "TBD", type: "cxo panel discussion", track: "Main Track", room: "LT1" },
-  { time: "12:15 PM – 01:00 PM", title: "Lunch", speaker: "TBD", type: "break", track: "AI Track", room: "LT2" },
-  { time: "12:15 PM – 01:00 PM", title: "Lunch", speaker: "TBD", type: "break", track: "Community Track", room: "LT3" },
-  { time: "12:15 PM – 01:00 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Emerging Track", room: "CEP 102" },
+  // 01:00 – 02:00
+  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "OSD", type: "break", track: "Main Track", room: "LT1" },
+  { time: "01:00 PM – 02:00 PM", title: "Sovereign Intelligence: Deploying Air-Gapped Agentic Workflows for Financial Compliance", speaker: "Chetan Hirapara", type: "talk", track: "AI Track", room: "LT2" },
+  { time: "01:00 PM – 02:00 PM", title: "CEP 102 Lunch", speaker: "OSD", type: "break", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
+  { time: "01:00 PM – 02:00 PM", title: "CEP 110 Lunch", speaker: "OSD", type: "break", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
 
-  // 01:00 – 02:00 - Main Lunch, AI/Community Technical, Emerging Lunch, DevRoom Lunch
-  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "TBD", type: "break", track: "Main Track", room: "LT1" },
-  { time: "01:00 PM – 02:00 PM", title: "Technical Session (Start 1:15 PM)", speaker: "TBD", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "01:00 PM – 02:00 PM", title: "Technical Session (Start 1:15 PM)", speaker: "TBD", type: "talk", track: "Community Track", room: "LT3" },
-  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "TBD", type: "break", track: "Emerging Track", room: "CEP 102" },
-  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "TBD", type: "break", track: "DevRoom/Workshop", room: "CEP 110" },
+  // 02:00 – 02:45
+  { time: "02:00 PM – 02:45 PM", title: "Building a Successful Open Source Community: Best Practices and Lessons Learned", speaker: "TBD", type: "community panel discussion", track: "Main Track", room: "LT1" },
+  { time: "02:00 PM – 02:45 PM", title: "CXO Panel Discussion - Ethics in Open Source: Ownership, Contribution, and Usage Rights", speaker: "TBD", type: "cxo panel discussion", track: "AI Track", room: "LT2" },
 
-  // 02:00 – 02:45 - Main Community Panel, AI Tech, Community Panel, Emerging Tech, DevRoom 3 starts
-  { time: "02:00 PM – 02:45 PM", title: "Community Panel Discussion", speaker: "TBD", type: "community panel discussion", track: "Main Track", room: "LT1" },
-  { time: "02:00 PM – 02:45 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "02:00 PM – 02:45 PM", title: "Community Panel Discussion", speaker: "TBD", type: "community panel discussion", track: "Community Track", room: "LT3" },
-  { time: "02:00 PM – 02:45 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Emerging Track", room: "CEP 102" },
-  { time: "02:00 PM – 02:45 PM", title: "Workshop/DevRoom - 3", speaker: "TBD", type: "workshop", track: "DevRoom/Workshop", room: "CEP 110", start: "20260329T140000", end: "20260329T153000", rowspan: 2 },
+  // 02:45 – 03:15
+  { time: "02:45 PM – 03:15 PM", title: "Open Source Project Succession Planning: Handing Over Leadership Without Losing Momentum", speaker: "Chirag Daxini", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "02:45 PM – 03:15 PM", title: "Building an Open Source Hardware Debugging Tool with React + Electron", speaker: "Jeegar Goyani", type: "talk", track: "AI Track", room: "LT2" },
+  { time: "02:45 PM – 03:15 PM", title: "Think Beyond Logs: Machine Learning, AIOps, and AI Assistant with Elastic!", speaker: "Someshwaran Kumar", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
+  { time: "02:45 PM – 03:15 PM", title: "Building AI Agents with ADK", speaker: "Vrijraj Singh", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
 
-  // 02:45 – 03:30 - Main Tech, AI Community Panel, Community Tech, Emerging Workshop 6 starts, DevRoom 3 cont.
-  { time: "02:45 PM – 03:30 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
-  { time: "02:45 PM – 03:30 PM", title: "Community Panel Discussion", speaker: "TBD", type: "community panel discussion", track: "AI Track", room: "LT2" },
-  { time: "02:45 PM – 03:30 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Community Track", room: "LT3" },
-  { time: "02:45 PM – 03:30 PM", title: "Workshop - 6", speaker: "TBD", type: "workshop", track: "Emerging Track", room: "CEP 102", start: "20260329T144500", end: "20260329T161500", rowspan: 2 },
+  // 03:15 – 03:45
+  { time: "03:15 PM – 03:45 PM", title: "Lightning Talk by Red Hat", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "03:15 PM – 03:45 PM", title: "Inside Gemma: Architecture, Design Decisions, and Building an Open-Source AI Application", speaker: "Krupa Galiya", type: "talk", track: "AI Track", room: "LT2" },
 
-  // 03:30 – 04:15 - Main Tech, AI Tech, Community Tech, Emerging cont, DevRoom 4 starts
-  { time: "03:30 PM – 04:15 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
-  { time: "03:30 PM – 04:15 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "03:30 PM – 04:15 PM", title: "Technical Session", speaker: "TBD", type: "talk", track: "Community Track", room: "LT3" },
-  { time: "03:30 PM – 04:15 PM", title: "Workshop/DevRoom - 4", speaker: "TBD", type: "workshop", track: "DevRoom/Workshop", room: "CEP 110", start: "20260329T153000", end: "20260329T170000", rowspan: 2 },
+  // 03:45 – 04:00
+  { time: "03:45 PM – 04:00 PM", title: "Hackathons Start Projects. Open Source Decides If They Survive", speaker: "Yash Thakare", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "03:45 PM – 04:00 PM", title: "Life Is What YOU Make It - Finding Belonging Through Open Source", speaker: "Sandeep Kanabar", type: "talk", track: "AI Track", room: "LT2" },
 
-  // 04:15 – 05:00 - Closing Keynote (All tracks except ongoing DevRoom is auto skipped)
-  { time: "04:15 PM – 05:00 PM", title: "Closing Keynote", speaker: "TBD", type: "keynote", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "04:15 PM – 05:00 PM", title: "Closing Keynote", speaker: "TBD", type: "keynote", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "04:15 PM – 05:00 PM", title: "Closing Keynote", speaker: "TBD", type: "keynote", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "04:15 PM – 05:00 PM", title: "Closing Keynote", speaker: "TBD", type: "keynote", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
+  // 04:00 – 04:15
+  { time: "04:00 PM – 04:15 PM", title: "YAML to Natural Language: The AI Gateway to Chaos Engineering", speaker: "Pritesh Kiri", type: "talk", track: "AI Track", room: "LT2" },
+  { time: "04:00 PM – 04:15 PM", title: "Google Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 3, start: "20260401T160000", end: "20260401T173000" },
+  { time: "04:00 PM – 04:15 PM", title: "Nasiko", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 3, start: "20260401T160000", end: "20260401T173000" },
 
-  // 05:00 – 05:30 - Closing Remarks (All Tracks)
+  // 04:15 – 05:00
+  { time: "04:15 PM – 05:00 PM", title: "Open source Satellite tracking and Geospatial Intelligence (GEOINT)", speaker: "Ramesh Kumar", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "04:15 PM – 05:00 PM", title: "How Open Source is Shaping the Cloud, AI, and Data Science Ecosystems", speaker: "TBD", type: "Women in Tech Panel", track: "AI Track", room: "LT2" },
+
+  // 05:00 – 05:30
   { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "Main Track", room: "LT1", isForAllTracks: true },
   { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "Community Track", room: "LT3", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "Emerging Track", room: "CEP 102", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "DevRoom/Workshop", room: "CEP 110", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Continuing workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102" },
+  { time: "05:00 PM – 05:30 PM", title: "Continuing workshop", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110" },
 ];
 
 export const workshopSchedule = [

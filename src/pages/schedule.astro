@@ -337,28 +337,21 @@ const formatSessionTimeRange = (start: string, end: string) => {
             id="filter-ai"
             class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-blue-500 transition-all"
           >
-            AI Track (LT2)
+            AI / Emerging / Community Track (LT2)
           </button>
           <button
-            onclick="filterByTrack('Community Track')"
-            id="filter-community"
-            class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-purple-500 transition-all"
-          >
-            Community Track (LT3)
-          </button>
-          <button
-            onclick="filterByTrack('Emerging Track')"
-            id="filter-emerging"
+            onclick="filterByTrack('CEP 102')"
+            id="filter-cep102"
             class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-orange-500 transition-all"
           >
-            Emerging Track (CEP 102)
+            CEP 102 (Devroom/Workshop 1)
           </button>
           <button
-            onclick="filterByTrack('DevRoom/Workshop')"
-            id="filter-devroom"
+            onclick="filterByTrack('CEP 110')"
+            id="filter-cep110"
             class="px-4 py-2 rounded-full text-sm font-semibold bg-white text-gray-700 border-2 border-gray-300 hover:border-teal-500 transition-all"
           >
-            DevRoom/Workshop (CEP 110)
+            CEP 110 (Devroom/Workshop 2)
           </button>
         </div>
       </div>
@@ -369,11 +362,10 @@ const formatSessionTimeRange = (start: string, end: string) => {
           <table class="w-full border-collapse table-fixed">
             <colgroup>
               <col style="width: 110px;" />
-              <col style="width: 18%;" />
-              <col style="width: 18%;" />
-              <col style="width: 18%;" />
-              <col style="width: 18%;" />
-              <col style="width: 18%;" />
+              <col style="width: 22%;" />
+              <col style="width: 22%;" />
+              <col style="width: 22%;" />
+              <col style="width: 22%;" />
             </colgroup>
             <!-- Header Row -->
             <thead>
@@ -387,26 +379,20 @@ const formatSessionTimeRange = (start: string, end: string) => {
                 </th>
                 <th data-track="AI Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
                   <div class="flex flex-col items-center gap-1">
-                    <span>AI Track</span>
+                    <span>AI / Emerging / Community Track</span>
                     <span class="text-xs font-normal text-green-100">LT2</span>
                   </div>
                 </th>
-                <th data-track="Community Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                <th data-track="CEP 102" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
                   <div class="flex flex-col items-center gap-1">
-                    <span>Community Track</span>
-                    <span class="text-xs font-normal text-green-100">LT3</span>
+                    <span>CEP 102</span>
+                    <span class="text-xs font-normal text-green-100">Devroom/Workshop 1</span>
                   </div>
                 </th>
-                <th data-track="Emerging Track" class="px-4 py-4 text-center font-bold text-sm border-r border-green-500">
+                <th data-track="CEP 110" class="px-4 py-4 text-center font-bold text-sm">
                   <div class="flex flex-col items-center gap-1">
-                    <span>Emerging Track</span>
-                    <span class="text-xs font-normal text-green-100">CEP 102</span>
-                  </div>
-                </th>
-                <th data-track="DevRoom/Workshop" class="px-4 py-4 text-center font-bold text-sm">
-                  <div class="flex flex-col items-center gap-1">
-                    <span>DevRoom/Workshop</span>
-                    <span class="text-xs font-normal text-green-100">CEP 110</span>
+                    <span>CEP 110</span>
+                    <span class="text-xs font-normal text-green-100">Devroom/Workshop 2</span>
                   </div>
                 </th>
               </tr>
@@ -418,20 +404,21 @@ const formatSessionTimeRange = (start: string, end: string) => {
                 (() => {
                   const timeSlots = [
                     "08:00 AM – 09:30 AM",
-                    "09:30 AM – 10:00 AM",
-                    "10:00 AM – 10:15 AM",
-                    "10:15 AM – 10:45 AM",
-                    "10:45 AM – 11:30 AM",
-                    "11:30 AM – 12:15 PM",
-                    "12:15 PM – 01:00 PM",
+                    "09:30 AM – 09:45 AM",
+                    "09:45 AM – 10:15 AM",
+                    "10:30 AM – 11:15 AM",
+                    "11:15 AM – 12:00 PM",
+                    "12:00 PM – 12:45 PM",
                     "01:00 PM – 02:00 PM",
                     "02:00 PM – 02:45 PM",
-                    "02:45 PM – 03:30 PM",
-                    "03:30 PM – 04:15 PM",
+                    "02:45 PM – 03:15 PM",
+                    "03:15 PM – 03:45 PM",
+                    "03:45 PM – 04:00 PM",
+                    "04:00 PM – 04:15 PM",
                     "04:15 PM – 05:00 PM",
                     "05:00 PM – 05:30 PM",
                   ];
-                  const tracks = ["Main Track", "AI Track", "Community Track", "Emerging Track", "DevRoom/Workshop"];
+                  const tracks = ["Main Track", "AI Track", "CEP 102", "CEP 110"];
 
                   const rowSpanTracker = /** @type {{[key: string]: number;}} */ ({});
 
@@ -470,43 +457,11 @@ const formatSessionTimeRange = (start: string, end: string) => {
                     // Check for a full all-track event to render as one merged cell
                     const allTrackCandidate = tracks.map((track) => sessionsByTrack[track].session).filter(Boolean);
                     const isAllTrack =
-                      allTrackCandidate.length === 5 && allTrackCandidate.every((s: any) => s.isForAllTracks && s.title === allTrackCandidate[0].title);
+                      allTrackCandidate.length === tracks.length && allTrackCandidate.every((s: any) => s.isForAllTracks && s.title === allTrackCandidate[0].title);
 
                     const cellList: any[] = [];
 
-                    // Special 10:15 row: merge first 4 track Opening Keynote cards into one, keep DevRoom workshop as separate cell
-                    const isOpeningKeynoteRow = time === "10:15 AM – 10:45 AM";
-                    const openingGroupTracks = ["Main Track", "AI Track", "Community Track", "Emerging Track"];
-                    const hasOpening4 =
-                      isOpeningKeynoteRow &&
-                      openingGroupTracks.every((track) => {
-                        const s = sessionsByTrack[track];
-                        return s.session && s.session.title === "Opening Keynote" && s.session.isForAllTracks;
-                      });
-
-                    if (hasOpening4) {
-                      const mergedSession = sessionsByTrack["Main Track"].session;
-                      cellList.push({
-                        session: mergedSession,
-                        tracksInMerge: [...openingGroupTracks],
-                        isMerged: true,
-                        rowSpan: 1,
-                      });
-
-                      const devRoomEntry = sessionsByTrack["DevRoom/Workshop"];
-                      if (devRoomEntry.skipCell) {
-                        cellList.push({ skipCell: true });
-                      } else if (devRoomEntry.empty || !devRoomEntry.session) {
-                        cellList.push({ empty: true });
-                      } else {
-                        cellList.push({
-                          session: devRoomEntry.session,
-                          tracksInMerge: ["DevRoom/Workshop"],
-                          isMerged: false,
-                          rowSpan: devRoomEntry.rowSpan || 1,
-                        });
-                      }
-                    } else if (isAllTrack) {
+                    if (isAllTrack) {
                       const mergedSession = allTrackCandidate[0];
                       cellList.push({
                         session: mergedSession,
@@ -556,7 +511,7 @@ const formatSessionTimeRange = (start: string, end: string) => {
                         const s = getStyle(session.type);
                         const sessionId = `session-grid-${eventSchedule.indexOf(session)}`;
                         const trackLabel = cell.isMerged
-                          ? cell.tracksInMerge.length === 5
+                          ? cell.tracksInMerge.length === tracks.length
                             ? "All Tracks"
                             : `${cell.tracksInMerge.length} Tracks`
                           : cell.tracksInMerge[0];
@@ -673,10 +628,13 @@ const formatSessionTimeRange = (start: string, end: string) => {
                 }
               }
 
-              const cardTrack = session.isForAllTracks ? "All Tracks" : session.track;
+              let cardTrack = session.isForAllTracks ? "All Tracks" : session.track;
+              if (cardTrack === "AI Track") cardTrack = "AI/Emerging/Community Track";
+              if (cardTrack === "CEP 102") cardTrack = "Devroom/Workshop 1";
+              if (cardTrack === "CEP 110") cardTrack = "Devroom/Workshop 2";
 
               return (
-                <div class="mobile-session-card border border-gray-200 rounded-xl p-4 bg-white shadow-sm" data-track={cardTrack}>
+                <div class="mobile-session-card border border-gray-200 rounded-xl p-4 bg-white shadow-sm" data-track={cardTrack} data-real-track={session.track}>
                   <div class="flex justify-between items-start gap-2 mb-2 flex-wrap">
                     <span class="text-xs font-bold text-green-600 font-mono">{sessionTimeText}</span>
                     <span class={`text-xs font-semibold px-2 py-1 rounded ${sstyle.pill}`}>{sstyle.label}</span>
@@ -1213,9 +1171,8 @@ const formatSessionTimeRange = (start: string, end: string) => {
       all: "filter-all",
       "Main Track": "filter-main",
       "AI Track": "filter-ai",
-      "Community Track": "filter-community",
-      "Emerging Track": "filter-emerging",
-      "DevRoom/Workshop": "filter-devroom",
+      "CEP 102": "filter-cep102",
+      "CEP 110": "filter-cep110",
     };
 
     const activeBtn = document.getElementById(trackToId[track] || "filter-all");
@@ -1256,7 +1213,7 @@ const formatSessionTimeRange = (start: string, end: string) => {
           th.colSpan = 1;
         } else if (thTrack === track) {
           th.style.display = "";
-          th.colSpan = 5;
+          th.colSpan = 4;
         } else {
           th.style.display = "none";
         }
@@ -1311,8 +1268,18 @@ const formatSessionTimeRange = (start: string, end: string) => {
         return;
       }
 
-      const cardTrack = card.getAttribute("data-track");
-      card.style.display = cardTrack === "All Tracks" || cardTrack === track ? "" : "none";
+      const cardTrack = card.getAttribute("data-track") || "";
+      const realTrack = card.getAttribute("data-real-track") || "";
+      const normalizedTrack =
+        cardTrack === "AI/Emerging/Community Track" ? "AI Track" :
+        cardTrack === "Devroom/Workshop 1" ? "CEP 102" :
+        cardTrack === "Devroom/Workshop 2" ? "CEP 110" :
+        realTrack || cardTrack;
+
+      card.style.display =
+        cardTrack === "All Tracks" || normalizedTrack === track || cardTrack === track
+          ? ""
+          : "none";
     });
   };
 
