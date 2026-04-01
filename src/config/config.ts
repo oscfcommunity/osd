@@ -176,15 +176,15 @@ export const eventSchedule = [
 
   // 12:00 – 12:45
   { time: "12:00 PM – 12:45 PM", title: "CXO Panel Discussion - The Role of Open Source in Driving Innovation and Collaboration", speaker: "TBD", type: "cxo panel discussion", track: "Main Track", room: "LT1" },
-  { time: "12:00 PM – 12:45 PM", title: "Lunch", speaker: "TBD", type: "break", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
+  { time: "12:00 PM – 12:45 PM", title: "Lunch", speaker: "OSD", type: "break", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
   { time: "12:00 PM – 12:45 PM", title: "Chainlink Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", start: "20260401T120000", end: "20260401T133000" },
   { time: "12:00 PM – 12:45 PM", title: "Building Intelligent AI Agent Workflows from Scratch", speaker: "Dr. Nikunj Tahilramani", type: "workshop", track: "CEP 110", room: "CEP 110", start: "20260401T120000", end: "20260401T133000" },
 
   // 01:00 – 02:00
-  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "", type: "break", track: "Main Track", room: "LT1" },
+  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "OSD", type: "break", track: "Main Track", room: "LT1" },
   { time: "01:00 PM – 02:00 PM", title: "Sovereign Intelligence: Deploying Air-Gapped Agentic Workflows for Financial Compliance", speaker: "Chetan Hirapara", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "01:00 PM – 02:00 PM", title: "CEP 102 Lunch", speaker: "", type: "break", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
-  { time: "01:00 PM – 02:00 PM", title: "CEP 110 Lunch", speaker: "", type: "break", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
+  { time: "01:00 PM – 02:00 PM", title: "CEP 102 Lunch", speaker: "OSD", type: "break", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
+  { time: "01:00 PM – 02:00 PM", title: "CEP 110 Lunch", speaker: "OSD", type: "break", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
 
   // 02:00 – 02:45
   { time: "02:00 PM – 02:45 PM", title: "Building a Successful Open Source Community: Best Practices and Lessons Learned", speaker: "TBD", type: "community panel discussion", track: "Main Track", room: "LT1" },
