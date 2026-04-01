@@ -608,6 +608,8 @@ const formatSessionTimeRange = (start: string, end: string) => {
             const seenKeys = new Set();
             for (const session of eventSchedule) {
               if ((session as any).isContinuation) continue;
+              // Hide continuing placeholder items for mobile cards so each workshop is shown once.
+              if (session.title === "Continuing workshop") continue;
               const key = session.isForAllTracks ? `${session.title}__${session.time}__ALL` : `${session.title}__${session.track}__${session.time}`;
               if (seenKeys.has(key)) continue;
               seenKeys.add(key);
