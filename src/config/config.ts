@@ -171,18 +171,18 @@ export const eventSchedule = [
   { time: "10:30 AM – 11:15 AM", title: "Give Your Coding Agent a Perpetual Sandbox for Isolated Execution", speaker: "Vikram Vaswani", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T103000", end: "20260401T120000" },
 
   // 11:15 – 12:00
-  { time: "11:15 AM – 12:00 PM", title: "Speaking the Same Language: an open approach to data", speaker: "Someshwaran Kumar", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "11:15 AM – 12:00 PM", title: "Speaking the Same Language: an open approach to data", speaker: "Someshwaran M", type: "talk", track: "Main Track", room: "LT1" },
   { time: "11:15 AM – 12:00 PM", title: "Lessons from building a devtool community", speaker: "Srihari Thyagarajan", type: "talk", track: "AI Track", room: "LT2" },
 
   // 12:00 – 12:45
   { time: "12:00 PM – 12:45 PM", title: "CXO Panel Discussion - The Role of Open Source in Driving Innovation and Collaboration", speaker: "TBD", type: "cxo panel discussion", track: "Main Track", room: "LT1" },
-  { time: "12:00 PM – 12:45 PM", title: "Lunch", speaker: "OSD", type: "break", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
+  { time: "12:00 PM – 12:45 PM", title: "Sovereign Intelligence: Deploying Air-Gapped Agentic Workflows for Financial Compliance", speaker: "Chetan Hirapara", type: "talk", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
   { time: "12:00 PM – 12:45 PM", title: "Chainlink Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", start: "20260401T120000", end: "20260401T133000" },
   { time: "12:00 PM – 12:45 PM", title: "Building Intelligent AI Agent Workflows from Scratch", speaker: "Dr. Nikunj Tahilramani", type: "workshop", track: "CEP 110", room: "CEP 110", start: "20260401T120000", end: "20260401T133000" },
 
   // 01:00 – 02:00
   { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "OSD", type: "break", track: "Main Track", room: "LT1" },
-  { time: "01:00 PM – 02:00 PM", title: "Sovereign Intelligence: Deploying Air-Gapped Agentic Workflows for Financial Compliance", speaker: "Chetan Hirapara", type: "talk", track: "AI Track", room: "LT2" },
+  { time: "01:00 PM – 02:00 PM", title: "Lunch", speaker: "OSD", type: "break", track: "AI Track", room: "LT2" },
   { time: "01:00 PM – 02:00 PM", title: "CEP 102 Lunch", speaker: "OSD", type: "break", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
   { time: "01:00 PM – 02:00 PM", title: "CEP 110 Lunch", speaker: "OSD", type: "break", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T133000", end: "20260401T144500" },
 
@@ -193,7 +193,7 @@ export const eventSchedule = [
   // 02:45 – 03:15
   { time: "02:45 PM – 03:15 PM", title: "Open Source Project Succession Planning: Handing Over Leadership Without Losing Momentum", speaker: "Chirag Daxini", type: "talk", track: "Main Track", room: "LT1" },
   { time: "02:45 PM – 03:15 PM", title: "Building an Open Source Hardware Debugging Tool with React + Electron", speaker: "Jeegar Goyani", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "02:45 PM – 03:15 PM", title: "Think Beyond Logs: Machine Learning, AIOps, and AI Assistant with Elastic!", speaker: "Someshwaran Kumar", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
+  { time: "02:45 PM – 03:15 PM", title: "Think Beyond Logs: Machine Learning, AIOps, and AI Assistant with Elastic!", speaker: "Someshwaran M", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
   { time: "02:45 PM – 03:15 PM", title: "Building AI Agents with ADK", speaker: "Vrijraj Singh", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
 
   // 03:15 – 03:45
@@ -201,13 +201,13 @@ export const eventSchedule = [
   { time: "03:15 PM – 03:45 PM", title: "Inside Gemma: Architecture, Design Decisions, and Building an Open-Source AI Application", speaker: "Krupa Galiya", type: "talk", track: "AI Track", room: "LT2" },
 
   // 03:45 – 04:00
-  { time: "03:45 PM – 04:00 PM", title: "Hackathons Start Projects. Open Source Decides If They Survive", speaker: "Yash Thakare", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "03:45 PM – 04:00 PM", title: "Hackathons Start Projects. Open Source Decides If They Survive", speaker: "Yash Thakare", type: "talk", track: "Main Track", room: "LT1" , rowspan:2},
   { time: "03:45 PM – 04:00 PM", title: "Life Is What YOU Make It - Finding Belonging Through Open Source", speaker: "Sandeep Kanabar", type: "talk", track: "AI Track", room: "LT2" },
 
   // 04:00 – 04:15
   { time: "04:00 PM – 04:15 PM", title: "YAML to Natural Language: The AI Gateway to Chaos Engineering", speaker: "Pritesh Kiri", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "04:00 PM – 04:15 PM", title: "Google Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 3, start: "20260401T160000", end: "20260401T173000" },
-  { time: "04:00 PM – 04:15 PM", title: "Nasiko", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 3, start: "20260401T160000", end: "20260401T173000" },
+  { time: "04:00 PM – 04:15 PM", title: "Google Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
+  { time: "04:00 PM – 04:15 PM", title: "Nasiko", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
 
   // 04:15 – 05:00
   { time: "04:15 PM – 05:00 PM", title: "Open source Satellite tracking and Geospatial Intelligence (GEOINT)", speaker: "Ramesh Kumar", type: "talk", track: "Main Track", room: "LT1" },
@@ -216,8 +216,8 @@ export const eventSchedule = [
   // 05:00 – 05:30
   { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "Main Track", room: "LT1", isForAllTracks: true },
   { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Continuing workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102" },
-  { time: "05:00 PM – 05:30 PM", title: "Continuing workshop", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110" },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 ];
 
 export const workshopSchedule = [
