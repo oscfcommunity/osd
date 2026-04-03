@@ -147,22 +147,22 @@ export const CALLS_2026 = [
 
 export const eventSchedule = [
   // 08:00 – 09:30 - Registration & Welcome Kit (All Tracks)
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
-  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "TBD", type: "registration", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "", type: "registration", track: "Main Track", room: "Entry Gate", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "", type: "registration", track: "AI Track", room: "Entry Gate", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "", type: "registration", track: "CEP 102", room: "Entry Gate", isForAllTracks: true },
+  { time: "08:00 AM – 09:30 AM", title: "Registration & Welcome Kit", speaker: "", type: "registration", track: "CEP 110", room: "Entry Gate", isForAllTracks: true },
 
   // 09:30 – 09:45 - Welcome Note (All Tracks)
-  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
-  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "TBD", type: "opening", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "Viral Parmar", type: "opening", track: "Main Track", room: "LT1", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "Viral Parmar", type: "opening", track: "AI Track", room: "LT2", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "Viral Parmar", type: "opening", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "09:30 AM – 09:45 AM", title: "Welcome Note", speaker: "Viral Parmar", type: "opening", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 
   // 09:45 – 10:15 - Opening Keynote (All Tracks)
-  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
-  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "TBD", type: "keynote", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "Vishal Rajpurohit", type: "keynote", track: "Main Track", room: "LT1", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "Vishal Rajpurohit", type: "keynote", track: "AI Track", room: "LT2", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "Vishal Rajpurohit", type: "keynote", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "09:45 AM – 10:15 AM", title: "Opening Keynote", speaker: "Vishal Rajpurohit", type: "keynote", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 
   // 10:30 – 11:15
   { time: "10:30 AM – 11:15 AM", title: "Building Visual Agent Experiences Using MCP Apps", speaker: "Ashita Prasad", type: "talk", track: "Main Track", room: "LT1" },
@@ -177,7 +177,7 @@ export const eventSchedule = [
   // 12:00 – 12:45
   { time: "12:00 PM – 12:45 PM", title: "CXO Panel Discussion - The Role of Open Source in Driving Innovation and Collaboration", speaker: "TBD", type: "cxo panel discussion", track: "Main Track", room: "LT1" },
   { time: "12:00 PM – 12:45 PM", title: "Sovereign Intelligence: Deploying Air-Gapped Agentic Workflows for Financial Compliance", speaker: "Chetan Hirapara", type: "talk", track: "AI Track", room: "LT2", start: "20260401T120000", end: "20260401T130000" },
-  { time: "12:00 PM – 12:45 PM", title: "Chainlink Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", start: "20260401T120000", end: "20260401T133000" },
+  { time: "12:00 PM – 12:45 PM", title: "Chainlink Workshop", speaker: "Sagar Jethi", type: "workshop", track: "CEP 102", room: "CEP 102", start: "20260401T120000", end: "20260401T133000" },
   { time: "12:00 PM – 12:45 PM", title: "Building Intelligent AI Agent Workflows from Scratch", speaker: "Dr. Nikunj Tahilramani", type: "workshop", track: "CEP 110", room: "CEP 110", start: "20260401T120000", end: "20260401T133000" },
 
   // 01:00 – 02:00
@@ -197,7 +197,7 @@ export const eventSchedule = [
   { time: "02:45 PM – 03:15 PM", title: "Building AI Agents with ADK", speaker: "Vrijraj Singh", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 3, start: "20260401T144500", end: "20260401T160000" },
 
   // 03:15 – 03:45
-  { time: "03:15 PM – 03:45 PM", title: "Lightning Talk by Red Hat", speaker: "TBD", type: "talk", track: "Main Track", room: "LT1" },
+  { time: "03:15 PM – 03:45 PM", title: "Lightning Talk by Red Hat", speaker: "Anand Reddy & Aniket Paluskar", type: "talk", track: "Main Track", room: "LT1" },
   { time: "03:15 PM – 03:45 PM", title: "Inside Gemma: Architecture, Design Decisions, and Building an Open-Source AI Application", speaker: "Krupa Galiya", type: "talk", track: "AI Track", room: "LT2" },
 
   // 03:45 – 04:00
@@ -206,18 +206,18 @@ export const eventSchedule = [
 
   // 04:00 – 04:15
   { time: "04:00 PM – 04:15 PM", title: "YAML to Natural Language: The AI Gateway to Chaos Engineering", speaker: "Pritesh Kiri", type: "talk", track: "AI Track", room: "LT2" },
-  { time: "04:00 PM – 04:15 PM", title: "Google Workshop", speaker: "TBD", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
-  { time: "04:00 PM – 04:15 PM", title: "Nasiko", speaker: "TBD", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
+  { time: "04:00 PM – 04:15 PM", title: "Google Workshop", speaker: "Nilay Chauhan", type: "workshop", track: "CEP 102", room: "CEP 102", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
+  { time: "04:00 PM – 04:15 PM", title: "Nasiko", speaker: "Ashish Sharma", type: "workshop", track: "CEP 110", room: "CEP 110", rowspan: 2, start: "20260401T160000", end: "20260401T170000" },
 
   // 04:15 – 05:00
   { time: "04:15 PM – 05:00 PM", title: "Open source Satellite tracking and Geospatial Intelligence (GEOINT)", speaker: "Ramesh Kumar", type: "talk", track: "Main Track", room: "LT1" },
   { time: "04:15 PM – 05:00 PM", title: "How Open Source is Shaping the Cloud, AI, and Data Science Ecosystems", speaker: "TBD", type: "Women in Tech Panel", track: "AI Track", room: "LT2" },
 
   // 05:00 – 05:30
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "Main Track", room: "LT1", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "AI Track", room: "LT2", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
-  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "TBD", type: "closing", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "Neel Shah", type: "closing", track: "Main Track", room: "LT1", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "Neel Shah", type: "closing", track: "AI Track", room: "LT2", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "Neel Shah", type: "closing", track: "CEP 102", room: "CEP 102", isForAllTracks: true },
+  { time: "05:00 PM – 05:30 PM", title: "Closing Remarks", speaker: "Neel Shah", type: "closing", track: "CEP 110", room: "CEP 110", isForAllTracks: true },
 ];
 
 export const workshopSchedule = [
