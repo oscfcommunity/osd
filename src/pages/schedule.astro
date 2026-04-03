@@ -457,7 +457,8 @@ const formatSessionTimeRange = (start: string, end: string) => {
                     // Check for a full all-track event to render as one merged cell
                     const allTrackCandidate = tracks.map((track) => sessionsByTrack[track].session).filter(Boolean);
                     const isAllTrack =
-                      allTrackCandidate.length === tracks.length && allTrackCandidate.every((s: any) => s.isForAllTracks && s.title === allTrackCandidate[0].title);
+                      allTrackCandidate.length === tracks.length &&
+                      allTrackCandidate.every((s: any) => s.isForAllTracks && s.title === allTrackCandidate[0].title);
 
                     const cellList: any[] = [];
 
@@ -551,7 +552,7 @@ const formatSessionTimeRange = (start: string, end: string) => {
 
                                 {sessionTimeText && <p class="text-gray-500 text-xs mb-1">{sessionTimeText}</p>}
 
-                                <p class="text-gray-600 text-xs mb-1.5">by {session.speaker}</p>
+                                {session.speaker && session.speaker !== "TBD" && <p class="text-gray-600 text-xs mb-1.5">by {session.speaker}</p>}
 
                                 <p class="text-gray-500 text-xs mb-2.5 flex items-center gap-1.5">
                                   <svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -636,7 +637,11 @@ const formatSessionTimeRange = (start: string, end: string) => {
               if (cardTrack === "CEP 110") cardTrack = "Devroom/Workshop 2";
 
               return (
-                <div class="mobile-session-card border border-gray-200 rounded-xl p-4 bg-white shadow-sm" data-track={cardTrack} data-real-track={session.track}>
+                <div
+                  class="mobile-session-card border border-gray-200 rounded-xl p-4 bg-white shadow-sm"
+                  data-track={cardTrack}
+                  data-real-track={session.track}
+                >
                   <div class="flex justify-between items-start gap-2 mb-2 flex-wrap">
                     <span class="text-xs font-bold text-green-600 font-mono">{sessionTimeText}</span>
                     <span class={`text-xs font-semibold px-2 py-1 rounded ${sstyle.pill}`}>{sstyle.label}</span>
@@ -748,6 +753,24 @@ const formatSessionTimeRange = (start: string, end: string) => {
   }
   .card-added {
     animation: addedPulse 0.5s ease-out;
+  }
+
+  /* Equal height cards inside table cells trick */
+  td.schedule-item {
+    height: 1px;
+  }
+  td.schedule-item > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  td.schedule-item > div > .pl-2 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  td.schedule-item .agenda-add-btn {
+    margin-top: auto;
   }
 </style>
 
@@ -1273,15 +1296,15 @@ const formatSessionTimeRange = (start: string, end: string) => {
       const cardTrack = card.getAttribute("data-track") || "";
       const realTrack = card.getAttribute("data-real-track") || "";
       const normalizedTrack =
-        cardTrack === "AI/Emerging/Community Track" ? "AI Track" :
-        cardTrack === "Devroom/Workshop 1" ? "CEP 102" :
-        cardTrack === "Devroom/Workshop 2" ? "CEP 110" :
-        realTrack || cardTrack;
+        cardTrack === "AI/Emerging/Community Track"
+          ? "AI Track"
+          : cardTrack === "Devroom/Workshop 1"
+            ? "CEP 102"
+            : cardTrack === "Devroom/Workshop 2"
+              ? "CEP 110"
+              : realTrack || cardTrack;
 
-      card.style.display =
-        cardTrack === "All Tracks" || normalizedTrack === track || cardTrack === track
-          ? ""
-          : "none";
+      card.style.display = cardTrack === "All Tracks" || normalizedTrack === track || cardTrack === track ? "" : "none";
     });
   };
 
