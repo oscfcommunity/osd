@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "^4.1.13",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
+    "@use-gesture/react": "^10.3.1",
     "astro": "^5.13.5",
     "graphql": "^16.13.1",
     "graphql-request": "^7.4.0",
