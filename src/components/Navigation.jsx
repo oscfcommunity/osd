@@ -18,18 +18,17 @@ const Navigation = (props) => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
           ? "bg-white/85 backdrop-blur-xl border-b border-green-500/20 shadow-lg text-shadow-sm text-shadow-green-500/5"
           : "bg-white backdrop-blur-sm"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <div className="nav-item flex items-center">
             <a href="/" className="flex items-center">
               <img
-                src={BRANDING.logos.main.src}
+                src={BRANDING.logos.main?.src || BRANDING.logos.main}
                 alt="OSW Logo"
                 className="w-8 h-8 mr-2"
               />
@@ -51,17 +50,15 @@ const Navigation = (props) => {
                   className={
                     isTickets
                       ? `bg-green-300 hover:bg-green-500 hover:text-white text-black px-4 lg:px-6 py-2 rounded-full font-semibold transition-all duration-200 glow-effect hover:scale-105 text-sm lg:text-base`
-                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${
-                          isActivePath ? "text-green-600" : ""
-                        }`
+                      : `nav-item text-black hover:text-green-600 transition-colors duration-200 relative group font-medium ${isActivePath ? "text-green-600" : ""
+                      }`
                   }
                 >
                   {item.name}
                   {!isTickets && (
                     <span
-                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${
-                        isActivePath ? "w-full" : ""
-                      }`}
+                      className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-green-600 transition-all duration-200  ${isActivePath ? "w-full" : ""
+                        }`}
                     ></span>
                   )}
                 </a>
