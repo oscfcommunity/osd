@@ -1,81 +1,16 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import "@/styles/2025/global.css";
-
-import { ticketsData } from "@/lib/graphql/queries/tickets.query.ts";
-// console.log(JSON.stringify(ticketsData, null, 2));
+import PageHero from "@/components/PageHero.jsx";
 ---
 
 <Layout title="Purchase — Open Source Day 2026" activePath="/purchase">
-  <!-- Konfub Widget -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-6xl mx-auto">
-      <iframe src="https://konfhub.com/widget/open-source-day-2026?desc=true&secondaryBg=f8fafc&ticketBg=f8fafc&borderCl=f8fafc&bg=e4ffe9&fontColor=000000&ticketCl=000000&btnColor=22c55e&fontFamily=Hind&borderRadius=10&widget_type=standard&tickets=82196%2C82197%2C82262%2C82264%2C82265%2C82266"
-        id="konfhub-widget"
-        title="Register for Open Source Day 2026"
-        width="100%"
-        height="3000"
-      >
-      </iframe>
-    </div>
-  </section>
-
-  <!-- What's Included -->
-  <section class="py-20 px-4 bg-gray-50">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">What's <span class="gradient-text">Included</span></h2>
-        <p class="text-gray-500">Everything you get with your OSD 2026 ticket</p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {
-          [
-            { label: "Full Conference Access", desc: "Access all keynotes, talks, panels, and networking sessions throughout the day." },
-            { label: "Lunch & Refreshments", desc: "Enjoy complimentary lunch and refreshments throughout the event." },
-            { label: "OSD Goodies", desc: "Take home exclusive OSD merchandise and community goodies." },
-          ].map(({ label, desc }) => (
-            <div class="border border-gray-100 bg-white hover:border-green-200 hover:shadow-md p-7 rounded-2xl transition-all duration-300">
-              <div class="w-8 h-8 mb-4 rounded-lg bg-green-50 border border-green-100 flex items-center justify-center">
-                <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                </svg>
-              </div>
-              <h3 class="font-bold text-gray-900 mb-2">{label}</h3>
-              <p class="text-gray-500 text-sm leading-relaxed">{desc}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-20 px-4 bg-white">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-3">Frequently Asked <span class="gradient-text">Questions</span></h2>
-      </div>
-      <div class="space-y-4">
-        {
-          [
-            { q: "When will tickets go on sale?", a: "Tickets are live now." },
-            { q: "Can I get a refund?", a: "Tickets are Non refundable and non transferable" },
-            { q: "Are student discounts available?", a: "No discount for students." },
-            { q: "What's included in the ticket?", a: "All tickets include conference access, lunch, keynotes, panels, and OSD goodies." },
-          ].map((faq) => (
-            <div class="border border-gray-100 bg-white hover:border-green-200 p-5 rounded-2xl transition-all">
-              <h4 class="font-bold text-gray-900 mb-2">{faq.q}</h4>
-              <p class="text-gray-500 text-sm leading-relaxed">{faq.a}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  <!-- Bottom CTA -->
-  <section class="py-16 px-4 bg-gray-50 text-center">
-    <h3 class="text-xl font-bold text-gray-900 mb-2">Questions about <span class="gradient-text">tickets?</span></h3>
-    <a href="mailto:opensourceweekend@gmail.com" class="text-green-600 hover:underline font-semibold">opensourceweekend@gmail.com</a>
-  </section>
+  <PageHero
+    client:load
+    badge="REGISTRATION CLOSED"
+    title="OSD 2026"
+    titleGradient="TICKETS"
+    subtitle="Tickets for Open Source Day 2026 are now closed. Thank you for making it an awesome event!"
+    primaryCta={{ text: "Go Home", href: "/", external: false }}
+  />
 </Layout>

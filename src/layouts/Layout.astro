@@ -49,7 +49,7 @@ const { title = SITE.title, description = SITE.description, ogImage = SITE.ogIma
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
 
     <!-- View Transition -->
     <ClientRouter />
@@ -67,7 +67,7 @@ const { title = SITE.title, description = SITE.description, ogImage = SITE.ogIma
     </script>
   </head>
   <body>
-    <Navigation client:only transition:persist activePath={activePath} />
+    <Navigation client:load transition:persist activePath={activePath} />
     <main class="pt-16 md:pt-0 lg:pt-0" transition:animate="fade">
       <slot />
     </main>

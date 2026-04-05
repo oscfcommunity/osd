@@ -68,7 +68,6 @@ export const NAVIGATION = {
     { name: "Speakers", href: "/speakers" },
     { name: "Schedule", href: "/schedule" },
     { name: "Team", href: "/team" },
-    { name: "Tickets", href: "/tickets" },
     { name: "Sponsors", href: "/sponsors" },
     { name: "Venue", href: "/venue" },
     { name: "Past Events", href: "/past-events" },
@@ -109,8 +108,8 @@ export const CALLS_2026 = [
     href: "/cfs",
     emoji: "🤝",
     color: "from-amber-500 to-orange-600",
-    badge: "Open",
-    deadline: "31st March 2026",
+    badge: "CLOSED",
+    deadline: "Application Closed",
     enable: false,
   },
   {
@@ -119,8 +118,8 @@ export const CALLS_2026 = [
     href: "/cfc",
     emoji: "🌐",
     color: "from-sky-500 to-blue-600",
-    badge: "Open",
-    deadline: "31st March 2026",
+    badge: "CLOSED",
+    deadline: "Application Closed",
     enable: false,
   },
   {
@@ -139,8 +138,8 @@ export const CALLS_2026 = [
     href: "/cfb",
     emoji: "🏢",
     color: "from-gray-500 to-gray-600",
-    badge: "Open",
-    deadline: "31st March 2026",
+    badge: "CLOSED",
+    deadline: "Application Closed",
     enable: false,
   },
 ];
@@ -201,7 +200,7 @@ export const eventSchedule = [
   { time: "03:15 PM – 03:45 PM", title: "Inside Gemma: Architecture, Design Decisions, and Building an Open-Source AI Application", speaker: "Krupa Galiya", type: "talk", track: "AI Track", room: "LT2" },
 
   // 03:45 – 04:00
-  { time: "03:45 PM – 04:00 PM", title: "Hackathons Start Projects. Open Source Decides If They Survive", speaker: "Yash Thakare", type: "talk", track: "Main Track", room: "LT1" , rowspan:2},
+  { time: "03:45 PM – 04:00 PM", title: "Hackathons Start Projects. Open Source Decides If They Survive", speaker: "Yash Thakare", type: "talk", track: "Main Track", room: "LT1", rowspan: 2 },
   { time: "03:45 PM – 04:00 PM", title: "Life Is What YOU Make It - Finding Belonging Through Open Source", speaker: "Sandeep Kanabar", type: "talk", track: "AI Track", room: "LT2" },
 
   // 04:00 – 04:15
@@ -324,13 +323,13 @@ export const TICKETS = [
     description: "Super Early Bird pricing with full conference access. Limited availability!",
     features: ["Full-access to conference", "Breakfast & Lunch", "Keynotes, Panels, Workshop", "OSD Goodies", "Super Early Bird Discount"],
     popular: true,
-    available: true,
+    available: false,
     alert: {
       text: "Most Awaited",
       classes: "text-white bg-green-500",
     },
     konfhubUrl: "/purchase",
-    linkText: "Register Now",
+    linkText: "Sales Closed",
   },
   {
     name: "Early Bird Ticket",
@@ -345,7 +344,7 @@ export const TICKETS = [
       classes: "text-white bg-green-500",
     },
     konfhubUrl: "/purchase",
-    linkText: "Coming Soon",
+    linkText: "Sales Closed",
   },
   {
     name: "Regular Ticket",
@@ -360,7 +359,7 @@ export const TICKETS = [
       classes: "text-white bg-green-600",
     },
     konfhubUrl: "/purchase",
-    linkText: "Coming Soon",
+    linkText: "Sales Closed",
   },
   {
     name: "Community Fan",
@@ -376,13 +375,13 @@ export const TICKETS = [
       "Digital Certificate",
     ],
     popular: false,
-    available: true,
+    available: false,
     alert: {
       text: "Most Preferred",
       classes: "text-white bg-blue-500",
     },
     konfhubUrl: "/purchase",
-    linkText: "Register Now",
+    linkText: "Sales Closed",
   },
   {
     name: "Supporter Ticket",
@@ -399,9 +398,9 @@ export const TICKETS = [
       "Priority Pass",
     ],
     popular: false,
-    available: true,
+    available: false,
     konfhubUrl: "/purchase",
-    linkText: "Register Now",
+    linkText: "Sales Closed",
   },
   {
     name: "Silver Ticket",
@@ -421,9 +420,9 @@ export const TICKETS = [
       "Networking Dinner with Speakers , sponsors , organizers and some special industry invitees",
     ],
     popular: false,
-    available: true,
+    available: false,
     konfhubUrl: "/purchase",
-    linkText: "Register Now",
+    linkText: "Sales Closed",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
@@ -445,9 +444,9 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: true,
+    available: false,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
-    linkText: "Contact Organizers",
+    linkText: "Sales Closed",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },
@@ -472,9 +471,9 @@ export const TICKETS = [
       "Appreciation Memento from OSD",
     ],
     popular: false,
-    available: true,
+    available: false,
     konfhubUrl: "mailto:opensourceweekend@gmail.com",
-    linkText: "Contact Organizers",
+    linkText: "Sales Closed",
     extra:
       "We are a registered Non-Profit, Section-8 Organization. This Ticket would be considered as a Donation which could be claimed in 80G & 12AA Tax Exemption. For more details Contact Event Organizers.",
   },

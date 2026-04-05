@@ -1,82 +1,239 @@
-import { SITE } from "@/config/config.ts";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+
+const randomImages = [
+  "IMG_20260404_115716.jpg",
+  "IMG_20260404_120332.jpg",
+  "IMG_20260404_174813.jpg",
+  "IMG_20260404_182045.jpg",
+  "IMG_20260404_182240.jpg",
+  "PXL_20260404_043240608.MP.jpg",
+  "PXL_20260404_132445542.jpg",
+  "PXL_20260404_132935934.jpg",
+  "SMIT0376.JPG.jpeg",
+  "SMIT0433.JPG.jpeg",
+  "SMIT0444.JPG.jpeg",
+  "SMIT0455.JPG.jpeg",
+  "SMIT0463.JPG.jpeg",
+  "SMIT0470.JPG.jpeg",
+  "SMIT0491.JPG.jpeg",
+  "SMIT0575.JPG.jpeg",
+  "SMIT0795.JPG.jpeg",
+];
 
 const Hero = () => {
-  const sectionRef = useRef(null);
+  const leftImagesRef = useRef([]);
+  const rightImagesRef = useRef([]);
+  const groupImageRef = useRef(null);
+  const textRef = useRef(null);
+  const containerRef = useRef(null);
+  const trailContainerRef = useRef(null);
+
+  // For image trail
+  const lastMousePos = useRef({ x: 0, y: 0 });
+  const imageIndex = useRef(0);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-    // Fade in on mount
-    section.style.opacity = "0";
-    requestAnimationFrame(() => {
-      section.style.transition = "opacity 0.8s ease-out";
-      section.style.opacity = "1";
-    });
+    const ctx = gsap.context(() => {
+      // Side images animations
+      gsap.from(leftImagesRef.current, {
+        x: -200,
+        opacity: 0,
+        rotate: -30,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power4.out",
+        delay: 0.2,
+      });
+
+      gsap.from(rightImagesRef.current, {
+        x: 200,
+        opacity: 0,
+        rotate: 30,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power4.out",
+        delay: 0.2,
+      });
+
+      // Group image animation
+      gsap.from(groupImageRef.current, {
+        y: 400,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power3.out",
+        delay: 0.5,
+      });
+
+      // Text fade-blur animation
+      gsap.from(textRef.current, {
+        opacity: 0,
+        filter: "blur(20px)",
+        scale: 0.95,
+        duration: 1.5,
+        ease: "power2.out",
+      });
+    }, containerRef);
+
+    // Mouse movement trail logic
+    const handleMouseMove = (e) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const distance = Math.hypot(x - lastMousePos.current.x, y - lastMousePos.current.y);
+
+      if (distance > 100) {
+        lastMousePos.current = { x, y };
+        spawnTrailImage(x, y);
+      }
+    };
+
+    const spawnTrailImage = (x, y) => {
+      const imgName = randomImages[imageIndex.current];
+      imageIndex.current = (imageIndex.current + 1) % randomImages.length;
+
+      const img = document.createElement("img");
+      img.src = `/end/random/${imgName}`;
+      img.className = "absolute pointer-events-none z-20 w-48 h-auto rounded-xl shadow-2xl border-4 border-white object-cover opacity-0 translate-x-[-50%] translate-y-[-50%]";
+      img.style.left = `${x}px`;
+      img.style.top = `${y}px`;
+
+      trailContainerRef.current.appendChild(img);
+
+      const rotate = Math.random() * 20 - 10;
+
+      gsap.to(img, {
+        opacity: 1,
+        scale: 1,
+        rotate,
+        duration: 0.4,
+        ease: "back.out(1.7)",
+      });
+
+      gsap.to(img, {
+        opacity: 0,
+        scale: 0.5,
+        y: "-=50",
+        duration: 1,
+        delay: 0.8,
+        ease: "power2.in",
+        onComplete: () => {
+          img.remove();
+        },
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      ctx.revert();
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
+  const addToRefs = (el, ref) => {
+    if (el && !ref.current.includes(el)) {
+      ref.current.push(el);
+    }
+  };
+
+  const images = [
+    // Side Gallery (Desktop) & Rows (Mobile)
+    { src: "/end/IMG_20260404_115716.jpg", rotate: "-7deg", dTop: "25%", dLeft: "5%", mTop: "12%", mLeft: "20%", side: "left" },
+    { src: "/end/IMG_20260404_120332.jpg", rotate: "5deg", dTop: "50%", dLeft: "12%", mTop: "10%", mLeft: "50%", side: "left" },
+    { src: "/end/IMG_20260404_174813.jpg", rotate: "-3deg", dTop: "75%", dLeft: "8%", mTop: "12%", mLeft: "80%", side: "left" },
+    { src: "/end/IMG_20260404_182045.jpg", rotate: "6deg", dTop: "25%", dRight: "8%", mTop: "68%", mLeft: "20%", side: "right" },
+    { src: "/end/IMG_20260404_182240.jpg", rotate: "-5deg", dTop: "50%", dRight: "16%", mTop: "70%", mLeft: "50%", side: "right" },
+    { src: "/end/PXL_20260404_043240608.MP.jpg", rotate: "4deg", dTop: "75%", dRight: "10%", mTop: "68%", mLeft: "80%", side: "right" },
+  ];
+
   return (
-    <div ref={sectionRef} className="relative min-h-[75vh] flex items-center justify-center bg-white" style={{ overflow: "visible" }}>
-      {/* Animated Background Blobs — clipped via a wrapping div so they don't overflow page */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-blob" />
+    <div ref={containerRef} className="relative min-h-screen lg:min-h-[90vh] flex flex-col items-center justify-center bg-white overflow-hidden pb-32">
+      {/* Image Trail Target Container */}
+      <div ref={trailContainerRef} className="absolute inset-0 pointer-events-none z-20" />
+
+      {/* Animated Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob" />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-green-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center py-16">
-        <div className="flex flex-col items-center">
-          {/* Status Badge */}
-          <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-green-50 text-green-700 text-sm font-bold border border-green-100 mb-8 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            <span>04 April 2026 · {SITE.city}</span>
+      {/* Side Gallery Images */}
+      {images.map((img, i) => {
+        const isLeft = img.side === "left";
+        return (
+          <div
+            key={i}
+            ref={(el) => addToRefs(el, isLeft ? leftImagesRef : rightImagesRef)}
+            className="hero-image absolute z-10 p-1 lg:p-2 bg-white rounded-lg lg:rounded-2xl shadow-xl lg:shadow-2xl border border-gray-100 transition-transform duration-300 hover:scale-110 hover:rotate-0 cursor-pointer w-[90px] lg:w-[220px]"
+            style={{
+              "--m-top": img.mTop,
+              "--m-left": img.mLeft,
+              "--d-top": img.dTop,
+              "--d-left": img.dLeft || "auto",
+              "--d-right": img.dRight || "auto",
+              transform: `translate(var(--tx), -50%) rotate(${img.rotate})`,
+            }}
+          >
+            <img src={img.src} alt={`Gallery ${i}`} className="w-full h-auto rounded-md lg:rounded-xl object-cover" />
           </div>
+        );
+      })}
 
-          {/* Title — pb-4 prevents italic descender clipping */}
-          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-4 leading-none pb-4">
-            <span className="block text-gray-900">Open Source Day</span>
-            <span className="gradient-text italic block">2026</span>
+      <style jsx>{`
+        .hero-image {
+          top: var(--m-top);
+          left: var(--m-left);
+          right: auto;
+          --tx: -50%;
+        }
+        @media (min-width: 1024px) {
+          .hero-image {
+            top: var(--d-top);
+            left: var(--d-left);
+            right: var(--d-right);
+            --tx: 0;
+          }
+        }
+      `}</style>
+
+      {/* Main Content */}
+      <div ref={textRef} className="relative z-30 max-w-4xl mx-auto px-4 text-center mt-20 lg:mt-12 mb-32">
+        <div className="flex flex-col items-center">
+          <h1 className="text-5xl md:text-7xl font-black tracking-tight mb-8 leading-tight">
+            <span className="block text-gray-900 drop-shadow-md">Thanks for making</span>
+            <span className="gradient-text block mt-2 drop-shadow-md">OSD2026</span>
+            <span
+              className="block mt-4 text-gray-800 drop-shadow-md italic"
+              style={{
+                fontFamily: '"Mrs Saint Delafield", cursive',
+                fontSize: "clamp(3rem, 10vw, 5rem)",
+                fontWeight: "400",
+                lineHeight: "1"
+              }}
+            >
+              Awesome
+            </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-            India's largest open source conference. 1000+ developers, builders &amp; maintainers — one unforgettable day.
+          <p className="text-xl md:text-2xl text-gray-600 font-medium mb-12 tracking-wide uppercase italic">
+            See you next year! 👋
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a
-              href="#get-involved"
-              className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-gray-900 rounded-full hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-            >
-              Get Involved
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </a>
-            <a
-              href="/tickets"
-              className="group inline-flex items-center justify-center px-8 py-4 font-bold text-white bg-green-600 rounded-full hover:bg-green-500 transition-all duration-200 hover:scale-105 shadow-lg shadow-green-200"
-            >
-              Buy Ticket Now
-            </a>
-            <a
-              href="/2025/"
-              className="group inline-flex items-center justify-center px-8 py-4 font-bold text-gray-900 border-2 border-gray-900 rounded-full hover:bg-gray-900 hover:text-white transition-all duration-200 hover:scale-105"
-            >
-              Explore 2025
-            </a>
-          </div>
+          {/* CTA Removed */}
         </div>
+      </div>
 
-        {/* Hashtag Footer */}
-        <div className="mt-10 pt-6 border-t border-gray-100 flex flex-wrap justify-center gap-6 opacity-40">
-          <div className="text-xl font-bold text-gray-400">#OSDIn2026</div>
-          <div className="text-xl font-bold text-gray-400">#OSDIndia2026</div>
-          <div className="text-xl font-bold text-gray-400">#OpenSourceDay</div>
-        </div>
+      {/* Group Image overlapping at the bottom */}
+      <div ref={groupImageRef} className="absolute bottom-[-60px] lg:bottom-[-130px] left-1/2 -translate-x-1/2 w-[140%] lg:w-[120%] max-w-[1400px] z-40 px-4 lg:px-0">
+        <img
+          src="/end/group.png"
+          alt="OSD2026 Group Photo"
+          className="w-full h-auto object-cover"
+        />
       </div>
     </div>
   );
