@@ -1,0 +1,84 @@
+---
+import CinematicGallery from '../components/gallery/DomeGallery';
+import Navigation from '@/components/Navigation';
+import "@/styles/2025/global.css";
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <title>Gallery | OSD2026</title>
+</head>
+<body class="bg-[#f8fafc] m-0 p-0 select-none">
+  
+  <Navigation activePath="/gallery" client:load />
+
+  <main class="w-full relative flex flex-col justify-start pt-20 md:pt-24">
+    
+    <!-- Scrollable Header - Moves out of view on scroll -->
+    <header class="relative w-full z-10 px-6 py-2 md:px-10 md:py-4 flex justify-between items-start">
+      <div class="animate-fade-in-up">
+        <h1 class="text-black text-4xl md:text-6xl font-black tracking-tighter drop-shadow-[0_4px_20px_rgba(34,197,94,0.15)]">
+          OSD2026 <span class="gradient-text uppercase">Gallery</span>
+        </h1>
+        <p class="text-green-600/80 mt-1 text-sm md:text-base font-bold tracking-[0.3em] uppercase">
+          Memory Lane
+        </p>
+      </div>
+    </header>
+
+    <!-- Simple Grid Gallery -->
+    <div class="w-full relative">
+      <CinematicGallery 
+        client:only="react"
+      />
+    </div>
+
+    <!-- Heartfelt Footer -->
+    <footer class="w-full py-24 px-8 flex flex-col items-center justify-center text-center bg-[#f8fafc]">
+      <h2 
+        class="text-gray-900 drop-shadow-md italic"
+        style="font-family: 'Mrs Saint Delafield', cursive; font-size: clamp(4rem, 15vw, 8rem); font-weight: 400; line-height: 0.8;"
+      >
+        Thank you everyone
+      </h2>
+      <p class="text-green-600/60 mt-8 font-black tracking-[0.4em] uppercase text-[10px]">
+        Open Source Day 2026 • Final Build
+      </p>
+    </footer>
+
+  </main>
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --primary-green: #22c55e;
+    --secondary-green: #16a34a;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  /* Force hide scrollbars */
+  ::-webkit-scrollbar { display: none; }
+  html { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
