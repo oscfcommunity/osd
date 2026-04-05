@@ -2,23 +2,31 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const randomImages = [
-  "IMG_20260404_115716.jpg",
-  "IMG_20260404_120332.jpg",
-  "IMG_20260404_174813.jpg",
-  "IMG_20260404_182045.jpg",
-  "IMG_20260404_182240.jpg",
-  "PXL_20260404_043240608.MP.jpg",
-  "PXL_20260404_132445542.jpg",
-  "PXL_20260404_132935934.jpg",
-  "SMIT0376.JPG.jpeg",
-  "SMIT0433.JPG.jpeg",
-  "SMIT0444.JPG.jpeg",
-  "SMIT0455.JPG.jpeg",
-  "SMIT0463.JPG.jpeg",
-  "SMIT0470.JPG.jpeg",
-  "SMIT0491.JPG.jpeg",
-  "SMIT0575.JPG.jpeg",
-  "SMIT0795.JPG.jpeg",
+  "DARP0268.JPG.webp",
+  "DARP0269.JPG.webp",
+  "DARP0288.JPG.webp",
+  "DARP0290.JPG.webp",
+  "IMG_20260404_115716.webp",
+  "IMG_20260404_120332.webp",
+  "IMG_20260404_174813.webp",
+  "IMG_20260404_182045.webp",
+  "IMG_20260404_182240.webp",
+  "PXL_20260404_043240608.MP.webp",
+  "PXL_20260404_132445542.webp",
+  "PXL_20260404_132935934.webp",
+  "SAVN1093.JPG.webp",
+  "SAVN1099.JPG.webp",
+  "DARP0268.JPG.webp", "DARP0269.JPG.webp", "DARP0288.JPG.webp", "DARP0290.JPG.webp",
+  "IMG_20260404_115716.webp", "IMG_20260404_120332.webp", "IMG_20260404_174813.webp",
+  "IMG_20260404_182045.webp", "IMG_20260404_182240.webp", "PXL_20260404_043240608.MP.webp",
+  "PXL_20260404_132445542.webp", "PXL_20260404_132935934.webp", "SAVN1093.JPG.webp",
+  "SAVN1099.JPG.webp", "SMIT0376.JPG.webp", "SMIT0433.JPG.webp", "SMIT0444.JPG.webp",
+  "SMIT0455.JPG.webp", "SMIT0463.JPG.webp", "SMIT0470.JPG.webp", "SMIT0491.JPG.webp",
+  "SMIT0575.JPG.webp", "SMIT0795.JPG.webp", "SMIT1132.JPG.webp", "SMIT1179.JPG.webp",
+  "SMIT1271.JPG.webp", "SMIT1273.JPG.webp", "SMIT1278.JPG.webp", "SMIT1294.JPG.webp",
+  "SMIT1297.JPG.webp", "SMIT1302.JPG.webp", "SMIT1408.JPG.webp", "SMIT1413.JPG.webp",
+  "SMIT1428.JPG.webp", "SMIT1429.JPG.webp", "SMIT1435.JPG.webp", "SMIT1445.JPG.webp",
+  "SMIT1620.JPG.webp", "SMIT1633.JPG.webp",
 ];
 
 const Hero = () => {
@@ -141,12 +149,12 @@ const Hero = () => {
 
   const images = [
     // Side Gallery (Desktop) & Rows (Mobile)
-    { src: "/end/IMG_20260404_115716.jpg", rotate: "-7deg", dTop: "25%", dLeft: "5%", mTop: "12%", mLeft: "20%", side: "left" },
-    { src: "/end/IMG_20260404_120332.jpg", rotate: "5deg", dTop: "50%", dLeft: "12%", mTop: "10%", mLeft: "50%", side: "left" },
-    { src: "/end/IMG_20260404_174813.jpg", rotate: "-3deg", dTop: "75%", dLeft: "8%", mTop: "12%", mLeft: "80%", side: "left" },
-    { src: "/end/IMG_20260404_182045.jpg", rotate: "6deg", dTop: "25%", dRight: "8%", mTop: "68%", mLeft: "20%", side: "right" },
-    { src: "/end/IMG_20260404_182240.jpg", rotate: "-5deg", dTop: "50%", dRight: "16%", mTop: "70%", mLeft: "50%", side: "right" },
-    { src: "/end/PXL_20260404_043240608.MP.jpg", rotate: "4deg", dTop: "75%", dRight: "10%", mTop: "68%", mLeft: "80%", side: "right" },
+    { src: "/end/IMG_20260404_115716.webp", rotate: "-7deg", dTop: "25%", dLeft: "5%", mTop: "12%", mLeft: "20%", side: "left" },
+    { src: "/end/IMG_20260404_120332.webp", rotate: "5deg", dTop: "50%", dLeft: "12%", mTop: "10%", mLeft: "50%", side: "left" },
+    { src: "/end/IMG_20260404_174813.webp", rotate: "-3deg", dTop: "75%", dLeft: "8%", mTop: "12%", mLeft: "80%", side: "left" },
+    { src: "/end/IMG_20260404_182045.webp", rotate: "6deg", dTop: "25%", dRight: "8%", mTop: "68%", mLeft: "20%", side: "right" },
+    { src: "/end/IMG_20260404_182240.webp", rotate: "-5deg", dTop: "50%", dRight: "16%", mTop: "70%", mLeft: "50%", side: "right" },
+    { src: "/end/PXL_20260404_043240608.MP.webp", rotate: "4deg", dTop: "75%", dRight: "10%", mTop: "68%", mLeft: "80%", side: "right" },
   ];
 
   return (
